@@ -1,0 +1,72 @@
+{
+  "source": "wistroneq3300/pa-cycle-lab",
+  "commit": "f484253a5729ab0e6e687b062e6b75e502ef7e78",
+  "authorization": "User explicitly requested integration of their PA Cycle Lab project; no new blanket license granted.",
+  "files": [
+    {
+      "path": "vendor/pa-cycle/rack-equipment-scene.js",
+      "source": "app/static/js/rack-equipment-scene.js",
+      "sha256": "b2ecfdb0394a1253da694bdb3d5eb810e8373bfb938eef46aac1bcd215b054f7"
+    },
+    {
+      "path": "vendor/pa-cycle/core-scene.js",
+      "source": "app/static/js/core-scene.js",
+      "sha256": "f4620f8b8d435682d19367b89f3d77eb74bfb1296d7a6e5ca4c8c3e4bbcd0c34"
+    },
+    {
+      "path": "vendor/pa-cycle/l10-hardware.js",
+      "source": "app/static/js/l10-hardware.js",
+      "sha256": "e0a07cc6d63028747f84db7060fe1711a01133c8a4124b4ba28199e00a9396cf"
+    },
+    {
+      "path": "vendor/pa-cycle/l10-timeline.js",
+      "source": "app/static/js/l10-timeline.js",
+      "sha256": "6d7ef4b01ac274540906eb1ba7aed4fac347b4987c11c4fa3a1d2e6f36440bdc"
+    },
+    {
+      "path": "assets/pa/studio-small-09-radiance.png",
+      "source": "app/static/img/l10/studio-small-09-radiance.png",
+      "sha256": "d8896d4633a204501e51deb29f655e3244993b816db18ef974b812d51d905f6e",
+      "license": "CC0 source HDR; see README"
+    },
+    {
+      "path": "assets/pa/studio-small-09-cooling-radiance.png",
+      "source": "app/static/img/l10/studio-small-09-cooling-radiance.png",
+      "sha256": "9e24492fc1ae5b20c380f1cf6a94694983a6c902a7f4e4f047dddbcb9822428d",
+      "license": "CC0 source HDR; see README"
+    },
+    {
+      "path": "assets/pa/studio-small-09-radiance.json",
+      "source": "app/static/img/l10/studio-small-09-radiance.json",
+      "sha256": "8e45072dc1dfc461502b747ff15d4680fc0299c1da797621101f314dd786da98",
+      "license": "CC0 source HDR; see README"
+    },
+    {
+      "path": "assets/pa/studio-small-09-cooling-radiance.json",
+      "source": "app/static/img/l10/studio-small-09-cooling-radiance.json",
+      "sha256": "e6b4dc66de3166daac12ccb1000fb2af82d98a7b68f5c65f0b3dcd7c208db8d7",
+      "license": "CC0 source HDR; see README"
+    },
+    {
+      "path": "assets/pa/README.md",
+      "source": "app/static/img/l10/README.md",
+      "sha256": "24bd3f25d658d40b6a05a5ff3f8b63ac127a6f72e9850f162f8a3ce36b2d1507",
+      "license": "CC0 source HDR; see README"
+    },
+    {
+      "path": "assets/pa/bare-compute-boards.glb",
+      "source": "app/static/models/l10-prototype/bare-compute-boards.glb",
+      "sha256": "6c78c6d9d62415de8e5888986bc5b2cd95d5a4a30d147b861f10ecc4650ecc29"
+    },
+    {
+      "path": "assets/compute-board.glb",
+      "sha256": "cd454d2e6a36d6e78ab8416e5449a6595791bc1e0a45fb239b3fd40642d59bb1",
+      "note": "Existing authorized asset, unchanged"
+    },
+    {
+      "path": "assets/cooling-assembly.glb",
+      "sha256": "88eec60c20e775a431b446da311f3a1476cc2774173e628adc170ae3ac1f5a3f",
+      "note": "Existing authorized asset, unchanged"
+    }
+  ]
+}

@@ -1,0 +1,212 @@
+[
+  {
+    "path": "app.js",
+    "sha256": "a0e5ac30b4d2f014d693e85b4ffbbb559f895b6390367e2596eb28c9eb0d04c2",
+    "bytes": 21532
+  },
+  {
+    "path": "index.html",
+    "sha256": "cc0d287da3ed17f8c2d3966ae4981b7b98f977834232bfe74fe98db2adf3e2e9",
+    "bytes": 16210
+  },
+  {
+    "path": "styles.css",
+    "sha256": "d53d9b9d9ad74294ce57a81a926ddc01e9fd55a76111f3a6b2cd201792979425",
+    "bytes": 23879
+  },
+  {
+    "path": "v2.css",
+    "sha256": "eaca59c47848c78659b67c4da07c6942f30a8224d5f45b636be6ad26a7e7b778",
+    "bytes": 7767
+  },
+  {
+    "path": "server.mjs",
+    "sha256": "42c25ecff58db5eee7a485c5efc43a16f6ea0a2db91cd464ad465ec658440617",
+    "bytes": 3025
+  },
+  {
+    "path": "modules/domain/configuration.js",
+    "sha256": "e0e91471ea12a04055e307f5e1db14fd71eb37ef20bc34b1e5b70a406d6c0a66",
+    "bytes": 19416
+  },
+  {
+    "path": "modules/navigation/camera-director.js",
+    "sha256": "d12e0ac4180a61ee33a43c8b57587412a67639772c9d37ce83f300f795e2ec17",
+    "bytes": 2207
+  },
+  {
+    "path": "modules/navigation/camera-envelope.js",
+    "sha256": "1b96efe64b203f85e65b6fc245c7328dc556a7b1bfcc5e31888e05451e28bec6",
+    "bytes": 941
+  },
+  {
+    "path": "modules/navigation/journey.js",
+    "sha256": "5259886372b38a2ff52cecbccf0f65afabd2137126e1271569f859e218d1eaa4",
+    "bytes": 2768
+  },
+  {
+    "path": "modules/scene/l10-assets.js",
+    "sha256": "61314ecceb8a6c05a3603eb870bd0af955a1a6cc1c4756dfdac0614c4833998b",
+    "bytes": 9427
+  },
+  {
+    "path": "modules/scene/motion-clearance.js",
+    "sha256": "93218484760c77fb287746005cc70ee07db25ba34296f43d67d850b409db4cfa",
+    "bytes": 899
+  },
+  {
+    "path": "modules/scene/pa-fragment.js",
+    "sha256": "effdd3f14a7672116f165820e5984b1298c0d3aa0b9c738b08b3d5d05f8614ab",
+    "bytes": 17871
+  },
+  {
+    "path": "modules/scene/pa-material.js",
+    "sha256": "7c6ada8cdf6643750070b95052ef66898b4ffeeb402a3cd54f169f6ddafe1c0e",
+    "bytes": 8659
+  },
+  {
+    "path": "modules/scene/projection.js",
+    "sha256": "13e90f8cc1f351d96865a17ae499ddc60d1169a607438ebf82628e28cb854142",
+    "bytes": 1735
+  },
+  {
+    "path": "modules/scene/rack-adapter.js",
+    "sha256": "9a4b2594b9aa7b356d0ecf415dd0333d1200eeab15530aa500e7325567009741",
+    "bytes": 10751
+  },
+  {
+    "path": "modules/studio.js",
+    "sha256": "0231ca5e6dc39858118c633ce63385ae6be0bcdd4675604fc725c41657d85eb8",
+    "bytes": 26188
+  },
+  {
+    "path": "modules/ui/equipment-editor.js",
+    "sha256": "9a12b2de2c2b0adf638536e8bb2fdcda54a3612412490004151827b770472960",
+    "bytes": 11851
+  },
+  {
+    "path": "data/demo-config.json",
+    "sha256": "29d80c3f3315cd68973b0aeb757b42c96be4ca723fff38f448ee547aaab90f73",
+    "bytes": 49733
+  },
+  {
+    "path": "tests/v2/adapter-browser.cjs",
+    "sha256": "3714c74cb9abeb50d55df7384bb9aa70d95f1fc762ee673cef948debeb93b1a0",
+    "bytes": 3983
+  },
+  {
+    "path": "tests/v2/cinematic-browser.cjs",
+    "sha256": "462de1f2787f9eb5e18c9d6645648de79b476e6a24209853e14df6d738048df5",
+    "bytes": 2763
+  },
+  {
+    "path": "tests/v2/config-browser.cjs",
+    "sha256": "3b7e1be1601a46968d7266deb9f812ffa9ce86f26bdb5c49176afa3290bcfd72",
+    "bytes": 5713
+  },
+  {
+    "path": "tests/v2/delivery-browser.cjs",
+    "sha256": "b96d78d64faabd9104417f75df9d11457595193938cc91f9c8486ddf7ec0befd",
+    "bytes": 2375
+  },
+  {
+    "path": "tests/v2/domain.test.mjs",
+    "sha256": "81073a79b063f3179b23efba688f2717ed1f173278f295ece8a636acdff6a3a3",
+    "bytes": 7100
+  },
+  {
+    "path": "tests/v2/harness.cjs",
+    "sha256": "950f08bf6b91ce6da9378a0158c7280cb9a3a4110ab5c8349138a6b913568479",
+    "bytes": 2499
+  },
+  {
+    "path": "tests/v2/journey.test.mjs",
+    "sha256": "3567dad295883ef66e57173cb9c34300eddc4d7d39b906cb8663e9141777b8f8",
+    "bytes": 4445
+  },
+  {
+    "path": "tests/v2/navigation-browser.cjs",
+    "sha256": "db07be4862fa5ba7bf4226525fed3b7a97a06264d5d63c662d464b5ee33cdf79",
+    "bytes": 9184
+  },
+  {
+    "path": "tests/v2/quality-browser.cjs",
+    "sha256": "af09155f8a628c4f5e1f39365881ce830c66ffcde17257243182c32ee7c866da",
+    "bytes": 7990
+  },
+  {
+    "path": "tests/v2/rack-preview.html",
+    "sha256": "4e104adc208c37b65e1ac65d3c8fa3ccd178c6b32d4a694cb6a7715d645b58b2",
+    "bytes": 3016
+  },
+  {
+    "path": "tests/v2/recovery-browser.cjs",
+    "sha256": "e5a07fe6464e263e04fc6e012ee8f72ab78755d6cd39185cf63c706e0157b744",
+    "bytes": 4504
+  },
+  {
+    "path": "tests/v2/run.mjs",
+    "sha256": "9303b1c162f4c1539dcca8b972879e666aa60a4c45715cda007ef4eaaba23f07",
+    "bytes": 3615
+  },
+  {
+    "path": "vendor/pa-cycle/core-scene.js",
+    "sha256": "f4620f8b8d435682d19367b89f3d77eb74bfb1296d7a6e5ca4c8c3e4bbcd0c34",
+    "bytes": 90079
+  },
+  {
+    "path": "vendor/pa-cycle/l10-hardware.js",
+    "sha256": "e0a07cc6d63028747f84db7060fe1711a01133c8a4124b4ba28199e00a9396cf",
+    "bytes": 42624
+  },
+  {
+    "path": "vendor/pa-cycle/l10-timeline.js",
+    "sha256": "6d7ef4b01ac274540906eb1ba7aed4fac347b4987c11c4fa3a1d2e6f36440bdc",
+    "bytes": 4941
+  },
+  {
+    "path": "vendor/pa-cycle/rack-equipment-scene.js",
+    "sha256": "b2ecfdb0394a1253da694bdb3d5eb810e8373bfb938eef46aac1bcd215b054f7",
+    "bytes": 116163
+  },
+  {
+    "path": "assets/pa/README.md",
+    "sha256": "24bd3f25d658d40b6a05a5ff3f8b63ac127a6f72e9850f162f8a3ce36b2d1507",
+    "bytes": 4273
+  },
+  {
+    "path": "assets/pa/bare-compute-boards.glb",
+    "sha256": "6c78c6d9d62415de8e5888986bc5b2cd95d5a4a30d147b861f10ecc4650ecc29",
+    "bytes": 25533668
+  },
+  {
+    "path": "assets/pa/provenance.json",
+    "sha256": "da90b2d10d8cc351766959a0cfadb74a42d2ee91570c0f2f5653aec12b871dd7",
+    "bytes": 2965
+  },
+  {
+    "path": "assets/pa/studio-small-09-cooling-radiance.json",
+    "sha256": "e6b4dc66de3166daac12ccb1000fb2af82d98a7b68f5c65f0b3dcd7c208db8d7",
+    "bytes": 807
+  },
+  {
+    "path": "assets/pa/studio-small-09-cooling-radiance.png",
+    "sha256": "9e24492fc1ae5b20c380f1cf6a94694983a6c902a7f4e4f047dddbcb9822428d",
+    "bytes": 368708
+  },
+  {
+    "path": "assets/pa/studio-small-09-radiance.json",
+    "sha256": "8e45072dc1dfc461502b747ff15d4680fc0299c1da797621101f314dd786da98",
+    "bytes": 619
+  },
+  {
+    "path": "assets/pa/studio-small-09-radiance.png",
+    "sha256": "d8896d4633a204501e51deb29f655e3244993b816db18ef974b812d51d905f6e",
+    "bytes": 902906
+  },
+  {
+    "path": "assets/cooling-assembly.glb",
+    "sha256": "88eec60c20e775a431b446da311f3a1476cc2774173e628adc170ae3ac1f5a3f",
+    "bytes": 5077332
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "os": "Windows 11 Pro 64-bit",
+  "osVersion": "10.0.26200",
+  "node": "v24.22.1",
+  "playwright": "1.62.1",
+  "browser": "131.0.6778.205",
+  "channel": "chrome",
+  "gpu": {
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002786) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "vendor": "Google Inc. (NVIDIA)",
+    "canvas": [
+      3440,
+      1339
+    ],
+    "three": 170,
+    "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+  },
+  "viewport": {
+    "width": 3440,
+    "height": 1440,
+    "dpr": 1
+  },
+  "scope": "Actual native desktop GPU. Mobile is touch emulation. Repository lock Playwright 1.65.0 was not rerun.",
+  "timezone": "Asia/Taipei",
+  "sourceDigest": "e339ccf712f1a3663d35d0a6e49bf18ecef9a5e12ae4c714346a95a0fb862529"
+}

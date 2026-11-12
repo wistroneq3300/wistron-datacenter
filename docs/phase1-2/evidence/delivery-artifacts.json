@@ -1,0 +1,99 @@
+{
+  "suite": "delivery-artifacts",
+  "date": "2026-11-12T19:55:10.124Z",
+  "tests": [
+    {
+      "name": "Comparison gallery loads both original and new images without broken assets",
+      "status": "PASS",
+      "evidence": [
+        {
+          "file": "../phase0/evidence/reference-images/3440x1440-dark-08-complete-rack.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "file": "evidence/rack-three-quarter-3440x1440.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "file": "../phase0/evidence/reference-images/3440x1440-dark-12-rear-inspection.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "file": "evidence/rack-rear-3440x1440.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "file": "../phase0/evidence/reference-images/3440x1440-dark-13-side-inspection.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "file": "evidence/rack-side-3440x1440.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "file": "../phase0/evidence/reference-images/G-bare-board-hero.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "file": "evidence/rack-board-3440x1440.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "file": "../phase0/evidence/reference-images/D-solid-cooling-assembly.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "file": "evidence/rack-cooling-3440x1440.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "file": "evidence/rack-front-3440x1440.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "file": "evidence/rack-door-open-3440x1440.png",
+          "width": 3440,
+          "height": 1440
+        }
+      ]
+    },
+    {
+      "name": "Recorded movie supports byte-range seeking and decodes nonblank real frames",
+      "status": "PASS",
+      "evidence": {
+        "duration": 47.08,
+        "width": 1720,
+        "height": 720,
+        "decodedTime": 20.250428,
+        "meanLuminance": 34.21258936261092
+      }
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "browser": "131.0.6778.205",
+  "channel": "chrome",
+  "viewport": {
+    "width": 3440,
+    "height": 1440,
+    "dpr": 1
+  },
+  "runtime": "v24.22.1",
+  "platform": "win32",
+  "summary": {
+    "PASS": 2,
+    "FAIL": 0,
+    "SKIP": 0
+  }
+}

@@ -7,7 +7,7 @@
   <meta name="description" content="Wistron Data Center Studio — 由內湖總部進入大型機房，探索一整排可配置機櫃的 3D 數位工程工作台。">
   <title>Wistron · Data Center Studio</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect rx='16' width='64' height='64' fill='%230e2027'/%3E%3Cpath d='M14 17l6 29 8-18 8 18 7-29h7l-10 34-11-18-10 18-8-34z' fill='%234ad8bd'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="v2.css">
   <script type="importmap">{"imports":{"three":"./vendor/three.module.js","three/addons/":"./vendor/"}}</script>
 </head>
 <body>
@@ -42,21 +42,24 @@
         <header><div><span class="eyebrow" id="rackKicker">CONFIGURED RACK</span><h2 id="rackName">R01</h2></div><button id="closeInspector" class="iconBtn" aria-label="關閉機櫃資訊"><svg><use href="#i-close"/></svg></button></header>
         <div class="rack-insight"><span class="greenDot"></span><span id="rackState">已配置 · 可自由編輯</span><span class="rackHeight">48U</span></div>
         <div class="metric-row"><div><small>設備節點</small><strong id="rackNodes">22</strong></div><div><small>機櫃排</small><strong>A</strong></div><div><small>模型</small><strong>3D</strong></div></div>
-        <label class="field"><span>機櫃名稱</span><input id="renameRack" type="text" maxlength="24" autocomplete="off" aria-label="機櫃名稱"></label>
-        <label class="field"><span>用途</span><input id="rackPurpose" type="text" maxlength="60" autocomplete="off" aria-label="機櫃用途"></label>
+        <label class="field"><span>機櫃名稱</span><input id="renameRack" type="text" maxlength="120" autocomplete="off" aria-label="機櫃名稱"></label>
+        <label class="field"><span>用途</span><input id="rackPurpose" type="text" maxlength="240" autocomplete="off" aria-label="機櫃用途"></label>
         <div class="inspector-actions"><button id="openRack" class="smallBtn"><svg><use href="#i-rack"/></svg>開門檢視</button><button id="deviceView" class="smallBtn"><svg><use href="#i-chip"/></svg>設備模型</button></div>
         <button id="duplicateRack" class="outlineBtn"><span>＋</span> 複製至下一個機位</button>
-        <div class="viewButtons"><button id="rackFront">正面</button><button id="rackRear">背後</button><button id="isolateRack">隔離</button></div>
-        <p class="micro-note">設備名稱與用途為本機配置，並非現場 telemetry。</p>
+        <div class="viewButtons"><button id="rackFront">正面</button><button id="rackRear">背後</button><button id="rackSide">側面</button><button id="rackQuarter">3/4</button><button id="rackSpin">360°</button></div>
+        <div class="equipment-heading"><h3>設備配置</h3><button id="addEquipment" class="smallBtn">＋ 新增設備</button></div><div id="equipmentList" class="equipment-list"></div>
+<div id="selectionTools" hidden><strong id="selectedEquipmentName"></strong><div class="inspector-actions"><button id="extractEquipment" class="smallBtn">抽出／歸位</button><button id="inspectEquipment" class="smallBtn">深入設備</button><button id="editSelectedEquipment" class="smallBtn">編輯</button></div></div>
+<details class="profile-settings"><summary>Rack Profile · Draft</summary><form id="profileForm"><div class="field-grid"><label class="field">容量<input id="profileCapacity" type="number" min="1" max="60" required></label><label class="field">單位<select id="profileGrid"><option>RU</option><option>OU</option></select></label></div><div class="field-grid"><label class="field">可用寬 mm<input id="profileWidth" type="number" min="1" step="any" required></label><label class="field">可用深 mm<input id="profileDepth" type="number" min="1" step="any" required></label></div><p class="field-hint">RU = 44.45 mm；OU = 48 mm。更改 Profile 會驗證所有使用它的設備，不自動轉換現有 U 位。</p><button class="outlineBtn" type="submit">驗證並儲存 Profile</button></form></details>
+<p id="profileError" class="form-error" role="alert"></p><p id="rackIdentity" class="identity-note"></p><button id="removeRack" class="textDanger">移除此機櫃與設備</button><p class="micro-note">本機 Draft 配置，不代表 OEM 安裝認證或現場 telemetry。</p>
       </section>
 
       <aside class="scene-sideinfo" id="sceneSideinfo">
         <div class="north"><span>N</span><svg viewBox="0 0 32 32"><path d="M16 3 9 25l7-5 7 5Z" fill="currentColor"/><path d="M16 3v15" stroke="#687783"/></svg></div>
         <span id="scaleLabel">BUILDING SCALE</span>
-        <span class="coordinates">25.0668° N<br>121.5720° E</span>
+        <span class="coordinates">CONCEPTUAL<br>NOT SURVEYED</span>
       </aside>
 
-      <div id="detailHeader" class="detail-header" hidden><span class="detailIndex" id="detailIndex">02</span><div><span id="detailEnglish">THE DATA HALL</span><strong id="detailTitle">每一個連接，都有它的位置。</strong></div></div>
+      <nav id="breadcrumbs" class="breadcrumbs" aria-label="導覽路徑"></nav><div id="assetStatus" class="asset-status" role="status" hidden></div><div id="cinematicControls" class="cinematic-controls" hidden><button id="playCinematic" class="smallBtn">播放 Cinematic</button><input id="cinematicRange" type="range" min="0" max="1" step="0.001" value="0" aria-label="Cinematic 進度"><button id="stopCinematic" class="smallBtn">返回安裝狀態</button><span id="cinematicTime">0.0 s</span></div><div id="detailHeader" class="detail-header" hidden><span class="detailIndex" id="detailIndex">02</span><div><span id="detailEnglish">THE DATA HALL</span><strong id="detailTitle">每一個連接，都有它的位置。</strong></div></div>
 
       <div class="legend" id="legend"><span><i class="cyan"></i>已配置機櫃</span><span><i class="slate"></i>空間模型</span><span class="local"><svg><use href="#i-layers"/></svg> 本機配置</span></div>
 
@@ -64,9 +67,9 @@
 
       <div class="tour-controls" id="tourControls" hidden>
         <button id="tourPrev" class="tourSkip"><svg><use href="#i-back"/></svg><span>返回</span></button>
-        <div class="journey"><span id="journeyStep">01 / 04</span><input type="range" min="0" max="3" step="1" id="journeyRange" value="0" aria-label="空間探索階段"><span id="journeyName">總部外觀</span></div>
+        <div class="journey"><span id="journeyStep">01 / 08</span><input type="range" min="0" max="7" step="1" id="journeyRange" value="0" aria-label="空間探索階段"><span id="journeyName">總部外觀</span></div>
         <button id="tourNext" class="tourSkip"><span>深入</span><svg><use href="#i-arrow"/></svg></button>
-        <button id="exitTour" class="iconBtn" title="退出導覽並自由旋轉" aria-label="退出導覽"><svg><use href="#i-close"/></svg></button>
+        <button id="exitTour" class="iconBtn" title="自由探索，保留導覽進度" aria-label="切換自由探索"><svg><use href="#i-close"/></svg></button>
       </div>
 
       <nav class="bottom-dock" aria-label="空間與檢視模式">
@@ -78,7 +81,7 @@
         </div>
         <div class="dock-divider"></div>
         <button id="networkBtn" class="dock-icon" title="設施流路" aria-label="設施流路" aria-expanded="false"><svg><use href="#i-flow"/></svg></button>
-        <button id="explodeBtn" class="dock-icon" title="整排拆層" aria-label="整排拆層"><svg><use href="#i-explode"/></svg></button>
+        <button id="explodeBtn" class="dock-icon" title="Cinematic 展示" aria-label="整排拆層"><svg><use href="#i-explode"/></svg></button>
         <button id="addRackBtn" class="dock-icon" title="新增機櫃" aria-label="新增機櫃"><svg><use href="#i-plus"/></svg></button>
         <div class="dock-divider"></div>
         <button id="resetBtn" class="dock-icon" title="重置視角 (Home)" aria-label="重置視角"><svg><use href="#i-reset"/></svg></button>
@@ -96,11 +99,8 @@
 
       <div class="quality"><button id="qualityBtn" title="切換自動／高品質渲染"><span></span><b id="qualityLabel">AUTO QUALITY</b></button><button id="fullscreenBtn" title="全螢幕" aria-label="切換全螢幕"><svg><use href="#i-fullscreen"/></svg></button></div>
       <div id="toast" class="toast" role="status" aria-live="polite"></div>
-      <div id="deviceModal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="deviceTitle">
-        <div class="device-dialog"><header><div><span class="eyebrow">PRECISION ASSET / USER PROVIDED</span><h2 id="deviceTitle">Liquid cooling assembly</h2></div><button id="closeDevice" class="iconBtn" aria-label="關閉設備模型"><svg><use href="#i-close"/></svg></button></header><div id="deviceStage"></div><div id="devicePlaceholder"><svg><use href="#i-chip"/></svg><span>正在載入精細 GLB 資產…</span></div><footer><div><span class="greenDot"></span> 獨立資產預覽 · 可旋轉與縮放</div><div><button id="loadBoard">切換主機板</button><button id="loadCooling" class="selected">液冷組件</button></div></footer></div>
-      </div>
-      <dialog id="helpDialog"><div class="dialogTop"><span class="eyebrow">QUICK START</span><button data-close="helpDialog" class="iconBtn" aria-label="關閉指南"><svg><use href="#i-close"/></svg></button></div><h2>從一座建築，到你的機櫃排。</h2><p>這是一個以配置為基礎的 3D 空間原型，不與現場設備連線。</p><div class="helpGrid"><div><b>拖曳</b><span>環繞場景</span></div><div><b>滾輪</b><span>縮放／導覽深入</span></div><div><b>右鍵</b><span>平移視角</span></div><div><b>點選機櫃</b><span>聚焦並編輯配置</span></div><div><b>Home</b><span>回到機房總覽</span></div><div><b>Esc</b><span>關閉面板</span></div></div><div class="helpNote">總部為概念建築，非實景測繪。機房為空間視覺原型；編輯只會儲存在你的瀏覽器，不會修改任何現場設備。</div><button data-close="helpDialog" class="primary">開始探索 <svg><use href="#i-arrow"/></svg></button></dialog>
-      <dialog id="configDialog"><div class="dialogTop"><span class="eyebrow">LOCAL CONFIGURATION</span><button data-close="configDialog" class="iconBtn" aria-label="關閉配置"><svg><use href="#i-close"/></svg></button></div><h2>你的機櫃，你的配置。</h2><p id="configSummary">整排機櫃可以重新命名、複製或新增。所有變更只儲存在本機。</p><div class="rackSummary" id="rackSummary"></div><div class="configActions"><button id="exportConfig" class="primary">下載 JSON <svg><use href="#i-download"/></svg></button><label class="outlineBtn fileLabel">匯入配置<input id="importConfig" type="file" accept=".json,application/json" hidden></label><button id="resetConfig" class="textDanger">恢復示範配置</button></div><p class="micro-note">配置檔只包含機櫃名稱、用途、位置與模型欄位；不包含憑證、設備控制或現場資料。</p></dialog>
+      <dialog id="helpDialog"><div class="dialogTop"><span class="eyebrow">QUICK START</span><button data-close="helpDialog" class="iconBtn" aria-label="關閉指南"><svg><use href="#i-close"/></svg></button></div><h2>從一座建築，到你的機櫃排。</h2><p>這是一個以配置為基礎的 3D 空間原型，不與現場設備連線。</p><div class="helpGrid"><div><b>拖曳</b><span>環繞場景</span></div><div><b>滾輪</b><span>導覽進退；自由模式縮放</span></div><div><b>右鍵</b><span>平移視角</span></div><div><b>點選機櫃</b><span>聚焦並編輯配置</span></div><div><b>Home</b><span>目前層級重置視角</span></div><div><b>Esc</b><span>關閉面板</span></div></div><div class="helpNote">總部為概念建築，非實景測繪。機房為空間視覺原型；編輯只會儲存在你的瀏覽器，不會修改任何現場設備。</div><button data-close="helpDialog" class="primary">開始探索 <svg><use href="#i-arrow"/></svg></button></dialog>
+      <dialog id="configDialog"><div class="dialogTop"><span class="eyebrow">LOCAL CONFIGURATION</span><button data-close="configDialog" class="iconBtn" aria-label="關閉配置"><svg><use href="#i-close"/></svg></button></div><h2>你的機櫃，你的配置。</h2><p id="configSummary">機櫃、設備、Catalog 與 Profile 共用單一配置。通過驗證的變更會自動儲存在此瀏覽器。</p><div class="rackSummary" id="rackSummary"></div><div class="configActions"><button id="exportConfig" class="primary">下載 JSON <svg><use href="#i-download"/></svg></button><label class="outlineBtn fileLabel">匯入配置<input id="importConfig" type="file" accept=".json,application/json" hidden></label><button id="resetConfig" class="textDanger">恢復示範配置</button></div><p class="micro-note">支援 schema v2 與 v1 遷移。V1 沒有設備清單，不會憑空補入設備。請勿在名稱與備註填入帳密或敏感資料。</p></dialog>
     </main>
     <footer class="bottomline"><span>WISTRON / ENGINEERING ATELIER</span><span id="footerMessage">內湖總部概念模型 · 空間視覺原型</span><span class="footerRight">DESIGNED TO EXPLORE <i>↗</i></span></footer>
   </div>
@@ -123,6 +123,6 @@
     <symbol id="i-fullscreen" viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></symbol>
     <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></symbol>
   </defs></svg>
-  <script type="module" src="app.js"></script>
+  <script src="vendor/pa-cycle/rack-equipment-scene.js"></script><script src="vendor/pa-cycle/l10-hardware.js"></script><script src="vendor/pa-cycle/l10-timeline.js"></script><script src="vendor/pa-cycle/core-scene.js"></script><script type="module" src="app.js"></script>
 </body>
 </html>

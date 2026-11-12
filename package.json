@@ -1,13 +1,15 @@
 {
   "name": "wistron-data-center-studio",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "type": "module",
-  "description": "Interactive 3D data center and configurable rack-row studio.",
+  "description": "PA cinematic rack integration, data-driven equipment configuration and eight-level spatial navigation.",
   "scripts": {
     "start": "node server.mjs",
     "dev": "node server.mjs",
-    "test": "playwright install chromium && node tests/smoke.mjs"
+    "test": "node tests/v2/run.mjs",
+    "test:domain": "node --test tests/v2/domain.test.mjs tests/v2/journey.test.mjs",
+    "test:browser": "node tests/v2/run.mjs --browser"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2"

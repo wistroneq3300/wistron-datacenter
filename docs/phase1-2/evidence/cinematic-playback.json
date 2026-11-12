@@ -1,0 +1,74 @@
+{
+  "suite": "cinematic-playback",
+  "date": "2026-11-12T19:47:54.530Z",
+  "tests": [
+    {
+      "name": "Entire authored 39.7 second film plays continuously in real time",
+      "status": "PASS",
+      "evidence": {
+        "wallMs": 40498.5,
+        "frames": 2431,
+        "maximumCameraStepM": 0.13876334324966866,
+        "monotonic": true,
+        "stages": [
+          "bare",
+          "silicon",
+          "plate-install",
+          "plumbing",
+          "flow",
+          "restore",
+          "solid",
+          "lid",
+          "bridge",
+          "rack"
+        ],
+        "clock": 39700,
+        "clearance": {
+          "valid": true,
+          "conflict": null,
+          "samples": 97,
+          "scope": "conservative equipment body AABB samples; not OEM rail/connector certification"
+        },
+        "glError": 0
+      }
+    },
+    {
+      "name": "Installed state restored after continuous playback",
+      "status": "PASS",
+      "evidence": {
+        "owner": "orbit",
+        "active": false,
+        "depth": 4,
+        "geometry": 216
+      }
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "browser": "131.0.6778.205",
+  "channel": "chrome",
+  "viewport": {
+    "width": 3440,
+    "height": 1440,
+    "dpr": 1
+  },
+  "runtime": "v24.22.1",
+  "platform": "win32",
+  "video": {
+    "path": "cinematic-playback-1720x720.webm",
+    "recordedViewport": [
+      3440,
+      1440
+    ],
+    "encodedSize": [
+      1720,
+      720
+    ],
+    "source": "actual browser capture, no generated frames"
+  },
+  "summary": {
+    "PASS": 2,
+    "FAIL": 0,
+    "SKIP": 0
+  }
+}
