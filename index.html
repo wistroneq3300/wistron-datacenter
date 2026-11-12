@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#080e14">
+  <meta name="description" content="Wistron Data Center Studio — 由內湖總部進入大型機房，探索一整排可配置機櫃的 3D 數位工程工作台。">
+  <title>Wistron · Data Center Studio</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect rx='16' width='64' height='64' fill='%230e2027'/%3E%3Cpath d='M14 17l6 29 8-18 8 18 7-29h7l-10 34-11-18-10 18-8-34z' fill='%234ad8bd'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script type="importmap">{"imports":{"three":"./vendor/three.module.js","three/addons/":"./vendor/"}}</script>
+</head>
+<body>
+  <a class="skip-link" href="#scene" tabindex="0">跳至 3D 場景</a>
+  <div id="app">
+    <header class="topbar">
+      <div class="brand" aria-label="Wistron Data Center Studio">
+        <div class="wordmark"><span class="brandw">w</span><span>istron</span><i></i></div>
+        <span class="division">DATA CENTER STUDIO</span>
+      </div>
+      <nav class="site-toolbar" aria-label="工作台">
+        <span class="status"><i></i> CONFIGURATION VIEW</span>
+        <button id="configBtn" class="toolText" title="匯入／匯出場景配置"><svg><use href="#i-settings"/></svg><span>配置</span></button>
+        <button id="helpBtn" class="iconBtn" title="操作指南" aria-label="操作指南"><svg><use href="#i-help"/></svg></button>
+      </nav>
+    </header>
+
+    <main id="scene" tabindex="0" aria-label="3D 資料中心。拖曳旋轉、滾輪縮放，點選 R01 至 R08 機櫃。">
+      <canvas id="viewport" aria-label="Wistron 資料中心 3D 畫面"></canvas>
+      <div id="loading" class="loading"><div class="loadingMark">w<span>istron</span></div><p>建構資料中心空間</p><div class="loader"><i></i></div><small>Loading digital environment…</small></div>
+      <div class="scene-vignette"></div>
+      <div class="corner corner-tl"></div><div class="corner corner-br"></div>
+      <div id="labels" class="world-labels" aria-label="可選取機櫃"></div>
+      <section id="sceneMeta" class="scene-meta">
+        <div class="eyebrow"><span class="tinyCross">+</span> SPATIAL WORKSPACE <span class="edition">/ 01</span></div>
+        <h1 id="sceneTitle">Engineering,<br><span>at every scale.</span></h1>
+        <p id="sceneDescription">從建築到機櫃，探索你的下一個<br class="desktopBreak">資料中心工作場域。</p>
+        <div id="sceneActions" class="sceneActions"><button id="startTour" class="primary">進入資料中心 <svg><use href="#i-arrow"/></svg></button><button id="hallDirect" class="quiet">前往機櫃排 <span>R01 — R08</span></button></div>
+      </section>
+
+      <section id="rackInspector" class="rack-inspector" hidden aria-label="機櫃資訊">
+        <header><div><span class="eyebrow" id="rackKicker">CONFIGURED RACK</span><h2 id="rackName">R01</h2></div><button id="closeInspector" class="iconBtn" aria-label="關閉機櫃資訊"><svg><use href="#i-close"/></svg></button></header>
+        <div class="rack-insight"><span class="greenDot"></span><span id="rackState">已配置 · 可自由編輯</span><span class="rackHeight">48U</span></div>
+        <div class="metric-row"><div><small>設備節點</small><strong id="rackNodes">22</strong></div><div><small>機櫃排</small><strong>A</strong></div><div><small>模型</small><strong>3D</strong></div></div>
+        <label class="field"><span>機櫃名稱</span><input id="renameRack" type="text" maxlength="24" autocomplete="off" aria-label="機櫃名稱"></label>
+        <label class="field"><span>用途</span><input id="rackPurpose" type="text" maxlength="60" autocomplete="off" aria-label="機櫃用途"></label>
+        <div class="inspector-actions"><button id="openRack" class="smallBtn"><svg><use href="#i-rack"/></svg>開門檢視</button><button id="deviceView" class="smallBtn"><svg><use href="#i-chip"/></svg>設備模型</button></div>
+        <button id="duplicateRack" class="outlineBtn"><span>＋</span> 複製至下一個機位</button>
+        <div class="viewButtons"><button id="rackFront">正面</button><button id="rackRear">背後</button><button id="isolateRack">隔離</button></div>
+        <p class="micro-note">設備名稱與用途為本機配置，並非現場 telemetry。</p>
+      </section>
+
+      <aside class="scene-sideinfo" id="sceneSideinfo">
+        <div class="north"><span>N</span><svg viewBox="0 0 32 32"><path d="M16 3 9 25l7-5 7 5Z" fill="currentColor"/><path d="M16 3v15" stroke="#687783"/></svg></div>
+        <span id="scaleLabel">BUILDING SCALE</span>
+        <span class="coordinates">25.0668° N<br>121.5720° E</span>
+      </aside>
+
+      <div id="detailHeader" class="detail-header" hidden><span class="detailIndex" id="detailIndex">02</span><div><span id="detailEnglish">THE DATA HALL</span><strong id="detailTitle">每一個連接，都有它的位置。</strong></div></div>
+
+      <div class="legend" id="legend"><span><i class="cyan"></i>已配置機櫃</span><span><i class="slate"></i>空間模型</span><span class="local"><svg><use href="#i-layers"/></svg> 本機配置</span></div>
+
+      <div class="scene-hint" id="sceneHint"><span class="mouse"><i></i></span><span>拖曳旋轉<span class="sep">·</span>滾輪探索空間</span></div>
+
+      <div class="tour-controls" id="tourControls" hidden>
+        <button id="tourPrev" class="tourSkip"><svg><use href="#i-back"/></svg><span>返回</span></button>
+        <div class="journey"><span id="journeyStep">01 / 04</span><input type="range" min="0" max="3" step="1" id="journeyRange" value="0" aria-label="空間探索階段"><span id="journeyName">總部外觀</span></div>
+        <button id="tourNext" class="tourSkip"><span>深入</span><svg><use href="#i-arrow"/></svg></button>
+        <button id="exitTour" class="iconBtn" title="退出導覽並自由旋轉" aria-label="退出導覽"><svg><use href="#i-close"/></svg></button>
+      </div>
+
+      <nav class="bottom-dock" aria-label="空間與檢視模式">
+        <div class="viewGroup">
+          <button class="dock-btn" data-view="hq" title="01 · 總部外觀"><svg><use href="#i-building"/></svg><span>總部</span><small>01</small></button>
+          <button class="dock-btn" data-view="cutaway" title="02 · 建築剖面"><svg><use href="#i-building-section"/></svg><span>剖面</span><small>02</small></button>
+          <button class="dock-btn active" data-view="hall" title="03 · 機房總覽"><svg><use href="#i-grid"/></svg><span>機房</span><small>03</small></button>
+          <button class="dock-btn" data-view="row" title="04 · 機櫃排檢視"><svg><use href="#i-rack"/></svg><span>整櫃</span><small>04</small></button>
+        </div>
+        <div class="dock-divider"></div>
+        <button id="networkBtn" class="dock-icon" title="設施流路" aria-label="設施流路" aria-expanded="false"><svg><use href="#i-flow"/></svg></button>
+        <button id="explodeBtn" class="dock-icon" title="整排拆層" aria-label="整排拆層"><svg><use href="#i-explode"/></svg></button>
+        <button id="addRackBtn" class="dock-icon" title="新增機櫃" aria-label="新增機櫃"><svg><use href="#i-plus"/></svg></button>
+        <div class="dock-divider"></div>
+        <button id="resetBtn" class="dock-icon" title="重置視角 (Home)" aria-label="重置視角"><svg><use href="#i-reset"/></svg></button>
+      </nav>
+
+      <div id="flowPanel" class="flow-panel" hidden>
+        <div class="panel-heading"><span>INFRASTRUCTURE LAYERS</span><button id="closeFlow" class="iconBtn" aria-label="關閉設施流路"><svg><use href="#i-close"/></svg></button></div>
+        <p>查看空間連接；流動為概念示意。</p>
+        <button data-flow="off" class="active"><span class="flowSymbol off">○</span><span>隱藏流路<small>Model only</small></span><i></i></button>
+        <button data-flow="cooling"><span class="flowSymbol water">≈</span><span>液冷系統<small>Supply / return</small></span><i></i></button>
+        <button data-flow="power"><span class="flowSymbol power">↯</span><span>供電系統<small>Busway / rack power</small></span><i></i></button>
+        <button data-flow="network"><span class="flowSymbol network">⌁</span><span>網路系統<small>Network fabric</small></span><i></i></button>
+        <div class="flowFooter"><span class="greenDot"></span> CONCEPTUAL FLOW · NOT CFD</div>
+      </div>
+
+      <div class="quality"><button id="qualityBtn" title="切換自動／高品質渲染"><span></span><b id="qualityLabel">AUTO QUALITY</b></button><button id="fullscreenBtn" title="全螢幕" aria-label="切換全螢幕"><svg><use href="#i-fullscreen"/></svg></button></div>
+      <div id="toast" class="toast" role="status" aria-live="polite"></div>
+      <div id="deviceModal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="deviceTitle">
+        <div class="device-dialog"><header><div><span class="eyebrow">PRECISION ASSET / USER PROVIDED</span><h2 id="deviceTitle">Liquid cooling assembly</h2></div><button id="closeDevice" class="iconBtn" aria-label="關閉設備模型"><svg><use href="#i-close"/></svg></button></header><div id="deviceStage"></div><div id="devicePlaceholder"><svg><use href="#i-chip"/></svg><span>正在載入精細 GLB 資產…</span></div><footer><div><span class="greenDot"></span> 獨立資產預覽 · 可旋轉與縮放</div><div><button id="loadBoard">切換主機板</button><button id="loadCooling" class="selected">液冷組件</button></div></footer></div>
+      </div>
+      <dialog id="helpDialog"><div class="dialogTop"><span class="eyebrow">QUICK START</span><button data-close="helpDialog" class="iconBtn" aria-label="關閉指南"><svg><use href="#i-close"/></svg></button></div><h2>從一座建築，到你的機櫃排。</h2><p>這是一個以配置為基礎的 3D 空間原型，不與現場設備連線。</p><div class="helpGrid"><div><b>拖曳</b><span>環繞場景</span></div><div><b>滾輪</b><span>縮放／導覽深入</span></div><div><b>右鍵</b><span>平移視角</span></div><div><b>點選機櫃</b><span>聚焦並編輯配置</span></div><div><b>Home</b><span>回到機房總覽</span></div><div><b>Esc</b><span>關閉面板</span></div></div><div class="helpNote">總部為概念建築，非實景測繪。機房為空間視覺原型；編輯只會儲存在你的瀏覽器，不會修改任何現場設備。</div><button data-close="helpDialog" class="primary">開始探索 <svg><use href="#i-arrow"/></svg></button></dialog>
+      <dialog id="configDialog"><div class="dialogTop"><span class="eyebrow">LOCAL CONFIGURATION</span><button data-close="configDialog" class="iconBtn" aria-label="關閉配置"><svg><use href="#i-close"/></svg></button></div><h2>你的機櫃，你的配置。</h2><p id="configSummary">整排機櫃可以重新命名、複製或新增。所有變更只儲存在本機。</p><div class="rackSummary" id="rackSummary"></div><div class="configActions"><button id="exportConfig" class="primary">下載 JSON <svg><use href="#i-download"/></svg></button><label class="outlineBtn fileLabel">匯入配置<input id="importConfig" type="file" accept=".json,application/json" hidden></label><button id="resetConfig" class="textDanger">恢復示範配置</button></div><p class="micro-note">配置檔只包含機櫃名稱、用途、位置與模型欄位；不包含憑證、設備控制或現場資料。</p></dialog>
+    </main>
+    <footer class="bottomline"><span>WISTRON / ENGINEERING ATELIER</span><span id="footerMessage">內湖總部概念模型 · 空間視覺原型</span><span class="footerRight">DESIGNED TO EXPLORE <i>↗</i></span></footer>
+  </div>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M20 12H5m6-6-6 6 6 6"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><path d="M4 7h16M7 3v8m10 2v8M4 17h16M3 5v4m18 6v4M3 13v8m18-18v8M11 3v4m2-4v4m-2 10v4m2-4v4"/><circle cx="7" cy="9" r="2"/><circle cx="17" cy="15" r="2"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 8.7a2.6 2.6 0 0 1 5 .7c0 2.1-2.5 2.2-2.5 4m0 3.2v.1"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21V4h11v17M15 9h5v12M8 8h3m-3 4h3m-3 4h3m-3 4h3m7-7h1m-1 4h1M2 21h20"/></symbol>
+    <symbol id="i-building-section" viewBox="0 0 24 24"><path d="M4 21V4h10v17M14 9h6v12M2 21h20M8 8h2m-2 4h2m-2 4h2m-2 3h2m6-6h2m-2 4h2"/><path d="m17 2 5 5M19 2l3 3"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+    <symbol id="i-rack" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="1"/><path d="M8 6h8m-8 4h8m-8 4h8m-8 4h8M8 22v1m8-1v1"/></symbol>
+    <symbol id="i-flow" viewBox="0 0 24 24"><path d="M5 5h5v5H5zM14 14h5v5h-5zM10 7h5a2 2 0 0 1 2 2v5M7 10v7a2 2 0 0 0 2 2h5"/><circle cx="17" cy="4" r="2"/><circle cx="7" cy="20" r="2"/></symbol>
+    <symbol id="i-explode" viewBox="0 0 24 24"><path d="m12 2 7 4-7 4-7-4zM5 10l7 4 7-4M5 14l7 4 7-4M5 18l7 4 7-4"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16"/></symbol>
+    <symbol id="i-reset" viewBox="0 0 24 24"><path d="M3 10a9 9 0 1 1 1.7 7M3 4v6h6"/><circle cx="12" cy="12" r="2"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m3 8 9-5 9 5-9 5zM3 12l9 5 9-5M3 16l9 5 9-5"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-chip" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="1"/><path d="M9 1v5m6-5v5M9 18v5m6-5v5M1 9h5m-5 6h5m12-6h5m-5 6h5M10 10h4v4h-4z"/></symbol>
+    <symbol id="i-fullscreen" viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></symbol>
+  </defs></svg>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
