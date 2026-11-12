@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "racks": [
+    {
+      "id": "R09",
+      "name": "Phase 0 synthetic fixture",
+      "purpose": "Review only",
+      "position": 9,
+      "configured": true
+    },
+    {
+      "id": "R01",
+      "name": "NEW CONFIGURATION",
+      "purpose": "Custom system",
+      "position": 10,
+      "configured": true
+    }
+  ]
+}

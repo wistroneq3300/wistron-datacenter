@@ -1,0 +1,62 @@
+[
+  {
+    "path": "docs/screenshots/hero-cinematic-v3/final/3440x1440-dark-08-complete-rack.png",
+    "url": "https://raw.githubusercontent.com/wistroneq3300/pa-cycle-lab/f484253a5729ab0e6e687b062e6b75e502ef7e78/docs/screenshots/hero-cinematic-v3/final/3440x1440-dark-08-complete-rack.png",
+    "local": "3440x1440-dark-08-complete-rack.png",
+    "bytes": 1960213,
+    "width": 3440,
+    "height": 1440,
+    "sha256": "f63e5342be81f13d49ede3c08fe2ed24d62da1bf1aeff29949d864bfd390e49e",
+    "status": "upstream committed screenshot; not rendered in this session"
+  },
+  {
+    "path": "docs/screenshots/hero-cinematic-v3/final/3440x1440-dark-12-rear-inspection.png",
+    "url": "https://raw.githubusercontent.com/wistroneq3300/pa-cycle-lab/f484253a5729ab0e6e687b062e6b75e502ef7e78/docs/screenshots/hero-cinematic-v3/final/3440x1440-dark-12-rear-inspection.png",
+    "local": "3440x1440-dark-12-rear-inspection.png",
+    "bytes": 1868347,
+    "width": 3440,
+    "height": 1440,
+    "sha256": "45404eb1cbedaadbc1378c6b7916e98adeeb6938bdb48bc7889f373d0eec11c6",
+    "status": "upstream committed screenshot; not rendered in this session"
+  },
+  {
+    "path": "docs/screenshots/hero-cinematic-v3/final/3440x1440-dark-13-side-inspection.png",
+    "url": "https://raw.githubusercontent.com/wistroneq3300/pa-cycle-lab/f484253a5729ab0e6e687b062e6b75e502ef7e78/docs/screenshots/hero-cinematic-v3/final/3440x1440-dark-13-side-inspection.png",
+    "local": "3440x1440-dark-13-side-inspection.png",
+    "bytes": 1759290,
+    "width": 3440,
+    "height": 1440,
+    "sha256": "8eba0e2ffa88430c9ae235fe168992517127338ced3aeca603e5b25d8f0c3c5f",
+    "status": "upstream committed screenshot; not rendered in this session"
+  },
+  {
+    "path": "docs/screenshots/l10-cinematic/final-rc/after/D-solid-cooling-assembly.png",
+    "url": "https://raw.githubusercontent.com/wistroneq3300/pa-cycle-lab/f484253a5729ab0e6e687b062e6b75e502ef7e78/docs/screenshots/l10-cinematic/final-rc/after/D-solid-cooling-assembly.png",
+    "local": "D-solid-cooling-assembly.png",
+    "bytes": 2068229,
+    "width": 3440,
+    "height": 1440,
+    "sha256": "72c7a029100b52943d9c763d44943f3c4c006389da9a84dc78f9a072e6a22d34",
+    "status": "upstream committed screenshot; not rendered in this session"
+  },
+  {
+    "path": "docs/screenshots/l10-cinematic/final-rc/after/G-bare-board-hero.png",
+    "url": "https://raw.githubusercontent.com/wistroneq3300/pa-cycle-lab/f484253a5729ab0e6e687b062e6b75e502ef7e78/docs/screenshots/l10-cinematic/final-rc/after/G-bare-board-hero.png",
+    "local": "G-bare-board-hero.png",
+    "bytes": 901305,
+    "width": 3440,
+    "height": 1440,
+    "sha256": "f72740c132a6c3909d9eb40019d00fcd681641c4b947c2327315b88f9310dd4e",
+    "status": "upstream committed screenshot; not rendered in this session"
+  },
+  {
+    "path": "docs/screenshots/l10-cinematic/final-rc/after/H-gold-front.png",
+    "url": "https://raw.githubusercontent.com/wistroneq3300/pa-cycle-lab/f484253a5729ab0e6e687b062e6b75e502ef7e78/docs/screenshots/l10-cinematic/final-rc/after/H-gold-front.png",
+    "local": "H-gold-front.png",
+    "bytes": 278332,
+    "width": 3440,
+    "height": 1440,
+    "sha256": "220650ffb7bdbbd208f6c0308f628b9a8061ce6de4ef7ccc8266f07a4d5a629d",
+    "status": "upstream committed screenshot; not rendered in this session"
+  }
+]

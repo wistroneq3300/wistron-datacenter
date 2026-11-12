@@ -1,0 +1,79 @@
+{
+  "date": "2026-11-12T18:09:16.545Z",
+  "scope": "Phase 0: unchanged baseline, no V2 implementation",
+  "viewport": {
+    "width": 3440,
+    "height": 1440
+  },
+  "errors": [],
+  "httpFailures": [],
+  "checks": {
+    "memoryBefore": {
+      "geometries": 289,
+      "textures": 22,
+      "drawCalls": 116
+    },
+    "isolationAfterHall": {
+      "isolated": true,
+      "visibleRacks": 1,
+      "total": 8
+    },
+    "journeyEnd": {
+      "stage": "04 / 04",
+      "nextDisabled": true,
+      "view": "row"
+    },
+    "tourAfterCanvasClick": {
+      "hidden": true
+    },
+    "addAfterSparseImport": [
+      {
+        "id": "R09",
+        "position": 9
+      },
+      {
+        "id": "R01",
+        "position": 10
+      }
+    ],
+    "reimportOwnConfig": "匯入失敗：ID 重複、位置重複或欄位格式錯誤",
+    "memoryCycles": [
+      {
+        "geometries": 273,
+        "textures": 21,
+        "drawCalls": 261
+      },
+      {
+        "geometries": 294,
+        "textures": 21,
+        "drawCalls": 261
+      },
+      {
+        "geometries": 315,
+        "textures": 21,
+        "drawCalls": 261
+      },
+      {
+        "geometries": 336,
+        "textures": 21,
+        "drawCalls": 261
+      }
+    ]
+  },
+  "screenshots": [
+    "baseline-3440x1440-hq.png",
+    "baseline-3440x1440-hall.png",
+    "baseline-3440x1440-row.png",
+    "baseline-3440x1440-rack-front-open.png",
+    "baseline-3440x1440-rack-rear.png"
+  ],
+  "browser": "131.0.6778.205",
+  "gpu": {
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002786) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "canvas": [
+      3440,
+      1339
+    ]
+  },
+  "finished": true
+}

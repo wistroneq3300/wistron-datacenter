@@ -1,0 +1,21 @@
+{
+  "target": {
+    "repo": "wistroneq3300/wistron-datacenter",
+    "branch": "initial-datacenter-studio",
+    "sha": "353da67c2c87474fedf808032750a0746c862fe0"
+  },
+  "sourceUnmodified": true,
+  "remoteMutations": false,
+  "phase": 0,
+  "authorizationBoundary": "User requested Phase 0 report and approval before modifications.",
+  "maps": {
+    "placeVerified": true,
+    "streetViewPhotoEntryOpened": true,
+    "photoMetadataDate": "2023-01",
+    "imageryVisuallyVerified": false,
+    "reason": "In-app browser screenshot failed twice; could inspect address and photo metadata only."
+  },
+  "skills": {
+    "impeccable": "General quality guidance and incumbent inspection only; formal critique command not executed."
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "brokenLocalLinks": [],
+  "images": [
+    {
+      "src": "evidence/baseline-3440x1440-rack-front-open.png",
+      "width": 3440,
+      "height": 1440
+    },
+    {
+      "src": "evidence/reference-images/3440x1440-dark-08-complete-rack.png",
+      "width": 3440,
+      "height": 1440
+    },
+    {
+      "src": "evidence/baseline-3440x1440-rack-rear.png",
+      "width": 3440,
+      "height": 1440
+    },
+    {
+      "src": "evidence/reference-images/3440x1440-dark-12-rear-inspection.png",
+      "width": 3440,
+      "height": 1440
+    },
+    {
+      "src": "evidence/baseline-3440x1440-row.png",
+      "width": 3440,
+      "height": 1440
+    },
+    {
+      "src": "evidence/reference-images/3440x1440-dark-13-side-inspection.png",
+      "width": 3440,
+      "height": 1440
+    },
+    {
+      "src": "evidence/reference-images/D-solid-cooling-assembly.png",
+      "width": 3440,
+      "height": 1440
+    },
+    {
+      "src": "evidence/reference-images/G-bare-board-hero.png",
+      "width": 3440,
+      "height": 1440
+    },
+    {
+      "src": "evidence/reference-images/H-gold-front.png",
+      "width": 3440,
+      "height": 1440
+    },
+    {
+      "src": "evidence/baseline-3440x1440-hq.png",
+      "width": 3440,
+      "height": 1440
+    },
+    {
+      "src": "evidence/baseline-3440x1440-hall.png",
+      "width": 3440,
+      "height": 1440
+    }
+  ],
+  "mobile": {
+    "scrollWidth": 390,
+    "viewport": 390
+  },
+  "noHorizontalOverflow": true
+}

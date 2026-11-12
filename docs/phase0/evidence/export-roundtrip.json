@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-12T18:28:27.153Z",
+  "scope": "Unchanged baseline; synthetic sparse fixture; actual UI download and re-upload",
+  "errors": [],
+  "downloadName": "wistron-data-center-config.json",
+  "exportedDocument": {
+    "version": 1,
+    "racks": [
+      {
+        "id": "R09",
+        "name": "Phase 0 synthetic fixture",
+        "purpose": "Review only",
+        "position": 9,
+        "configured": true
+      },
+      {
+        "id": "R01",
+        "name": "NEW CONFIGURATION",
+        "purpose": "Custom system",
+        "position": 10,
+        "configured": true
+      }
+    ]
+  },
+  "reimportMessage": "匯入失敗：ID 重複、位置重複或欄位格式錯誤",
+  "bugReproduced": true
+}

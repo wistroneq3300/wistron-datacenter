@@ -1,0 +1,11 @@
+Source: source/tests/smoke.mjs, application unchanged.
+Harness adaptations: bundled Playwright import, server cwd, screenshot output path, installed Chrome channel.
+PASS: hall, headquarters, cutaway, and rack-row views
+PASS: rack selection, editing, persistence, and adding a rack
+PASS: cooling and compute-board GLB assets
+PASS: conceptual flow overlays and exploded rack row
+PASS: JSON export and mobile configuration dialog
+PASS: no uncaught browser errors or failed asset requests
+
+
+exit=0
