@@ -1,0 +1,166 @@
+TAP version 13
+# Subtest: Merged architecture has finite indexed-independent geometry and nonempty physical bounds
+ok 1 - Merged architecture has finite indexed-independent geometry and nonempty physical bounds
+  ---
+  duration_ms: 176.1728
+  type: 'test'
+  ...
+# Subtest: Representative authored front and return openings expose glass before stone
+ok 2 - Representative authored front and return openings expose glass before stone
+  ---
+  duration_ms: 88.0367
+  type: 'test'
+  ...
+# Subtest: Ray-measured corner glazing contains four upper bands and two base bands
+ok 3 - Ray-measured corner glazing contains four upper bands and two base bands
+  ---
+  duration_ms: 245.1796
+  type: 'test'
+  ...
+# Subtest: Elevated left step returns block exterior rays before they can see the interior glazing
+ok 4 - Elevated left step returns block exterior rays before they can see the interior glazing
+  ---
+  duration_ms: 104.6282
+  type: 'test'
+  ...
+# Subtest: Step-return closure preserves both roof setbacks and the upper x=-12 silhouette boundary
+ok 5 - Step-return closure preserves both roof setbacks and the upper x=-12 silhouette boundary
+  ---
+  duration_ms: 62.7296
+  type: 'test'
+  ...
+# Subtest: Overlapping facade holes fail before triangulation and preserve existing staged geometry
+ok 6 - Overlapping facade holes fail before triangulation and preserve existing staged geometry
+  ---
+  duration_ms: 0.7288
+  type: 'test'
+  ...
+# Subtest: Multiple disjoint window voids survive triangulation while surrounding stone stays closed
+ok 7 - Multiple disjoint window voids survive triangulation while surrounding stone stays closed
+  ---
+  duration_ms: 0.8166
+  type: 'test'
+  ...
+# Subtest: Architecture merge releases staged buffers and registers every retained mesh for disposal
+ok 8 - Architecture merge releases staged buffers and registers every retained mesh for disposal
+  ---
+  duration_ms: 43.2201
+  type: 'test'
+  ...
+# Subtest: HQ presets preserve the authored pose and reject unknown controls
+ok 9 - HQ presets preserve the authored pose and reject unknown controls
+  ---
+  duration_ms: 1.6904
+  type: 'test'
+  ...
+# Subtest: HQ orbit performs one finite exterior revolution and releases camera ownership
+ok 10 - HQ orbit performs one finite exterior revolution and releases camera ownership
+  ---
+  duration_ms: 6.8561
+  type: 'test'
+  ...
+# Subtest: Pause freezes HQ motion and cancel keeps the current camera pose
+ok 11 - Pause freezes HQ motion and cancel keeps the current camera pose
+  ---
+  duration_ms: 1.1255
+  type: 'test'
+  ...
+# Subtest: A later CameraDirector owner cannot be cancelled or overwritten by HQ update
+ok 12 - A later CameraDirector owner cannot be cancelled or overwritten by HQ update
+  ---
+  duration_ms: 0.3229
+  type: 'test'
+  ...
+# Subtest: Cancelling an unfinished HQ camera introduction prevents late timeline activation
+ok 13 - Cancelling an unfinished HQ camera introduction prevents late timeline activation
+  ---
+  duration_ms: 4.9122
+  type: 'test'
+  ...
+# Subtest: Fly-in covers the doorway before entering Interior and reveals only after handoff
+ok 14 - Fly-in covers the doorway before entering Interior and reveals only after handoff
+  ---
+  duration_ms: 0.6732
+  type: 'test'
+  ...
+# Subtest: Cancellation during an awaited Interior handoff cannot reapply a late fade
+ok 15 - Cancellation during an awaited Interior handoff cannot reapply a late fade
+  ---
+  duration_ms: 0.4082
+  type: 'test'
+  ...
+# Subtest: Cancellation while returning to HQ prevents a late preset or cinematic from starting
+ok 16 - Cancellation while returning to HQ prevents a late preset or cinematic from starting
+  ---
+  duration_ms: 0.4259
+  type: 'test'
+  ...
+# Subtest: A stale HQ return cannot overwrite a newer camera preset
+ok 17 - A stale HQ return cannot overwrite a newer camera preset
+  ---
+  duration_ms: 0.3901
+  type: 'test'
+  ...
+# Subtest: Disposal during an asynchronous HQ return never starts a new camera transition
+ok 18 - Disposal during an asynchronous HQ return never starts a new camera transition
+  ---
+  duration_ms: 0.4622
+  type: 'test'
+  ...
+# Subtest: Reduced Motion uses static presets and semantic entry without camera playback
+ok 19 - Reduced Motion uses static presets and semantic entry without camera playback
+  ---
+  duration_ms: 0.1883
+  type: 'test'
+  ...
+# Subtest: Landscape construction produces finite curved geometry and individual leaf coverage
+ok 20 - Landscape construction produces finite curved geometry and individual leaf coverage
+  ---
+  duration_ms: 251.3696
+  type: 'test'
+  ...
+# Subtest: Seeds reproduce geometry; distinct roots produce distinct curved trees
+ok 21 - Seeds reproduce geometry; distinct roots produce distinct curved trees
+  ---
+  duration_ms: 92.8417
+  type: 'test'
+  ...
+# Subtest: Distance LOD and lighting changes reuse resources, preserve every tree and apply hysteresis
+ok 22 - Distance LOD and lighting changes reuse resources, preserve every tree and apply hysteresis
+  ---
+  duration_ms: 46.5452
+  type: 'test'
+  ...
+# Subtest: Dispose releases each owned geometry, material, texture and instance exactly once
+ok 23 - Dispose releases each owned geometry, material, texture and instance exactly once
+  ---
+  duration_ms: 18.2124
+  type: 'test'
+  ...
+# Subtest: Cancelled asynchronous loading disposes late textures and never reattaches foliage
+ok 24 - Cancelled asynchronous loading disposes late textures and never reattaches foliage
+  ---
+  duration_ms: 19.3703
+  type: 'test'
+  ...
+# Subtest: Malformed planting data is rejected before any scene resource is attached
+ok 25 - Malformed planting data is rejected before any scene resource is attached
+  ---
+  duration_ms: 0.5359
+  type: 'test'
+  ...
+# Subtest: Every shipped vegetation surface matches its original CC0 asset checksum
+ok 26 - Every shipped vegetation surface matches its original CC0 asset checksum
+  ---
+  duration_ms: 79.0218
+  type: 'test'
+  ...
+1..26
+# tests 26
+# suites 0
+# pass 26
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 847.3841

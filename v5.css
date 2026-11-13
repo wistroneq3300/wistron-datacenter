@@ -1,0 +1,28 @@
+/* HQ-only controls. Equipment editing and the P1–P4 workspace keep their styles. */
+.hq-fade{position:absolute;inset:0;z-index:4;background:#071015;opacity:0;pointer-events:none}
+.hq-controls{position:absolute;left:32px;bottom:184px;z-index:7;width:310px;max-width:calc(100% - 64px);padding:14px 16px;background:#102329f5;border:1px solid #4d6a70;border-radius:6px;color:#e0ece9;box-sizing:border-box}
+.hq-controls[hidden],.hq-controls [hidden]{display:none!important}
+.hq-view-row,.hq-light-row,.hq-play-row{display:flex;align-items:center;gap:8px}
+.hq-view-row>label,.hq-light-row>span{font-size:12px;flex:0 0 28px;color:#c6d9d5}
+.hq-controls select{flex:1;min-width:0;min-height:36px;padding:5px 8px;background:#19343b;color:#e4efeb;border:1px solid #557279;border-radius:3px;font:inherit;font-size:12px;cursor:pointer}
+.hq-draft{font-size:11px;color:#e6cfad;white-space:nowrap}
+.hq-light-row{margin-top:10px}.hq-play-row{margin-top:13px;flex-wrap:wrap}
+.hq-controls button{min-height:36px;padding:7px 11px;border:1px solid #557279;border-radius:3px;background:#19343b;color:#d8e9e4;font:inherit;font-size:12px;cursor:pointer}
+.hq-controls button:hover{background:#2c4c50;border-color:#91bfb5}
+.hq-controls button[aria-pressed="true"]{background:#c1dfc1;color:#102c25;border-color:#c1dfc1}
+.hq-controls button:disabled{opacity:.45;cursor:default}
+.hq-controls :is(button,select):focus-visible{outline:2px solid #d2edbb;outline-offset:3px}
+.hq-controls progress{display:block;width:100%;height:4px;margin-top:12px;accent-color:#a8d5bd}
+.hq-controls p{margin:9px 0 0;color:#bcd0cc;font-size:11px;line-height:1.5}
+@media(min-width:1750px){.hq-controls{left:55px;bottom:190px;width:326px}}
+@media(max-width:760px){
+  .daylight #sceneMeta{display:none}
+  .hq-controls{left:14px;bottom:167px;max-width:calc(100% - 28px);width:calc(100% - 28px);padding:10px 12px}
+  .hq-controls button,.hq-controls select{min-height:44px}
+  .hq-controls .hq-view-row{gap:6px}.hq-controls .hq-draft{font-size:11px}
+  .hq-controls .hq-light-row,.hq-controls .hq-play-row{margin-top:6px}
+  .hq-controls p{display:none}
+  .hq-controls:has(#hqPause:not([hidden])) :is(#hqOrbit,#hqFly){display:none}
+}
+@media(max-height:690px){.hq-controls{bottom:153px;padding:8px 10px}.hq-controls p{display:none}.hq-light-row{margin-top:5px}.hq-play-row{margin-top:6px}.hq-controls button,.hq-controls select{min-height:32px}}
+@media(prefers-reduced-motion:reduce){.hq-fade{transition:none}}

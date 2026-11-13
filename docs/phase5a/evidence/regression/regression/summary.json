@@ -1,0 +1,86 @@
+{
+  "date": "2026-11-13T04:04:36.453Z",
+  "runtime": "v24.22.1",
+  "platform": "win32",
+  "baseCommit": "160c0d6cf7684633d87d0280a4d73df4401525f6",
+  "suites": [
+    {
+      "suite": "domain-and-journey",
+      "summary": {
+        "PASS": 26,
+        "FAIL": 0,
+        "SKIP": 0
+      }
+    },
+    {
+      "suite": "phase1a-adapter",
+      "summary": {
+        "PASS": 6,
+        "FAIL": 0,
+        "SKIP": 0,
+        "PENDING": 0
+      }
+    },
+    {
+      "suite": "phase1b-configuration",
+      "summary": {
+        "PASS": 8,
+        "FAIL": 0,
+        "SKIP": 0,
+        "PENDING": 0
+      }
+    },
+    {
+      "suite": "phase2-navigation",
+      "summary": {
+        "PASS": 9,
+        "FAIL": 0,
+        "SKIP": 0,
+        "PENDING": 0
+      }
+    },
+    {
+      "suite": "integrated-quality",
+      "summary": {
+        "PASS": 8,
+        "FAIL": 0,
+        "SKIP": 1,
+        "PENDING": 0
+      }
+    },
+    {
+      "suite": "recovery-and-contracts",
+      "summary": {
+        "PASS": 6,
+        "FAIL": 0,
+        "SKIP": 0,
+        "PENDING": 0
+      }
+    },
+    {
+      "suite": "cinematic-playback",
+      "summary": {
+        "PASS": 2,
+        "FAIL": 0,
+        "SKIP": 0,
+        "PENDING": 0
+      }
+    },
+    {
+      "suite": "delivery-artifacts",
+      "summary": {
+        "PASS": 2,
+        "FAIL": 0,
+        "SKIP": 0,
+        "PENDING": 0
+      }
+    }
+  ],
+  "totals": {
+    "PASS": 67,
+    "FAIL": 0,
+    "SKIP": 1
+  },
+  "sourceDigest": "a691b376b8d309605bb5bf8d6e217a6f1c6207eeac689efd43c822eb34a0badf",
+  "hashNote": "Text line endings normalized to LF; binary assets exact. baseCommit is the pre-delivery parent, not a claim that uncommitted files were already committed."
+}

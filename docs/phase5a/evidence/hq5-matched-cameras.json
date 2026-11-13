@@ -1,0 +1,63 @@
+{
+  "baselineCommit": "160c0d6cf7684633d87d0280a4d73df4401525f6",
+  "viewport": [
+    3440,
+    1440
+  ],
+  "dpr": 1,
+  "cameras": {
+    "front": {
+      "position": [
+        -3,
+        17,
+        62
+      ],
+      "target": [
+        -3,
+        13,
+        -12
+      ],
+      "fov": 43
+    },
+    "side": {
+      "position": [
+        65,
+        19,
+        -9
+      ],
+      "target": [
+        -3,
+        13,
+        -12
+      ],
+      "fov": 43
+    },
+    "quarter": {
+      "position": [
+        48,
+        29,
+        53
+      ],
+      "target": [
+        -3,
+        13,
+        -12
+      ],
+      "fov": 43
+    },
+    "entrance": {
+      "position": [
+        15,
+        4.5,
+        13
+      ],
+      "target": [
+        4.7,
+        2.1,
+        -3.8
+      ],
+      "fov": 43
+    }
+  },
+  "note": "Camera/viewport are held constant; architecture, materials and lighting intentionally changed. The historical entrance camera targeted the incorrect corner, so its matched comparison is not a validation of the new entrance."
+}

@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "retrievedAt": "2026-11-13T03:14:30.941Z",
+  "purpose": "Generic environment lighting and reflections, not site photography or measured illumination",
+  "siteEvidence": false,
+  "totalBytes": 6703583,
+  "files": [
+    {
+      "id": "urban_street_04",
+      "mode": "day-city",
+      "file": "urban_street_04_1k.hdr",
+      "path": "assets/environment/hq5-lighting/urban_street_04_1k.hdr",
+      "source": "https://polyhaven.com/a/urban_street_04",
+      "downloadUrl": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/urban_street_04_1k.hdr",
+      "metadataUrl": "https://api.polyhaven.com/files/urban_street_04",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://polyhaven.com/license",
+      "authors": [
+        "Andreas Mischok"
+      ],
+      "bytes": 1724368,
+      "resolution": [
+        1024,
+        512
+      ],
+      "md5": "2c67f8c6ba0d5e05232b82151f0657e7",
+      "sha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+      "modified": false
+    },
+    {
+      "id": "park_parking",
+      "mode": "day-park",
+      "file": "park_parking_1k.hdr",
+      "path": "assets/environment/hq5-lighting/park_parking_1k.hdr",
+      "source": "https://polyhaven.com/a/park_parking",
+      "downloadUrl": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/park_parking_1k.hdr",
+      "metadataUrl": "https://api.polyhaven.com/files/park_parking",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://polyhaven.com/license",
+      "authors": [
+        "Andreas Mischok"
+      ],
+      "bytes": 1696389,
+      "resolution": [
+        1024,
+        512
+      ],
+      "md5": "4c65f73f96b6cbe3e64b0451b34fb662",
+      "sha256": "5f9b4c3b59264bfcf3d4b0b31c430cf62519b3840fea6ed206a6ab85d42e9d08",
+      "modified": false
+    },
+    {
+      "id": "modern_evening_street",
+      "mode": "dusk",
+      "file": "modern_evening_street_1k.hdr",
+      "path": "assets/environment/hq5-lighting/modern_evening_street_1k.hdr",
+      "source": "https://polyhaven.com/a/modern_evening_street",
+      "downloadUrl": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/modern_evening_street_1k.hdr",
+      "metadataUrl": "https://api.polyhaven.com/files/modern_evening_street",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://polyhaven.com/license",
+      "authors": [
+        "Grzegorz Wronkowski"
+      ],
+      "bytes": 1651202,
+      "resolution": [
+        1024,
+        512
+      ],
+      "md5": "89a5d4dae860c97e465ca8582ed73737",
+      "sha256": "60a94c41cb1488c7c33c6f65994b31609af95b3f58a857b766a46653fc346270",
+      "modified": false
+    },
+    {
+      "id": "pond_bridge_night",
+      "mode": "night",
+      "file": "pond_bridge_night_1k.hdr",
+      "path": "assets/environment/hq5-lighting/pond_bridge_night_1k.hdr",
+      "source": "https://polyhaven.com/a/pond_bridge_night",
+      "downloadUrl": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/pond_bridge_night_1k.hdr",
+      "metadataUrl": "https://api.polyhaven.com/files/pond_bridge_night",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://polyhaven.com/license",
+      "authors": [
+        "Greg Zaal"
+      ],
+      "bytes": 1631624,
+      "resolution": [
+        1024,
+        512
+      ],
+      "md5": "ac23d37c0de6836f0f543f49a41e111f",
+      "sha256": "24aed7c51937b8ef0a22db939d386c57d6033b04cd5b17211a3d07a34e454dec",
+      "modified": false
+    }
+  ]
+}

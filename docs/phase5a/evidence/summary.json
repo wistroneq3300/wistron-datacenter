@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-13T04:11:57.354Z",
+  "baseCommit": "160c0d6cf7684633d87d0280a4d73df4401525f6",
+  "runtime": "v24.22.1",
+  "platform": "win32",
+  "suites": [
+    {
+      "suite": "phase5a-unit",
+      "summary": {
+        "PASS": 26,
+        "FAIL": 0,
+        "SKIP": 0,
+        "PENDING": 0
+      }
+    },
+    {
+      "suite": "phase5a-hq",
+      "date": "2026-11-13T04:01:27.228Z",
+      "summary": {
+        "PASS": 13,
+        "FAIL": 0,
+        "SKIP": 1,
+        "PENDING": 0
+      }
+    },
+    {
+      "suite": "phase5a-movie",
+      "date": "2026-11-13T04:03:23.837Z",
+      "summary": {
+        "PASS": 3,
+        "FAIL": 0,
+        "SKIP": 0,
+        "PENDING": 0
+      }
+    },
+    {
+      "suite": "P1-P4 regression",
+      "date": "2026-11-13T04:11:57.220Z",
+      "summary": {
+        "PASS": 165,
+        "FAIL": 0,
+        "SKIP": 2,
+        "PENDING": 1
+      }
+    }
+  ],
+  "totals": {
+    "PASS": 207,
+    "FAIL": 0,
+    "SKIP": 3,
+    "PENDING": 1
+  },
+  "sourceDigest": "8ab917a71f5c277e61413f8b782c5cb900f4420c567334dd68dbd799d80f252a",
+  "note": "Executed final suite results only. First failed attempt retained separately, not reclassified as PASS. Summary mode aggregates stored evidence; it executes no tests. LF-normalized source hashes; exact binary hashes. GPU byte allocation is unavailable, not zero."
+}

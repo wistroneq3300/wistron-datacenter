@@ -1,0 +1,179 @@
+{
+  "date": "2026-11-13T04:11:57.220Z",
+  "runtime": "v24.22.1",
+  "platform": "win32",
+  "baseCommit": "160c0d6cf7684633d87d0280a4d73df4401525f6",
+  "suites": [
+    {
+      "suite": "domain-and-journey.tap",
+      "file": "regression/domain-and-journey.tap",
+      "summary": {
+        "PASS": 26,
+        "FAIL": 0,
+        "SKIP": 0,
+        "PENDING": 0
+      }
+    },
+    {
+      "suite": "domain-twin-security.tap",
+      "file": "domain-twin-security.tap",
+      "summary": {
+        "PASS": 64,
+        "FAIL": 0,
+        "SKIP": 0,
+        "PENDING": 0
+      }
+    },
+    {
+      "suite": "phase1a-adapter",
+      "file": "regression/phase1a-adapter.json",
+      "date": "2026-11-13T04:04:37.154Z",
+      "summary": {
+        "PASS": 6,
+        "FAIL": 0,
+        "SKIP": 0,
+        "PENDING": 0
+      }
+    },
+    {
+      "suite": "phase1b-configuration",
+      "file": "regression/phase1b-configuration.json",
+      "date": "2026-11-13T04:04:44.936Z",
+      "summary": {
+        "PASS": 8,
+        "FAIL": 0,
+        "SKIP": 0,
+        "PENDING": 0
+      }
+    },
+    {
+      "suite": "phase2-navigation",
+      "file": "regression/phase2-navigation.json",
+      "date": "2026-11-13T04:05:05.833Z",
+      "summary": {
+        "PASS": 9,
+        "FAIL": 0,
+        "SKIP": 0,
+        "PENDING": 0
+      }
+    },
+    {
+      "suite": "integrated-quality",
+      "file": "regression/integrated-quality.json",
+      "date": "2026-11-13T04:06:22.055Z",
+      "summary": {
+        "PASS": 8,
+        "FAIL": 0,
+        "SKIP": 1,
+        "PENDING": 0
+      }
+    },
+    {
+      "suite": "recovery-and-contracts",
+      "file": "regression/recovery-and-contracts.json",
+      "date": "2026-11-13T04:07:04.061Z",
+      "summary": {
+        "PASS": 6,
+        "FAIL": 0,
+        "SKIP": 0,
+        "PENDING": 0
+      }
+    },
+    {
+      "suite": "cinematic-playback",
+      "file": "regression/cinematic-playback.json",
+      "date": "2026-11-13T04:07:31.697Z",
+      "summary": {
+        "PASS": 2,
+        "FAIL": 0,
+        "SKIP": 0,
+        "PENDING": 0
+      }
+    },
+    {
+      "suite": "delivery-artifacts",
+      "file": "regression/delivery-artifacts.json",
+      "date": "2026-11-13T04:08:23.783Z",
+      "summary": {
+        "PASS": 2,
+        "FAIL": 0,
+        "SKIP": 0,
+        "PENDING": 0
+      }
+    },
+    {
+      "suite": "phase3-hall-preview",
+      "file": "phase3-hall-preview.json",
+      "date": "2026-11-13T04:08:33.495Z",
+      "summary": {
+        "PASS": 7,
+        "FAIL": 0,
+        "SKIP": 0,
+        "PENDING": 0
+      }
+    },
+    {
+      "suite": "phase3-integrated",
+      "file": "phase3-integrated.json",
+      "date": "2026-11-13T04:08:46.238Z",
+      "summary": {
+        "PASS": 6,
+        "FAIL": 0,
+        "SKIP": 1,
+        "PENDING": 0
+      }
+    },
+    {
+      "suite": "phase4-integrated",
+      "file": "phase4-integrated.json",
+      "date": "2026-11-13T04:09:20.935Z",
+      "summary": {
+        "PASS": 9,
+        "FAIL": 0,
+        "SKIP": 0,
+        "PENDING": 1
+      }
+    },
+    {
+      "suite": "phase34-journey",
+      "file": "phase34-journey.json",
+      "date": "2026-11-13T04:09:49.128Z",
+      "summary": {
+        "PASS": 6,
+        "FAIL": 0,
+        "SKIP": 0,
+        "PENDING": 0
+      }
+    },
+    {
+      "suite": "asset-lifecycle",
+      "file": "asset-lifecycle.json",
+      "date": "2026-11-13T04:11:24.490Z",
+      "summary": {
+        "PASS": 4,
+        "FAIL": 0,
+        "SKIP": 0,
+        "PENDING": 0
+      }
+    },
+    {
+      "suite": "phase34-delivery",
+      "file": "phase34-delivery.json",
+      "date": "2026-11-13T04:11:37.418Z",
+      "summary": {
+        "PASS": 2,
+        "FAIL": 0,
+        "SKIP": 0,
+        "PENDING": 0
+      }
+    }
+  ],
+  "totals": {
+    "PASS": 165,
+    "FAIL": 0,
+    "SKIP": 2,
+    "PENDING": 1
+  },
+  "sourceDigest": "db39af11d29bf1a49b3c98476f88628902f7aba38d3e05f26d2933bbdec69278",
+  "hashNote": "LF-normalized text and exact binary assets. baseCommit is pre-delivery parent. Summary mode collects retained executed reports; it does not execute tests. PENDING and SKIP are never counted as PASS."
+}

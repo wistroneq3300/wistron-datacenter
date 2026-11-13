@@ -1,0 +1,62 @@
+{
+  "date": "2026-11-13T04:12:02.702Z",
+  "source": "hq5-cinematic-3440x1440.webm",
+  "browser": "131.0.6778.205",
+  "method": "Native browser video decode; direct drawImage to original 3440×1440 canvas; no image editing or generated frames. Frame extraction alone is not a visual PASS.",
+  "frames": [
+    {
+      "second": 3,
+      "width": 3440,
+      "height": 1440,
+      "path": "hq5-film-frame-03s.png"
+    },
+    {
+      "second": 9,
+      "width": 3440,
+      "height": 1440,
+      "path": "hq5-film-frame-09s.png"
+    },
+    {
+      "second": 15,
+      "width": 3440,
+      "height": 1440,
+      "path": "hq5-film-frame-15s.png"
+    },
+    {
+      "second": 24,
+      "width": 3440,
+      "height": 1440,
+      "path": "hq5-film-frame-24s.png"
+    },
+    {
+      "second": 36,
+      "width": 3440,
+      "height": 1440,
+      "path": "hq5-film-frame-36s.png"
+    },
+    {
+      "second": 46,
+      "width": 3440,
+      "height": 1440,
+      "path": "hq5-film-frame-46s.png"
+    },
+    {
+      "second": 58,
+      "width": 3440,
+      "height": 1440,
+      "path": "hq5-film-frame-58s.png"
+    },
+    {
+      "second": 60,
+      "width": 3440,
+      "height": 1440,
+      "path": "hq5-film-frame-60s.png"
+    },
+    {
+      "second": 62.9974,
+      "width": 3440,
+      "height": 1440,
+      "path": "hq5-film-frame-final.png"
+    }
+  ]
+}

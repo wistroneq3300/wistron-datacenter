@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: Merged architecture has finite indexed-independent geometry and nonempty physical bounds
+ok 1 - Merged architecture has finite indexed-independent geometry and nonempty physical bounds
+  ---
+  duration_ms: 144.0765
+  type: 'test'
+  ...
+# Subtest: Representative authored front and return openings expose glass before stone
+ok 2 - Representative authored front and return openings expose glass before stone
+  ---
+  duration_ms: 76.8742
+  type: 'test'
+  ...
+# Subtest: Ray-measured corner glazing contains four upper bands and two base bands
+ok 3 - Ray-measured corner glazing contains four upper bands and two base bands
+  ---
+  duration_ms: 201.8843
+  type: 'test'
+  ...
+# Subtest: Overlapping facade holes fail before triangulation and preserve existing staged geometry
+ok 4 - Overlapping facade holes fail before triangulation and preserve existing staged geometry
+  ---
+  duration_ms: 0.7928
+  type: 'test'
+  ...
+# Subtest: Multiple disjoint window voids survive triangulation while surrounding stone stays closed
+ok 5 - Multiple disjoint window voids survive triangulation while surrounding stone stays closed
+  ---
+  duration_ms: 0.9026
+  type: 'test'
+  ...
+# Subtest: Architecture merge releases staged buffers and registers every retained mesh for disposal
+ok 6 - Architecture merge releases staged buffers and registers every retained mesh for disposal
+  ---
+  duration_ms: 45.1717
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 580.2059

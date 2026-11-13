@@ -1,0 +1,305 @@
+{
+  "checkedAt": "2026-11-13T03:49:59.709Z",
+  "method": "Read every listed local file; compare bytes and SHA-256 with checked-in manifests. No network, browser, GPU or visual acceptance check.",
+  "groups": [
+    {
+      "name": "HQ Three.js addons",
+      "manifest": "vendor/hq5/provenance.json",
+      "files": 12,
+      "bytes": 60012,
+      "status": "PASS",
+      "checks": [
+        {
+          "path": "vendor/hq5/loaders/RGBELoader.js",
+          "bytes": 11377,
+          "expectedBytes": 11377,
+          "sha256": "f0e87d0008d9484d31358b32befd1bf80e4301f77573cc9a7cf7d871cc3f64b4",
+          "expectedSha256": "f0e87d0008d9484d31358b32befd1bf80e4301f77573cc9a7cf7d871cc3f64b4",
+          "status": "PASS"
+        },
+        {
+          "path": "vendor/hq5/math/SimplexNoise.js",
+          "bytes": 14351,
+          "expectedBytes": 14351,
+          "sha256": "9b8d541b77b0ddc79afaa6a1de8941452c191b8b9006f04e7b8fc422e2b263f7",
+          "expectedSha256": "9b8d541b77b0ddc79afaa6a1de8941452c191b8b9006f04e7b8fc422e2b263f7",
+          "status": "PASS"
+        },
+        {
+          "path": "vendor/hq5/postprocessing/EffectComposer.js",
+          "bytes": 4651,
+          "expectedBytes": 4651,
+          "sha256": "d234e578618fa816955ebdc059c049c577e203e650e33cf22bde3f232c29e669",
+          "expectedSha256": "d234e578618fa816955ebdc059c049c577e203e650e33cf22bde3f232c29e669",
+          "status": "PASS"
+        },
+        {
+          "path": "vendor/hq5/postprocessing/MaskPass.js",
+          "bytes": 2231,
+          "expectedBytes": 2231,
+          "sha256": "328cf7db0da5d9be83ffe39d54b01d5ac1fddf108cc98182ddbb056f5c8b537f",
+          "expectedSha256": "328cf7db0da5d9be83ffe39d54b01d5ac1fddf108cc98182ddbb056f5c8b537f",
+          "status": "PASS"
+        },
+        {
+          "path": "vendor/hq5/postprocessing/OutputPass.js",
+          "bytes": 2524,
+          "expectedBytes": 2524,
+          "sha256": "32f879d2179087676631c799857a885586b3cdd13b9731bd3b13f06428bd58b7",
+          "expectedSha256": "32f879d2179087676631c799857a885586b3cdd13b9731bd3b13f06428bd58b7",
+          "status": "PASS"
+        },
+        {
+          "path": "vendor/hq5/postprocessing/Pass.js",
+          "bytes": 1706,
+          "expectedBytes": 1706,
+          "sha256": "b3c6128340eaa37e40a6a2f1b738e894c855239417d50959759b34a2b5e89f92",
+          "expectedSha256": "b3c6128340eaa37e40a6a2f1b738e894c855239417d50959759b34a2b5e89f92",
+          "status": "PASS"
+        },
+        {
+          "path": "vendor/hq5/postprocessing/RenderPass.js",
+          "bytes": 1941,
+          "expectedBytes": 1941,
+          "sha256": "6c9b8a539ea16e898f65e4760f14937ef9ea94043bd9842c141e0301f41903e8",
+          "expectedSha256": "6c9b8a539ea16e898f65e4760f14937ef9ea94043bd9842c141e0301f41903e8",
+          "status": "PASS"
+        },
+        {
+          "path": "vendor/hq5/postprocessing/SSAOPass.js",
+          "bytes": 11116,
+          "expectedBytes": 11116,
+          "sha256": "e7be94aeecfb6af31e0d1227bb1b0a8ca4f42629dfd8952c584e5a1557bcdd15",
+          "expectedSha256": "e7be94aeecfb6af31e0d1227bb1b0a8ca4f42629dfd8952c584e5a1557bcdd15",
+          "status": "PASS"
+        },
+        {
+          "path": "vendor/hq5/postprocessing/ShaderPass.js",
+          "bytes": 1576,
+          "expectedBytes": 1576,
+          "sha256": "3b28a1ee27e0eb96c0eab137a1f442ccf127a926904eced2d51e125ec44af781",
+          "expectedSha256": "3b28a1ee27e0eb96c0eab137a1f442ccf127a926904eced2d51e125ec44af781",
+          "status": "PASS"
+        },
+        {
+          "path": "vendor/hq5/shaders/CopyShader.js",
+          "bytes": 571,
+          "expectedBytes": 571,
+          "sha256": "4e3346db194db56a596cd074e9bdb39fb5eb52040c333e0d29dc4eb1324d3b1d",
+          "expectedSha256": "4e3346db194db56a596cd074e9bdb39fb5eb52040c333e0d29dc4eb1324d3b1d",
+          "status": "PASS"
+        },
+        {
+          "path": "vendor/hq5/shaders/OutputShader.js",
+          "bytes": 1490,
+          "expectedBytes": 1490,
+          "sha256": "4944cecd49c0d4d1520a4d927bde8a590fd43f041ee913252b9451855a01d0f0",
+          "expectedSha256": "4944cecd49c0d4d1520a4d927bde8a590fd43f041ee913252b9451855a01d0f0",
+          "status": "PASS"
+        },
+        {
+          "path": "vendor/hq5/shaders/SSAOShader.js",
+          "bytes": 6478,
+          "expectedBytes": 6478,
+          "sha256": "bd5cda34d6b52941c1121b77947664848af10dc68febd453dfdc56c59e58ba06",
+          "expectedSha256": "bd5cda34d6b52941c1121b77947664848af10dc68febd453dfdc56c59e58ba06",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "HQ HDR lighting",
+      "manifest": "assets/environment/hq5-lighting/manifest.json",
+      "files": 4,
+      "bytes": 6703583,
+      "status": "PASS",
+      "checks": [
+        {
+          "path": "assets/environment/hq5-lighting/urban_street_04_1k.hdr",
+          "bytes": 1724368,
+          "expectedBytes": 1724368,
+          "sha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+          "expectedSha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+          "status": "PASS"
+        },
+        {
+          "path": "assets/environment/hq5-lighting/park_parking_1k.hdr",
+          "bytes": 1696389,
+          "expectedBytes": 1696389,
+          "sha256": "5f9b4c3b59264bfcf3d4b0b31c430cf62519b3840fea6ed206a6ab85d42e9d08",
+          "expectedSha256": "5f9b4c3b59264bfcf3d4b0b31c430cf62519b3840fea6ed206a6ab85d42e9d08",
+          "status": "PASS"
+        },
+        {
+          "path": "assets/environment/hq5-lighting/modern_evening_street_1k.hdr",
+          "bytes": 1651202,
+          "expectedBytes": 1651202,
+          "sha256": "60a94c41cb1488c7c33c6f65994b31609af95b3f58a857b766a46653fc346270",
+          "expectedSha256": "60a94c41cb1488c7c33c6f65994b31609af95b3f58a857b766a46653fc346270",
+          "status": "PASS"
+        },
+        {
+          "path": "assets/environment/hq5-lighting/pond_bridge_night_1k.hdr",
+          "bytes": 1631624,
+          "expectedBytes": 1631624,
+          "sha256": "24aed7c51937b8ef0a22db939d386c57d6033b04cd5b17211a3d07a34e454dec",
+          "expectedSha256": "24aed7c51937b8ef0a22db939d386c57d6033b04cd5b17211a3d07a34e454dec",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "HQ foliage and bark",
+      "manifest": "assets/environment/hq5-vegetation/provenance.json",
+      "files": 7,
+      "bytes": 4790361,
+      "status": "PASS",
+      "checks": [
+        {
+          "path": "assets/environment/hq5-vegetation/leaves-diffuse.jpg",
+          "bytes": 340003,
+          "expectedBytes": 340003,
+          "sha256": "261e7d7a5ac7d2e16ea8823ff8510be8f3f615999724232994039ad2885e5c36",
+          "expectedSha256": "261e7d7a5ac7d2e16ea8823ff8510be8f3f615999724232994039ad2885e5c36",
+          "status": "PASS"
+        },
+        {
+          "path": "assets/environment/hq5-vegetation/leaves-alpha.png",
+          "bytes": 264711,
+          "expectedBytes": 264711,
+          "sha256": "4f143e2dda8a6a572f427ac378b92255d21761e4611de0d26e21816c01aa533b",
+          "expectedSha256": "4f143e2dda8a6a572f427ac378b92255d21761e4611de0d26e21816c01aa533b",
+          "status": "PASS"
+        },
+        {
+          "path": "assets/environment/hq5-vegetation/leaves-normal-gl.jpg",
+          "bytes": 681604,
+          "expectedBytes": 681604,
+          "sha256": "8c72e04fb23e16ae1df79c01385a638473d1dd4dede3d51e83d70153c129f09b",
+          "expectedSha256": "8c72e04fb23e16ae1df79c01385a638473d1dd4dede3d51e83d70153c129f09b",
+          "status": "PASS"
+        },
+        {
+          "path": "assets/environment/hq5-vegetation/leaves-arm.jpg",
+          "bytes": 633698,
+          "expectedBytes": 633698,
+          "sha256": "71f81374daf5a8f3e6eb2c694264a1769fdb0bea508178e4105618eecea83c3e",
+          "expectedSha256": "71f81374daf5a8f3e6eb2c694264a1769fdb0bea508178e4105618eecea83c3e",
+          "status": "PASS"
+        },
+        {
+          "path": "assets/environment/hq5-vegetation/bark-diffuse.jpg",
+          "bytes": 1058720,
+          "expectedBytes": 1058720,
+          "sha256": "100c1c052c9b0305c4d95bcb845a2bdc44cd261946aac16146319e2f5fcb4fbc",
+          "expectedSha256": "100c1c052c9b0305c4d95bcb845a2bdc44cd261946aac16146319e2f5fcb4fbc",
+          "status": "PASS"
+        },
+        {
+          "path": "assets/environment/hq5-vegetation/bark-normal-gl.jpg",
+          "bytes": 1283697,
+          "expectedBytes": 1283697,
+          "sha256": "633567973b9d79ce54c33c50632771f80eb794904f367b584f7b21c1ad8a34d5",
+          "expectedSha256": "633567973b9d79ce54c33c50632771f80eb794904f367b584f7b21c1ad8a34d5",
+          "status": "PASS"
+        },
+        {
+          "path": "assets/environment/hq5-vegetation/bark-roughness.jpg",
+          "bytes": 527928,
+          "expectedBytes": 527928,
+          "sha256": "bd8f3d6fce26a70b857340e5f76da2211da80f5b3d0be2b9fef64e0072c09289",
+          "expectedSha256": "bd8f3d6fce26a70b857340e5f76da2211da80f5b3d0be2b9fef64e0072c09289",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "Existing road and stone PBR",
+      "manifest": "assets/environment/provenance.json",
+      "files": 6,
+      "bytes": 4297335,
+      "status": "PASS",
+      "checks": [
+        {
+          "path": "assets/environment/asphalt03-diffuse.jpg",
+          "bytes": 788840,
+          "expectedBytes": 788840,
+          "sha256": "95ad02e2631c41cf9fdd6a37596cf75adb4fb8a8b6880567cc78ed1c41dc5681",
+          "expectedSha256": "95ad02e2631c41cf9fdd6a37596cf75adb4fb8a8b6880567cc78ed1c41dc5681",
+          "status": "PASS"
+        },
+        {
+          "path": "assets/environment/asphalt03-normal-gl.jpg",
+          "bytes": 974676,
+          "expectedBytes": 974676,
+          "sha256": "978de8349ce2e9989325099a6fd1f5ea6b2826528e1264606a5c51296b1e2888",
+          "expectedSha256": "978de8349ce2e9989325099a6fd1f5ea6b2826528e1264606a5c51296b1e2888",
+          "status": "PASS"
+        },
+        {
+          "path": "assets/environment/asphalt03-roughness.jpg",
+          "bytes": 590105,
+          "expectedBytes": 590105,
+          "sha256": "069b6ea342aaad04fd1582f59c16fbbe5c7a6f0f3a87bc9d57648ed53336fb3a",
+          "expectedSha256": "069b6ea342aaad04fd1582f59c16fbbe5c7a6f0f3a87bc9d57648ed53336fb3a",
+          "status": "PASS"
+        },
+        {
+          "path": "assets/environment/granite-diffuse.jpg",
+          "bytes": 676597,
+          "expectedBytes": 676597,
+          "sha256": "9df48b66055588708d446e69f37ea6146b8d5d3df54cd1ff088ec688acdca95c",
+          "expectedSha256": "9df48b66055588708d446e69f37ea6146b8d5d3df54cd1ff088ec688acdca95c",
+          "status": "PASS"
+        },
+        {
+          "path": "assets/environment/granite-normal-gl.jpg",
+          "bytes": 592362,
+          "expectedBytes": 592362,
+          "sha256": "bb9a122e0a1171c52458fc9ac82f588f4e100f1f7b461cc15028bed1c63fe961",
+          "expectedSha256": "bb9a122e0a1171c52458fc9ac82f588f4e100f1f7b461cc15028bed1c63fe961",
+          "status": "PASS"
+        },
+        {
+          "path": "assets/environment/granite-roughness.jpg",
+          "bytes": 674755,
+          "expectedBytes": 674755,
+          "sha256": "0bb28aebdb75b850714f936bfb180ffcbb6607342f925ad27f0bfcb5a31ca8de",
+          "expectedSha256": "0bb28aebdb75b850714f936bfb180ffcbb6607342f925ad27f0bfcb5a31ca8de",
+          "status": "PASS"
+        }
+      ]
+    }
+  ],
+  "license": {
+    "path": "vendor/THREE-LICENSE.txt",
+    "sha256": "f57eb9202058667d12aebd854fe8a86d6feaeab51078180df5615bfdbd5cff05",
+    "expectedSha256": "f57eb9202058667d12aebd854fe8a86d6feaeab51078180df5615bfdbd5cff05",
+    "status": "PASS"
+  },
+  "runtimeReferences": [
+    {
+      "path": "assets/environment/asphalt03-diffuse.jpg",
+      "status": "PASS"
+    },
+    {
+      "path": "assets/environment/asphalt03-normal-gl.jpg",
+      "status": "PASS"
+    },
+    {
+      "path": "assets/environment/asphalt03-roughness.jpg",
+      "status": "PASS"
+    },
+    {
+      "path": "assets/environment/granite-normal-gl.jpg",
+      "status": "PASS"
+    },
+    {
+      "path": "assets/environment/granite-roughness.jpg",
+      "status": "PASS"
+    }
+  ],
+  "files": 29,
+  "bytes": 15851291,
+  "status": "PASS"
+}

@@ -1,0 +1,233 @@
+{
+  "suite": "phase5a-movie",
+  "date": "2026-11-13T04:03:23.837Z",
+  "tests": [
+    {
+      "name": "Native 3440×1440 video records five views, three light modes, a complete orbit and real entrance handoff",
+      "status": "PASS",
+      "evidence": {
+        "path": "hq5-cinematic-3440x1440.webm",
+        "mime": "video/webm;codecs=vp8",
+        "width": 3440,
+        "height": 1440,
+        "sourceCanvas": [
+          3440,
+          1339
+        ],
+        "requestedFps": 30,
+        "bitrate": 5000000,
+        "composition": "Actual rendered canvas at native width; letterboxed to 3440×1440 with Draft caption. The real HQJourney.fade value reproduces the browser DOM doorway fade. No generated 3D frames or synthetic frame interpolation.",
+        "wallMs": 63597.40000009537,
+        "renderedCaptureFrames": 3728,
+        "error": null,
+        "depth": 1,
+        "active": false,
+        "bytes": 39106226,
+        "segments": [
+          {
+            "name": "HQ · day · quarter",
+            "startMs": 14.099999904632568,
+            "endMs": 2227.300000190735
+          },
+          {
+            "name": "HQ · day · front",
+            "startMs": 2228.4000000953674,
+            "endMs": 4445.5
+          },
+          {
+            "name": "HQ · day · side",
+            "startMs": 4446.900000095367,
+            "endMs": 6664.5
+          },
+          {
+            "name": "HQ · day · aerial",
+            "startMs": 6665.699999809265,
+            "endMs": 8935.800000190735
+          },
+          {
+            "name": "HQ · day · entrance",
+            "startMs": 8936.900000095367,
+            "endMs": 11151.300000190735
+          },
+          {
+            "name": "HQ · dusk",
+            "startMs": 11152.599999904633,
+            "endMs": 13777.599999904633
+          },
+          {
+            "name": "HQ · night",
+            "startMs": 13778.400000095367,
+            "endMs": 16395.199999809265
+          },
+          {
+            "name": "HQ · day · full 360° orbit",
+            "startMs": 16396,
+            "endMs": 47543.59999990463
+          },
+          {
+            "name": "HQ entrance → conceptual Interior",
+            "startMs": 47544.800000190735,
+            "endMs": 63575.90000009537
+          }
+        ],
+        "decode": {
+          "width": 3440,
+          "height": 1440,
+          "duration": 63.529,
+          "frames": [
+            {
+              "time": 3,
+              "luminance": 142.08192129630282,
+              "hash": 30148257
+            },
+            {
+              "time": 24,
+              "luminance": 135.44965277778294,
+              "hash": 3169163510
+            },
+            {
+              "time": 62.9974,
+              "luminance": 137.52680555556103,
+              "hash": 3441625647
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Recorded video supports byte-range playback and decodes two different nonblank real frames",
+      "status": "PASS",
+      "evidence": {
+        "width": 3440,
+        "height": 1440,
+        "duration": 63.529,
+        "frames": [
+          {
+            "time": 3,
+            "luminance": 142.08192129630282,
+            "hash": 30148257
+          },
+          {
+            "time": 24,
+            "luminance": 135.44965277778294,
+            "hash": 3169163510
+          },
+          {
+            "time": 62.9974,
+            "luminance": 137.52680555556103,
+            "hash": 3441625647
+          }
+        ]
+      }
+    },
+    {
+      "name": "Movie capture has no browser, shader or asset errors",
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "browser": "131.0.6778.205",
+  "channel": "chrome",
+  "viewport": {
+    "width": 3440,
+    "height": 1440,
+    "dpr": 1
+  },
+  "runtime": "v24.22.1",
+  "platform": "win32",
+  "video": {
+    "path": "hq5-cinematic-3440x1440.webm",
+    "mime": "video/webm;codecs=vp8",
+    "width": 3440,
+    "height": 1440,
+    "sourceCanvas": [
+      3440,
+      1339
+    ],
+    "requestedFps": 30,
+    "bitrate": 5000000,
+    "composition": "Actual rendered canvas at native width; letterboxed to 3440×1440 with Draft caption. The real HQJourney.fade value reproduces the browser DOM doorway fade. No generated 3D frames or synthetic frame interpolation.",
+    "wallMs": 63597.40000009537,
+    "renderedCaptureFrames": 3728,
+    "error": null,
+    "depth": 1,
+    "active": false,
+    "bytes": 39106226,
+    "segments": [
+      {
+        "name": "HQ · day · quarter",
+        "startMs": 14.099999904632568,
+        "endMs": 2227.300000190735
+      },
+      {
+        "name": "HQ · day · front",
+        "startMs": 2228.4000000953674,
+        "endMs": 4445.5
+      },
+      {
+        "name": "HQ · day · side",
+        "startMs": 4446.900000095367,
+        "endMs": 6664.5
+      },
+      {
+        "name": "HQ · day · aerial",
+        "startMs": 6665.699999809265,
+        "endMs": 8935.800000190735
+      },
+      {
+        "name": "HQ · day · entrance",
+        "startMs": 8936.900000095367,
+        "endMs": 11151.300000190735
+      },
+      {
+        "name": "HQ · dusk",
+        "startMs": 11152.599999904633,
+        "endMs": 13777.599999904633
+      },
+      {
+        "name": "HQ · night",
+        "startMs": 13778.400000095367,
+        "endMs": 16395.199999809265
+      },
+      {
+        "name": "HQ · day · full 360° orbit",
+        "startMs": 16396,
+        "endMs": 47543.59999990463
+      },
+      {
+        "name": "HQ entrance → conceptual Interior",
+        "startMs": 47544.800000190735,
+        "endMs": 63575.90000009537
+      }
+    ],
+    "decode": {
+      "width": 3440,
+      "height": 1440,
+      "duration": 63.529,
+      "frames": [
+        {
+          "time": 3,
+          "luminance": 142.08192129630282,
+          "hash": 30148257
+        },
+        {
+          "time": 24,
+          "luminance": 135.44965277778294,
+          "hash": 3169163510
+        },
+        {
+          "time": 62.9974,
+          "luminance": 137.52680555556103,
+          "hash": 3441625647
+        }
+      ]
+    }
+  },
+  "summary": {
+    "PASS": 3,
+    "FAIL": 0,
+    "SKIP": 0,
+    "PENDING": 0
+  }
+}

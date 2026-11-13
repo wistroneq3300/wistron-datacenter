@@ -1,0 +1,777 @@
+{
+  "suite": "hq5-controls-diagnostic",
+  "date": "2026-11-13T03:40:36.807Z",
+  "tests": [
+    {
+      "name": "Three light buttons select their own state without matching the scene container",
+      "status": "PASS",
+      "evidence": [
+        {
+          "mode": "day",
+          "pressed": [
+            "day"
+          ],
+          "sceneAttribute": "day"
+        },
+        {
+          "mode": "dusk",
+          "pressed": [
+            "dusk"
+          ],
+          "sceneAttribute": "dusk"
+        },
+        {
+          "mode": "night",
+          "pressed": [
+            "night"
+          ],
+          "sceneAttribute": "night"
+        }
+      ]
+    },
+    {
+      "name": "Mobile pinch diagnostic records native hit targets and control state",
+      "status": "PASS",
+      "evidence": [
+        {
+          "label": "orbit",
+          "distance": 64.07807737440318,
+          "owner": "timeline",
+          "active": true,
+          "enabled": false,
+          "zoom": true,
+          "touches": {
+            "ONE": 0,
+            "TWO": 2
+          },
+          "pointers": [],
+          "positions": {},
+          "targets": [
+            {
+              "x": 120,
+              "y": 350,
+              "tag": "CANVAS",
+              "id": "viewport"
+            },
+            {
+              "x": 220,
+              "y": 350,
+              "tag": "CANVAS",
+              "id": "viewport"
+            },
+            {
+              "x": 85,
+              "y": 350,
+              "tag": "CANVAS",
+              "id": "viewport"
+            },
+            {
+              "x": 255,
+              "y": 350,
+              "tag": "CANVAS",
+              "id": "viewport"
+            },
+            {
+              "x": 220,
+              "y": 300,
+              "tag": "CANVAS",
+              "id": "viewport"
+            },
+            {
+              "x": 265,
+              "y": 325,
+              "tag": "CANVAS",
+              "id": "viewport"
+            }
+          ],
+          "panel": {
+            "x": 14,
+            "y": 443.5,
+            "width": 310,
+            "height": 209.5,
+            "top": 443.5,
+            "right": 324,
+            "bottom": 653,
+            "left": 14
+          }
+        },
+        {
+          "label": "one-finger-cancel",
+          "distance": 64.07807794715718,
+          "owner": "orbit",
+          "active": false,
+          "enabled": true,
+          "zoom": true,
+          "touches": {
+            "ONE": 0,
+            "TWO": 2
+          },
+          "pointers": [],
+          "positions": {},
+          "targets": [
+            {
+              "x": 120,
+              "y": 350,
+              "tag": "DIV",
+              "id": "sceneActions"
+            },
+            {
+              "x": 220,
+              "y": 350,
+              "tag": "DIV",
+              "id": "sceneActions"
+            },
+            {
+              "x": 85,
+              "y": 350,
+              "tag": "DIV",
+              "id": "sceneActions"
+            },
+            {
+              "x": 255,
+              "y": 350,
+              "tag": "CANVAS",
+              "id": "viewport"
+            },
+            {
+              "x": 220,
+              "y": 300,
+              "tag": "DIV",
+              "id": "sceneActions"
+            },
+            {
+              "x": 265,
+              "y": 325,
+              "tag": "CANVAS",
+              "id": "viewport"
+            }
+          ],
+          "panel": {
+            "x": 14,
+            "y": 459.5,
+            "width": 310,
+            "height": 193.5,
+            "top": 459.5,
+            "right": 324,
+            "bottom": 653,
+            "left": 14
+          }
+        },
+        {
+          "label": "pinch-start",
+          "distance": 64.0780779471572,
+          "owner": "orbit",
+          "active": false,
+          "enabled": true,
+          "zoom": true,
+          "touches": {
+            "ONE": 0,
+            "TWO": 2
+          },
+          "pointers": [
+            3,
+            4
+          ],
+          "positions": {
+            "3": {
+              "x": 120,
+              "y": 120
+            },
+            "4": {
+              "x": 220,
+              "y": 120
+            }
+          },
+          "targets": [
+            {
+              "x": 120,
+              "y": 350,
+              "tag": "DIV",
+              "id": "sceneActions"
+            },
+            {
+              "x": 220,
+              "y": 350,
+              "tag": "DIV",
+              "id": "sceneActions"
+            },
+            {
+              "x": 85,
+              "y": 350,
+              "tag": "DIV",
+              "id": "sceneActions"
+            },
+            {
+              "x": 255,
+              "y": 350,
+              "tag": "CANVAS",
+              "id": "viewport"
+            },
+            {
+              "x": 220,
+              "y": 300,
+              "tag": "DIV",
+              "id": "sceneActions"
+            },
+            {
+              "x": 265,
+              "y": 325,
+              "tag": "CANVAS",
+              "id": "viewport"
+            }
+          ],
+          "panel": {
+            "x": 14,
+            "y": 459.5,
+            "width": 310,
+            "height": 193.5,
+            "top": 459.5,
+            "right": 324,
+            "bottom": 653,
+            "left": 14
+          }
+        },
+        {
+          "label": "pinch-move",
+          "distance": 43.04005180201365,
+          "owner": "orbit",
+          "active": false,
+          "enabled": true,
+          "zoom": true,
+          "touches": {
+            "ONE": 0,
+            "TWO": 2
+          },
+          "pointers": [
+            3,
+            4
+          ],
+          "positions": {
+            "3": {
+              "x": 85,
+              "y": 120
+            },
+            "4": {
+              "x": 255,
+              "y": 120
+            }
+          },
+          "targets": [
+            {
+              "x": 120,
+              "y": 350,
+              "tag": "DIV",
+              "id": "sceneActions"
+            },
+            {
+              "x": 220,
+              "y": 350,
+              "tag": "DIV",
+              "id": "sceneActions"
+            },
+            {
+              "x": 85,
+              "y": 350,
+              "tag": "DIV",
+              "id": "sceneActions"
+            },
+            {
+              "x": 255,
+              "y": 350,
+              "tag": "CANVAS",
+              "id": "viewport"
+            },
+            {
+              "x": 220,
+              "y": 300,
+              "tag": "DIV",
+              "id": "sceneActions"
+            },
+            {
+              "x": 265,
+              "y": 325,
+              "tag": "CANVAS",
+              "id": "viewport"
+            }
+          ],
+          "panel": {
+            "x": 14,
+            "y": 459.5,
+            "width": 310,
+            "height": 193.5,
+            "top": 459.5,
+            "right": 324,
+            "bottom": 653,
+            "left": 14
+          }
+        },
+        {
+          "label": "pinch-end",
+          "distance": 43.04005180201365,
+          "owner": "orbit",
+          "active": false,
+          "enabled": true,
+          "zoom": true,
+          "touches": {
+            "ONE": 0,
+            "TWO": 2
+          },
+          "pointers": [],
+          "positions": {},
+          "targets": [
+            {
+              "x": 120,
+              "y": 350,
+              "tag": "DIV",
+              "id": "sceneActions"
+            },
+            {
+              "x": 220,
+              "y": 350,
+              "tag": "DIV",
+              "id": "sceneActions"
+            },
+            {
+              "x": 85,
+              "y": 350,
+              "tag": "DIV",
+              "id": "sceneActions"
+            },
+            {
+              "x": 255,
+              "y": 350,
+              "tag": "CANVAS",
+              "id": "viewport"
+            },
+            {
+              "x": 220,
+              "y": 300,
+              "tag": "DIV",
+              "id": "sceneActions"
+            },
+            {
+              "x": 265,
+              "y": 325,
+              "tag": "CANVAS",
+              "id": "viewport"
+            }
+          ],
+          "panel": {
+            "x": 14,
+            "y": 459.5,
+            "width": 310,
+            "height": 193.5,
+            "top": 459.5,
+            "right": 324,
+            "bottom": 653,
+            "left": 14
+          }
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "browser": "131.0.6778.205",
+  "channel": "chrome",
+  "viewport": {
+    "width": 3440,
+    "height": 1440,
+    "dpr": 1
+  },
+  "runtime": "v24.22.1",
+  "platform": "win32",
+  "lights": [
+    {
+      "mode": "day",
+      "pressed": [
+        "day"
+      ],
+      "sceneAttribute": "day"
+    },
+    {
+      "mode": "dusk",
+      "pressed": [
+        "dusk"
+      ],
+      "sceneAttribute": "dusk"
+    },
+    {
+      "mode": "night",
+      "pressed": [
+        "night"
+      ],
+      "sceneAttribute": "night"
+    }
+  ],
+  "gesture": {
+    "y": 120,
+    "start": [
+      {
+        "x": 120,
+        "y": 120,
+        "id": 1
+      },
+      {
+        "x": 220,
+        "y": 120,
+        "id": 2
+      }
+    ],
+    "end": [
+      {
+        "x": 85,
+        "y": 120,
+        "id": 1
+      },
+      {
+        "x": 255,
+        "y": 120,
+        "id": 2
+      }
+    ],
+    "hit": "viewport"
+  },
+  "touch": [
+    {
+      "label": "orbit",
+      "distance": 64.07807737440318,
+      "owner": "timeline",
+      "active": true,
+      "enabled": false,
+      "zoom": true,
+      "touches": {
+        "ONE": 0,
+        "TWO": 2
+      },
+      "pointers": [],
+      "positions": {},
+      "targets": [
+        {
+          "x": 120,
+          "y": 350,
+          "tag": "CANVAS",
+          "id": "viewport"
+        },
+        {
+          "x": 220,
+          "y": 350,
+          "tag": "CANVAS",
+          "id": "viewport"
+        },
+        {
+          "x": 85,
+          "y": 350,
+          "tag": "CANVAS",
+          "id": "viewport"
+        },
+        {
+          "x": 255,
+          "y": 350,
+          "tag": "CANVAS",
+          "id": "viewport"
+        },
+        {
+          "x": 220,
+          "y": 300,
+          "tag": "CANVAS",
+          "id": "viewport"
+        },
+        {
+          "x": 265,
+          "y": 325,
+          "tag": "CANVAS",
+          "id": "viewport"
+        }
+      ],
+      "panel": {
+        "x": 14,
+        "y": 443.5,
+        "width": 310,
+        "height": 209.5,
+        "top": 443.5,
+        "right": 324,
+        "bottom": 653,
+        "left": 14
+      }
+    },
+    {
+      "label": "one-finger-cancel",
+      "distance": 64.07807794715718,
+      "owner": "orbit",
+      "active": false,
+      "enabled": true,
+      "zoom": true,
+      "touches": {
+        "ONE": 0,
+        "TWO": 2
+      },
+      "pointers": [],
+      "positions": {},
+      "targets": [
+        {
+          "x": 120,
+          "y": 350,
+          "tag": "DIV",
+          "id": "sceneActions"
+        },
+        {
+          "x": 220,
+          "y": 350,
+          "tag": "DIV",
+          "id": "sceneActions"
+        },
+        {
+          "x": 85,
+          "y": 350,
+          "tag": "DIV",
+          "id": "sceneActions"
+        },
+        {
+          "x": 255,
+          "y": 350,
+          "tag": "CANVAS",
+          "id": "viewport"
+        },
+        {
+          "x": 220,
+          "y": 300,
+          "tag": "DIV",
+          "id": "sceneActions"
+        },
+        {
+          "x": 265,
+          "y": 325,
+          "tag": "CANVAS",
+          "id": "viewport"
+        }
+      ],
+      "panel": {
+        "x": 14,
+        "y": 459.5,
+        "width": 310,
+        "height": 193.5,
+        "top": 459.5,
+        "right": 324,
+        "bottom": 653,
+        "left": 14
+      }
+    },
+    {
+      "label": "pinch-start",
+      "distance": 64.0780779471572,
+      "owner": "orbit",
+      "active": false,
+      "enabled": true,
+      "zoom": true,
+      "touches": {
+        "ONE": 0,
+        "TWO": 2
+      },
+      "pointers": [
+        3,
+        4
+      ],
+      "positions": {
+        "3": {
+          "x": 120,
+          "y": 120
+        },
+        "4": {
+          "x": 220,
+          "y": 120
+        }
+      },
+      "targets": [
+        {
+          "x": 120,
+          "y": 350,
+          "tag": "DIV",
+          "id": "sceneActions"
+        },
+        {
+          "x": 220,
+          "y": 350,
+          "tag": "DIV",
+          "id": "sceneActions"
+        },
+        {
+          "x": 85,
+          "y": 350,
+          "tag": "DIV",
+          "id": "sceneActions"
+        },
+        {
+          "x": 255,
+          "y": 350,
+          "tag": "CANVAS",
+          "id": "viewport"
+        },
+        {
+          "x": 220,
+          "y": 300,
+          "tag": "DIV",
+          "id": "sceneActions"
+        },
+        {
+          "x": 265,
+          "y": 325,
+          "tag": "CANVAS",
+          "id": "viewport"
+        }
+      ],
+      "panel": {
+        "x": 14,
+        "y": 459.5,
+        "width": 310,
+        "height": 193.5,
+        "top": 459.5,
+        "right": 324,
+        "bottom": 653,
+        "left": 14
+      }
+    },
+    {
+      "label": "pinch-move",
+      "distance": 43.04005180201365,
+      "owner": "orbit",
+      "active": false,
+      "enabled": true,
+      "zoom": true,
+      "touches": {
+        "ONE": 0,
+        "TWO": 2
+      },
+      "pointers": [
+        3,
+        4
+      ],
+      "positions": {
+        "3": {
+          "x": 85,
+          "y": 120
+        },
+        "4": {
+          "x": 255,
+          "y": 120
+        }
+      },
+      "targets": [
+        {
+          "x": 120,
+          "y": 350,
+          "tag": "DIV",
+          "id": "sceneActions"
+        },
+        {
+          "x": 220,
+          "y": 350,
+          "tag": "DIV",
+          "id": "sceneActions"
+        },
+        {
+          "x": 85,
+          "y": 350,
+          "tag": "DIV",
+          "id": "sceneActions"
+        },
+        {
+          "x": 255,
+          "y": 350,
+          "tag": "CANVAS",
+          "id": "viewport"
+        },
+        {
+          "x": 220,
+          "y": 300,
+          "tag": "DIV",
+          "id": "sceneActions"
+        },
+        {
+          "x": 265,
+          "y": 325,
+          "tag": "CANVAS",
+          "id": "viewport"
+        }
+      ],
+      "panel": {
+        "x": 14,
+        "y": 459.5,
+        "width": 310,
+        "height": 193.5,
+        "top": 459.5,
+        "right": 324,
+        "bottom": 653,
+        "left": 14
+      }
+    },
+    {
+      "label": "pinch-end",
+      "distance": 43.04005180201365,
+      "owner": "orbit",
+      "active": false,
+      "enabled": true,
+      "zoom": true,
+      "touches": {
+        "ONE": 0,
+        "TWO": 2
+      },
+      "pointers": [],
+      "positions": {},
+      "targets": [
+        {
+          "x": 120,
+          "y": 350,
+          "tag": "DIV",
+          "id": "sceneActions"
+        },
+        {
+          "x": 220,
+          "y": 350,
+          "tag": "DIV",
+          "id": "sceneActions"
+        },
+        {
+          "x": 85,
+          "y": 350,
+          "tag": "DIV",
+          "id": "sceneActions"
+        },
+        {
+          "x": 255,
+          "y": 350,
+          "tag": "CANVAS",
+          "id": "viewport"
+        },
+        {
+          "x": 220,
+          "y": 300,
+          "tag": "DIV",
+          "id": "sceneActions"
+        },
+        {
+          "x": 265,
+          "y": 325,
+          "tag": "CANVAS",
+          "id": "viewport"
+        }
+      ],
+      "panel": {
+        "x": 14,
+        "y": 459.5,
+        "width": 310,
+        "height": 193.5,
+        "top": 459.5,
+        "right": 324,
+        "bottom": 653,
+        "left": 14
+      }
+    }
+  ],
+  "summary": {
+    "PASS": 2,
+    "FAIL": 0,
+    "SKIP": 0,
+    "PENDING": 0
+  }
+}

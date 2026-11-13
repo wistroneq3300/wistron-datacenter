@@ -1,0 +1,66 @@
+{
+  "suite": "hq5-preview",
+  "date": "2026-11-13T03:29:57.827Z",
+  "tests": [
+    {
+      "name": "HQ initial GPU shader and material loading",
+      "status": "PASS",
+      "evidence": {
+        "memory": {
+          "geometries": 29,
+          "textures": 34
+        },
+        "draw": {
+          "frame": 410,
+          "calls": 146,
+          "triangles": 2063518,
+          "points": 0,
+          "lines": 0
+        },
+        "plants": {
+          "trees": 10,
+          "shrubs": 2,
+          "branches": 2660,
+          "leaves": 39632,
+          "renderedLeaves": 39632,
+          "geometries": 2,
+          "materials": 3,
+          "textures": 7,
+          "drawCalls": 12,
+          "loadedTextures": 7,
+          "assetErrors": [],
+          "disposed": false,
+          "evidence": {
+            "status": "draft",
+            "species": "unverified broadleaf",
+            "placement": "illustrative",
+            "materials": [
+              "Poly Haven / Japanese Camphor Bark",
+              "Poly Haven / Tree Small 02 leaf atlas"
+            ],
+            "provenance": "assets/environment/hq5-vegetation/provenance.json"
+          },
+          "method": "continuous curved tapered wood + instanced cupped PBR atlas leaves"
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "browser": "131.0.6778.205",
+  "channel": "chrome",
+  "viewport": {
+    "width": 3440,
+    "height": 1440,
+    "dpr": 1
+  },
+  "runtime": "v24.22.1",
+  "platform": "win32",
+  "finalErrors": [],
+  "summary": {
+    "PASS": 1,
+    "FAIL": 0,
+    "SKIP": 0,
+    "PENDING": 0
+  }
+}

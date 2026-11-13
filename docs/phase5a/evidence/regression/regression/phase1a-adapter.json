@@ -1,0 +1,103 @@
+{
+  "suite": "phase1a-adapter",
+  "date": "2026-11-13T04:04:37.154Z",
+  "tests": [
+    {
+      "name": "Three renderer, original PA shader and both environments",
+      "status": "PASS",
+      "evidence": {
+        "ready": true,
+        "count": 37,
+        "shader": true,
+        "env": 512,
+        "cooling": 512
+      }
+    },
+    {
+      "name": "Front / rear / side / three-quarter and 360 degree camera sweep rendered",
+      "status": "PASS",
+      "evidence": {
+        "angles": 25,
+        "glError": 0
+      }
+    },
+    {
+      "name": "Door reverses and cinematic returns to installed transforms",
+      "status": "PASS",
+      "evidence": {
+        "open": -2.261721942370887,
+        "closed": -0.0002247458786887886,
+        "same": true
+      }
+    },
+    {
+      "name": "Paired GLBs retain shared transform, semantic parts and original shader",
+      "status": "PASS",
+      "evidence": {
+        "meshes": 233,
+        "packages": 44,
+        "sharedRoot": [
+          1.000000015835061,
+          0.9999996127850627,
+          1.0000000388830679
+        ],
+        "baseHidden": true,
+        "origins": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "name": "Detail disposal returns owned geometry and texture counts",
+      "status": "PASS",
+      "evidence": {
+        "before": {
+          "geometries": 227,
+          "textures": 49
+        },
+        "after": {
+          "geometries": 17,
+          "textures": 5
+        },
+        "refs": 0
+      }
+    },
+    {
+      "name": "No browser / shader / asset errors",
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "browser": "131.0.6778.205",
+  "channel": "chrome",
+  "viewport": {
+    "width": 3440,
+    "height": 1440,
+    "dpr": 1
+  },
+  "runtime": "v24.22.1",
+  "platform": "win32",
+  "gpu": {
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002786) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "canvas": [
+      3440,
+      1440
+    ]
+  },
+  "summary": {
+    "PASS": 6,
+    "FAIL": 0,
+    "SKIP": 0,
+    "PENDING": 0
+  }
+}

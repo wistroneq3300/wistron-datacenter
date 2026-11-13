@@ -1,0 +1,107 @@
+{
+  "retrievedAt": "2026-11-13",
+  "schemaVersion": 1,
+  "files": [
+    {
+      "sha256": "261e7d7a5ac7d2e16ea8823ff8510be8f3f615999724232994039ad2885e5c36",
+      "assetUrl": "https://polyhaven.com/a/tree_small_02",
+      "file": "leaves-diffuse.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/tree_small_02/tree_small_02_leaves_diff_1k.jpg",
+      "license": "CC0-1.0",
+      "bytes": 340003,
+      "map": "diffuse",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "licenseUrl": "https://polyhaven.com/license"
+    },
+    {
+      "sha256": "4f143e2dda8a6a572f427ac378b92255d21761e4611de0d26e21816c01aa533b",
+      "assetUrl": "https://polyhaven.com/a/tree_small_02",
+      "file": "leaves-alpha.png",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/tree_small_02/tree_small_02_leaves_alpha_1k.png",
+      "license": "CC0-1.0",
+      "bytes": 264711,
+      "map": "alpha",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "licenseUrl": "https://polyhaven.com/license"
+    },
+    {
+      "sha256": "8c72e04fb23e16ae1df79c01385a638473d1dd4dede3d51e83d70153c129f09b",
+      "assetUrl": "https://polyhaven.com/a/tree_small_02",
+      "file": "leaves-normal-gl.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/tree_small_02/tree_small_02_leaves_nor_gl_1k.jpg",
+      "license": "CC0-1.0",
+      "bytes": 681604,
+      "map": "normal",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "licenseUrl": "https://polyhaven.com/license"
+    },
+    {
+      "sha256": "71f81374daf5a8f3e6eb2c694264a1769fdb0bea508178e4105618eecea83c3e",
+      "assetUrl": "https://polyhaven.com/a/tree_small_02",
+      "file": "leaves-arm.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/tree_small_02/tree_small_02_leaves_arm_1k.jpg",
+      "license": "CC0-1.0",
+      "bytes": 633698,
+      "map": "ao-roughness-metalness",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "licenseUrl": "https://polyhaven.com/license"
+    },
+    {
+      "sha256": "100c1c052c9b0305c4d95bcb845a2bdc44cd261946aac16146319e2f5fcb4fbc",
+      "assetUrl": "https://polyhaven.com/a/japanese_camphor_bark",
+      "file": "bark-diffuse.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/japanese_camphor_bark/japanese_camphor_bark_diff_1k.jpg",
+      "license": "CC0-1.0",
+      "bytes": 1058720,
+      "map": "diffuse",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "licenseUrl": "https://polyhaven.com/license"
+    },
+    {
+      "sha256": "633567973b9d79ce54c33c50632771f80eb794904f367b584f7b21c1ad8a34d5",
+      "assetUrl": "https://polyhaven.com/a/japanese_camphor_bark",
+      "file": "bark-normal-gl.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/japanese_camphor_bark/japanese_camphor_bark_nor_gl_1k.jpg",
+      "license": "CC0-1.0",
+      "bytes": 1283697,
+      "map": "normal",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "licenseUrl": "https://polyhaven.com/license"
+    },
+    {
+      "sha256": "bd8f3d6fce26a70b857340e5f76da2211da80f5b3d0be2b9fef64e0072c09289",
+      "assetUrl": "https://polyhaven.com/a/japanese_camphor_bark",
+      "file": "bark-roughness.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/japanese_camphor_bark/japanese_camphor_bark_rough_1k.jpg",
+      "license": "CC0-1.0",
+      "bytes": 527928,
+      "map": "roughness",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "licenseUrl": "https://polyhaven.com/license"
+    }
+  ],
+  "source": "Poly Haven",
+  "status": "Generic natural vegetation materials; species and landscaping are Draft, not a surveyed Wistron site",
+  "license": "CC0-1.0"
+}

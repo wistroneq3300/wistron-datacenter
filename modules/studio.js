@@ -13,13 +13,14 @@ import {MockAdapter,PAManagerAdapter} from './twin/adapters.js';
 import {DigitalTwinService} from './twin/service.js';
 import {SceneStateSynchronizer} from './scene/twin-synchronizer.js';
 import {TwinPanel} from './ui/twin-panel.js';
+import {HQJourney} from './environment/hq5-journey.js';
 
 const $=id=>document.getElementById(id),v=a=>new THREE.Vector3(...a);
 const labels=['Wistron HQ','Building Interior','Data Center Hall','Rack Row','Rack','System','Tray / Board','Component'];
 const titles=['緯創總部 · 歷史照片參考 / Draft','建築內部 · 概念剖面','Data Center Hall','Rack Row','Rack configuration','System inspection','Tray / Board','Component'];
 export async function startStudio({scene,camera,renderer,controls,groups,reducedMotion,environment}){
   const {building,upperShell,city,cityFar,campus,shell,environmentRacks,core}=groups;
-  let twinService,twinSync,twinPanel,monitoringTimer,adapter;
+  let twinService,twinSync,twinPanel,monitoringTimer,adapter,hqJourney;
   let toastTimer,raf,last=performance.now(),disposed=false;
   const toast=message=>{$('toast').textContent=message;$('toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('show'),6000);};
   const studio=new PAStudio(renderer,scene),projection=new RackProjection(studio,core),library=new L10Library(studio),director=new CameraDirector(camera,controls,{reducedMotion});
@@ -31,18 +32,23 @@ export async function startStudio({scene,camera,renderer,controls,groups,reduced
   const metrics={frames:[],errors:[],started:performance.now(),contextLosses:0};
   let navToken=0,assetAbort=null,activeDetail=null;
   const editor=new EquipmentEditor(store,{toast,onSelect:id=>selectEquipment(id),onInspect:id=>inspect(id),onExtract:id=>extract(id),onRackRemoved:()=>go(3)});
-  const facilityEditor=new FacilityEditor(store,{go,toast,hqView:async angle=>{await go(0);const p=environment.hq.pose(angle);await director.move(p.position,p.target,{fov:43});}});
+  const facilityEditor=new FacilityEditor(store,{go,toast,hqView:showHQView});
+  hqJourney=new HQJourney({hq:environment.hq,camera,controls,director,getDepth:()=>state.depth,enterHQ:()=>go(0,{},{hqHandoff:true}),enterInterior:()=>go(1,{},{hqHandoff:true}),reducedMotion,onFade:value=>{$('hqFade').style.opacity=String(value);},onChange:renderHQPlayback,onError:error=>toast('入口導覽無法繼續：'+error.message)});
   const selectedRig=()=>projection.rigs.get(state.rackId);
   const selectedItem=()=>projection.item(state.equipmentId);
   const previousCamera=camera.position.clone();
-  director.constrain=()=>{const rig=selectedRig();if(state.depth>=4&&rig?.frame.visible){rig.group.updateWorldMatrix(true,true);const bounds=new THREE.Box3().setFromObject(rig.frame).expandByScalar(.025);keepCameraOutside(camera,controls.target,bounds,previousCamera);}previousCamera.copy(camera.position);};
+  const hqCameraBounds=new THREE.Box3(v([-24.1,0,-41.1]),v([15.25,20.4,-3.35]));
+  director.constrain=()=>{const rig=selectedRig();if(state.depth===0){camera.position.y=Math.max(.35,camera.position.y);keepCameraOutside(camera,controls.target,hqCameraBounds,previousCamera);camera.lookAt(controls.target);}else if(state.depth>=4&&rig?.frame.visible){rig.group.updateWorldMatrix(true,true);const bounds=new THREE.Box3().setFromObject(rig.frame).expandByScalar(.025);keepCameraOutside(camera,controls.target,bounds,previousCamera);}previousCamera.copy(camera.position);};
   function clearDetails(){assetAbort?.abort();assetAbort=null;activeDetail?.dispose();activeDetail=null;for(const rig of projection.rigs.values())rig.extracted=null;}
   function applyVisibility(){
     const focus=state.depth>=4;
     environment.setDepth(state.depth);core.visible=state.depth>=1;projection.isolate(focus?state.rackId:null,state.depth===3?{rowId:state.rowId}:state.depth===2?{hallId:state.hallId}:{});
-    scene.background=state.depth===0?environment.hq.sky:new THREE.Color(focus?0x091116:0x152630);scene.fog=state.depth===0?new THREE.Fog(0xd5e0df,95,240):focus?null:new THREE.Fog(0x152630,65,160);
+    // HQ lighting owns its background/fog, including the selected dusk/night
+    // profile when returning from an interior. Interior/Rack styling stays local.
+    if(state.depth!==0){scene.background=new THREE.Color(focus?0x091116:0x152630);scene.fog=focus?null:new THREE.Fog(0x152630,65,160);}
     $('scene').classList.toggle('daylight',state.depth===0);
-    controls.minDistance=state.depth===7?.035:state.depth>=5?.2:focus?.8:2;controls.maxDistance=focus?25:155;controls.maxPolarAngle=Math.PI*.485;camera.near=focus?.002:.05;camera.updateProjectionMatrix();
+    $('hqControls').hidden=state.depth!==0;
+    controls.minDistance=state.depth===7?.035:state.depth>=5?.2:focus?.8:2;controls.maxDistance=focus?25:155;controls.maxPolarAngle=state.depth===0?Math.PI*.68:Math.PI*.485;camera.near=focus?.002:.05;camera.updateProjectionMatrix();
     $('scene').classList.toggle('is-inspecting',focus);$('sceneMeta').hidden=state.depth!==0;$('sceneSideinfo').hidden=focus;$('detailHeader').hidden=state.depth===0;
     $('detailIndex').textContent=String(state.depth+1).padStart(2,'0');$('detailEnglish').textContent=labels[state.depth];$('detailTitle').textContent=focus?(selectedItem()?.item.instance.name||selectedRig()?.rack.name||titles[state.depth]):titles[state.depth];
     $('scaleLabel').textContent=labels[state.depth].toUpperCase();$('footerMessage').textContent=focus?'PA Cinematic geometry · Draft hardware dimensions':'HQ 歷史照片參考 · Hall 虛擬配置 · Draft / 未測繪';
@@ -64,7 +70,7 @@ export async function startStudio({scene,camera,renderer,controls,groups,reduced
   }
   function pose(depth){
     const fixed=[{position:[38,27,48],target:[0,8,-7],fov:43},{position:[24,19,30],target:[0,1,-5],fov:43},{position:[19,17,27],target:[0,1,-4],fov:43},{position:[9,5.2,22],target:[0,1.25,7],fov:35}];
-    if(depth===0)return {...environment.hq.pose(),fov:43};
+    if(depth===0)return {fov:43,...environment.hq.pose()};
     if(depth<4){const bounds=environment.hall.bounds(depth===3?state.rowId:state.hallId);if(!bounds.isEmpty()){const center=bounds.getCenter(new THREE.Vector3()),size=bounds.getSize(new THREE.Vector3()),span=Math.max(size.x,size.z);if(depth===1)return{position:[center.x,1.85,bounds.max.z+2.5],target:[center.x,1.4,center.z],fov:52};const offset=depth===3?[span*.45,3.7,Math.max(8,span*1.35)]:[span*.85,span*.85,span*1.2];return{position:center.clone().add(v(offset)).toArray(),target:[center.x,1.3,center.z],fov:depth===3?35:43};}return fixed[depth];}const rig=selectedRig();if(depth===4){const target=rig.group.position.toArray();return{position:rig.group.position.clone().add(v([-2.7,.45,5.6])).toArray(),target,fov:28.65};}
     const item=selectedItem().item,model=item.model,definition=model.childDefinitions?.find(d=>d.key===(depth===7?state.componentKey:state.boardKey));
     let bounds=activeDetail?(depth>=6?activeDetail.bounds(depth===7?'packages':'board',definition?.sourceComponent,definition?.boardIndex):activeDetail.bounds()):new THREE.Box3().setFromObject(item.group);
@@ -77,7 +83,8 @@ export async function startStudio({scene,camera,renderer,controls,groups,reduced
     const offset=v([-.3,.82,.68]).normalize().multiplyScalar(distance).applyAxisAngle(v([0,1,0]),yaw);
     return{position:center.clone().add(offset).toArray(),target:center.toArray(),fov:32};
   }
-  async function go(depth,selection={}){
+  async function go(depth,selection={},{hqHandoff=false}={}){
+    if(!hqHandoff)hqJourney?.cancel();
     const token=++navToken;if(!selection.nodeId)state.nodeId=null;stopFilm();director.cancel();assetAbort?.abort();state.pending=false;$('toast').classList.remove('show');
     let next;try{next=resolveJourney(store.document,state,depth,selection);}catch(e){if(e instanceof NavigationUnavailable){$('assetStatus').hidden=false;$('assetStatus').textContent=e.message;toast(e.message);return false;}throw e;}
     if(next.depth>=5){const hit=projection.item(next.equipmentId),clear=extractionClearance(store.document,next.equipmentId,7.4*hit.rig.unit*.802*1000);if(!clear.valid){toast('抽出路徑會碰撞其他設備；請調整安裝位置。');return false;}}
@@ -92,6 +99,17 @@ export async function startStudio({scene,camera,renderer,controls,groups,reduced
     const p=pose(state.depth),completed=await director.move(p.position,p.target,{fov:p.fov,duration:state.depth>=5?1000:850});return completed&&token===navToken;
   }
   function rackAngle(yaw){const rig=selectedRig();if(!rig)return;stopFilm();const target=rig.group.position.clone();director.move(target.clone().add(v([Math.sin(yaw)*5.9,.45,Math.cos(yaw)*5.9])).toArray(),target.toArray(),{fov:28.65});}
+  function renderHQPlayback(snapshot){
+    $('sceneMeta').hidden=state.depth!==0||snapshot.view==='entrance'||snapshot.active&&snapshot.mode!=='preset';
+    const names={orbit:'360° 環繞','fly-in':'入口導覽',preset:'切換視角'},playing=snapshot.active&&snapshot.mode!=='preset';
+    $('hqPause').hidden=!playing;$('hqStop').hidden=!snapshot.active;$('hqPause').disabled=snapshot.phase!=='playing';$('hqPause').textContent=snapshot.paused?'繼續':'暫停';
+    $('hqProgress').hidden=!playing;$('hqProgress').value=snapshot.progress;
+    const label=snapshot.active?`${names[snapshot.mode]||'入口導覽'}${snapshot.paused?' · 已暫停':snapshot.phase==='handoff'?' · 進入概念內部':''}`:'拖曳或滾輪可隨時接手';
+    if($('hqPlaybackStatus').textContent!==label)$('hqPlaybackStatus').textContent=label;
+    $('hqCamera').value=snapshot.view;
+  }
+  async function showHQView(name){stopFilm();return hqJourney.view(name);}
+  async function playHQ(mode){stopFilm();return hqJourney.play(mode);}
   function selectEquipment(id){const hit=projection.item(id);if(!hit)return;if(state.depth>=5&&id!==state.equipmentId){inspect(id);return;}state.equipmentId=id;state.rackId=hit.rig.rack.id;editor.show(state.rackId);editor.select(id);$('detailTitle').textContent=hit.item.instance.name;twinPanel?.select(id);}
   function extract(id){stopFilm();const hit=projection.item(id);if(!hit)return;const clear=extractionClearance(store.document,id,7.4*hit.rig.unit*.802*1000);if(hit.rig.extracted!==id&&!clear.valid){toast('抽出路徑會碰撞其他設備；請調整安裝位置。');return;}selectEquipment(id);hit.rig.extract(id);toast(hit.rig.extracted?'抽出檢視；安裝配置不變':'設備歸位');}
   function inspect(id){const hit=projection.item(id);return hit?go(5,{rackId:hit.rig.rack.id,equipmentId:id}):Promise.resolve(false);}
@@ -185,6 +203,7 @@ export async function startStudio({scene,camera,renderer,controls,groups,reduced
   function updateLabels(){const w=$('scene').clientWidth,h=$('scene').clientHeight;for(const [id,b] of labelNodes){if(b.hidden)continue;const rig=projection.rigs.get(id);const pos=rig.group.position.clone();pos.y+=rig.height/2+.1;pos.project(camera);b.style.left=`${(pos.x*.5+.5)*w}px`;b.style.top=`${(-pos.y*.5+.5)*h}px`;b.style.visibility=pos.z>1||Math.abs(pos.x)>1||Math.abs(pos.y)>1?'hidden':'visible';}}
   function summary(){const doc=store.document;$('configSummary').textContent=`${doc.racks.length} 個機櫃 · ${doc.equipment.length} 台設備 · revision ${doc.revision} · 本機自動儲存`;$('rackSummary').replaceChildren(...doc.racks.map(r=>{const b=document.createElement('span');b.textContent=`${r.name} · ${doc.equipment.filter(e=>e.rackId===r.id).length}`;return b;}));}
   store.subscribe((doc)=>{
+    hqJourney?.cancel();
     navToken++;clearDetails();state.pending=false;stopFilm();projection.sync(doc);environment.hall.sync(doc);facilityEditor.render();
     if(!projection.rigs.has(state.rackId)){state.rackId=null;state.equipmentId=null;if(state.depth>=4)state.depth=3;}
     if(state.equipmentId&&!projection.item(state.equipmentId)){state.equipmentId=null;if(state.depth>=5)state.depth=4;}
@@ -195,7 +214,9 @@ export async function startStudio({scene,camera,renderer,controls,groups,reduced
   // UI commands use the same configuration store as JSON import and migration.
   document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>go(['hq','cutaway','hall','row'].indexOf(b.dataset.view)));
   $('startTour').onclick=()=>{state.mode='journey';go(1);};$('hallDirect').onclick=()=>go(3);$('tourPrev').onclick=()=>go(state.depth-1);$('tourNext').onclick=()=>go(state.depth+1);$('journeyRange').oninput=e=>go(+e.target.value);
-  $('exitTour').onclick=()=>{state.mode=state.mode==='journey'?'explore':'journey';renderJourney();};$('resetBtn').onclick=()=>go(state.depth);$('closeInspector').onclick=()=>editor.hide();
+  $('exitTour').onclick=()=>{hqJourney.cancel();state.mode=state.mode==='journey'?'explore':'journey';renderJourney();};$('resetBtn').onclick=()=>go(state.depth);$('closeInspector').onclick=()=>editor.hide();
+  $('hqCamera').onchange=e=>showHQView(e.target.value);$('hqOrbit').onclick=()=>playHQ('orbit');$('hqFly').onclick=()=>playHQ('fly-in');$('hqPause').onclick=()=>hqJourney.pause();$('hqStop').onclick=()=>hqJourney.cancel();
+  document.querySelectorAll('#hqControls button[data-hq-light]').forEach(button=>button.onclick=async()=>{try{await environment.hq.setLighting(button.dataset.hqLight);document.querySelectorAll('#hqControls button[data-hq-light]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));$('scene').dataset.hqLighting=button.dataset.hqLight;}catch(error){toast('總部光線切換失敗：'+error.message);}});
   $('openRack').onclick=()=>{const rig=selectedRig();if(rig){rig.toggleDoor();$('openRack').classList.toggle('active',!!rig.doorTarget);}};
   $('deviceView').onclick=()=>{const item=selectedItem()?.item||[...selectedRig()?.items.values()||[]].find(i=>i.model.internalAsset);if(item)inspect(item.instance.id);else toast('這個機櫃尚無含內部資產的 System');};
   $('rackFront').onclick=()=>rackAngle(0);$('rackRear').onclick=()=>rackAngle(Math.PI);$('rackSide').onclick=()=>rackAngle(Math.PI/2);$('rackQuarter').onclick=()=>rackAngle(-.48);
@@ -209,23 +230,23 @@ export async function startStudio({scene,camera,renderer,controls,groups,reduced
   $('networkBtn').onclick=()=>{$('flowPanel').hidden=!$('flowPanel').hidden;$('networkBtn').setAttribute('aria-expanded',String(!$('flowPanel').hidden));};$('closeFlow').onclick=()=>{$('flowPanel').hidden=true;$('networkBtn').setAttribute('aria-expanded','false');};document.querySelectorAll('[data-flow]').forEach(b=>b.onclick=()=>setFlow(b.dataset.flow));
   let high=false;$('qualityBtn').onclick=()=>{high=!high;renderer.setPixelRatio(high?Math.min(devicePixelRatio,2):Math.min(devicePixelRatio,1.65));$('qualityLabel').textContent=high?'HIGH QUALITY':'AUTO QUALITY';resize();};$('fullscreenBtn').onclick=()=>{if(document.fullscreenElement)document.exitFullscreen();else $('scene').requestFullscreen().catch(()=>toast('此瀏覽器無法進入全螢幕'));};
   const raycaster=new THREE.Raycaster();let down=null;
-  const pointerDown=e=>{if(e.button===0)down={x:e.clientX,y:e.clientY};if(director.owner!=='orbit'){stopFilm();director.cancel();}};
+  const pointerDown=e=>{hqJourney.cancel();if(e.button===0)down={x:e.clientX,y:e.clientY};if(director.owner!=='orbit'){stopFilm();director.cancel();}};
   const pointerUp=e=>{if(!down||Math.hypot(e.clientX-down.x,e.clientY-down.y)>6){down=null;return;}down=null;const rect=renderer.domElement.getBoundingClientRect();raycaster.setFromCamera(new THREE.Vector2((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1),camera);
     const hits=[...raycaster.intersectObject(core,true),...(state.depth<4?raycaster.intersectObject(environment.hall.root,true):[])].filter(h=>{let o=h.object;while(o){if(!o.visible)return false;o=o.parent;}return true;});const hit=hits.find(h=>h.object.userData.entityId&&h.object.userData.kind!=='door'||h.object.userData.kind==='rack-lod');if(!hit)return;const meta=projection.resolveHit(hit)||hit.object.userData;if(meta.kind==='twin-status'){focusEntity(meta.entityId);return;}if(meta.kind==='hall'){go(2,{hallId:meta.hallId,rackId:null,rowId:null});return;}if(meta.kind==='row'){go(3,{hallId:meta.hallId,rowId:meta.rowId,rackId:null});return;}if(state.depth<4&&meta.rackId)go(4,{rackId:meta.rackId});else if(meta.childId){const item=selectedItem()?.item,definition=item?.model.childDefinitions.find(d=>item.instance.children.find(c=>c.id===meta.childId)?.definitionKey===d.key);if(definition)go(definition.kind==='component'?7:6,{boardKey:item.model.childDefinitions.find(d=>d.kind==='board'&&d.boardIndex===definition.boardIndex)?.key,componentKey:definition.kind==='component'?definition.key:null});}else if(meta.entityId!==state.rackId)inspect(meta.entityId);
   };
   renderer.domElement.addEventListener('pointerdown',pointerDown,{capture:true});renderer.domElement.addEventListener('pointerup',pointerUp);
-  let lastWheel=0,wheelSum=0;const wheel=e=>{if(state.mode!=='journey'||e.ctrlKey){if(director.owner!=='orbit'){stopFilm();director.cancel();}return;}e.preventDefault();e.stopImmediatePropagation();const now=performance.now();if(now-lastWheel<600)return;wheelSum+=e.deltaY*(e.deltaMode===1?16:1);if(Math.abs(wheelSum)>=60){const direction=Math.sign(wheelSum);wheelSum=0;lastWheel=now;go(state.depth+direction);}};
+  let lastWheel=0,wheelSum=0;const wheel=e=>{hqJourney.cancel();if(state.mode!=='journey'||e.ctrlKey){if(director.owner!=='orbit'){stopFilm();director.cancel();}return;}e.preventDefault();e.stopImmediatePropagation();const now=performance.now();if(now-lastWheel<600)return;wheelSum+=e.deltaY*(e.deltaMode===1?16:1);if(Math.abs(wheelSum)>=60){const direction=Math.sign(wheelSum);wheelSum=0;lastWheel=now;go(state.depth+direction);}};
   renderer.domElement.addEventListener('wheel',wheel,{capture:true,passive:false});
   // Rack labels are part of the spatial canvas; hovering one must not swallow journey input.
   $('labels').addEventListener('wheel',wheel,{capture:true,passive:false});
-  const key=e=>{if(/INPUT|SELECT|TEXTAREA/.test(e.target.tagName)||document.querySelector('dialog[open]'))return;if(e.key==='Home'){e.preventDefault();go(state.depth);}if(e.key==='Escape'){editor.close();$('flowPanel').hidden=true;stopFilm();}if(e.key==='ArrowDown'){e.preventDefault();go(state.depth+1);}if(e.key==='ArrowUp'){e.preventDefault();go(state.depth-1);}};document.addEventListener('keydown',key);
-  function resize(){const rect=$('scene').getBoundingClientRect();camera.aspect=rect.width/rect.height;camera.updateProjectionMatrix();renderer.setSize(rect.width,rect.height,false);}
+  const key=e=>{if(/INPUT|SELECT|TEXTAREA/.test(e.target.tagName)||document.querySelector('dialog[open]'))return;if(e.key==='Home'){e.preventDefault();go(state.depth);}if(e.key==='Escape'){hqJourney.cancel();editor.close();$('flowPanel').hidden=true;stopFilm();}if(e.key==='ArrowDown'){e.preventDefault();go(state.depth+1);}if(e.key==='ArrowUp'){e.preventDefault();go(state.depth-1);}};document.addEventListener('keydown',key);
+  function resize(){const rect=$('scene').getBoundingClientRect();camera.aspect=rect.width/rect.height;camera.updateProjectionMatrix();renderer.setSize(rect.width,rect.height,false);environment.resize?.(rect.width,rect.height,renderer.getPixelRatio());}
   const resizeObserver=new ResizeObserver(resize);resizeObserver.observe($('scene'));resize();
   renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();metrics.contextLosses++;toast('GPU context 已中斷；配置已保留，請重新整理恢復。');});
-  function animate(now){if(disposed)return;const dt=Math.min(.05,(now-last)/1000);if(metrics.frames.length<2000)metrics.frames.push(now-last);last=now;projection.update(dt);environment.hq.update(camera);director.update(now);filmFrame(dt);twinSync?.update();updateLabels();studio.shadow();renderer.render(scene,camera);raf=requestAnimationFrame(animate);}
+  function animate(now){if(disposed)return;const dt=Math.min(.05,(now-last)/1000);if(metrics.frames.length<2000)metrics.frames.push(now-last);last=now;projection.update(dt);director.update(now);hqJourney.update(dt);environment.hq.update(camera);filmFrame(dt);twinSync?.update();updateLabels();studio.shadow();if(environment.render)environment.render(scene,camera);else renderer.render(scene,camera);raf=requestAnimationFrame(animate);}
   buildFlows();summary();applyVisibility();await setupMonitoring();raf=requestAnimationFrame(animate);await go(0);$('loading').classList.add('done');if(store.notice)toast(store.notice);
-  const api={store,projection,environment,facilityEditor,studio,library,scene,camera,renderer,controls,director,state,film,metrics,editor,go,inspect,extract,selectEquipment,seekFilm,beginFilm,stopFilm,rackAngle,twin:twinService,adapter,twinPanel,twinSync,focusEntity,
+  const api={store,projection,environment,facilityEditor,studio,library,scene,camera,renderer,controls,director,state,film,metrics,editor,go,inspect,extract,selectEquipment,seekFilm,beginFilm,stopFilm,rackAngle,hqJourney,showHQView,playHQ,twin:twinService,adapter,twinPanel,twinSync,focusEntity,
     snapshot(){return{state:structuredClone(state),owner:director.owner,revision:store.document.revision,rigs:[...projection.rigs.values()].map(r=>({id:r.rack.id,visible:r.group.visible,equipment:[...r.equipmentIds]})),memory:{...renderer.info.memory},pool:projection.pool.size,materials:studio.materials.size,assets:library.refs};},
-    dispose(){disposed=true;cancelAnimationFrame(raf);clearInterval(monitoringTimer);twinPanel?.dispose();twinSync?.dispose();twinService?.dispose();adapter?.dispose();clearTimeout(toastTimer);director.cancel();clearDetails();resizeObserver.disconnect();renderer.domElement.removeEventListener('pointerdown',pointerDown,true);renderer.domElement.removeEventListener('pointerup',pointerUp);renderer.domElement.removeEventListener('wheel',wheel,true);$('labels').removeEventListener('wheel',wheel,true);document.removeEventListener('keydown',key);projection.dispose();environment.dispose();studio.dispose();for(const o of flowObjects){o.geometry.dispose();o.material.dispose();}controls.dispose();renderer.dispose();}
+    dispose(){disposed=true;cancelAnimationFrame(raf);clearInterval(monitoringTimer);hqJourney.dispose();twinPanel?.dispose();twinSync?.dispose();twinService?.dispose();adapter?.dispose();clearTimeout(toastTimer);director.cancel();clearDetails();resizeObserver.disconnect();renderer.domElement.removeEventListener('pointerdown',pointerDown,true);renderer.domElement.removeEventListener('pointerup',pointerUp);renderer.domElement.removeEventListener('wheel',wheel,true);$('labels').removeEventListener('wheel',wheel,true);document.removeEventListener('keydown',key);projection.dispose();environment.dispose();studio.dispose();for(const o of flowObjects){o.geometry.dispose();o.material.dispose();}controls.dispose();renderer.dispose();}
   };window.studio=api;return api;
 }

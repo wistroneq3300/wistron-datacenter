@@ -7,7 +7,7 @@
   <meta name="description" content="Wistron Data Center Studio — 由內湖總部進入大型機房，探索一整排可配置機櫃的 3D 數位工程工作台。">
   <title>Wistron · Data Center Studio</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect rx='16' width='64' height='64' fill='%230e2027'/%3E%3Cpath d='M14 17l6 29 8-18 8 18 7-29h7l-10 34-11-18-10 18-8-34z' fill='%234ad8bd'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="v2.css"><link rel="stylesheet" href="v3.css">
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="v2.css"><link rel="stylesheet" href="v3.css"><link rel="stylesheet" href="v5.css">
   <script type="importmap">{"imports":{"three":"./vendor/three.module.js","three/addons/":"./vendor/"}}</script>
 </head>
 <body>
@@ -27,6 +27,7 @@
 
     <main id="scene" tabindex="0" aria-label="3D 資料中心。拖曳旋轉、滾輪縮放，點選 R01 至 R08 機櫃。">
       <canvas id="viewport" aria-label="Wistron 資料中心 3D 畫面"></canvas>
+      <div id="hqFade" class="hq-fade" aria-hidden="true"></div>
       <div id="loading" class="loading"><div class="loadingMark">w<span>istron</span></div><p>建構資料中心空間</p><div class="loader"><i></i></div><small>Loading digital environment…</small></div>
       <div class="scene-vignette"></div>
       <div class="corner corner-tl"></div><div class="corner corner-br"></div>
@@ -34,8 +35,15 @@
       <section id="sceneMeta" class="scene-meta">
         <div class="eyebrow"><span class="tinyCross">+</span> SPATIAL WORKSPACE <span class="edition">/ 01</span></div>
         <h1 id="sceneTitle">Wistron Neihu<br><span>從總部到晶片。</span></h1>
-        <p id="sceneDescription">日間建築展示與可配置 AI 機房。<br>歷史照片參考 · 未測繪 Draft 模型。</p>
+        <p id="sceneDescription">建築光影展示與可配置 AI 機房。<br>歷史照片參考 · 未測繪 Draft 模型。</p>
         <div id="sceneActions" class="sceneActions"><button id="startTour" class="primary">進入資料中心 <svg><use href="#i-arrow"/></svg></button><button id="hallDirect" class="quiet">前往機櫃排 <span>R01 — R08</span></button></div>
+      </section>
+
+      <section id="hqControls" class="hq-controls" aria-label="總部鏡頭與光線" hidden>
+        <div class="hq-view-row"><label for="hqCamera">視角</label><select id="hqCamera"><option value="quarter">45° 全景</option><option value="front">低視角正面</option><option value="side">側面</option><option value="aerial">空拍</option><option value="entrance">入口 · Draft</option></select><span class="hq-draft">未測繪 Draft</span></div>
+        <div class="hq-light-row" role="group" aria-label="總部光線"><span>光線</span><button data-hq-light="day" aria-pressed="true">日間</button><button data-hq-light="dusk" aria-pressed="false">黃昏</button><button data-hq-light="night" aria-pressed="false">夜間</button></div>
+        <div class="hq-play-row"><button id="hqOrbit">360° 環繞</button><button id="hqFly">沿入口進入</button><button id="hqPause" hidden>暫停</button><button id="hqStop" hidden>停止</button></div>
+        <progress id="hqProgress" max="1" value="0" aria-label="總部鏡頭播放進度" hidden></progress><p id="hqPlaybackStatus" role="status">拖曳或滾輪可隨時接手</p>
       </section>
 
       <section id="twinPanel" class="workspace-panel twin-panel" hidden aria-label="唯讀 Digital Twin 監測"><header><h2>Digital Twin</h2><button id="closeTwin" class="panel-close">關閉</button></header><p id="twinConnection" class="connection-label">DEMO / MOCK · 尚未連線</p><p>合成狀態示範，唯讀監測。配置修改不會操作實體硬體；真實 PA API 仍為 Pending。</p><details open class="demo-controls"><summary>可重現的 Mock 示範</summary><label class="field">目標 System<select id="demoSystem"></select></label><p id="demoProgress">尚未播放 · 初始狀態 Unknown</p><div class="inspector-actions"><button id="demoStep" class="smallBtn">下一步</button><button id="demoPlay" class="smallBtn">自動播放</button><button id="demoReset" class="smallBtn">重設</button></div><div class="demo-scenarios"><button data-demo-scenario="healthy">Healthy</button><button data-demo-scenario="warningSystem">Warning</button><button data-demo-scenario="failNode">FAIL</button><button data-demo-scenario="recoveringNode">Recovering</button><button data-demo-scenario="recovered">Recovery</button><button data-demo-scenario="offline">Offline</button><button data-demo-scenario="stale">Stale</button><button data-demo-scenario="delayed">延遲</button><button data-demo-scenario="outOfOrder">亂序</button><button data-demo-scenario="duplicate">重複</button></div><p id="demoMessage" class="identity-note">DEMO 時鐘由示範步驟推進，可重現事件順序。</p></details><div class="field-grid"><label class="field">顯示<select id="twinFilter"><option value="alerts">告警／恢復</option><option value="all">所有監測實體</option></select></label><label class="field">搜尋<input id="twinSearch" type="search" placeholder="設備名稱或 ID"></label></div><p id="twinCounts"></p><div id="twinList" class="twin-list"></div><p id="twinUnmapped" class="form-error"></p><section id="twinDetail" class="twin-detail" aria-live="polite"></section><button id="twinReconnect" class="outlineBtn">重新連線 Adapter</button><p class="identity-note">來源預留：PA Manager、Prometheus、Grafana、DCGM、Node Exporter、Redfish、Bug Finder。尚未接入實際服務。</p></section>

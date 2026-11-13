@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "project": "three.js",
+  "version": "0.170.0",
+  "tag": "r170",
+  "tagObject": "232de0cb2d49a3f28d84a8ca9cc4bbf806771736",
+  "commit": "beab9e845f9e5ae11d648f55b24a0e910b56a85a",
+  "repository": "https://github.com/mrdoob/three.js",
+  "verifiedAt": "2026-11-13T03:34:21.271Z",
+  "verification": "Downloaded immutable upstream source for every listed module and compared SHA-256 with local bytes. Runtime REVISION checked by importing local three.module.js.",
+  "runtimeRevision": "170",
+  "license": {
+    "spdx": "MIT",
+    "path": "vendor/THREE-LICENSE.txt",
+    "sourceUrl": "https://raw.githubusercontent.com/mrdoob/three.js/beab9e845f9e5ae11d648f55b24a0e910b56a85a/LICENSE",
+    "sha256": "f57eb9202058667d12aebd854fe8a86d6feaeab51078180df5615bfdbd5cff05",
+    "upstreamSha256": "4c40a1ef62450b857c3b2aaf294936304cd552d965fbcd9d32d4c5bcf4ba4454",
+    "matchingTextIgnoringLineEndings": true
+  },
+  "totalFiles": 12,
+  "totalBytes": 60012,
+  "files": [
+    {
+      "path": "vendor/hq5/loaders/RGBELoader.js",
+      "upstreamPath": "examples/jsm/loaders/RGBELoader.js",
+      "sourceUrl": "https://raw.githubusercontent.com/mrdoob/three.js/beab9e845f9e5ae11d648f55b24a0e910b56a85a/examples/jsm/loaders/RGBELoader.js",
+      "bytes": 11377,
+      "sha256": "f0e87d0008d9484d31358b32befd1bf80e4301f77573cc9a7cf7d871cc3f64b4",
+      "upstreamSha256": "f0e87d0008d9484d31358b32befd1bf80e4301f77573cc9a7cf7d871cc3f64b4",
+      "modified": false
+    },
+    {
+      "path": "vendor/hq5/math/SimplexNoise.js",
+      "upstreamPath": "examples/jsm/math/SimplexNoise.js",
+      "sourceUrl": "https://raw.githubusercontent.com/mrdoob/three.js/beab9e845f9e5ae11d648f55b24a0e910b56a85a/examples/jsm/math/SimplexNoise.js",
+      "bytes": 14351,
+      "sha256": "9b8d541b77b0ddc79afaa6a1de8941452c191b8b9006f04e7b8fc422e2b263f7",
+      "upstreamSha256": "9b8d541b77b0ddc79afaa6a1de8941452c191b8b9006f04e7b8fc422e2b263f7",
+      "modified": false
+    },
+    {
+      "path": "vendor/hq5/postprocessing/EffectComposer.js",
+      "upstreamPath": "examples/jsm/postprocessing/EffectComposer.js",
+      "sourceUrl": "https://raw.githubusercontent.com/mrdoob/three.js/beab9e845f9e5ae11d648f55b24a0e910b56a85a/examples/jsm/postprocessing/EffectComposer.js",
+      "bytes": 4651,
+      "sha256": "d234e578618fa816955ebdc059c049c577e203e650e33cf22bde3f232c29e669",
+      "upstreamSha256": "d234e578618fa816955ebdc059c049c577e203e650e33cf22bde3f232c29e669",
+      "modified": false
+    },
+    {
+      "path": "vendor/hq5/postprocessing/MaskPass.js",
+      "upstreamPath": "examples/jsm/postprocessing/MaskPass.js",
+      "sourceUrl": "https://raw.githubusercontent.com/mrdoob/three.js/beab9e845f9e5ae11d648f55b24a0e910b56a85a/examples/jsm/postprocessing/MaskPass.js",
+      "bytes": 2231,
+      "sha256": "328cf7db0da5d9be83ffe39d54b01d5ac1fddf108cc98182ddbb056f5c8b537f",
+      "upstreamSha256": "328cf7db0da5d9be83ffe39d54b01d5ac1fddf108cc98182ddbb056f5c8b537f",
+      "modified": false
+    },
+    {
+      "path": "vendor/hq5/postprocessing/OutputPass.js",
+      "upstreamPath": "examples/jsm/postprocessing/OutputPass.js",
+      "sourceUrl": "https://raw.githubusercontent.com/mrdoob/three.js/beab9e845f9e5ae11d648f55b24a0e910b56a85a/examples/jsm/postprocessing/OutputPass.js",
+      "bytes": 2524,
+      "sha256": "32f879d2179087676631c799857a885586b3cdd13b9731bd3b13f06428bd58b7",
+      "upstreamSha256": "32f879d2179087676631c799857a885586b3cdd13b9731bd3b13f06428bd58b7",
+      "modified": false
+    },
+    {
+      "path": "vendor/hq5/postprocessing/Pass.js",
+      "upstreamPath": "examples/jsm/postprocessing/Pass.js",
+      "sourceUrl": "https://raw.githubusercontent.com/mrdoob/three.js/beab9e845f9e5ae11d648f55b24a0e910b56a85a/examples/jsm/postprocessing/Pass.js",
+      "bytes": 1706,
+      "sha256": "b3c6128340eaa37e40a6a2f1b738e894c855239417d50959759b34a2b5e89f92",
+      "upstreamSha256": "b3c6128340eaa37e40a6a2f1b738e894c855239417d50959759b34a2b5e89f92",
+      "modified": false
+    },
+    {
+      "path": "vendor/hq5/postprocessing/RenderPass.js",
+      "upstreamPath": "examples/jsm/postprocessing/RenderPass.js",
+      "sourceUrl": "https://raw.githubusercontent.com/mrdoob/three.js/beab9e845f9e5ae11d648f55b24a0e910b56a85a/examples/jsm/postprocessing/RenderPass.js",
+      "bytes": 1941,
+      "sha256": "6c9b8a539ea16e898f65e4760f14937ef9ea94043bd9842c141e0301f41903e8",
+      "upstreamSha256": "6c9b8a539ea16e898f65e4760f14937ef9ea94043bd9842c141e0301f41903e8",
+      "modified": false
+    },
+    {
+      "path": "vendor/hq5/postprocessing/SSAOPass.js",
+      "upstreamPath": "examples/jsm/postprocessing/SSAOPass.js",
+      "sourceUrl": "https://raw.githubusercontent.com/mrdoob/three.js/beab9e845f9e5ae11d648f55b24a0e910b56a85a/examples/jsm/postprocessing/SSAOPass.js",
+      "bytes": 11116,
+      "sha256": "e7be94aeecfb6af31e0d1227bb1b0a8ca4f42629dfd8952c584e5a1557bcdd15",
+      "upstreamSha256": "e7be94aeecfb6af31e0d1227bb1b0a8ca4f42629dfd8952c584e5a1557bcdd15",
+      "modified": false
+    },
+    {
+      "path": "vendor/hq5/postprocessing/ShaderPass.js",
+      "upstreamPath": "examples/jsm/postprocessing/ShaderPass.js",
+      "sourceUrl": "https://raw.githubusercontent.com/mrdoob/three.js/beab9e845f9e5ae11d648f55b24a0e910b56a85a/examples/jsm/postprocessing/ShaderPass.js",
+      "bytes": 1576,
+      "sha256": "3b28a1ee27e0eb96c0eab137a1f442ccf127a926904eced2d51e125ec44af781",
+      "upstreamSha256": "3b28a1ee27e0eb96c0eab137a1f442ccf127a926904eced2d51e125ec44af781",
+      "modified": false
+    },
+    {
+      "path": "vendor/hq5/shaders/CopyShader.js",
+      "upstreamPath": "examples/jsm/shaders/CopyShader.js",
+      "sourceUrl": "https://raw.githubusercontent.com/mrdoob/three.js/beab9e845f9e5ae11d648f55b24a0e910b56a85a/examples/jsm/shaders/CopyShader.js",
+      "bytes": 571,
+      "sha256": "4e3346db194db56a596cd074e9bdb39fb5eb52040c333e0d29dc4eb1324d3b1d",
+      "upstreamSha256": "4e3346db194db56a596cd074e9bdb39fb5eb52040c333e0d29dc4eb1324d3b1d",
+      "modified": false
+    },
+    {
+      "path": "vendor/hq5/shaders/OutputShader.js",
+      "upstreamPath": "examples/jsm/shaders/OutputShader.js",
+      "sourceUrl": "https://raw.githubusercontent.com/mrdoob/three.js/beab9e845f9e5ae11d648f55b24a0e910b56a85a/examples/jsm/shaders/OutputShader.js",
+      "bytes": 1490,
+      "sha256": "4944cecd49c0d4d1520a4d927bde8a590fd43f041ee913252b9451855a01d0f0",
+      "upstreamSha256": "4944cecd49c0d4d1520a4d927bde8a590fd43f041ee913252b9451855a01d0f0",
+      "modified": false
+    },
+    {
+      "path": "vendor/hq5/shaders/SSAOShader.js",
+      "upstreamPath": "examples/jsm/shaders/SSAOShader.js",
+      "sourceUrl": "https://raw.githubusercontent.com/mrdoob/three.js/beab9e845f9e5ae11d648f55b24a0e910b56a85a/examples/jsm/shaders/SSAOShader.js",
+      "bytes": 6478,
+      "sha256": "bd5cda34d6b52941c1121b77947664848af10dc68febd453dfdc56c59e58ba06",
+      "upstreamSha256": "bd5cda34d6b52941c1121b77947664848af10dc68febd453dfdc56c59e58ba06",
+      "modified": false
+    }
+  ]
+}

@@ -4,3 +4,4 @@ modules/** text eol=lf
 tests/v2/** text eol=lf
 data/** text eol=lf
 v2.css text eol=lf
+vendor/hq5/** -text

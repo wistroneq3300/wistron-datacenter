@@ -1,0 +1,161 @@
+{
+  "suite": "phase34-journey",
+  "date": "2026-11-13T04:09:49.128Z",
+  "tests": [
+    {
+      "name": "Actual HQ → eight levels → Hall → Node fault / recovery cinematic recording",
+      "status": "PASS",
+      "evidence": {
+        "visited": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "node": "editorial-compute-01::node-0",
+        "syntheticMetrics": true,
+        "recording": "actual browser continuous frames; programmatic camera commands plus real UI clicks"
+      }
+    },
+    {
+      "name": "Failed reconnect is visible; canceled Node focus cannot retake camera or selection",
+      "status": "PASS",
+      "evidence": {
+        "focused": false,
+        "depth": 2,
+        "node": null,
+        "owner": "orbit"
+      }
+    },
+    {
+      "name": "Repeated HQ / Hall / Node switching releases detail assets and bounds resource growth",
+      "status": "PASS",
+      "evidence": [
+        {
+          "memory": {
+            "geometries": 33,
+            "textures": 43
+          },
+          "refs": 0,
+          "pool": 0,
+          "details": 0,
+          "markers": 81
+        },
+        {
+          "memory": {
+            "geometries": 33,
+            "textures": 43
+          },
+          "refs": 0,
+          "pool": 0,
+          "details": 0,
+          "markers": 81
+        },
+        {
+          "memory": {
+            "geometries": 33,
+            "textures": 43
+          },
+          "refs": 0,
+          "pool": 0,
+          "details": 0,
+          "markers": 81
+        },
+        {
+          "memory": {
+            "geometries": 33,
+            "textures": 43
+          },
+          "refs": 0,
+          "pool": 0,
+          "details": 0,
+          "markers": 81
+        },
+        {
+          "memory": {
+            "geometries": 33,
+            "textures": 43
+          },
+          "refs": 0,
+          "pool": 0,
+          "details": 0,
+          "markers": 81
+        },
+        {
+          "memory": {
+            "geometries": 33,
+            "textures": 43
+          },
+          "refs": 0,
+          "pool": 0,
+          "details": 0,
+          "markers": 81
+        }
+      ]
+    },
+    {
+      "name": "Monitoring panel works on touch viewport without horizontal overflow",
+      "status": "PASS",
+      "evidence": {
+        "width": 390,
+        "documentWidth": 390,
+        "panel": {
+          "x": 48,
+          "y": 129,
+          "width": 330,
+          "height": 541,
+          "top": 129,
+          "right": 378,
+          "bottom": 670,
+          "left": 48
+        }
+      }
+    },
+    {
+      "name": "A pending read-only gateway cannot block the independent 3D workbench",
+      "status": "PASS",
+      "evidence": {
+        "transport": "synthetic held request",
+        "workbenchReady": true,
+        "liveConnectionVerified": false
+      }
+    },
+    {
+      "name": "Continuous journey and monitoring have no console or asset errors",
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "browser": "131.0.6778.205",
+  "channel": "chrome",
+  "viewport": {
+    "width": 3440,
+    "height": 1440,
+    "dpr": 1
+  },
+  "runtime": "v24.22.1",
+  "platform": "win32",
+  "video": {
+    "path": "hq-to-node-demo-1720x720.webm",
+    "viewport": [
+      3440,
+      1440
+    ],
+    "encoded": [
+      1720,
+      720
+    ],
+    "mock": true
+  },
+  "summary": {
+    "PASS": 6,
+    "FAIL": 0,
+    "SKIP": 0,
+    "PENDING": 0
+  }
+}

@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: Landscape construction produces finite curved geometry and individual leaf coverage
+ok 1 - Landscape construction produces finite curved geometry and individual leaf coverage
+  ---
+  duration_ms: 230.9599
+  type: 'test'
+  ...
+# Subtest: Seeds reproduce geometry; distinct roots produce distinct curved trees
+ok 2 - Seeds reproduce geometry; distinct roots produce distinct curved trees
+  ---
+  duration_ms: 84.4528
+  type: 'test'
+  ...
+# Subtest: Distance LOD and lighting changes reuse resources, preserve every tree and apply hysteresis
+ok 3 - Distance LOD and lighting changes reuse resources, preserve every tree and apply hysteresis
+  ---
+  duration_ms: 32.0763
+  type: 'test'
+  ...
+# Subtest: Dispose releases each owned geometry, material, texture and instance exactly once
+ok 4 - Dispose releases each owned geometry, material, texture and instance exactly once
+  ---
+  duration_ms: 24.1734
+  type: 'test'
+  ...
+# Subtest: Cancelled asynchronous loading disposes late textures and never reattaches foliage
+ok 5 - Cancelled asynchronous loading disposes late textures and never reattaches foliage
+  ---
+  duration_ms: 17.6722
+  type: 'test'
+  ...
+# Subtest: Malformed planting data is rejected before any scene resource is attached
+ok 6 - Malformed planting data is rejected before any scene resource is attached
+  ---
+  duration_ms: 0.4994
+  type: 'test'
+  ...
+# Subtest: Every shipped vegetation surface matches its original CC0 asset checksum
+ok 7 - Every shipped vegetation surface matches its original CC0 asset checksum
+  ---
+  duration_ms: 5.5424
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1676.0478

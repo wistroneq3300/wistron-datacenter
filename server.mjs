@@ -4,13 +4,13 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 // Serve public application files, never the checkout or the caller's cwd.
 const root=path.dirname(fileURLToPath(import.meta.url)),port=Number(process.env.PORT||4300),host=process.env.HOST||'127.0.0.1';
-const types={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json','.glb':'model/gltf-binary','.png':'image/png','.jpg':'image/jpeg','.svg':'image/svg+xml','.txt':'text/plain; charset=utf-8','.woff2':'font/woff2','.otf':'font/otf','.webm':'video/webm'};
-const entry=new Set(['/index.html','/app.js','/styles.css','/v2.css','/v3.css']);
+const types={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json','.glb':'model/gltf-binary','.png':'image/png','.jpg':'image/jpeg','.webp':'image/webp','.hdr':'application/octet-stream','.exr':'image/x-exr','.svg':'image/svg+xml','.txt':'text/plain; charset=utf-8','.woff2':'font/woff2','.otf':'font/otf','.webm':'video/webm'};
+const entry=new Set(['/index.html','/app.js','/styles.css','/v2.css','/v3.css','/v5.css']);
 http.createServer((req,res)=>{
   if(!['GET','HEAD'].includes(req.method)){res.writeHead(405,{Allow:'GET, HEAD'});res.end();return;}
   let pathname;try{pathname=decodeURIComponent(new URL(req.url,'http://localhost').pathname);}catch{res.writeHead(400);res.end('Invalid path');return;}
   if(pathname==='/')pathname='/index.html';
-  const test=process.env.TEST_MODE==='1'&&(/^\/tests\/v[23]\/[^/]+\.html$/.test(pathname)||/^\/docs\/phase(0|1-2|3-4)\//.test(pathname));
+  const test=process.env.TEST_MODE==='1'&&(/^\/tests\/v[235]\/[^/]+\.html$/.test(pathname)||/^\/docs\/phase(0|1-2|3-4|5a)\//.test(pathname));
   const allowed=entry.has(pathname)||/^\/(assets|vendor|modules|data)\//.test(pathname)||test;
   if(!allowed||pathname.split(/[\\/]/).some(p=>p.startsWith('.'))||!types[path.extname(pathname)]){res.writeHead(404);res.end('Not found');return;}
   const file=path.resolve(root,'.'+pathname);
