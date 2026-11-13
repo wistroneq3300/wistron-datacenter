@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "license": "CC0-1.0",
+  "evidenceStatus": "generic-material-not-site-scan",
+  "materials": [
+    {
+      "id": "asphalt03",
+      "source": "https://polyhaven.com/a/asphalt_03",
+      "sourceTileWidthMeters": 2,
+      "maps": {
+        "map": "assets/environment/asphalt03-diffuse.jpg",
+        "normalMap": "assets/environment/asphalt03-normal-gl.jpg",
+        "roughnessMap": "assets/environment/asphalt03-roughness.jpg"
+      }
+    },
+    {
+      "id": "stone",
+      "source": "https://polyhaven.com/a/granite_tile",
+      "sourceTileWidthMeters": 2.3,
+      "maps": {
+        "normalMap": "assets/environment/granite-normal-gl.jpg",
+        "roughnessMap": "assets/environment/granite-roughness.jpg"
+      }
+    }
+  ]
+}

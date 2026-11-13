@@ -1,3 +1,4 @@
+import {validateFacility} from './facility.js';
 // Domain-only code: no DOM, Three objects, network credentials or camera state.
 export const STORAGE_KEY='wistron-studio-config-v2';
 export const LEGACY_KEY='wistron-studio-config-v1';
@@ -43,12 +44,20 @@ export function validateConfiguration(doc){
   for(const [key,limit] of [['rows',64],['racks',128],['catalog',256],['rackProfiles',64],['equipment',4096]])if(!Array.isArray(doc[key])||doc[key].length>limit){add('schema',`${key} 必須是陣列且不超過 ${limit} 筆`);return{valid:false,errors,warnings};}
   for(const key of ['rows','catalog','rackProfiles'])if(!doc[key].length)add('schema',`${key} 至少需要一筆定義`);
   // Reject unexpected top-level data rather than leaking imported credentials in exports.
-  for(const key of Object.keys(doc))if(!['schemaVersion','documentId','revision','units','site','rows','racks','rackProfiles','catalog','equipment'].includes(key))add('unknown-field',`不支援的配置欄位：${key}`);
+  for(const key of Object.keys(doc))if(!['schemaVersion','documentId','revision','units','site','rows','racks','rackProfiles','catalog','equipment','facility'].includes(key))add('unknown-field',`不支援的配置欄位：${key}`);
   const allIds=new Set(),unique=(items,label)=>{const map=new Map();for(const item of items){if(!item||!id(item.id)||allIds.has(item.id)){add('duplicate-id',`${label} ID 無效或重複：${item?.id||'空值'}`,item?.id);continue;}allIds.add(item.id);map.set(item.id,item);}return map;};
   const profiles=unique(doc.rackProfiles,'Rack Profile'),models=unique(doc.catalog,'Catalog'),rows=unique(doc.rows,'Row'),racks=unique(doc.racks,'Rack');unique(doc.equipment,'Equipment');
   if(!doc.site||!id(doc.site.id)||!text(doc.site.name))add('site','Site 資料缺少 ID 或名稱');
   else if(allIds.has(doc.site.id))add('duplicate-id','Site ID 與其他實體重複');else allIds.add(doc.site.id);
   const allowedFields=(object,keys,label)=>{if(!object||typeof object!=='object')return;for(const key of Object.keys(object))if(!keys.includes(key))add('unknown-field',`${label} 不支援欄位 ${key}`,object.id);};
+  allowedFields(doc.site,['id','name'],'Site');
+  for(const row of doc.rows)allowedFields(row,['id','name','hallId','capacity'],'Row');
+  const evidence=value=>{if(value===undefined)return;allowedFields(value,['source','status','note'],'Evidence');if(!value||Array.isArray(value)||!text(value.source,2000)||!['verified','unverified'].includes(value.status)||value.note!==undefined&&(typeof value.note!=='string'||value.note.length>2000))add('evidence-shape','Evidence 必須是受支援的來源、狀態與純文字備註');};
+  const dimensions=value=>allowedFields(value,['width','height','depth'],'Dimensions');
+  for(const p of doc.rackProfiles)evidence(p?.evidence);
+  for(const m of doc.catalog){evidence(m?.evidence);dimensions(m?.dimensionsMm);for(const c of Array.isArray(m?.childDefinitions)?m.childDefinitions:[])allowedFields(c,['key','kind','label','boardIndex','sourceComponent'],'Child definition');}
+  for(const e of doc.equipment){dimensions(e?.dimensionsMm);for(const c of Array.isArray(e?.children)?e.children:[])allowedFields(c,['id','definitionKey','parentId'],'Child instance');}
+  for(const hall of Array.isArray(doc.facility?.halls)?doc.facility.halls:[]){evidence(hall?.evidence);for(const item of Array.isArray(hall?.infrastructure)?hall.infrastructure:[])evidence(item?.evidence);}
   for(const p of doc.rackProfiles){
     if(!p)continue;
     allowedFields(p,['id','name','specificationState','grid','pitchMm','capacity','increment','usableWidthMm','usableDepthMm','evidence'],'Profile');
@@ -73,6 +82,7 @@ export function validateConfiguration(doc){
   for(const rack of doc.racks){
     if(!rack)continue;
     allowedFields(rack,['id','name','purpose','profileId','rowId','position','positionMm','inventoryState'],'Rack');
+    if(!['draft','empty','not-provided'].includes(rack.inventoryState))add('inventory-state','Rack inventoryState 必須為 draft、empty 或 not-provided',rack.id);
     const row=rows.get(rack.rowId);
     if(!text(rack.name)||typeof rack.purpose!=='string'||rack.purpose.length>240||!profiles.has(rack.profileId)||!row||!Number.isInteger(rack.position)||rack.position<0||rack.position>=row.capacity||!vector(rack.positionMm)||rack.positionMm.some(v=>Math.abs(v)>1000000))add('rack','機櫃名稱、Profile、位置或 Row 參照無效',rack.id);
     const key=`${rack.rowId}:${rack.position}`;if(slots.has(key))add('rack-slot','同一 Row 的機位重複',rack.id);slots.add(key);
@@ -102,6 +112,7 @@ export function validateConfiguration(doc){
     else {const defs=Array.isArray(model.childDefinitions)?model.childDefinitions:[],seen=new Set();for(const child of e.children){if(!child||!text(child.id,180)||allIds.has(child.id)||child.parentId!==e.id||seen.has(child.definitionKey)||!defs.some(c=>c?.key===child.definitionKey)){add('child-reference','子部件 identity 或模型參照無效',e.id);}allIds.add(child?.id);seen.add(child?.definitionKey);}if(defs.length!==e.children.length)add('child-reference','子部件清單與 Catalog 不一致',e.id);}
     if(model.specificationState!=='validated'||['width','height','depth'].some(k=>Math.abs(d[k]-model.dimensionsMm[k])>epsilon))warnings.push({entityId:e.id,code:'draft-equipment',message:'Draft：尺寸來自視覺模型／使用者輸入，尚未驗證 OEM 相容性。'});
   }
+  const facilityResult=validateFacility(doc);errors.push(...facilityResult.errors);warnings.push(...facilityResult.warnings);
   return {valid:errors.length===0,errors,warnings};
 }
 
@@ -126,8 +137,8 @@ export function importDocument(textValue,base){if(typeof textValue!=='string'||t
 export class ConfigStore {
   constructor(base,storage){this.base=clone(base);assertConfiguration(this.base);this.document=clone(base);this.storage=storage;this.listeners=new Set();this.notice='';}
   load(){
-    try{const raw=this.storage?.getItem(STORAGE_KEY),legacy=this.storage?.getItem(LEGACY_KEY);if(raw)this.document=importDocument(raw,this.base);else if(legacy){const next=migrateV1(JSON.parse(legacy),this.base);this.storage.setItem(LEGACY_KEY+'.backup',legacy);this.persist(next);this.document=next;this.notice='V1 已遷移；舊檔已備份。原資料沒有設備 inventory，未自動補入設備。';}}
-    catch(e){this.notice=`儲存資料未載入：${e.message}。已保留原檔，暫用 Draft 示範。`;try{const raw=this.storage?.getItem(STORAGE_KEY);if(raw)this.storage.setItem(STORAGE_KEY+'.invalid-backup',raw);}catch{}}
+    try{const raw=this.storage?.getItem(STORAGE_KEY),legacy=this.storage?.getItem(LEGACY_KEY);if(raw)this.document=importDocument(raw,this.base);else if(legacy){const next=migrateV1(JSON.parse(legacy),this.base);if(!sensitiveKeys(legacy))this.storage.setItem(LEGACY_KEY+'.backup',legacy);this.persist(next);this.document=next;this.notice='V1 已遷移；舊檔已備份。原資料沒有設備 inventory，未自動補入設備。';}}
+    catch(e){this.notice=`儲存資料未載入：${e.message}。已保留原檔，暫用 Draft 示範。`;try{const raw=this.storage?.getItem(STORAGE_KEY);if(raw&&!sensitiveKeys(raw))this.storage.setItem(STORAGE_KEY+'.invalid-backup',raw);}catch{}}
     return this.document;
   }
   persist(doc){if(this.storage)this.storage.setItem(STORAGE_KEY,canonicalJSON(doc));}
@@ -150,9 +161,13 @@ export class ConfigStore {
   }
   updateEquipment(entityId,patch){return this.transact(doc=>{const e=doc.equipment.find(e=>e.id===entityId);if(!e)throw Error('設備不存在');for(const key of ['deviceId','name','modelId','rackId','dimensionsMm','placement'])if(patch[key]!==undefined)e[key]=clone(patch[key]);if(patch.modelId)e.children=childInstances(doc.catalog.find(m=>m.id===e.modelId)||{},e.id);});}
   removeEquipment(entityId){return this.transact(doc=>{if(!doc.equipment.some(e=>e.id===entityId))throw Error('設備不存在');doc.equipment=doc.equipment.filter(e=>e.id!==entityId);});}
-  addRack(sourceId){return this.transact(doc=>{const source=doc.racks.find(r=>r.id===sourceId),row=doc.rows.find(r=>r.id===(source?.rowId||doc.rows[0].id));const used=new Set(doc.racks.filter(r=>r.rowId===row.id).map(r=>r.position));let position=0;while(used.has(position)&&position<row.capacity)position++;if(position===row.capacity)throw new ConfigurationError([{code:'row-capacity',message:'此 Row 沒有可用機位'}]);const entityId=newId('rack');doc.racks.push({id:entityId,name:`R${String(position+1).padStart(2,'0')}`,purpose:source?.purpose||'Draft configuration',profileId:source?.profileId||doc.rackProfiles[0].id,rowId:row.id,position,positionMm:[(position-3.5)*1100,130,7000],inventoryState:source?'draft':'empty'});if(source)for(const e of doc.equipment.filter(e=>e.rackId===sourceId)){const copy=clone(e);copy.id=newId('eq');copy.deviceId=`${e.deviceId.slice(0,60)}-${copy.id.slice(-8)}`;copy.rackId=entityId;copy.children=childInstances(doc.catalog.find(m=>m.id===copy.modelId),copy.id);doc.equipment.push(copy);}return entityId;});}
-  updateRack(entityId,patch){return this.transact(doc=>{const rack=doc.racks.find(r=>r.id===entityId);if(!rack)throw Error('機櫃不存在');for(const key of ['name','purpose','position','positionMm','profileId'])if(patch[key]!==undefined)rack[key]=clone(patch[key]);});}
+  addRack(sourceId,rowId){return this.transact(doc=>{const source=doc.racks.find(r=>r.id===sourceId),row=doc.rows.find(r=>r.id===(source?.rowId||rowId||doc.rows[0].id));const used=new Set(doc.racks.filter(r=>r.rowId===row.id).map(r=>r.position));let position=0;while(used.has(position)&&position<row.capacity)position++;if(position===row.capacity)throw new ConfigurationError([{code:'row-capacity',message:'此 Row 沒有可用機位'}]);const entityId=newId('rack');doc.racks.push({id:entityId,name:`R${String(position+1).padStart(2,'0')}`,purpose:source?.purpose||'Draft configuration',profileId:source?.profileId||doc.rackProfiles[0].id,rowId:row.id,position,positionMm:rackSlotPosition(doc,row,position),inventoryState:source?'draft':'empty'});if(source)for(const e of doc.equipment.filter(e=>e.rackId===sourceId)){const copy=clone(e);copy.id=newId('eq');copy.deviceId=`${e.deviceId.slice(0,60)}-${copy.id.slice(-8)}`;copy.rackId=entityId;copy.children=childInstances(doc.catalog.find(m=>m.id===copy.modelId),copy.id);doc.equipment.push(copy);}return entityId;});}
+  updateRack(entityId,patch){return this.transact(doc=>{const rack=doc.racks.find(r=>r.id===entityId);if(!rack)throw Error('機櫃不存在');for(const key of ['name','purpose','position','positionMm','profileId','rowId'])if(patch[key]!==undefined)rack[key]=clone(patch[key]);});}
   removeRack(entityId){return this.transact(doc=>{doc.racks=doc.racks.filter(r=>r.id!==entityId);doc.equipment=doc.equipment.filter(e=>e.rackId!==entityId);});}
   updateProfile(profileId,patch){return this.transact(doc=>{const p=doc.rackProfiles.find(p=>p.id===profileId);if(!p)throw Error('Profile 不存在');Object.assign(p,clone(patch));p.specificationState='draft';p.evidence={source:'User edited draft profile',status:'unverified'};});}
   addModel(model){return this.transact(doc=>{doc.catalog.push(clone(model));return model.id;});}
 }
+
+function rackSlotPosition(doc,row,position){const siblings=doc.racks.filter(r=>r.rowId===row.id).sort((a,b)=>a.position-b.position);if(!siblings.length)return[(position-3.5)*1100,130,7000];const first=siblings[0],second=siblings[1],pitch=second?(second.positionMm[0]-first.positionMm[0])/(second.position-first.position):1100;return[first.positionMm[0]+(position-first.position)*pitch,first.positionMm[1],first.positionMm[2]];}
+
+function sensitiveKeys(raw){const sensitive=k=>/(?:password|passwd|token|secret|authorization|credential|api.?key|private.?key|management.?ip|bmc.?ip)/i.test(k);try{const visit=v=>v&&typeof v==='object'&&Object.entries(v).some(([k,item])=>sensitive(k)||visit(item));return!!visit(JSON.parse(raw));}catch{return /(?:password|passwd|token|secret|authorization|credential|api.?key|private.?key|management.?ip|bmc.?ip|\\u[0-9a-f]{4})/i.test(raw);}}

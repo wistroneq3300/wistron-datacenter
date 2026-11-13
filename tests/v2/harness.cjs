@@ -17,6 +17,6 @@ async function browserRun(suite,run){
     const check=async(name,fn)=>{try{const evidence=await fn();report.tests.push({name,status:'PASS',evidence});console.log('PASS',name);}catch(e){report.tests.push({name,status:'FAIL',error:e.stack});console.log('FAIL',name,e.message);}};
     await run({page,browser,check,report,origin,output,root});
   }catch(e){report.tests.push({name:'suite execution',status:'FAIL',error:e.stack});}
-  finally{await browser?.close();server.kill();report.summary={PASS:report.tests.filter(t=>t.status==='PASS').length,FAIL:report.tests.filter(t=>t.status==='FAIL').length,SKIP:report.tests.filter(t=>t.status==='SKIP').length};fs.writeFileSync(path.join(output,suite+'.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report.summary));if(report.summary.FAIL)process.exitCode=1;}
+  finally{await browser?.close();server.kill();report.summary=Object.fromEntries(['PASS','FAIL','SKIP','PENDING'].map(status=>[status,report.tests.filter(t=>t.status===status).length]));fs.writeFileSync(path.join(output,suite+'.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report.summary));if(report.summary.FAIL)process.exitCode=1;}
 }
 module.exports={browserRun,root,output};

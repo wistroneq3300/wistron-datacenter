@@ -1,0 +1,245 @@
+{
+  "suite": "phase3-hall-preview",
+  "date": "2026-11-13T01:33:07.866Z",
+  "tests": [
+    {
+      "name": "1 configured racks render with bounded Hall and LOD batches",
+      "status": "PASS",
+      "evidence": {
+        "hall": {
+          "halls": 1,
+          "rows": 1,
+          "drawBatches": 27,
+          "instances": 404,
+          "geometries": 1,
+          "materials": 16,
+          "textures": 1,
+          "visible": true,
+          "draft": true
+        },
+        "projection": {
+          "racks": 1,
+          "detailed": 0,
+          "visible": 1,
+          "pool": 0,
+          "batches": 4,
+          "instances": 36,
+          "visibleRacks": 1,
+          "rows": 1
+        },
+        "render": {
+          "frame": 66,
+          "calls": 29,
+          "triangles": 5076,
+          "points": 0,
+          "lines": 0
+        },
+        "memory": {
+          "geometries": 2,
+          "textures": 4
+        },
+        "glError": 0,
+        "centerPixel": [
+          191,
+          202,
+          205,
+          255
+        ],
+        "frames": {
+          "samples": 120,
+          "p95Ms": 16.799999999999727,
+          "medianMs": 16.699999999999818,
+          "fpsFromMedian": 59.88023952095874,
+          "measurement": "requestAnimationFrame intervals, not GPU elapsed timer"
+        }
+      }
+    },
+    {
+      "name": "4 configured racks render with bounded Hall and LOD batches",
+      "status": "PASS",
+      "evidence": {
+        "hall": {
+          "halls": 1,
+          "rows": 1,
+          "drawBatches": 27,
+          "instances": 486,
+          "geometries": 1,
+          "materials": 16,
+          "textures": 1,
+          "visible": true,
+          "draft": true
+        },
+        "projection": {
+          "racks": 4,
+          "detailed": 0,
+          "visible": 4,
+          "pool": 0,
+          "batches": 4,
+          "instances": 144,
+          "visibleRacks": 4,
+          "rows": 1
+        },
+        "render": {
+          "frame": 211,
+          "calls": 29,
+          "triangles": 7344,
+          "points": 0,
+          "lines": 0
+        },
+        "memory": {
+          "geometries": 2,
+          "textures": 4
+        },
+        "glError": 0,
+        "centerPixel": [
+          193,
+          206,
+          208,
+          255
+        ],
+        "frames": {
+          "samples": 120,
+          "p95Ms": 16.799999999999272,
+          "medianMs": 16.699999999999818,
+          "fpsFromMedian": 59.88023952095874,
+          "measurement": "requestAnimationFrame intervals, not GPU elapsed timer"
+        }
+      }
+    },
+    {
+      "name": "32 configured racks render with bounded Hall and LOD batches",
+      "status": "PASS",
+      "evidence": {
+        "hall": {
+          "halls": 1,
+          "rows": 4,
+          "drawBatches": 45,
+          "instances": 951,
+          "geometries": 1,
+          "materials": 16,
+          "textures": 1,
+          "visible": true,
+          "draft": true
+        },
+        "projection": {
+          "racks": 32,
+          "detailed": 0,
+          "visible": 32,
+          "pool": 0,
+          "batches": 16,
+          "instances": 1152,
+          "visibleRacks": 32,
+          "rows": 4
+        },
+        "render": {
+          "frame": 358,
+          "calls": 59,
+          "triangles": 24960,
+          "points": 0,
+          "lines": 0
+        },
+        "memory": {
+          "geometries": 2,
+          "textures": 4
+        },
+        "glError": 0,
+        "centerPixel": [
+          18,
+          26,
+          31,
+          255
+        ],
+        "frames": {
+          "samples": 120,
+          "p95Ms": 16.800000000000182,
+          "medianMs": 16.699999999999818,
+          "fpsFromMedian": 59.88023952095874,
+          "measurement": "requestAnimationFrame intervals, not GPU elapsed timer"
+        }
+      }
+    },
+    {
+      "name": "Hall side and entrance camera images render without overlap errors",
+      "status": "PASS",
+      "evidence": {
+        "angles": 2
+      }
+    },
+    {
+      "name": "Repeated 1/32/4 layout release returns GPU bookkeeping to the same baseline",
+      "status": "PASS",
+      "evidence": {
+        "baseline": {
+          "geometries": 0,
+          "textures": 2
+        },
+        "counts": [
+          {
+            "geometries": 0,
+            "textures": 2
+          },
+          {
+            "geometries": 0,
+            "textures": 2
+          },
+          {
+            "geometries": 0,
+            "textures": 2
+          },
+          {
+            "geometries": 0,
+            "textures": 2
+          },
+          {
+            "geometries": 0,
+            "textures": 2
+          },
+          {
+            "geometries": 0,
+            "textures": 2
+          }
+        ]
+      }
+    },
+    {
+      "name": "Hall instance hit metadata resolves real row and rack IDs",
+      "status": "PASS",
+      "evidence": {
+        "slots": 1152,
+        "unknown": [],
+        "rows": 24
+      }
+    },
+    {
+      "name": "No console, shader, WebGL or asset errors",
+      "status": "PASS",
+      "evidence": {
+        "errors": 0
+      }
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "browser": "131.0.6778.205",
+  "channel": "chrome",
+  "viewport": {
+    "width": 3440,
+    "height": 1440,
+    "dpr": 1
+  },
+  "runtime": "v24.22.1",
+  "platform": "win32",
+  "scope": "Standalone HallEnvironment and actual configuration-derived RackProjection LOD; main navigation and PA inspection quality are separate regression suites.",
+  "gpu": {
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002786) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "canvas": [
+      3440,
+      1440
+    ]
+  },
+  "summary": {
+    "PASS": 7,
+    "FAIL": 0,
+    "SKIP": 0
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "source": "Poly Haven",
+  "license": "CC0-1.0",
+  "files": [
+    {
+      "file": "asphalt03-diffuse.jpg",
+      "bytes": 788840,
+      "sha256": "95ad02e2631c41cf9fdd6a37596cf75adb4fb8a8b6880567cc78ed1c41dc5681",
+      "downloadUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/asphalt_03/asphalt_03_diff_1k.jpg",
+      "assetUrl": "https://polyhaven.com/a/asphalt_03",
+      "name": "Asphalt 03",
+      "authors": [
+        "Charlotte Baglioni (photography)",
+        "Dario Barresi (processing)"
+      ],
+      "map": "diffuse",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "sourceWidthMeters": 2,
+      "license": "CC0-1.0",
+      "licenseUrl": "https://polyhaven.com/license",
+      "retrievedAt": "2026-11-13",
+      "status": "Generic PBR surface; not a surveyed Wistron material"
+    },
+    {
+      "file": "asphalt03-normal-gl.jpg",
+      "bytes": 974676,
+      "sha256": "978de8349ce2e9989325099a6fd1f5ea6b2826528e1264606a5c51296b1e2888",
+      "downloadUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/asphalt_03/asphalt_03_nor_gl_1k.jpg",
+      "assetUrl": "https://polyhaven.com/a/asphalt_03",
+      "name": "Asphalt 03",
+      "authors": [
+        "Charlotte Baglioni (photography)",
+        "Dario Barresi (processing)"
+      ],
+      "map": "normal-gl",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "sourceWidthMeters": 2,
+      "license": "CC0-1.0",
+      "licenseUrl": "https://polyhaven.com/license",
+      "retrievedAt": "2026-11-13",
+      "status": "Generic PBR surface; not a surveyed Wistron material"
+    },
+    {
+      "file": "asphalt03-roughness.jpg",
+      "bytes": 590105,
+      "sha256": "069b6ea342aaad04fd1582f59c16fbbe5c7a6f0f3a87bc9d57648ed53336fb3a",
+      "downloadUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/asphalt_03/asphalt_03_rough_1k.jpg",
+      "assetUrl": "https://polyhaven.com/a/asphalt_03",
+      "name": "Asphalt 03",
+      "authors": [
+        "Charlotte Baglioni (photography)",
+        "Dario Barresi (processing)"
+      ],
+      "map": "roughness",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "sourceWidthMeters": 2,
+      "license": "CC0-1.0",
+      "licenseUrl": "https://polyhaven.com/license",
+      "retrievedAt": "2026-11-13",
+      "status": "Generic PBR surface; not a surveyed Wistron material"
+    },
+    {
+      "file": "granite-diffuse.jpg",
+      "bytes": 676597,
+      "sha256": "9df48b66055588708d446e69f37ea6146b8d5d3df54cd1ff088ec688acdca95c",
+      "downloadUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/granite_tile/granite_tile_diff_1k.jpg",
+      "assetUrl": "https://polyhaven.com/a/granite_tile",
+      "name": "Granite Tile",
+      "authors": [
+        "Charlotte Baglioni"
+      ],
+      "map": "diffuse",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "sourceWidthMeters": 2.3,
+      "license": "CC0-1.0",
+      "licenseUrl": "https://polyhaven.com/license",
+      "retrievedAt": "2026-11-13",
+      "status": "Generic PBR surface; not a surveyed Wistron material"
+    },
+    {
+      "file": "granite-normal-gl.jpg",
+      "bytes": 592362,
+      "sha256": "bb9a122e0a1171c52458fc9ac82f588f4e100f1f7b461cc15028bed1c63fe961",
+      "downloadUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/granite_tile/granite_tile_nor_gl_1k.jpg",
+      "assetUrl": "https://polyhaven.com/a/granite_tile",
+      "name": "Granite Tile",
+      "authors": [
+        "Charlotte Baglioni"
+      ],
+      "map": "normal-gl",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "sourceWidthMeters": 2.3,
+      "license": "CC0-1.0",
+      "licenseUrl": "https://polyhaven.com/license",
+      "retrievedAt": "2026-11-13",
+      "status": "Generic PBR surface; not a surveyed Wistron material"
+    },
+    {
+      "file": "granite-roughness.jpg",
+      "bytes": 674755,
+      "sha256": "0bb28aebdb75b850714f936bfb180ffcbb6607342f925ad27f0bfcb5a31ca8de",
+      "downloadUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/granite_tile/granite_tile_rough_1k.jpg",
+      "assetUrl": "https://polyhaven.com/a/granite_tile",
+      "name": "Granite Tile",
+      "authors": [
+        "Charlotte Baglioni"
+      ],
+      "map": "roughness",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "sourceWidthMeters": 2.3,
+      "license": "CC0-1.0",
+      "licenseUrl": "https://polyhaven.com/license",
+      "retrievedAt": "2026-11-13",
+      "status": "Generic PBR surface; not a surveyed Wistron material"
+    }
+  ]
+}

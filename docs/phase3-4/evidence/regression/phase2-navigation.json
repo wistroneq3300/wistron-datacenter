@@ -1,0 +1,332 @@
+{
+  "suite": "phase2-navigation",
+  "date": "2026-11-13T02:42:10.811Z",
+  "tests": [
+    {
+      "name": "Wheel enters all eight semantic stages and reverses to HQ",
+      "status": "PASS",
+      "evidence": [
+        [
+          {
+            "stage": "hq",
+            "entityId": "wistron-hq"
+          },
+          {
+            "stage": "interior",
+            "entityId": "wistron-hq::interior"
+          }
+        ],
+        [
+          {
+            "stage": "hq",
+            "entityId": "wistron-hq"
+          },
+          {
+            "stage": "interior",
+            "entityId": "wistron-hq::interior"
+          },
+          {
+            "stage": "hall",
+            "entityId": "hall-1"
+          }
+        ],
+        [
+          {
+            "stage": "hq",
+            "entityId": "wistron-hq"
+          },
+          {
+            "stage": "interior",
+            "entityId": "wistron-hq::interior"
+          },
+          {
+            "stage": "hall",
+            "entityId": "hall-1"
+          },
+          {
+            "stage": "row",
+            "entityId": "row-a"
+          }
+        ],
+        [
+          {
+            "stage": "hq",
+            "entityId": "wistron-hq"
+          },
+          {
+            "stage": "interior",
+            "entityId": "wistron-hq::interior"
+          },
+          {
+            "stage": "hall",
+            "entityId": "hall-1"
+          },
+          {
+            "stage": "row",
+            "entityId": "row-a"
+          },
+          {
+            "stage": "rack",
+            "entityId": "rack-1"
+          }
+        ],
+        [
+          {
+            "stage": "hq",
+            "entityId": "wistron-hq"
+          },
+          {
+            "stage": "interior",
+            "entityId": "wistron-hq::interior"
+          },
+          {
+            "stage": "hall",
+            "entityId": "hall-1"
+          },
+          {
+            "stage": "row",
+            "entityId": "row-a"
+          },
+          {
+            "stage": "rack",
+            "entityId": "rack-1"
+          },
+          {
+            "stage": "system",
+            "entityId": "editorial-compute-01"
+          }
+        ],
+        [
+          {
+            "stage": "hq",
+            "entityId": "wistron-hq"
+          },
+          {
+            "stage": "interior",
+            "entityId": "wistron-hq::interior"
+          },
+          {
+            "stage": "hall",
+            "entityId": "hall-1"
+          },
+          {
+            "stage": "row",
+            "entityId": "row-a"
+          },
+          {
+            "stage": "rack",
+            "entityId": "rack-1"
+          },
+          {
+            "stage": "system",
+            "entityId": "editorial-compute-01"
+          },
+          {
+            "stage": "board",
+            "entityId": "editorial-compute-01::board-0"
+          }
+        ],
+        [
+          {
+            "stage": "hq",
+            "entityId": "wistron-hq"
+          },
+          {
+            "stage": "interior",
+            "entityId": "wistron-hq::interior"
+          },
+          {
+            "stage": "hall",
+            "entityId": "hall-1"
+          },
+          {
+            "stage": "row",
+            "entityId": "row-a"
+          },
+          {
+            "stage": "rack",
+            "entityId": "rack-1"
+          },
+          {
+            "stage": "system",
+            "entityId": "editorial-compute-01"
+          },
+          {
+            "stage": "board",
+            "entityId": "editorial-compute-01::board-0"
+          },
+          {
+            "stage": "component",
+            "entityId": "editorial-compute-01::Board1-CPU"
+          }
+        ]
+      ]
+    },
+    {
+      "name": "Canvas click and OrbitControls preserve navigation; free wheel only zooms",
+      "status": "PASS"
+    },
+    {
+      "name": "Equipment canvas picking, child buttons and breadcrumb work",
+      "status": "PASS"
+    },
+    {
+      "name": "Missing Switch and Power Shelf internals block descent without invented nodes",
+      "status": "PASS"
+    },
+    {
+      "name": "Rapid reversal cancels transition and pending GLB navigation",
+      "status": "PASS",
+      "evidence": {
+        "instant": 0,
+        "cancelled": false,
+        "state": 3,
+        "owner": "orbit"
+      }
+    },
+    {
+      "name": "Cinematic uses original clock, is seekable/reversible and releases camera ownership",
+      "status": "PASS",
+      "evidence": [
+        {
+          "progress": 0,
+          "clock": 0,
+          "owner": "timeline",
+          "finite": true
+        },
+        {
+          "progress": 0.18,
+          "clock": 4594.730126843524,
+          "owner": "timeline",
+          "finite": true
+        },
+        {
+          "progress": 0.28,
+          "clock": 9716.08894293172,
+          "owner": "timeline",
+          "finite": true
+        },
+        {
+          "progress": 0.31,
+          "clock": 12255.50012372837,
+          "owner": "timeline",
+          "finite": true
+        },
+        {
+          "progress": 0.4,
+          "clock": 17192.273229635703,
+          "owner": "timeline",
+          "finite": true
+        },
+        {
+          "progress": 0.56,
+          "clock": 22000,
+          "owner": "timeline",
+          "finite": true
+        },
+        {
+          "progress": 0.8,
+          "clock": 30700,
+          "owner": "timeline",
+          "finite": true
+        },
+        {
+          "progress": 1,
+          "clock": 39700,
+          "owner": "timeline",
+          "finite": true
+        },
+        {
+          "progress": 0.4,
+          "clock": 17192.273229635703,
+          "owner": "timeline",
+          "finite": true
+        },
+        {
+          "progress": 0,
+          "clock": 0,
+          "owner": "timeline",
+          "finite": true
+        }
+      ]
+    },
+    {
+      "name": "Repeated System / Board / Component load and release returns geometry, textures and materials",
+      "status": "PASS",
+      "evidence": [
+        {
+          "memory": {
+            "geometries": 9,
+            "textures": 23
+          },
+          "refs": 0,
+          "materials": 0,
+          "pool": 0
+        },
+        {
+          "memory": {
+            "geometries": 9,
+            "textures": 23
+          },
+          "refs": 0,
+          "materials": 0,
+          "pool": 0
+        },
+        {
+          "memory": {
+            "geometries": 9,
+            "textures": 23
+          },
+          "refs": 0,
+          "materials": 0,
+          "pool": 0
+        },
+        {
+          "memory": {
+            "geometries": 9,
+            "textures": 23
+          },
+          "refs": 0,
+          "materials": 0,
+          "pool": 0
+        }
+      ]
+    },
+    {
+      "name": "Touch tap navigation, pinch zoom and mobile viewport",
+      "status": "PASS",
+      "evidence": {
+        "viewport": [
+          390,
+          844
+        ],
+        "pinch": {
+          "before": 6.233177359902411,
+          "after": 4.1867091688139615
+        },
+        "events": "CDP touch + Playwright tap; no physical touch hardware"
+      }
+    },
+    {
+      "name": "No browser console, shader or asset errors",
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "browser": "131.0.6778.205",
+  "channel": "chrome",
+  "viewport": {
+    "width": 3440,
+    "height": 1440,
+    "dpr": 1
+  },
+  "runtime": "v24.22.1",
+  "platform": "win32",
+  "summary": {
+    "PASS": 9,
+    "FAIL": 0,
+    "SKIP": 0,
+    "PENDING": 0
+  }
+}

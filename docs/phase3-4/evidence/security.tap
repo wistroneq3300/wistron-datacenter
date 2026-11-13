@@ -1,0 +1,94 @@
+TAP version 13
+# Subtest: configuration rejects unexpected credential fields at every nested domain boundary
+ok 1 - configuration rejects unexpected credential fields at every nested domain boundary
+  ---
+  duration_ms: 26.9385
+  type: 'test'
+  ...
+# Subtest: configuration import cannot introduce telemetry state or control commands
+ok 2 - configuration import cannot introduce telemetry state or control commands
+  ---
+  duration_ms: 5.3226
+  type: 'test'
+  ...
+# Subtest: rejected nested import leaves persisted configuration and revision unchanged
+ok 3 - rejected nested import leaves persisted configuration and revision unchanged
+  ---
+  duration_ms: 4.0791
+  type: 'test'
+  ...
+# Subtest: legacy migration copies approved configuration fields and drops legacy credentials
+ok 4 - legacy migration copies approved configuration fields and drops legacy credentials
+  ---
+  duration_ms: 0.7207
+  type: 'test'
+  ...
+# Subtest: JSON prototype-like nested keys are rejected without changing object prototypes
+ok 5 - JSON prototype-like nested keys are rejected without changing object prototypes
+  ---
+  duration_ms: 0.8515
+  type: 'test'
+  ...
+# Subtest: all downloaded outdoor texture bytes match provenance and valid JPEG signatures
+ok 6 - all downloaded outdoor texture bytes match provenance and valid JPEG signatures
+  ---
+  duration_ms: 5.8927
+  type: 'test'
+  ...
+# Subtest: runtime outdoor manifest references only checked-in local files and keeps facade albedo independent
+ok 7 - runtime outdoor manifest references only checked-in local files and keeps facade albedo independent
+  ---
+  duration_ms: 1.0871
+  type: 'test'
+  ...
+# Subtest: trace URLs reject active content, credential channels and private management destinations
+ok 8 - trace URLs reject active content, credential channels and private management destinations
+  ---
+  duration_ms: 2.4821
+  type: 'test'
+  ...
+# Subtest: monitoring contracts reject nested secrets, executable data and IP identity while assigning receivedAt
+ok 9 - monitoring contracts reject nested secrets, executable data and IP identity while assigning receivedAt
+  ---
+  duration_ms: 2.3149
+  type: 'test'
+  ...
+# Subtest: rejection history does not preserve credentials hidden inside an invalid event ID
+ok 10 - rejection history does not preserve credentials hidden inside an invalid event ID
+  ---
+  duration_ms: 0.5733
+  type: 'test'
+  ...
+# Subtest: PA adapter independently rejects sensitive nested inventory, test and telemetry payloads
+ok 11 - PA adapter independently rejects sensitive nested inventory, test and telemetry payloads
+  ---
+  duration_ms: 1.6472
+  type: 'test'
+  ...
+# Subtest: PA transport accepts only explicit local routes, uses GET and never sends bearer credentials
+ok 12 - PA transport accepts only explicit local routes, uses GET and never sends bearer credentials
+  ---
+  duration_ms: 0.5645
+  type: 'test'
+  ...
+# Subtest: switching from MOCK to live clears synthetic health and cannot mutate persisted equipment configuration
+ok 13 - switching from MOCK to live clears synthetic health and cannot mutate persisted equipment configuration
+  ---
+  duration_ms: 25.5337
+  type: 'test'
+  ...
+# Subtest: startup keeps the original recovery data without duplicating sensitive payloads into backups
+ok 14 - startup keeps the original recovery data without duplicating sensitive payloads into backups
+  ---
+  duration_ms: 9.9585
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 183.4826

@@ -1,0 +1,161 @@
+{
+  "suite": "phase1b-configuration",
+  "date": "2026-11-13T01:59:08.389Z",
+  "tests": [
+    {
+      "name": "UI adds System / Switch / Power Shelf; inventory matches scene",
+      "status": "PASS",
+      "evidence": {
+        "ids": [
+          "eq-66754833-1e0c-4035-bb7e-6a016cd449c9",
+          "eq-884d5b06-28de-4193-aa36-0d5269903b44",
+          "eq-161d5218-5a6a-4c82-ad2f-e0ee39f42abf"
+        ],
+        "meshIds": [
+          "eq-66754833-1e0c-4035-bb7e-6a016cd449c9",
+          "eq-884d5b06-28de-4193-aa36-0d5269903b44",
+          "eq-161d5218-5a6a-4c82-ad2f-e0ee39f42abf"
+        ],
+        "names": [
+          "QA-system",
+          "QA-switch",
+          "QA-powerShelf"
+        ]
+      }
+    },
+    {
+      "name": "UI collision and size failures roll back persisted data and geometry",
+      "status": "PASS"
+    },
+    {
+      "name": "UI move, rear placement, custom model and naming preserve entity ID",
+      "status": "PASS",
+      "evidence": {
+        "id": "eq-884d5b06-28de-4193-aa36-0d5269903b44",
+        "name": "Moved switch",
+        "deviceId": "QA-switch-ID",
+        "rackId": "rack-2",
+        "modelId": "model-98a86fb7-7809-48fe-af05-ece6b67ed86e",
+        "dimensionsMm": {
+          "width": 421.0067,
+          "height": 43.0424,
+          "depth": 585.8303
+        },
+        "placement": {
+          "mode": "grid",
+          "face": "rear",
+          "yawDeg": 0,
+          "grid": "RU",
+          "start": 5,
+          "span": 1,
+          "offsetMm": [
+            0,
+            0,
+            0
+          ]
+        },
+        "children": []
+      }
+    },
+    {
+      "name": "UI XYZ placement and removal use validated store",
+      "status": "PASS"
+    },
+    {
+      "name": "Actual download → file import → export remains byte-identical",
+      "status": "PASS",
+      "evidence": {
+        "download": "wistron-datacenter-config-v2.json",
+        "bytes": 52932
+      }
+    },
+    {
+      "name": "Reload restores equipment, stable IDs and same scene projection",
+      "status": "PASS"
+    },
+    {
+      "name": "Isolation resets when returning to hall and repeated rebuilds reclaim GPU resources",
+      "status": "PASS",
+      "evidence": [
+        {
+          "geometries": 9,
+          "textures": 22,
+          "pool": 0,
+          "materials": 0
+        },
+        {
+          "geometries": 9,
+          "textures": 22,
+          "pool": 0,
+          "materials": 0
+        },
+        {
+          "geometries": 9,
+          "textures": 22,
+          "pool": 0,
+          "materials": 0
+        },
+        {
+          "geometries": 9,
+          "textures": 22,
+          "pool": 0,
+          "materials": 0
+        },
+        {
+          "geometries": 9,
+          "textures": 22,
+          "pool": 0,
+          "materials": 0
+        },
+        {
+          "geometries": 9,
+          "textures": 22,
+          "pool": 0,
+          "materials": 0
+        },
+        {
+          "geometries": 9,
+          "textures": 22,
+          "pool": 0,
+          "materials": 0
+        },
+        {
+          "geometries": 9,
+          "textures": 22,
+          "pool": 0,
+          "materials": 0
+        }
+      ]
+    },
+    {
+      "name": "Main workbench renders at 3440×1440 without errors",
+      "status": "PASS",
+      "evidence": {
+        "canvas": [
+          3440,
+          1339
+        ],
+        "memory": {
+          "geometries": 24,
+          "textures": 22
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "browser": "131.0.6778.205",
+  "channel": "chrome",
+  "viewport": {
+    "width": 3440,
+    "height": 1440,
+    "dpr": 1
+  },
+  "runtime": "v24.22.1",
+  "platform": "win32",
+  "summary": {
+    "PASS": 8,
+    "FAIL": 0,
+    "SKIP": 0
+  }
+}

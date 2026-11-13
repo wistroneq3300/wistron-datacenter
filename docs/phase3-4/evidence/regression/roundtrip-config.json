@@ -1,0 +1,2094 @@
+{
+  "catalog": [
+    {
+      "childDefinitions": [
+        {
+          "boardIndex": 0,
+          "key": "board-0",
+          "kind": "board",
+          "label": "Compute Board 1",
+          "sourceComponent": "board"
+        },
+        {
+          "boardIndex": 1,
+          "key": "board-1",
+          "kind": "board",
+          "label": "Compute Board 2",
+          "sourceComponent": "board"
+        },
+        {
+          "boardIndex": 0,
+          "key": "Board1-CPU",
+          "kind": "component",
+          "label": "Board1/CPU",
+          "sourceComponent": "Board1/CPU"
+        },
+        {
+          "boardIndex": 0,
+          "key": "Board1-GPU_A",
+          "kind": "component",
+          "label": "Board1/GPU_A",
+          "sourceComponent": "Board1/GPU_A"
+        },
+        {
+          "boardIndex": 0,
+          "key": "Board1-GPU_B",
+          "kind": "component",
+          "label": "Board1/GPU_B",
+          "sourceComponent": "Board1/GPU_B"
+        },
+        {
+          "boardIndex": 1,
+          "key": "Board2-CPU",
+          "kind": "component",
+          "label": "Board2/CPU",
+          "sourceComponent": "Board2/CPU"
+        },
+        {
+          "boardIndex": 1,
+          "key": "Board2-GPU_A",
+          "kind": "component",
+          "label": "Board2/GPU_A",
+          "sourceComponent": "Board2/GPU_A"
+        },
+        {
+          "boardIndex": 1,
+          "key": "Board2-GPU_B",
+          "kind": "component",
+          "label": "Board2/GPU_B",
+          "sourceComponent": "Board2/GPU_B"
+        }
+      ],
+      "dimensionsMm": {
+        "depth": 750.1123,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "evidence": {
+        "note": "不是 OEM 尺寸，僅供草稿配置。",
+        "source": "PA normalized authored mesh, scaled to RU pitch for an illustrative envelope",
+        "status": "unverified"
+      },
+      "id": "pa-system",
+      "internalAsset": "pa-l10-bare-cooling",
+      "kind": "system",
+      "name": "PA Liquid Compute · Draft",
+      "originMm": [
+        0,
+        0.6297,
+        19.8148
+      ],
+      "renderVariant": "server",
+      "revision": "pa-f484253a",
+      "span": 1,
+      "specificationState": "draft"
+    },
+    {
+      "childDefinitions": [],
+      "dimensionsMm": {
+        "depth": 585.8303,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "evidence": {
+        "note": "不是 OEM 尺寸，僅供草稿配置。",
+        "source": "PA normalized authored mesh, scaled to RU pitch for an illustrative envelope",
+        "status": "unverified"
+      },
+      "id": "pa-network",
+      "internalAsset": null,
+      "kind": "switch",
+      "name": "PA Network Switch · Draft",
+      "originMm": [
+        0,
+        0.6297,
+        91.8553
+      ],
+      "renderVariant": "switch",
+      "revision": "pa-f484253a",
+      "span": 1,
+      "specificationState": "draft"
+    },
+    {
+      "childDefinitions": [],
+      "dimensionsMm": {
+        "depth": 761.6387,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "evidence": {
+        "note": "不是 OEM 尺寸，僅供草稿配置。",
+        "source": "PA normalized authored mesh, scaled to RU pitch for an illustrative envelope",
+        "status": "unverified"
+      },
+      "id": "pa-fabric",
+      "internalAsset": null,
+      "kind": "switch",
+      "name": "PA Fabric Switch · Draft",
+      "originMm": [
+        0,
+        0.6297,
+        13.6951
+      ],
+      "renderVariant": "nvlink",
+      "revision": "pa-f484253a",
+      "span": 1,
+      "specificationState": "draft"
+    },
+    {
+      "childDefinitions": [],
+      "dimensionsMm": {
+        "depth": 639.3036,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "evidence": {
+        "note": "不是 OEM 尺寸，僅供草稿配置。",
+        "source": "PA normalized authored mesh, scaled to RU pitch for an illustrative envelope",
+        "status": "unverified"
+      },
+      "id": "pa-power",
+      "internalAsset": null,
+      "kind": "powerShelf",
+      "name": "PA Power Shelf · Draft",
+      "originMm": [
+        0,
+        0.6297,
+        72.0108
+      ],
+      "renderVariant": "powershelf",
+      "revision": "pa-f484253a",
+      "span": 1,
+      "specificationState": "draft"
+    },
+    {
+      "childDefinitions": [],
+      "dimensionsMm": {
+        "depth": 585.8303,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "evidence": {
+        "source": "User named catalog derivative of PA authored geometry",
+        "status": "unverified"
+      },
+      "id": "model-98a86fb7-7809-48fe-af05-ece6b67ed86e",
+      "internalAsset": null,
+      "kind": "switch",
+      "name": "QA Switch Model",
+      "originMm": [
+        0,
+        0.6297,
+        91.8553
+      ],
+      "renderVariant": "switch",
+      "revision": "user-draft",
+      "span": 1,
+      "specificationState": "draft"
+    }
+  ],
+  "documentId": "wistron-draft-studio",
+  "equipment": [
+    {
+      "children": [],
+      "deviceId": "SWITCH-1",
+      "dimensionsMm": {
+        "depth": 585.8303,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-switch-1",
+      "modelId": "pa-network",
+      "name": "PA Network Switch · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 46
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [],
+      "deviceId": "SWITCH-2",
+      "dimensionsMm": {
+        "depth": 585.8303,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-switch-2",
+      "modelId": "pa-network",
+      "name": "PA Network Switch · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 45
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [],
+      "deviceId": "POWER-1",
+      "dimensionsMm": {
+        "depth": 639.3036,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-power-1",
+      "modelId": "pa-power",
+      "name": "PA Power Shelf · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 44
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [],
+      "deviceId": "POWER-2",
+      "dimensionsMm": {
+        "depth": 639.3036,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-power-2",
+      "modelId": "pa-power",
+      "name": "PA Power Shelf · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 43
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [],
+      "deviceId": "POWER-3",
+      "dimensionsMm": {
+        "depth": 639.3036,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-power-3",
+      "modelId": "pa-power",
+      "name": "PA Power Shelf · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 42
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [],
+      "deviceId": "POWER-4",
+      "dimensionsMm": {
+        "depth": 639.3036,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-power-4",
+      "modelId": "pa-power",
+      "name": "PA Power Shelf · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 41
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [
+        {
+          "definitionKey": "board-0",
+          "id": "editorial-compute-01::board-0",
+          "parentId": "editorial-compute-01"
+        },
+        {
+          "definitionKey": "board-1",
+          "id": "editorial-compute-01::board-1",
+          "parentId": "editorial-compute-01"
+        },
+        {
+          "definitionKey": "Board1-CPU",
+          "id": "editorial-compute-01::Board1-CPU",
+          "parentId": "editorial-compute-01"
+        },
+        {
+          "definitionKey": "Board1-GPU_A",
+          "id": "editorial-compute-01::Board1-GPU_A",
+          "parentId": "editorial-compute-01"
+        },
+        {
+          "definitionKey": "Board1-GPU_B",
+          "id": "editorial-compute-01::Board1-GPU_B",
+          "parentId": "editorial-compute-01"
+        },
+        {
+          "definitionKey": "Board2-CPU",
+          "id": "editorial-compute-01::Board2-CPU",
+          "parentId": "editorial-compute-01"
+        },
+        {
+          "definitionKey": "Board2-GPU_A",
+          "id": "editorial-compute-01::Board2-GPU_A",
+          "parentId": "editorial-compute-01"
+        },
+        {
+          "definitionKey": "Board2-GPU_B",
+          "id": "editorial-compute-01::Board2-GPU_B",
+          "parentId": "editorial-compute-01"
+        }
+      ],
+      "deviceId": "COMPUTE-01",
+      "dimensionsMm": {
+        "depth": 750.1123,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-compute-01",
+      "modelId": "pa-system",
+      "name": "PA Liquid Compute · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 40
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [
+        {
+          "definitionKey": "board-0",
+          "id": "editorial-compute-02::board-0",
+          "parentId": "editorial-compute-02"
+        },
+        {
+          "definitionKey": "board-1",
+          "id": "editorial-compute-02::board-1",
+          "parentId": "editorial-compute-02"
+        },
+        {
+          "definitionKey": "Board1-CPU",
+          "id": "editorial-compute-02::Board1-CPU",
+          "parentId": "editorial-compute-02"
+        },
+        {
+          "definitionKey": "Board1-GPU_A",
+          "id": "editorial-compute-02::Board1-GPU_A",
+          "parentId": "editorial-compute-02"
+        },
+        {
+          "definitionKey": "Board1-GPU_B",
+          "id": "editorial-compute-02::Board1-GPU_B",
+          "parentId": "editorial-compute-02"
+        },
+        {
+          "definitionKey": "Board2-CPU",
+          "id": "editorial-compute-02::Board2-CPU",
+          "parentId": "editorial-compute-02"
+        },
+        {
+          "definitionKey": "Board2-GPU_A",
+          "id": "editorial-compute-02::Board2-GPU_A",
+          "parentId": "editorial-compute-02"
+        },
+        {
+          "definitionKey": "Board2-GPU_B",
+          "id": "editorial-compute-02::Board2-GPU_B",
+          "parentId": "editorial-compute-02"
+        }
+      ],
+      "deviceId": "COMPUTE-02",
+      "dimensionsMm": {
+        "depth": 750.1123,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-compute-02",
+      "modelId": "pa-system",
+      "name": "PA Liquid Compute · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 39
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [
+        {
+          "definitionKey": "board-0",
+          "id": "editorial-compute-03::board-0",
+          "parentId": "editorial-compute-03"
+        },
+        {
+          "definitionKey": "board-1",
+          "id": "editorial-compute-03::board-1",
+          "parentId": "editorial-compute-03"
+        },
+        {
+          "definitionKey": "Board1-CPU",
+          "id": "editorial-compute-03::Board1-CPU",
+          "parentId": "editorial-compute-03"
+        },
+        {
+          "definitionKey": "Board1-GPU_A",
+          "id": "editorial-compute-03::Board1-GPU_A",
+          "parentId": "editorial-compute-03"
+        },
+        {
+          "definitionKey": "Board1-GPU_B",
+          "id": "editorial-compute-03::Board1-GPU_B",
+          "parentId": "editorial-compute-03"
+        },
+        {
+          "definitionKey": "Board2-CPU",
+          "id": "editorial-compute-03::Board2-CPU",
+          "parentId": "editorial-compute-03"
+        },
+        {
+          "definitionKey": "Board2-GPU_A",
+          "id": "editorial-compute-03::Board2-GPU_A",
+          "parentId": "editorial-compute-03"
+        },
+        {
+          "definitionKey": "Board2-GPU_B",
+          "id": "editorial-compute-03::Board2-GPU_B",
+          "parentId": "editorial-compute-03"
+        }
+      ],
+      "deviceId": "COMPUTE-03",
+      "dimensionsMm": {
+        "depth": 750.1123,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-compute-03",
+      "modelId": "pa-system",
+      "name": "PA Liquid Compute · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 38
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [
+        {
+          "definitionKey": "board-0",
+          "id": "editorial-compute-04::board-0",
+          "parentId": "editorial-compute-04"
+        },
+        {
+          "definitionKey": "board-1",
+          "id": "editorial-compute-04::board-1",
+          "parentId": "editorial-compute-04"
+        },
+        {
+          "definitionKey": "Board1-CPU",
+          "id": "editorial-compute-04::Board1-CPU",
+          "parentId": "editorial-compute-04"
+        },
+        {
+          "definitionKey": "Board1-GPU_A",
+          "id": "editorial-compute-04::Board1-GPU_A",
+          "parentId": "editorial-compute-04"
+        },
+        {
+          "definitionKey": "Board1-GPU_B",
+          "id": "editorial-compute-04::Board1-GPU_B",
+          "parentId": "editorial-compute-04"
+        },
+        {
+          "definitionKey": "Board2-CPU",
+          "id": "editorial-compute-04::Board2-CPU",
+          "parentId": "editorial-compute-04"
+        },
+        {
+          "definitionKey": "Board2-GPU_A",
+          "id": "editorial-compute-04::Board2-GPU_A",
+          "parentId": "editorial-compute-04"
+        },
+        {
+          "definitionKey": "Board2-GPU_B",
+          "id": "editorial-compute-04::Board2-GPU_B",
+          "parentId": "editorial-compute-04"
+        }
+      ],
+      "deviceId": "COMPUTE-04",
+      "dimensionsMm": {
+        "depth": 750.1123,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-compute-04",
+      "modelId": "pa-system",
+      "name": "PA Liquid Compute · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 37
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [
+        {
+          "definitionKey": "board-0",
+          "id": "editorial-compute-05::board-0",
+          "parentId": "editorial-compute-05"
+        },
+        {
+          "definitionKey": "board-1",
+          "id": "editorial-compute-05::board-1",
+          "parentId": "editorial-compute-05"
+        },
+        {
+          "definitionKey": "Board1-CPU",
+          "id": "editorial-compute-05::Board1-CPU",
+          "parentId": "editorial-compute-05"
+        },
+        {
+          "definitionKey": "Board1-GPU_A",
+          "id": "editorial-compute-05::Board1-GPU_A",
+          "parentId": "editorial-compute-05"
+        },
+        {
+          "definitionKey": "Board1-GPU_B",
+          "id": "editorial-compute-05::Board1-GPU_B",
+          "parentId": "editorial-compute-05"
+        },
+        {
+          "definitionKey": "Board2-CPU",
+          "id": "editorial-compute-05::Board2-CPU",
+          "parentId": "editorial-compute-05"
+        },
+        {
+          "definitionKey": "Board2-GPU_A",
+          "id": "editorial-compute-05::Board2-GPU_A",
+          "parentId": "editorial-compute-05"
+        },
+        {
+          "definitionKey": "Board2-GPU_B",
+          "id": "editorial-compute-05::Board2-GPU_B",
+          "parentId": "editorial-compute-05"
+        }
+      ],
+      "deviceId": "COMPUTE-05",
+      "dimensionsMm": {
+        "depth": 750.1123,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-compute-05",
+      "modelId": "pa-system",
+      "name": "PA Liquid Compute · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 36
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [
+        {
+          "definitionKey": "board-0",
+          "id": "editorial-compute-06::board-0",
+          "parentId": "editorial-compute-06"
+        },
+        {
+          "definitionKey": "board-1",
+          "id": "editorial-compute-06::board-1",
+          "parentId": "editorial-compute-06"
+        },
+        {
+          "definitionKey": "Board1-CPU",
+          "id": "editorial-compute-06::Board1-CPU",
+          "parentId": "editorial-compute-06"
+        },
+        {
+          "definitionKey": "Board1-GPU_A",
+          "id": "editorial-compute-06::Board1-GPU_A",
+          "parentId": "editorial-compute-06"
+        },
+        {
+          "definitionKey": "Board1-GPU_B",
+          "id": "editorial-compute-06::Board1-GPU_B",
+          "parentId": "editorial-compute-06"
+        },
+        {
+          "definitionKey": "Board2-CPU",
+          "id": "editorial-compute-06::Board2-CPU",
+          "parentId": "editorial-compute-06"
+        },
+        {
+          "definitionKey": "Board2-GPU_A",
+          "id": "editorial-compute-06::Board2-GPU_A",
+          "parentId": "editorial-compute-06"
+        },
+        {
+          "definitionKey": "Board2-GPU_B",
+          "id": "editorial-compute-06::Board2-GPU_B",
+          "parentId": "editorial-compute-06"
+        }
+      ],
+      "deviceId": "COMPUTE-06",
+      "dimensionsMm": {
+        "depth": 750.1123,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-compute-06",
+      "modelId": "pa-system",
+      "name": "PA Liquid Compute · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 35
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [
+        {
+          "definitionKey": "board-0",
+          "id": "editorial-compute-07::board-0",
+          "parentId": "editorial-compute-07"
+        },
+        {
+          "definitionKey": "board-1",
+          "id": "editorial-compute-07::board-1",
+          "parentId": "editorial-compute-07"
+        },
+        {
+          "definitionKey": "Board1-CPU",
+          "id": "editorial-compute-07::Board1-CPU",
+          "parentId": "editorial-compute-07"
+        },
+        {
+          "definitionKey": "Board1-GPU_A",
+          "id": "editorial-compute-07::Board1-GPU_A",
+          "parentId": "editorial-compute-07"
+        },
+        {
+          "definitionKey": "Board1-GPU_B",
+          "id": "editorial-compute-07::Board1-GPU_B",
+          "parentId": "editorial-compute-07"
+        },
+        {
+          "definitionKey": "Board2-CPU",
+          "id": "editorial-compute-07::Board2-CPU",
+          "parentId": "editorial-compute-07"
+        },
+        {
+          "definitionKey": "Board2-GPU_A",
+          "id": "editorial-compute-07::Board2-GPU_A",
+          "parentId": "editorial-compute-07"
+        },
+        {
+          "definitionKey": "Board2-GPU_B",
+          "id": "editorial-compute-07::Board2-GPU_B",
+          "parentId": "editorial-compute-07"
+        }
+      ],
+      "deviceId": "COMPUTE-07",
+      "dimensionsMm": {
+        "depth": 750.1123,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-compute-07",
+      "modelId": "pa-system",
+      "name": "PA Liquid Compute · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 34
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [
+        {
+          "definitionKey": "board-0",
+          "id": "editorial-compute-08::board-0",
+          "parentId": "editorial-compute-08"
+        },
+        {
+          "definitionKey": "board-1",
+          "id": "editorial-compute-08::board-1",
+          "parentId": "editorial-compute-08"
+        },
+        {
+          "definitionKey": "Board1-CPU",
+          "id": "editorial-compute-08::Board1-CPU",
+          "parentId": "editorial-compute-08"
+        },
+        {
+          "definitionKey": "Board1-GPU_A",
+          "id": "editorial-compute-08::Board1-GPU_A",
+          "parentId": "editorial-compute-08"
+        },
+        {
+          "definitionKey": "Board1-GPU_B",
+          "id": "editorial-compute-08::Board1-GPU_B",
+          "parentId": "editorial-compute-08"
+        },
+        {
+          "definitionKey": "Board2-CPU",
+          "id": "editorial-compute-08::Board2-CPU",
+          "parentId": "editorial-compute-08"
+        },
+        {
+          "definitionKey": "Board2-GPU_A",
+          "id": "editorial-compute-08::Board2-GPU_A",
+          "parentId": "editorial-compute-08"
+        },
+        {
+          "definitionKey": "Board2-GPU_B",
+          "id": "editorial-compute-08::Board2-GPU_B",
+          "parentId": "editorial-compute-08"
+        }
+      ],
+      "deviceId": "COMPUTE-08",
+      "dimensionsMm": {
+        "depth": 750.1123,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-compute-08",
+      "modelId": "pa-system",
+      "name": "PA Liquid Compute · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 33
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [
+        {
+          "definitionKey": "board-0",
+          "id": "editorial-compute-09::board-0",
+          "parentId": "editorial-compute-09"
+        },
+        {
+          "definitionKey": "board-1",
+          "id": "editorial-compute-09::board-1",
+          "parentId": "editorial-compute-09"
+        },
+        {
+          "definitionKey": "Board1-CPU",
+          "id": "editorial-compute-09::Board1-CPU",
+          "parentId": "editorial-compute-09"
+        },
+        {
+          "definitionKey": "Board1-GPU_A",
+          "id": "editorial-compute-09::Board1-GPU_A",
+          "parentId": "editorial-compute-09"
+        },
+        {
+          "definitionKey": "Board1-GPU_B",
+          "id": "editorial-compute-09::Board1-GPU_B",
+          "parentId": "editorial-compute-09"
+        },
+        {
+          "definitionKey": "Board2-CPU",
+          "id": "editorial-compute-09::Board2-CPU",
+          "parentId": "editorial-compute-09"
+        },
+        {
+          "definitionKey": "Board2-GPU_A",
+          "id": "editorial-compute-09::Board2-GPU_A",
+          "parentId": "editorial-compute-09"
+        },
+        {
+          "definitionKey": "Board2-GPU_B",
+          "id": "editorial-compute-09::Board2-GPU_B",
+          "parentId": "editorial-compute-09"
+        }
+      ],
+      "deviceId": "COMPUTE-09",
+      "dimensionsMm": {
+        "depth": 750.1123,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-compute-09",
+      "modelId": "pa-system",
+      "name": "PA Liquid Compute · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 32
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [],
+      "deviceId": "NVLINK-01",
+      "dimensionsMm": {
+        "depth": 761.6387,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-nvlink-01",
+      "modelId": "pa-fabric",
+      "name": "PA Fabric Switch · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 31
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [],
+      "deviceId": "NVLINK-02",
+      "dimensionsMm": {
+        "depth": 761.6387,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-nvlink-02",
+      "modelId": "pa-fabric",
+      "name": "PA Fabric Switch · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 30
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [],
+      "deviceId": "NVLINK-03",
+      "dimensionsMm": {
+        "depth": 761.6387,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-nvlink-03",
+      "modelId": "pa-fabric",
+      "name": "PA Fabric Switch · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 29
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [],
+      "deviceId": "NVLINK-04",
+      "dimensionsMm": {
+        "depth": 761.6387,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-nvlink-04",
+      "modelId": "pa-fabric",
+      "name": "PA Fabric Switch · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 28
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [],
+      "deviceId": "NVLINK-05",
+      "dimensionsMm": {
+        "depth": 761.6387,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-nvlink-05",
+      "modelId": "pa-fabric",
+      "name": "PA Fabric Switch · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 27
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [],
+      "deviceId": "NVLINK-06",
+      "dimensionsMm": {
+        "depth": 761.6387,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-nvlink-06",
+      "modelId": "pa-fabric",
+      "name": "PA Fabric Switch · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 26
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [],
+      "deviceId": "NVLINK-07",
+      "dimensionsMm": {
+        "depth": 761.6387,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-nvlink-07",
+      "modelId": "pa-fabric",
+      "name": "PA Fabric Switch · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 25
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [],
+      "deviceId": "NVLINK-08",
+      "dimensionsMm": {
+        "depth": 761.6387,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-nvlink-08",
+      "modelId": "pa-fabric",
+      "name": "PA Fabric Switch · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 24
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [],
+      "deviceId": "NVLINK-09",
+      "dimensionsMm": {
+        "depth": 761.6387,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-nvlink-09",
+      "modelId": "pa-fabric",
+      "name": "PA Fabric Switch · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 23
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [
+        {
+          "definitionKey": "board-0",
+          "id": "editorial-compute-10::board-0",
+          "parentId": "editorial-compute-10"
+        },
+        {
+          "definitionKey": "board-1",
+          "id": "editorial-compute-10::board-1",
+          "parentId": "editorial-compute-10"
+        },
+        {
+          "definitionKey": "Board1-CPU",
+          "id": "editorial-compute-10::Board1-CPU",
+          "parentId": "editorial-compute-10"
+        },
+        {
+          "definitionKey": "Board1-GPU_A",
+          "id": "editorial-compute-10::Board1-GPU_A",
+          "parentId": "editorial-compute-10"
+        },
+        {
+          "definitionKey": "Board1-GPU_B",
+          "id": "editorial-compute-10::Board1-GPU_B",
+          "parentId": "editorial-compute-10"
+        },
+        {
+          "definitionKey": "Board2-CPU",
+          "id": "editorial-compute-10::Board2-CPU",
+          "parentId": "editorial-compute-10"
+        },
+        {
+          "definitionKey": "Board2-GPU_A",
+          "id": "editorial-compute-10::Board2-GPU_A",
+          "parentId": "editorial-compute-10"
+        },
+        {
+          "definitionKey": "Board2-GPU_B",
+          "id": "editorial-compute-10::Board2-GPU_B",
+          "parentId": "editorial-compute-10"
+        }
+      ],
+      "deviceId": "COMPUTE-10",
+      "dimensionsMm": {
+        "depth": 750.1123,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-compute-10",
+      "modelId": "pa-system",
+      "name": "PA Liquid Compute · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 22
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [
+        {
+          "definitionKey": "board-0",
+          "id": "editorial-compute-11::board-0",
+          "parentId": "editorial-compute-11"
+        },
+        {
+          "definitionKey": "board-1",
+          "id": "editorial-compute-11::board-1",
+          "parentId": "editorial-compute-11"
+        },
+        {
+          "definitionKey": "Board1-CPU",
+          "id": "editorial-compute-11::Board1-CPU",
+          "parentId": "editorial-compute-11"
+        },
+        {
+          "definitionKey": "Board1-GPU_A",
+          "id": "editorial-compute-11::Board1-GPU_A",
+          "parentId": "editorial-compute-11"
+        },
+        {
+          "definitionKey": "Board1-GPU_B",
+          "id": "editorial-compute-11::Board1-GPU_B",
+          "parentId": "editorial-compute-11"
+        },
+        {
+          "definitionKey": "Board2-CPU",
+          "id": "editorial-compute-11::Board2-CPU",
+          "parentId": "editorial-compute-11"
+        },
+        {
+          "definitionKey": "Board2-GPU_A",
+          "id": "editorial-compute-11::Board2-GPU_A",
+          "parentId": "editorial-compute-11"
+        },
+        {
+          "definitionKey": "Board2-GPU_B",
+          "id": "editorial-compute-11::Board2-GPU_B",
+          "parentId": "editorial-compute-11"
+        }
+      ],
+      "deviceId": "COMPUTE-11",
+      "dimensionsMm": {
+        "depth": 750.1123,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-compute-11",
+      "modelId": "pa-system",
+      "name": "PA Liquid Compute · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 21
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [
+        {
+          "definitionKey": "board-0",
+          "id": "editorial-compute-12::board-0",
+          "parentId": "editorial-compute-12"
+        },
+        {
+          "definitionKey": "board-1",
+          "id": "editorial-compute-12::board-1",
+          "parentId": "editorial-compute-12"
+        },
+        {
+          "definitionKey": "Board1-CPU",
+          "id": "editorial-compute-12::Board1-CPU",
+          "parentId": "editorial-compute-12"
+        },
+        {
+          "definitionKey": "Board1-GPU_A",
+          "id": "editorial-compute-12::Board1-GPU_A",
+          "parentId": "editorial-compute-12"
+        },
+        {
+          "definitionKey": "Board1-GPU_B",
+          "id": "editorial-compute-12::Board1-GPU_B",
+          "parentId": "editorial-compute-12"
+        },
+        {
+          "definitionKey": "Board2-CPU",
+          "id": "editorial-compute-12::Board2-CPU",
+          "parentId": "editorial-compute-12"
+        },
+        {
+          "definitionKey": "Board2-GPU_A",
+          "id": "editorial-compute-12::Board2-GPU_A",
+          "parentId": "editorial-compute-12"
+        },
+        {
+          "definitionKey": "Board2-GPU_B",
+          "id": "editorial-compute-12::Board2-GPU_B",
+          "parentId": "editorial-compute-12"
+        }
+      ],
+      "deviceId": "COMPUTE-12",
+      "dimensionsMm": {
+        "depth": 750.1123,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-compute-12",
+      "modelId": "pa-system",
+      "name": "PA Liquid Compute · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 20
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [
+        {
+          "definitionKey": "board-0",
+          "id": "editorial-compute-13::board-0",
+          "parentId": "editorial-compute-13"
+        },
+        {
+          "definitionKey": "board-1",
+          "id": "editorial-compute-13::board-1",
+          "parentId": "editorial-compute-13"
+        },
+        {
+          "definitionKey": "Board1-CPU",
+          "id": "editorial-compute-13::Board1-CPU",
+          "parentId": "editorial-compute-13"
+        },
+        {
+          "definitionKey": "Board1-GPU_A",
+          "id": "editorial-compute-13::Board1-GPU_A",
+          "parentId": "editorial-compute-13"
+        },
+        {
+          "definitionKey": "Board1-GPU_B",
+          "id": "editorial-compute-13::Board1-GPU_B",
+          "parentId": "editorial-compute-13"
+        },
+        {
+          "definitionKey": "Board2-CPU",
+          "id": "editorial-compute-13::Board2-CPU",
+          "parentId": "editorial-compute-13"
+        },
+        {
+          "definitionKey": "Board2-GPU_A",
+          "id": "editorial-compute-13::Board2-GPU_A",
+          "parentId": "editorial-compute-13"
+        },
+        {
+          "definitionKey": "Board2-GPU_B",
+          "id": "editorial-compute-13::Board2-GPU_B",
+          "parentId": "editorial-compute-13"
+        }
+      ],
+      "deviceId": "COMPUTE-13",
+      "dimensionsMm": {
+        "depth": 750.1123,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-compute-13",
+      "modelId": "pa-system",
+      "name": "PA Liquid Compute · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 19
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [
+        {
+          "definitionKey": "board-0",
+          "id": "editorial-compute-14::board-0",
+          "parentId": "editorial-compute-14"
+        },
+        {
+          "definitionKey": "board-1",
+          "id": "editorial-compute-14::board-1",
+          "parentId": "editorial-compute-14"
+        },
+        {
+          "definitionKey": "Board1-CPU",
+          "id": "editorial-compute-14::Board1-CPU",
+          "parentId": "editorial-compute-14"
+        },
+        {
+          "definitionKey": "Board1-GPU_A",
+          "id": "editorial-compute-14::Board1-GPU_A",
+          "parentId": "editorial-compute-14"
+        },
+        {
+          "definitionKey": "Board1-GPU_B",
+          "id": "editorial-compute-14::Board1-GPU_B",
+          "parentId": "editorial-compute-14"
+        },
+        {
+          "definitionKey": "Board2-CPU",
+          "id": "editorial-compute-14::Board2-CPU",
+          "parentId": "editorial-compute-14"
+        },
+        {
+          "definitionKey": "Board2-GPU_A",
+          "id": "editorial-compute-14::Board2-GPU_A",
+          "parentId": "editorial-compute-14"
+        },
+        {
+          "definitionKey": "Board2-GPU_B",
+          "id": "editorial-compute-14::Board2-GPU_B",
+          "parentId": "editorial-compute-14"
+        }
+      ],
+      "deviceId": "COMPUTE-14",
+      "dimensionsMm": {
+        "depth": 750.1123,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-compute-14",
+      "modelId": "pa-system",
+      "name": "PA Liquid Compute · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 18
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [
+        {
+          "definitionKey": "board-0",
+          "id": "editorial-compute-15::board-0",
+          "parentId": "editorial-compute-15"
+        },
+        {
+          "definitionKey": "board-1",
+          "id": "editorial-compute-15::board-1",
+          "parentId": "editorial-compute-15"
+        },
+        {
+          "definitionKey": "Board1-CPU",
+          "id": "editorial-compute-15::Board1-CPU",
+          "parentId": "editorial-compute-15"
+        },
+        {
+          "definitionKey": "Board1-GPU_A",
+          "id": "editorial-compute-15::Board1-GPU_A",
+          "parentId": "editorial-compute-15"
+        },
+        {
+          "definitionKey": "Board1-GPU_B",
+          "id": "editorial-compute-15::Board1-GPU_B",
+          "parentId": "editorial-compute-15"
+        },
+        {
+          "definitionKey": "Board2-CPU",
+          "id": "editorial-compute-15::Board2-CPU",
+          "parentId": "editorial-compute-15"
+        },
+        {
+          "definitionKey": "Board2-GPU_A",
+          "id": "editorial-compute-15::Board2-GPU_A",
+          "parentId": "editorial-compute-15"
+        },
+        {
+          "definitionKey": "Board2-GPU_B",
+          "id": "editorial-compute-15::Board2-GPU_B",
+          "parentId": "editorial-compute-15"
+        }
+      ],
+      "deviceId": "COMPUTE-15",
+      "dimensionsMm": {
+        "depth": 750.1123,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-compute-15",
+      "modelId": "pa-system",
+      "name": "PA Liquid Compute · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 17
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [
+        {
+          "definitionKey": "board-0",
+          "id": "editorial-compute-16::board-0",
+          "parentId": "editorial-compute-16"
+        },
+        {
+          "definitionKey": "board-1",
+          "id": "editorial-compute-16::board-1",
+          "parentId": "editorial-compute-16"
+        },
+        {
+          "definitionKey": "Board1-CPU",
+          "id": "editorial-compute-16::Board1-CPU",
+          "parentId": "editorial-compute-16"
+        },
+        {
+          "definitionKey": "Board1-GPU_A",
+          "id": "editorial-compute-16::Board1-GPU_A",
+          "parentId": "editorial-compute-16"
+        },
+        {
+          "definitionKey": "Board1-GPU_B",
+          "id": "editorial-compute-16::Board1-GPU_B",
+          "parentId": "editorial-compute-16"
+        },
+        {
+          "definitionKey": "Board2-CPU",
+          "id": "editorial-compute-16::Board2-CPU",
+          "parentId": "editorial-compute-16"
+        },
+        {
+          "definitionKey": "Board2-GPU_A",
+          "id": "editorial-compute-16::Board2-GPU_A",
+          "parentId": "editorial-compute-16"
+        },
+        {
+          "definitionKey": "Board2-GPU_B",
+          "id": "editorial-compute-16::Board2-GPU_B",
+          "parentId": "editorial-compute-16"
+        }
+      ],
+      "deviceId": "COMPUTE-16",
+      "dimensionsMm": {
+        "depth": 750.1123,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-compute-16",
+      "modelId": "pa-system",
+      "name": "PA Liquid Compute · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 16
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [
+        {
+          "definitionKey": "board-0",
+          "id": "editorial-compute-17::board-0",
+          "parentId": "editorial-compute-17"
+        },
+        {
+          "definitionKey": "board-1",
+          "id": "editorial-compute-17::board-1",
+          "parentId": "editorial-compute-17"
+        },
+        {
+          "definitionKey": "Board1-CPU",
+          "id": "editorial-compute-17::Board1-CPU",
+          "parentId": "editorial-compute-17"
+        },
+        {
+          "definitionKey": "Board1-GPU_A",
+          "id": "editorial-compute-17::Board1-GPU_A",
+          "parentId": "editorial-compute-17"
+        },
+        {
+          "definitionKey": "Board1-GPU_B",
+          "id": "editorial-compute-17::Board1-GPU_B",
+          "parentId": "editorial-compute-17"
+        },
+        {
+          "definitionKey": "Board2-CPU",
+          "id": "editorial-compute-17::Board2-CPU",
+          "parentId": "editorial-compute-17"
+        },
+        {
+          "definitionKey": "Board2-GPU_A",
+          "id": "editorial-compute-17::Board2-GPU_A",
+          "parentId": "editorial-compute-17"
+        },
+        {
+          "definitionKey": "Board2-GPU_B",
+          "id": "editorial-compute-17::Board2-GPU_B",
+          "parentId": "editorial-compute-17"
+        }
+      ],
+      "deviceId": "COMPUTE-17",
+      "dimensionsMm": {
+        "depth": 750.1123,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-compute-17",
+      "modelId": "pa-system",
+      "name": "PA Liquid Compute · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 15
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [
+        {
+          "definitionKey": "board-0",
+          "id": "editorial-compute-18::board-0",
+          "parentId": "editorial-compute-18"
+        },
+        {
+          "definitionKey": "board-1",
+          "id": "editorial-compute-18::board-1",
+          "parentId": "editorial-compute-18"
+        },
+        {
+          "definitionKey": "Board1-CPU",
+          "id": "editorial-compute-18::Board1-CPU",
+          "parentId": "editorial-compute-18"
+        },
+        {
+          "definitionKey": "Board1-GPU_A",
+          "id": "editorial-compute-18::Board1-GPU_A",
+          "parentId": "editorial-compute-18"
+        },
+        {
+          "definitionKey": "Board1-GPU_B",
+          "id": "editorial-compute-18::Board1-GPU_B",
+          "parentId": "editorial-compute-18"
+        },
+        {
+          "definitionKey": "Board2-CPU",
+          "id": "editorial-compute-18::Board2-CPU",
+          "parentId": "editorial-compute-18"
+        },
+        {
+          "definitionKey": "Board2-GPU_A",
+          "id": "editorial-compute-18::Board2-GPU_A",
+          "parentId": "editorial-compute-18"
+        },
+        {
+          "definitionKey": "Board2-GPU_B",
+          "id": "editorial-compute-18::Board2-GPU_B",
+          "parentId": "editorial-compute-18"
+        }
+      ],
+      "deviceId": "COMPUTE-18",
+      "dimensionsMm": {
+        "depth": 750.1123,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-compute-18",
+      "modelId": "pa-system",
+      "name": "PA Liquid Compute · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 14
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [],
+      "deviceId": "POWER-5",
+      "dimensionsMm": {
+        "depth": 639.3036,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-power-5",
+      "modelId": "pa-power",
+      "name": "PA Power Shelf · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 13
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [],
+      "deviceId": "POWER-6",
+      "dimensionsMm": {
+        "depth": 639.3036,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-power-6",
+      "modelId": "pa-power",
+      "name": "PA Power Shelf · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 12
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [],
+      "deviceId": "POWER-7",
+      "dimensionsMm": {
+        "depth": 639.3036,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-power-7",
+      "modelId": "pa-power",
+      "name": "PA Power Shelf · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 11
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [],
+      "deviceId": "POWER-8",
+      "dimensionsMm": {
+        "depth": 639.3036,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "editorial-power-8",
+      "modelId": "pa-power",
+      "name": "PA Power Shelf · Draft",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 10
+      },
+      "rackId": "rack-1"
+    },
+    {
+      "children": [
+        {
+          "definitionKey": "board-0",
+          "id": "eq-66754833-1e0c-4035-bb7e-6a016cd449c9::board-0",
+          "parentId": "eq-66754833-1e0c-4035-bb7e-6a016cd449c9"
+        },
+        {
+          "definitionKey": "board-1",
+          "id": "eq-66754833-1e0c-4035-bb7e-6a016cd449c9::board-1",
+          "parentId": "eq-66754833-1e0c-4035-bb7e-6a016cd449c9"
+        },
+        {
+          "definitionKey": "Board1-CPU",
+          "id": "eq-66754833-1e0c-4035-bb7e-6a016cd449c9::Board1-CPU",
+          "parentId": "eq-66754833-1e0c-4035-bb7e-6a016cd449c9"
+        },
+        {
+          "definitionKey": "Board1-GPU_A",
+          "id": "eq-66754833-1e0c-4035-bb7e-6a016cd449c9::Board1-GPU_A",
+          "parentId": "eq-66754833-1e0c-4035-bb7e-6a016cd449c9"
+        },
+        {
+          "definitionKey": "Board1-GPU_B",
+          "id": "eq-66754833-1e0c-4035-bb7e-6a016cd449c9::Board1-GPU_B",
+          "parentId": "eq-66754833-1e0c-4035-bb7e-6a016cd449c9"
+        },
+        {
+          "definitionKey": "Board2-CPU",
+          "id": "eq-66754833-1e0c-4035-bb7e-6a016cd449c9::Board2-CPU",
+          "parentId": "eq-66754833-1e0c-4035-bb7e-6a016cd449c9"
+        },
+        {
+          "definitionKey": "Board2-GPU_A",
+          "id": "eq-66754833-1e0c-4035-bb7e-6a016cd449c9::Board2-GPU_A",
+          "parentId": "eq-66754833-1e0c-4035-bb7e-6a016cd449c9"
+        },
+        {
+          "definitionKey": "Board2-GPU_B",
+          "id": "eq-66754833-1e0c-4035-bb7e-6a016cd449c9::Board2-GPU_B",
+          "parentId": "eq-66754833-1e0c-4035-bb7e-6a016cd449c9"
+        }
+      ],
+      "deviceId": "QA-system-ID",
+      "dimensionsMm": {
+        "depth": 750.1123,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "eq-66754833-1e0c-4035-bb7e-6a016cd449c9",
+      "modelId": "pa-system",
+      "name": "QA-system",
+      "placement": {
+        "face": "front",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 1,
+        "yawDeg": 0
+      },
+      "rackId": "rack-2"
+    },
+    {
+      "children": [],
+      "deviceId": "QA-switch-ID",
+      "dimensionsMm": {
+        "depth": 585.8303,
+        "height": 43.0424,
+        "width": 421.0067
+      },
+      "id": "eq-884d5b06-28de-4193-aa36-0d5269903b44",
+      "modelId": "model-98a86fb7-7809-48fe-af05-ece6b67ed86e",
+      "name": "Moved switch",
+      "placement": {
+        "face": "rear",
+        "grid": "RU",
+        "mode": "grid",
+        "offsetMm": [
+          0,
+          0,
+          0
+        ],
+        "span": 1,
+        "start": 5,
+        "yawDeg": 0
+      },
+      "rackId": "rack-2"
+    }
+  ],
+  "rackProfiles": [
+    {
+      "capacity": 48,
+      "evidence": {
+        "source": "PA authored proportions / standard RU pitch; OEM rail, body, door and service clearance unverified",
+        "status": "unverified"
+      },
+      "grid": "RU",
+      "id": "pa-48ru-draft",
+      "name": "PA 48 RU · Draft",
+      "pitchMm": 44.45,
+      "specificationState": "draft",
+      "usableDepthMm": 1050,
+      "usableWidthMm": 460
+    }
+  ],
+  "racks": [
+    {
+      "id": "rack-1",
+      "inventoryState": "draft",
+      "name": "R01",
+      "position": 0,
+      "positionMm": [
+        -3850,
+        130,
+        7000
+      ],
+      "profileId": "pa-48ru-draft",
+      "purpose": "Draft configuration",
+      "rowId": "row-a"
+    },
+    {
+      "id": "rack-2",
+      "inventoryState": "empty",
+      "name": "R02",
+      "position": 1,
+      "positionMm": [
+        -2750,
+        130,
+        7000
+      ],
+      "profileId": "pa-48ru-draft",
+      "purpose": "Draft configuration",
+      "rowId": "row-a"
+    },
+    {
+      "id": "rack-3",
+      "inventoryState": "empty",
+      "name": "R03",
+      "position": 2,
+      "positionMm": [
+        -1650,
+        130,
+        7000
+      ],
+      "profileId": "pa-48ru-draft",
+      "purpose": "Draft configuration",
+      "rowId": "row-a"
+    },
+    {
+      "id": "rack-4",
+      "inventoryState": "empty",
+      "name": "R04",
+      "position": 3,
+      "positionMm": [
+        -550,
+        130,
+        7000
+      ],
+      "profileId": "pa-48ru-draft",
+      "purpose": "Draft configuration",
+      "rowId": "row-a"
+    },
+    {
+      "id": "rack-5",
+      "inventoryState": "empty",
+      "name": "R05",
+      "position": 4,
+      "positionMm": [
+        550,
+        130,
+        7000
+      ],
+      "profileId": "pa-48ru-draft",
+      "purpose": "Draft configuration",
+      "rowId": "row-a"
+    },
+    {
+      "id": "rack-6",
+      "inventoryState": "empty",
+      "name": "R06",
+      "position": 5,
+      "positionMm": [
+        1650,
+        130,
+        7000
+      ],
+      "profileId": "pa-48ru-draft",
+      "purpose": "Draft configuration",
+      "rowId": "row-a"
+    },
+    {
+      "id": "rack-7",
+      "inventoryState": "empty",
+      "name": "R07",
+      "position": 6,
+      "positionMm": [
+        2750,
+        130,
+        7000
+      ],
+      "profileId": "pa-48ru-draft",
+      "purpose": "Draft configuration",
+      "rowId": "row-a"
+    },
+    {
+      "id": "rack-8",
+      "inventoryState": "empty",
+      "name": "R08",
+      "position": 7,
+      "positionMm": [
+        3850,
+        130,
+        7000
+      ],
+      "profileId": "pa-48ru-draft",
+      "purpose": "Draft configuration",
+      "rowId": "row-a"
+    }
+  ],
+  "revision": 6,
+  "rows": [
+    {
+      "capacity": 10,
+      "hallId": "hall-1",
+      "id": "row-a",
+      "name": "Row A"
+    }
+  ],
+  "schemaVersion": 2,
+  "site": {
+    "id": "wistron-hq",
+    "name": "Wistron HQ · 概念外觀"
+  },
+  "units": "mm"
+}

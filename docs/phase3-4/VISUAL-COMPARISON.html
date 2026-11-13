@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Wistron Digital Twin V2 · Phase 3 / 4 視覺證據</title>
+  <style>
+    :root{--bg:#0b1419;--panel:#111e25;--text:#e1ecef;--muted:#b1c2ca;--line:#34474f;--link:#97dfcb;--draft:#f1d195;--focus:#c2ee9b}
+    *{box-sizing:border-box}
+    html{scroll-padding-top:24px}
+    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.8 system-ui,-apple-system,"Segoe UI",sans-serif}
+    main{max-width:1880px;margin:auto;padding:36px 40px 64px}
+    header{padding-bottom:28px;border-bottom:1px solid var(--line)}
+    h1{font-size:clamp(26px,3vw,42px);font-weight:550;line-height:1.25;margin:24px 0 16px;text-wrap:balance}
+    h2{font-size:26px;font-weight:550;line-height:1.4;margin:0 0 14px;text-wrap:balance}
+    h3{font-size:19px;font-weight:550;line-height:1.5;margin:30px 0 12px}
+    p{max-width:76ch;margin:10px 0 18px;color:var(--muted)}
+    a{color:var(--link);text-underline-offset:4px;overflow-wrap:anywhere}
+    a:hover{color:#d2ffeb}
+    a:focus-visible,video:focus-visible{outline:3px solid var(--focus);outline-offset:5px}
+    ::selection{background:#91d6bd;color:#0b1419}
+    nav{display:flex;gap:8px 24px;flex-wrap:wrap;align-items:center}
+    nav a{padding:7px 0}
+    section{padding-top:48px;scroll-margin-top:24px}
+    section+section{margin-top:32px;border-top:1px solid var(--line)}
+    .note{padding:16px 20px;background:var(--panel);max-width:110ch;color:var(--muted)}
+    .note strong,.draft{color:var(--draft);font-weight:550}
+    .pair,.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+    .wide{grid-column:1/-1}
+    figure{margin:0;min-width:0}
+    figure>a{display:block;line-height:0}
+    figure>a:focus-visible{outline-offset:4px}
+    img{display:block;width:100%;height:auto;background:var(--panel)}
+    figcaption{font-size:14px;line-height:1.65;color:var(--muted);padding:10px 0 0}
+    figcaption strong{display:block;color:var(--text);font-size:15px;font-weight:550;margin-bottom:2px}
+    video{width:100%;height:auto;background:#050a0e;display:block;aspect-ratio:43/18}
+    .film-note{font-size:14px;color:var(--draft);max-width:none}
+    .links{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:18px}
+    footer{border-top:1px solid var(--line);margin-top:56px;padding-top:22px;color:var(--muted);font-size:14px}
+    @media(max-width:820px){main{padding:20px 18px 40px}.pair,.gallery{grid-template-columns:1fr;gap:24px}.wide{grid-column:auto}h2{font-size:23px}section{padding-top:32px}section+section{margin-top:28px}.note{padding:14px 16px}nav{gap:4px 18px}}
+    @media print{:root{--bg:#fff;--panel:#eef3f2;--text:#142029;--muted:#34424a;--line:#9ba9ae;--link:#164b44;--draft:#6c490f}main{max-width:none;padding:0}section{break-inside:avoid}video{display:none}}
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <nav aria-label="證據章節">
+      <a href="#hq">HQ 與色彩修正</a><a href="#hall">Data Center Hall</a><a href="#rack">PA Rack 對照</a><a href="#twin">Digital Twin</a><a href="#films">實際錄影</a><a href="#records">報告與紀錄</a>
+    </nav>
+    <h1>Wistron Digital Twin V2<br>Phase 3 / 4 視覺證據</h1>
+    <p>本輪瀏覽器渲染、PA Cycle Lab 上游截圖與實際錄影集中檢視。點選影像可開啟原始檔；本輪靜態截圖為 3440×1440。各項 PASS、FAIL、SKIP、PENDING 以測試紀錄為準。</p>
+    <div class="note"><strong>HQ / Hall 為 Draft；監測為 DEMO / MOCK。</strong>未取得使用者先前提供的主參考照片、現地尺寸及真實 PA API。本頁不把示意布局、合成故障或畫面存在當成真實系統驗收。上游與本輪鏡頭、UI、光照及裁切不同，不是逐像素比對。</div>
+  </header>
+
+  <section id="hq" aria-labelledby="hq-title">
+    <h2 id="hq-title">HQ：石材色彩與實景特徵</h2>
+    <p>本址為台北市內湖區行善路 158 號。已查閱的實景來源是緯創 2011 永續報告第 36 頁右下方的 Neihu Headquarters 歷史照片。它支持部分輪廓和材料特徵，不能驗證現況、完整窗數、建築尺寸或入口細節。</p>
+    <p><a href="https://esg.wistron.com/en/report-download/esg/yExk1GE7Q2Nz/2011SustainabilityReportEN.pdf#page=36" target="_blank" rel="noopener noreferrer">開啟官方歷史照片（PDF 第 36 頁）</a> · <a href="HQ-COMPARISON.md">查看逐項照片比對</a> · <a href="HQ-REFERENCES.md">來源、授權與待補證據</a></p>
+    <div class="note">官方照片的再散布範圍未確認，本頁僅外連原始文件，不重製照片。<strong>使用者原始照片尚未取得。</strong>請另開官方 PDF 與本頁並排檢視；相機角度與曝光沒有對齊，不可據此宣稱精確色彩或幾何還原。</div>
+    <h3>色彩修正前後</h3>
+    <div class="pair">
+      <figure><a href="evidence/hq-color-before-3440x1440.png"><img src="evidence/hq-color-before-3440x1440.png" width="3440" height="1440" alt="HQ 色彩修正前的實際瀏覽器畫面" loading="lazy"></a><figcaption><strong>修正前 · 本輪中間版本</strong>保留作差異證據，非目前外觀。石材與日間光照曾產生整體色偏。</figcaption></figure>
+      <figure><a href="evidence/hq-quarter-3440x1440.png"><img src="evidence/hq-quarter-3440x1440.png" width="3440" height="1440" alt="HQ 色彩修正後斜角實際畫面，淺灰石材與藍綠玻璃轉角" loading="lazy"></a><figcaption><strong>修正後 · 目前 Draft 外觀</strong>淺灰石材與玻璃轉角。材質及光照修正不等於經現場照片標定的顏色。</figcaption></figure>
+    </div>
+    <h3>正面、側面、斜角與入口</h3>
+    <div class="gallery">
+      <figure><a href="evidence/hq-front-3440x1440.png"><img src="evidence/hq-front-3440x1440.png" width="3440" height="1440" alt="HQ Draft 正面，階梯式量體、窗洞與玻璃豎帶" loading="lazy"></a><figcaption><strong>正面</strong>檢視階梯輪廓、石材窗洞與玻璃豎帶；完整窗數與尺寸未驗證。</figcaption></figure>
+      <figure><a href="evidence/hq-side-3440x1440.png"><img src="evidence/hq-side-3440x1440.png" width="3440" height="1440" alt="HQ Draft 側面，玻璃轉角與石材翼部" loading="lazy"></a><figcaption><strong>側面</strong>檢視玻璃與石材的空間關係；遠端與隱蔽面的完整細節仍待照片。</figcaption></figure>
+      <figure><a href="evidence/hq-quarter-3440x1440.png"><img src="evidence/hq-quarter-3440x1440.png" width="3440" height="1440" alt="HQ Draft 斜角全景，包含道路、人行道與植栽" loading="lazy"></a><figcaption><strong>斜角</strong>本輪整體構圖。道路、標線、路燈與植栽是 Draft 環境，非現地測繪。</figcaption></figure>
+      <figure><a href="evidence/hq-entrance-3440x1440.png"><img src="evidence/hq-entrance-3440x1440.png" width="3440" height="1440" alt="HQ Draft 入口近景，包含雨棚、門片、葉片和鋪面" loading="lazy"></a><figcaption><strong>入口</strong>可見門片、雨棚與枝葉；缺乏入口近景證據，不能列真實入口還原 PASS。</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="hall" aria-labelledby="hall-title">
+    <h2 id="hall-title">Data Center Hall：1、4、32 Rack</h2>
+    <p>由配置資料產生的多 Row 機房，整合階層選取與需要時才載入的 Rack 細節。布局、配電與冷卻設備為 Draft / DEMO，並非緯創現場的實際機房、OEM 規格或管線圖。</p>
+    <div class="gallery">
+      <figure><a href="evidence/hall-integrated-1-rack-3440x1440.png"><img src="evidence/hall-integrated-1-rack-3440x1440.png" width="3440" height="1440" alt="整合場景中的單 Rack 機房實際渲染" loading="lazy"></a><figcaption><strong>1 Rack</strong>單 Rack 配置與走道比例的實際渲染。</figcaption></figure>
+      <figure><a href="evidence/hall-integrated-4-rack-3440x1440.png"><img src="evidence/hall-integrated-4-rack-3440x1440.png" width="3440" height="1440" alt="整合場景中的四 Rack 機房實際渲染" loading="lazy"></a><figcaption><strong>4 Rack</strong>多 Rack 配置；配置數量不代表現場硬體盤點。</figcaption></figure>
+      <figure class="wide"><a href="evidence/hall-integrated-32-3440x1440.png"><img src="evidence/hall-integrated-32-3440x1440.png" width="3440" height="1440" alt="整合場景中的三十二 Rack 多 Row 機房實際渲染" loading="lazy"></a><figcaption><strong>32 Rack · 多 Row</strong>整體場景與走道。效能必須查看實測 frame time、draw calls 與資源計數，不能從靜態截圖推斷 FPS。</figcaption></figure>
+      <figure><a href="evidence/hall-32-left-3440x1440.png"><img src="evidence/hall-32-left-3440x1440.png" width="3440" height="1440" alt="三十二 Rack Hall 左側角度實際畫面" loading="lazy"></a><figcaption><strong>Hall 左側角度</strong>查看 Rows、天花、照明與地板。</figcaption></figure>
+      <figure><a href="evidence/hall-32-right-3440x1440.png"><img src="evidence/hall-32-right-3440x1440.png" width="3440" height="1440" alt="三十二 Rack Hall 右側角度實際畫面" loading="lazy"></a><figcaption><strong>Hall 右側角度</strong>另一視角檢查多 Row 空間與環境材質。</figcaption></figure>
+    </div>
+    <p class="links"><a href="evidence/phase3-integrated.json">P3 實測紀錄</a><a href="evidence/phase3-hall-preview.json">Hall 單獨場景紀錄</a></p>
+  </section>
+
+  <section id="rack" aria-labelledby="rack-title">
+    <h2 id="rack-title">PA Cycle Lab → 本輪 Rack Regression</h2>
+    <p>每組左側為 Phase 0 已保存的 PA Cycle Lab 原始截圖，右側為本輪 Regression 輸出。檢視幾何層次、金屬表面、配線、shader 與組件保留情況；不同鏡頭和背景不能用於像素一致性判定，也不代表 OEM 尺寸已驗證。</p>
+    <h3>完整機櫃 / Three-quarter</h3>
+    <div class="pair">
+      <figure><a href="../phase0/evidence/reference-images/3440x1440-dark-08-complete-rack.png"><img src="../phase0/evidence/reference-images/3440x1440-dark-08-complete-rack.png" alt="PA Cycle Lab 上游完整機櫃斜角原始截圖" loading="lazy"></a><figcaption><strong>PA Cycle Lab · 上游原圖</strong>Phase 0 保存的 complete-rack 截圖。</figcaption></figure>
+      <figure><a href="evidence/regression/rack-three-quarter-3440x1440.png"><img src="evidence/regression/rack-three-quarter-3440x1440.png" width="3440" height="1440" alt="Phase 3 / 4 Regression 完整機櫃斜角實際截圖" loading="lazy"></a><figcaption><strong>本輪 Regression · 3440×1440</strong>完整機櫃斜角與原始 Rack 資產層次。</figcaption></figure>
+    </div>
+    <h3>背面 / Rear</h3>
+    <div class="pair">
+      <figure><a href="../phase0/evidence/reference-images/3440x1440-dark-12-rear-inspection.png"><img src="../phase0/evidence/reference-images/3440x1440-dark-12-rear-inspection.png" alt="PA Cycle Lab 上游機櫃背面原始截圖" loading="lazy"></a><figcaption><strong>PA Cycle Lab · 上游原圖</strong>背面檢視。</figcaption></figure>
+      <figure><a href="evidence/regression/rack-rear-3440x1440.png"><img src="evidence/regression/rack-rear-3440x1440.png" width="3440" height="1440" alt="Phase 3 / 4 Regression 機櫃背面實際截圖" loading="lazy"></a><figcaption><strong>本輪 Regression · 3440×1440</strong>背面設備、機構與配線。</figcaption></figure>
+    </div>
+    <h3>側面 / Side</h3>
+    <div class="pair">
+      <figure><a href="../phase0/evidence/reference-images/3440x1440-dark-13-side-inspection.png"><img src="../phase0/evidence/reference-images/3440x1440-dark-13-side-inspection.png" alt="PA Cycle Lab 上游機櫃側面原始截圖" loading="lazy"></a><figcaption><strong>PA Cycle Lab · 上游原圖</strong>側面檢視。</figcaption></figure>
+      <figure><a href="evidence/regression/rack-side-3440x1440.png"><img src="evidence/regression/rack-side-3440x1440.png" width="3440" height="1440" alt="Phase 3 / 4 Regression 機櫃側面實際截圖" loading="lazy"></a><figcaption><strong>本輪 Regression · 3440×1440</strong>側面框體、深度與設備安裝關係。</figcaption></figure>
+    </div>
+    <h3>主機板與封裝 / Board</h3>
+    <div class="pair">
+      <figure><a href="../phase0/evidence/reference-images/G-bare-board-hero.png"><img src="../phase0/evidence/reference-images/G-bare-board-hero.png" alt="PA Cycle Lab 上游裸主機板與封裝原始截圖" loading="lazy"></a><figcaption><strong>PA Cycle Lab · 上游原圖</strong>Bare-board hero。</figcaption></figure>
+      <figure><a href="evidence/regression/rack-board-3440x1440.png"><img src="evidence/regression/rack-board-3440x1440.png" width="3440" height="1440" alt="Phase 3 / 4 Regression 主機板與封裝實際截圖" loading="lazy"></a><figcaption><strong>本輪 Regression · 3440×1440</strong>既有主機板與元件層級；沒有直接 telemetry 的 Component 維持 Unknown。</figcaption></figure>
+    </div>
+    <h3>液冷組件 / Cooling</h3>
+    <div class="pair">
+      <figure><a href="../phase0/evidence/reference-images/D-solid-cooling-assembly.png"><img src="../phase0/evidence/reference-images/D-solid-cooling-assembly.png" alt="PA Cycle Lab 上游液冷組件原始截圖" loading="lazy"></a><figcaption><strong>PA Cycle Lab · 上游原圖</strong>Solid-cooling assembly。</figcaption></figure>
+      <figure><a href="evidence/regression/rack-cooling-3440x1440.png"><img src="evidence/regression/rack-cooling-3440x1440.png" width="3440" height="1440" alt="Phase 3 / 4 Regression 液冷組件實際截圖" loading="lazy"></a><figcaption><strong>本輪 Regression · 3440×1440</strong>原有液冷組件與視覺效果；流動效果是示意動畫，非 CFD 或真實 telemetry。</figcaption></figure>
+    </div>
+    <p class="links"><a href="evidence/regression/integrated-quality.json">Rack 整合品質紀錄</a><a href="evidence/regression/tested-source-manifest.json">本輪受測來源 manifest</a></p>
+  </section>
+
+  <section id="twin" aria-labelledby="twin-title">
+    <h2 id="twin-title">Digital Twin：異常定位與恢復</h2>
+    <p>以下為實際互動頁面上的合成事件示範。設備列表、3D 標記與詳細資訊讀取同一份狀態；Node 是明確標記的 DEMO 邏輯 mapping。照片中的 FAIL 並不是現場故障，也不推論沒有直接資料的 Component 故障。</p>
+    <div class="gallery">
+      <figure><a href="evidence/twin-rack-fail-3440x1440.png"><img src="evidence/twin-rack-fail-3440x1440.png" width="3440" height="1440" alt="DEMO Node 故障使所屬 Rack 顯示異常的實際畫面" loading="lazy"></a><figcaption><strong>DEMO / MOCK · Rack FAIL</strong>Node 事件彙整到所屬 System 與 Rack。</figcaption></figure>
+      <figure><a href="evidence/twin-node-fault-3440x1440.png"><img src="evidence/twin-node-fault-3440x1440.png" width="3440" height="1440" alt="DEMO Node 故障定位與來源時間詳細資訊實際畫面" loading="lazy"></a><figcaption><strong>DEMO / MOCK · Node 定位</strong>由告警導覽至對應設備，查看事件來源、時間與測試資訊。</figcaption></figure>
+      <figure><a href="evidence/twin-recovery-3440x1440.png"><img src="evidence/twin-recovery-3440x1440.png" width="3440" height="1440" alt="DEMO Node 恢復健康並保留故障恢復歷史的實際畫面" loading="lazy"></a><figcaption><strong>DEMO / MOCK · Recovery</strong>明確的新樣本解除異常；保留 FAIL、Recovering、Healthy 歷史。</figcaption></figure>
+      <figure><a href="evidence/twin-stale-3440x1440.png"><img src="evidence/twin-stale-3440x1440.png" width="3440" height="1440" alt="DEMO telemetry 停止更新後呈現 Stale Data 的實際畫面" loading="lazy"></a><figcaption><strong>DEMO / MOCK · Stale Data</strong>資料過期不顯示為 Healthy；最後更新時間仍可追溯。</figcaption></figure>
+      <figure class="wide"><a href="evidence/twin-multi-rack-node-3440x1440.png"><img src="evidence/twin-multi-rack-node-3440x1440.png" width="3440" height="1440" alt="多 Rack 場景中定位另一 System 的 DEMO Node 告警實際畫面" loading="lazy"></a><figcaption><strong>DEMO / MOCK · 多 Rack / 多 Node</strong>依 Stable ID 與配置層級定位，沒有以 IP 或 Three.js UUID 當永久設備 ID。</figcaption></figure>
+    </div>
+    <p class="links"><a href="evidence/phase4-integrated.json">P4 實際瀏覽器紀錄</a><a href="API-CONTRACT.md">只讀 Adapter API Contract</a><a href="SECURITY-REVIEW.md">安全與資料隔離審查</a></p>
+  </section>
+
+  <section id="films" aria-labelledby="films-title">
+    <h2 id="films-title">Cinematic 與 HQ → Node 錄影</h2>
+    <p>播放器使用本輪 runner 的 WebM 輸出，沒有自動播放。檔案仍在產出時可能無法播放；播放器存在不代表已完成錄影或驗收。請配合測試報告與實際播放結果判斷。</p>
+    <div class="gallery">
+      <figure>
+        <video controls preload="none" playsinline poster="evidence/regression/rack-three-quarter-3440x1440.png" aria-label="本輪 PA Rack Cinematic 實際錄影"><source src="evidence/regression/cinematic-playback-1720x720.webm" type="video/webm">此瀏覽器無法播放 WebM，請使用下方連結下載。</video>
+        <figcaption><strong>PA Rack Cinematic · 1720×720 編碼</strong>本輪 Regression 錄影，播放流程與結果見 <a href="evidence/regression/cinematic-playback.json">cinematic-playback.json</a>。</figcaption>
+        <p class="film-note"><a href="evidence/regression/cinematic-playback-1720x720.webm" download>下載 Cinematic WebM</a> · 示意冷卻流路不代表實測液體流量。</p>
+      </figure>
+      <figure>
+        <video controls preload="none" playsinline poster="evidence/hq-quarter-3440x1440.png" aria-label="本輪 HQ 至 Node 導覽與 Mock 告警示範錄影"><source src="evidence/hq-to-node-demo-1720x720.webm" type="video/webm">此瀏覽器無法播放 WebM，請使用下方連結下載。</video>
+        <figcaption><strong>HQ → Node Journey · DEMO / MOCK</strong>本輪導覽 runner 實際錄影；Draft HQ、八層導覽與合成告警／恢復示範。</figcaption>
+        <p class="film-note"><a href="evidence/hq-to-node-demo-1720x720.webm" download>下載 HQ → Node WebM</a> · 連續流程見 <a href="evidence/phase34-journey.json">journey 紀錄</a>；影片解碼與播放驗證見 <a href="evidence/phase34-delivery.json">delivery 紀錄</a>。</p>
+      </figure>
+    </div>
+  </section>
+
+  <section id="records" aria-labelledby="records-title">
+    <h2 id="records-title">證據範圍與後續資料</h2>
+    <p>本頁提供可檢視的畫面，測試數量與結果由原始紀錄決定。真實 HQ 外觀精準度、OEM 硬體規格與真實 PA Manager API 整合仍依各報告分別標示 PENDING；沒有把未知資料變成 Healthy，也沒有將 MOCK 當成真實連線。</p>
+    <div class="links"><a href="HQ-COMPARISON.md">HQ 逐項比較</a><a href="HQ-REFERENCES.md">HQ 來源與缺件</a><a href="SECURITY-REVIEW.md">安全審查</a><a href="evidence/security.tap">安全測試 TAP</a><a href="evidence/regression/summary.json">P1 / P2 Regression</a><a href="../phase1-2/VISUAL-COMPARISON.html">前一輪視覺交付</a></div>
+  </section>
+  <footer>Wistron Data Center Digital Twin V2 · Phase 3 / 4 · 2026-11-13<br>本輪畫面是瀏覽器渲染證據；HQ、Hall 與硬體未驗證部分維持 Draft，監測示範清楚標記 DEMO / MOCK。</footer>
+</main>
+</body>
+</html>

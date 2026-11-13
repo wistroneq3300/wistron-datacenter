@@ -1,0 +1,82 @@
+{
+  "suite": "recovery-and-contracts",
+  "date": "2026-11-13T02:45:53.718Z",
+  "tests": [
+    {
+      "name": "Local V1 storage migrates, preserves names and backs up original without inventing equipment",
+      "status": "PASS",
+      "evidence": {
+        "racks": 1,
+        "equipment": 0,
+        "originalRetained": true
+      }
+    },
+    {
+      "name": "Failed asset integrity check preserves configuration, releases partial assets and retries",
+      "status": "PASS",
+      "evidence": {
+        "injection": "invalid GLB bytes; expected SHA-256 rejection",
+        "retry": true
+      }
+    },
+    {
+      "name": "Model changed during component inspection reconciles navigation instead of rolling back valid edit",
+      "status": "PASS"
+    },
+    {
+      "name": "Reduced motion preserves all eight stages without timed transitions",
+      "status": "PASS"
+    },
+    {
+      "name": "Server blocks checkout files, traversal and unsupported writes",
+      "status": "PASS",
+      "evidence": [
+        {
+          "path": "/.git/config",
+          "status": 404
+        },
+        {
+          "path": "/package.json",
+          "status": 404
+        },
+        {
+          "path": "/server.mjs",
+          "status": 404
+        },
+        {
+          "path": "/data/../server.mjs",
+          "status": 404
+        },
+        {
+          "path": "/assets/%2e%2e/server.mjs",
+          "status": 404
+        },
+        {
+          "path": "/modules/.env",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "name": "No unexpected runtime errors during recovery scenarios",
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "browser": "131.0.6778.205",
+  "channel": "chrome",
+  "viewport": {
+    "width": 3440,
+    "height": 1440,
+    "dpr": 1
+  },
+  "runtime": "v24.22.1",
+  "platform": "win32",
+  "summary": {
+    "PASS": 6,
+    "FAIL": 0,
+    "SKIP": 0,
+    "PENDING": 0
+  }
+}

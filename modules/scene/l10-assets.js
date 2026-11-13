@@ -74,9 +74,11 @@ export class L10Library {
 
 export async function attachL10(library,rig,item,{signal}={}){
   if(item.model.internalAsset!=='pa-l10-bare-cooling')throw new Error('此型號缺少內部模型資產');
-  const asset=await library.acquire();
-  if(signal?.aborted){library.release();throw new DOMException('Navigation cancelled','AbortError');}
-  const group=asset.prototype.clone(true);group.name=`L10 / ${item.instance.id}`;group.scale.copy(item.mesh.scale);
+  const originalVisibility=item.mesh.visible,asset=await library.acquire();
+  let group=null;
+  try{
+  if(signal?.aborted)throw new DOMException('Navigation cancelled','AbortError');
+  group=asset.prototype.clone(true);group.name=`L10 / ${item.instance.id}`;group.scale.copy(item.mesh.scale);
   const meshes=[];group.traverse(o=>{if(o.isMesh){
     o.userData.entityId=item.instance.id;o.userData.rackId=rig.rack.id;
     const definition=item.model.childDefinitions?.find(d=>d.sourceComponent===o.userData.component&&d.boardIndex===o.userData.boardIndex);
@@ -97,6 +99,14 @@ export async function attachL10(library,rig,item,{signal}={}){
       o.position.y=o.userData.baseY+lift;o.position.z=o.userData.baseZ+(s==='cooling-plumbing'?pose.plumbingZ||0:0);o.visible=opacity>.001;o.material.uniforms.uOpacity.value=opacity;o.material.uniforms.uCoolingTravel.value=pose.flowTravel||0;o.material.transparent=opacity<1||s==='cooling-fluid';o.material.depthWrite=opacity>.99&&s!=='cooling-fluid';
     }rig.studio.dirty=true;return pose;},
     bounds(semantic,component,boardIndex){group.updateWorldMatrix(true,true);const box=new THREE.Box3();for(const m of meshes)if((!semantic||m.userData.semantic===semantic)&&(!component||m.userData.component===component)&&(boardIndex===undefined||m.userData.boardIndex===boardIndex))box.union(new THREE.Box3().setFromObject(m));return box;},
-    dispose(){if(disposed)return;disposed=true;group.removeFromParent();item.mesh.visible=true;library.release();item.details=null;}
+    dispose(){if(disposed)return;disposed=true;group.removeFromParent();if(item.details===api){item.mesh.visible=true;item.details=null;}library.release();}
   };api.setMode('system');item.details=api;return api;
+  }catch(error){
+    // Clones borrow the library's geometry/material/texture resources. Detach
+    // only this attempted mount, then release exactly its acquired reference;
+    // never dispose shared assets still used by another equipment detail.
+    try{group?.removeFromParent();item.mesh.visible=originalVisibility;}
+    finally{library.release();}
+    throw error;
+  }
 }

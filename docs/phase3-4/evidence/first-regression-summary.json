@@ -1,0 +1,81 @@
+{
+  "date": "2026-11-13T01:59:01.229Z",
+  "runtime": "v24.22.1",
+  "platform": "win32",
+  "baseCommit": "f259e8e85b0d62c97c4d727f984a1ec03110e3db",
+  "suites": [
+    {
+      "suite": "domain-and-journey",
+      "summary": {
+        "PASS": 26,
+        "FAIL": 0,
+        "SKIP": 0
+      }
+    },
+    {
+      "suite": "phase1a-adapter",
+      "summary": {
+        "PASS": 6,
+        "FAIL": 0,
+        "SKIP": 0
+      }
+    },
+    {
+      "suite": "phase1b-configuration",
+      "summary": {
+        "PASS": 8,
+        "FAIL": 0,
+        "SKIP": 0
+      }
+    },
+    {
+      "suite": "phase2-navigation",
+      "summary": {
+        "PASS": 8,
+        "FAIL": 1,
+        "SKIP": 0
+      }
+    },
+    {
+      "suite": "integrated-quality",
+      "summary": {
+        "PASS": 7,
+        "FAIL": 1,
+        "SKIP": 1
+      }
+    },
+    {
+      "suite": "recovery-and-contracts",
+      "summary": {
+        "PASS": 6,
+        "FAIL": 0,
+        "SKIP": 0
+      }
+    },
+    {
+      "suite": "cinematic-playback",
+      "summary": {
+        "PASS": 0,
+        "FAIL": 2,
+        "SKIP": 0
+      }
+    },
+    {
+      "suite": "delivery-artifacts",
+      "summary": {
+        "PASS": 2,
+        "FAIL": 0,
+        "SKIP": 0,
+        "PENDING": 0
+      }
+    }
+  ],
+  "totals": {
+    "PASS": 63,
+    "FAIL": 4,
+    "SKIP": 1
+  },
+  "sourceDigest": "90950d6175be7cc66eb8fb71de42bfa477981d04dc99570dace48d25d96a5a2a",
+  "hashNote": "Text line endings normalized to LF; binary assets exact. baseCommit is the pre-delivery parent, not a claim that uncommitted files were already committed.",
+  "scope": "Initial full run before fixes. Retained for audit; not final acceptance totals."
+}

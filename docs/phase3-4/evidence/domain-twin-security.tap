@@ -1,0 +1,394 @@
+TAP version 13
+# Subtest: Mock starts without observations and creates stable logical Nodes without fabricating components
+ok 1 - Mock starts without observations and creates stable logical Nodes without fabricating components
+  ---
+  duration_ms: 5.477
+  type: 'test'
+  ...
+# Subtest: Mock inventory renames preserve Node IDs; unknown internals leave boardId absent
+ok 2 - Mock inventory renames preserve Node IDs; unknown internals leave boardId absent
+  ---
+  duration_ms: 2.0317
+  type: 'test'
+  ...
+# Subtest: Mock deterministic Warning → FAIL → Recovering → Healthy explicitly clears parent warning
+ok 3 - Mock deterministic Warning → FAIL → Recovering → Healthy explicitly clears parent warning
+  ---
+  duration_ms: 14.9222
+  type: 'test'
+  ...
+# Subtest: Mock wrong mode, nonexistent scenario target and arbitrary controls are rejected
+ok 4 - Mock wrong mode, nonexistent scenario target and arbitrary controls are rejected
+  ---
+  duration_ms: 1.0052
+  type: 'test'
+  ...
+# Subtest: Mock offline, connected-but-stale and reconnect never fabricate fresh observations
+ok 5 - Mock offline, connected-but-stale and reconnect never fabricate fresh observations
+  ---
+  duration_ms: 4.9436
+  type: 'test'
+  ...
+# Subtest: Mock duplicate and out-of-order delivery preserves current snapshot and records bounded history
+ok 6 - Mock duplicate and out-of-order delivery preserves current snapshot and records bounded history
+  ---
+  duration_ms: 9.0235
+  type: 'test'
+  ...
+# Subtest: Mock abort and unsubscribe stop callbacks; reset is explicit Unknown-ready namespace
+ok 7 - Mock abort and unsubscribe stop callbacks; reset is explicit Unknown-ready namespace
+  ---
+  duration_ms: 5.6907
+  type: 'test'
+  ...
+# Subtest: Mock targeted snapshot and test results are projections, never configuration mutations
+ok 8 - Mock targeted snapshot and test results are projections, never configuration mutations
+  ---
+  duration_ms: 1.4104
+  type: 'test'
+  ...
+# Subtest: Mock Node temperature and utilisation are explicit deterministic synthetic metrics, never sensor or Component observations
+ok 9 - Mock Node temperature and utilisation are explicit deterministic synthetic metrics, never sensor or Component observations
+  ---
+  duration_ms: 7.3243
+  type: 'test'
+  ...
+# Subtest: PA adapter has no assumed endpoint and rejects remote paths, credentials and control fields
+ok 10 - PA adapter has no assumed endpoint and rejects remote paths, credentials and control fields
+  ---
+  duration_ms: 0.9833
+  type: 'test'
+  ...
+# Subtest: PA transport performs only same-origin GET with no token/Authorization or redirect following
+ok 11 - PA transport performs only same-origin GET with no token/Authorization or redirect following
+  ---
+  duration_ms: 31.8191
+  type: 'test'
+  ...
+# Subtest: PA transport rejects MOCK provider, unknown fields and sensitive nested payloads
+ok 12 - PA transport rejects MOCK provider, unknown fields and sensitive nested payloads
+  ---
+  duration_ms: 1.9521
+  type: 'test'
+  ...
+# Subtest: PA event validation refuses unsafe links, IP identities and arbitrary test fields
+ok 13 - PA event validation refuses unsafe links, IP identities and arbitrary test fields
+  ---
+  duration_ms: 1.5832
+  type: 'test'
+  ...
+# Subtest: PA inventory IDs, external mappings and optional Node board bindings are validated
+ok 14 - PA inventory IDs, external mappings and optional Node board bindings are validated
+  ---
+  duration_ms: 2.2465
+  type: 'test'
+  ...
+# Subtest: PA bounded transient retry succeeds with exponential backoff and reconnect notification
+ok 15 - PA bounded transient retry succeeds with exponential backoff and reconnect notification
+  ---
+  duration_ms: 0.6132
+  type: 'test'
+  ...
+# Subtest: PA exhausted/unauthorized/invalid-contract errors terminate without infinite retry
+ok 16 - PA exhausted/unauthorized/invalid-contract errors terminate without infinite retry
+  ---
+  duration_ms: 8.3515
+  type: 'test'
+  ...
+# Subtest: PA AbortSignal and disconnect cancel in-flight reads rather than retrying
+ok 17 - PA AbortSignal and disconnect cancel in-flight reads rather than retrying
+  ---
+  duration_ms: 0.7786
+  type: 'test'
+  ...
+# Subtest: PA polling emits actual synthetic response, supports unsubscribe and explicit reconnect
+ok 18 - PA polling emits actual synthetic response, supports unsubscribe and explicit reconnect
+  ---
+  duration_ms: 34.0022
+  type: 'test'
+  ...
+# Subtest: PA test status and health history routes validate read-only payloads
+ok 19 - PA test status and health history routes validate read-only payloads
+  ---
+  duration_ms: 4.2484
+  type: 'test'
+  ...
+# Subtest: PA missing optional test/history routes safely project snapshot results
+ok 20 - PA missing optional test/history routes safely project snapshot results
+  ---
+  duration_ms: 1.5834
+  type: 'test'
+  ...
+# Subtest: legacy facility is a nonmutating Draft projection and preserves hall references
+ok 21 - legacy facility is a nonmutating Draft projection and preserves hall references
+  ---
+  duration_ms: 3.1589
+  type: 'test'
+  ...
+# Subtest: Selecting a valid empty Hall keeps its identity and blocks entry to a nonexistent Row
+ok 22 - Selecting a valid empty Hall keeps its identity and blocks entry to a nonexistent Row
+  ---
+  duration_ms: 1.2481
+  type: 'test'
+  ...
+# Subtest: Rack envelope includes exact original PA frame and infrastructure across capacities
+ok 23 - Rack envelope includes exact original PA frame and infrastructure across capacities
+  ---
+  duration_ms: 186.5527
+  type: 'test'
+  ...
+# Subtest: 1, 4 and 32 Rack layouts retain identity and only create empty additional racks
+ok 24 - 1, 4 and 32 Rack layouts retain identity and only create empty additional racks
+  ---
+  duration_ms: 6.7521
+  type: 'test'
+  ...
+# Subtest: Draft layout clamps neither collision nor bad spacing and keeps the source unchanged
+ok 25 - Draft layout clamps neither collision nor bad spacing and keeps the source unchanged
+  ---
+  duration_ms: 0.8855
+  type: 'test'
+  ...
+# Subtest: Hall reference, bounds and ceiling validation prevents dangling or malformed hierarchy
+ok 26 - Hall reference, bounds and ceiling validation prevents dangling or malformed hierarchy
+  ---
+  duration_ms: 1.5248
+  type: 'test'
+  ...
+# Subtest: Rack-to-Rack and infrastructure collisions validate physical envelopes, not row slots
+ok 27 - Rack-to-Rack and infrastructure collisions validate physical envelopes, not row slots
+  ---
+  duration_ms: 0.9952
+  type: 'test'
+  ...
+# Subtest: Facility refuses unsupported secrets, false verification and duplicated IDs
+ok 28 - Facility refuses unsupported secrets, false verification and duplicated IDs
+  ---
+  duration_ms: 1.5131
+  type: 'test'
+  ...
+# Subtest: Nondefault positions and tall profiles expand a derived Hall instead of clipping
+ok 29 - Nondefault positions and tall profiles expand a derived Hall instead of clipping
+  ---
+  duration_ms: 0.5277
+  type: 'test'
+  ...
+# Subtest: Hall scene batches 32 racks without inventing inventory and releases owned resources
+ok 30 - Hall scene batches 32 racks without inventing inventory and releases owned resources
+  ---
+  duration_ms: 39.3631
+  type: 'test'
+  ...
+# Subtest: configuration rejects unexpected credential fields at every nested domain boundary
+ok 31 - configuration rejects unexpected credential fields at every nested domain boundary
+  ---
+  duration_ms: 40.8181
+  type: 'test'
+  ...
+# Subtest: configuration import cannot introduce telemetry state or control commands
+ok 32 - configuration import cannot introduce telemetry state or control commands
+  ---
+  duration_ms: 7.666
+  type: 'test'
+  ...
+# Subtest: rejected nested import leaves persisted configuration and revision unchanged
+ok 33 - rejected nested import leaves persisted configuration and revision unchanged
+  ---
+  duration_ms: 5.168
+  type: 'test'
+  ...
+# Subtest: legacy migration copies approved configuration fields and drops legacy credentials
+ok 34 - legacy migration copies approved configuration fields and drops legacy credentials
+  ---
+  duration_ms: 1.1429
+  type: 'test'
+  ...
+# Subtest: JSON prototype-like nested keys are rejected without changing object prototypes
+ok 35 - JSON prototype-like nested keys are rejected without changing object prototypes
+  ---
+  duration_ms: 1.5695
+  type: 'test'
+  ...
+# Subtest: all downloaded outdoor texture bytes match provenance and valid JPEG signatures
+ok 36 - all downloaded outdoor texture bytes match provenance and valid JPEG signatures
+  ---
+  duration_ms: 11.6407
+  type: 'test'
+  ...
+# Subtest: runtime outdoor manifest references only checked-in local files and keeps facade albedo independent
+ok 37 - runtime outdoor manifest references only checked-in local files and keeps facade albedo independent
+  ---
+  duration_ms: 1.368
+  type: 'test'
+  ...
+# Subtest: trace URLs reject active content, credential channels and private management destinations
+ok 38 - trace URLs reject active content, credential channels and private management destinations
+  ---
+  duration_ms: 1.9367
+  type: 'test'
+  ...
+# Subtest: monitoring contracts reject nested secrets, executable data and IP identity while assigning receivedAt
+ok 39 - monitoring contracts reject nested secrets, executable data and IP identity while assigning receivedAt
+  ---
+  duration_ms: 2.3047
+  type: 'test'
+  ...
+# Subtest: rejection history does not preserve credentials hidden inside an invalid event ID
+ok 40 - rejection history does not preserve credentials hidden inside an invalid event ID
+  ---
+  duration_ms: 0.7355
+  type: 'test'
+  ...
+# Subtest: PA adapter independently rejects sensitive nested inventory, test and telemetry payloads
+ok 41 - PA adapter independently rejects sensitive nested inventory, test and telemetry payloads
+  ---
+  duration_ms: 3.2415
+  type: 'test'
+  ...
+# Subtest: PA transport accepts only explicit local routes, uses GET and never sends bearer credentials
+ok 42 - PA transport accepts only explicit local routes, uses GET and never sends bearer credentials
+  ---
+  duration_ms: 0.5217
+  type: 'test'
+  ...
+# Subtest: switching from MOCK to live clears synthetic health and cannot mutate persisted equipment configuration
+ok 43 - switching from MOCK to live clears synthetic health and cannot mutate persisted equipment configuration
+  ---
+  duration_ms: 33.8655
+  type: 'test'
+  ...
+# Subtest: startup keeps the original recovery data without duplicating sensitive payloads into backups
+ok 44 - startup keeps the original recovery data without duplicating sensitive payloads into backups
+  ---
+  duration_ms: 15.4813
+  type: 'test'
+  ...
+# Subtest: configuration inventory preserves all stable Rack, Equipment and model child IDs
+ok 45 - configuration inventory preserves all stable Rack, Equipment and model child IDs
+  ---
+  duration_ms: 2.1117
+  type: 'test'
+  ...
+# Subtest: one System maps to multiple explicit Nodes and existing Board IDs without generating Component observations
+ok 46 - one System maps to multiple explicit Nodes and existing Board IDs without generating Component observations
+  ---
+  duration_ms: 19.7705
+  type: 'test'
+  ...
+# Subtest: identity mapping rejects ambiguous, IP-based and unresolved identities without name fallback
+ok 47 - identity mapping rejects ambiguous, IP-based and unresolved identities without name fallback
+  ---
+  duration_ms: 4.8383
+  type: 'test'
+  ...
+# Subtest: deterministic Warning → FAIL → Recovering → Healthy updates Node, System and Rack together
+ok 48 - deterministic Warning → FAIL → Recovering → Healthy updates Node, System and Rack together
+  ---
+  duration_ms: 43.8186
+  type: 'test'
+  ...
+# Subtest: no observations remain Unknown; stale uses observedAt rather than receipt time
+ok 49 - no observations remain Unknown; stale uses observedAt rather than receipt time
+  ---
+  duration_ms: 0.5122
+  type: 'test'
+  ...
+# Subtest: multiple independent sources preserve an active FAIL until that source explicitly recovers
+ok 50 - multiple independent sources preserve an active FAIL until that source explicitly recovers
+  ---
+  duration_ms: 35.7909
+  type: 'test'
+  ...
+# Subtest: an explicit Component observation may aggregate upward but never invents a Node failure
+ok 51 - an explicit Component observation may aggregate upward but never invents a Node failure
+  ---
+  duration_ms: 20.6754
+  type: 'test'
+  ...
+# Subtest: duplicate, older timestamp, older sequence and future events cannot overwrite current telemetry
+ok 52 - duplicate, older timestamp, older sequence and future events cannot overwrite current telemetry
+  ---
+  duration_ms: 0.4211
+  type: 'test'
+  ...
+# Subtest: source timestamp and finite metrics are mandatory; source text remains plain immutable data
+ok 53 - source timestamp and finite metrics are mandatory; source text remains plain immutable data
+  ---
+  duration_ms: 0.886
+  type: 'test'
+  ...
+# Subtest: bounded history and rejected diagnostics never retain arbitrary raw payloads
+ok 54 - bounded history and rejected diagnostics never retain arbitrary raw payloads
+  ---
+  duration_ms: 0.7385
+  type: 'test'
+  ...
+# Subtest: configuration content is unchanged by all Mock scenarios and view snapshots are defensive copies
+ok 55 - configuration content is unchanged by all Mock scenarios and view snapshots are defensive copies
+  ---
+  duration_ms: 28.9887
+  type: 'test'
+  ...
+# Subtest: configuration reconciliation adds new Mock Nodes as Unknown and preserves surviving alert history
+ok 56 - configuration reconciliation adds new Mock Nodes as Unknown and preserves surviving alert history
+  ---
+  duration_ms: 25.3032
+  type: 'test'
+  ...
+# Subtest: unknown entities are retained in reconciliation diagnostics and never guessed by display name
+ok 57 - unknown entities are retained in reconciliation diagnostics and never guessed by display name
+  ---
+  duration_ms: 11.0846
+  type: 'test'
+  ...
+# Subtest: Mock transport interruption becomes Offline and does not create an automatic reconnect loop
+ok 58 - Mock transport interruption becomes Offline and does not create an automatic reconnect loop
+  ---
+  duration_ms: 55.3183
+  type: 'test'
+  ...
+# Subtest: same-adapter reconnect preserves history, while explicit Mock reset returns Unknown
+ok 59 - same-adapter reconnect preserves history, while explicit Mock reset returns Unknown
+  ---
+  duration_ms: 31.2036
+  type: 'test'
+  ...
+# Subtest: switching adapter mode clears namespace and late old subscriptions cannot contaminate live data
+ok 60 - switching adapter mode clears namespace and late old subscriptions cannot contaminate live data
+  ---
+  duration_ms: 17.4372
+  type: 'test'
+  ...
+# Subtest: connection retries are bounded and successful explicit reconnect is observable
+ok 61 - connection retries are bounded and successful explicit reconnect is observable
+  ---
+  duration_ms: 11.0614
+  type: 'test'
+  ...
+# Subtest: repeated immediate live disconnects exhaust a cross-session auto reconnect budget
+ok 62 - repeated immediate live disconnects exhaust a cross-session auto reconnect budget
+  ---
+  duration_ms: 59.9695
+  type: 'test'
+  ...
+# Subtest: cancelled asynchronous snapshot cannot publish after disconnect or take ownership of a later session
+ok 63 - cancelled asynchronous snapshot cannot publish after disconnect or take ownership of a later session
+  ---
+  duration_ms: 3.574
+  type: 'test'
+  ...
+# Subtest: a failing view subscriber cannot roll back accepted source state
+ok 64 - a failing view subscriber cannot roll back accepted source state
+  ---
+  duration_ms: 17.5162
+  type: 'test'
+  ...
+1..64
+# tests 64
+# suites 0
+# pass 64
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 558.6921

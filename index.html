@@ -7,7 +7,7 @@
   <meta name="description" content="Wistron Data Center Studio — 由內湖總部進入大型機房，探索一整排可配置機櫃的 3D 數位工程工作台。">
   <title>Wistron · Data Center Studio</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect rx='16' width='64' height='64' fill='%230e2027'/%3E%3Cpath d='M14 17l6 29 8-18 8 18 7-29h7l-10 34-11-18-10 18-8-34z' fill='%234ad8bd'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="v2.css">
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="v2.css"><link rel="stylesheet" href="v3.css">
   <script type="importmap">{"imports":{"three":"./vendor/three.module.js","three/addons/":"./vendor/"}}</script>
 </head>
 <body>
@@ -19,8 +19,8 @@
         <span class="division">DATA CENTER STUDIO</span>
       </div>
       <nav class="site-toolbar" aria-label="工作台">
-        <span class="status"><i></i> CONFIGURATION VIEW</span>
-        <button id="configBtn" class="toolText" title="匯入／匯出場景配置"><svg><use href="#i-settings"/></svg><span>配置</span></button>
+        <span class="status" id="monitoringBadge">DEMO / MOCK · READ ONLY</span>
+        <button id="twinBtn" class="toolText"><svg><use href="#i-chip"/></svg><span>監測</span></button><button id="facilityBtn" class="toolText"><svg><use href="#i-grid"/></svg><span>場地</span></button><button id="configBtn" class="toolText" title="匯入／匯出場景配置"><svg><use href="#i-settings"/></svg><span>配置</span></button>
         <button id="helpBtn" class="iconBtn" title="操作指南" aria-label="操作指南"><svg><use href="#i-help"/></svg></button>
       </nav>
     </header>
@@ -33,12 +33,14 @@
       <div id="labels" class="world-labels" aria-label="可選取機櫃"></div>
       <section id="sceneMeta" class="scene-meta">
         <div class="eyebrow"><span class="tinyCross">+</span> SPATIAL WORKSPACE <span class="edition">/ 01</span></div>
-        <h1 id="sceneTitle">Engineering,<br><span>at every scale.</span></h1>
-        <p id="sceneDescription">從建築到機櫃，探索你的下一個<br class="desktopBreak">資料中心工作場域。</p>
+        <h1 id="sceneTitle">Wistron Neihu<br><span>從總部到晶片。</span></h1>
+        <p id="sceneDescription">日間建築展示與可配置 AI 機房。<br>歷史照片參考 · 未測繪 Draft 模型。</p>
         <div id="sceneActions" class="sceneActions"><button id="startTour" class="primary">進入資料中心 <svg><use href="#i-arrow"/></svg></button><button id="hallDirect" class="quiet">前往機櫃排 <span>R01 — R08</span></button></div>
       </section>
 
-      <section id="rackInspector" class="rack-inspector" hidden aria-label="機櫃資訊">
+      <section id="twinPanel" class="workspace-panel twin-panel" hidden aria-label="唯讀 Digital Twin 監測"><header><h2>Digital Twin</h2><button id="closeTwin" class="panel-close">關閉</button></header><p id="twinConnection" class="connection-label">DEMO / MOCK · 尚未連線</p><p>合成狀態示範，唯讀監測。配置修改不會操作實體硬體；真實 PA API 仍為 Pending。</p><details open class="demo-controls"><summary>可重現的 Mock 示範</summary><label class="field">目標 System<select id="demoSystem"></select></label><p id="demoProgress">尚未播放 · 初始狀態 Unknown</p><div class="inspector-actions"><button id="demoStep" class="smallBtn">下一步</button><button id="demoPlay" class="smallBtn">自動播放</button><button id="demoReset" class="smallBtn">重設</button></div><div class="demo-scenarios"><button data-demo-scenario="healthy">Healthy</button><button data-demo-scenario="warningSystem">Warning</button><button data-demo-scenario="failNode">FAIL</button><button data-demo-scenario="recoveringNode">Recovering</button><button data-demo-scenario="recovered">Recovery</button><button data-demo-scenario="offline">Offline</button><button data-demo-scenario="stale">Stale</button><button data-demo-scenario="delayed">延遲</button><button data-demo-scenario="outOfOrder">亂序</button><button data-demo-scenario="duplicate">重複</button></div><p id="demoMessage" class="identity-note">DEMO 時鐘由示範步驟推進，可重現事件順序。</p></details><div class="field-grid"><label class="field">顯示<select id="twinFilter"><option value="alerts">告警／恢復</option><option value="all">所有監測實體</option></select></label><label class="field">搜尋<input id="twinSearch" type="search" placeholder="設備名稱或 ID"></label></div><p id="twinCounts"></p><div id="twinList" class="twin-list"></div><p id="twinUnmapped" class="form-error"></p><section id="twinDetail" class="twin-detail" aria-live="polite"></section><button id="twinReconnect" class="outlineBtn">重新連線 Adapter</button><p class="identity-note">來源預留：PA Manager、Prometheus、Grafana、DCGM、Node Exporter、Redfish、Bug Finder。尚未接入實際服務。</p></section>
+<section id="facilityPanel" class="workspace-panel" hidden aria-label="場地配置"><header><h2>場地配置</h2><button id="closeFacility" class="panel-close">關閉</button></header><p class="evidence-note">Draft：建築與機房均未測繪。所有配置只影響此瀏覽器的規劃資料。</p><div id="facilityTree" class="facility-tree"></div><h3>總部日間視角</h3><div class="hq-angles"><button data-hq-angle="front">正面</button><button data-hq-angle="side">側面</button><button data-hq-angle="quarter">45°</button><button data-hq-angle="entrance">入口 · Draft</button></div><details><summary>產生多 Row 配置</summary><p>保留原有 Rack ID 與設備；新增 Rack 為空櫃。縮減數量會移除超出的配置，可先匯出 JSON 備份。</p><form id="layoutForm"><div class="field-grid"><label class="field">Row 數<input id="layoutRows" type="number" min="1" max="16" value="4" required></label><label class="field">Rack 總數<input id="layoutCount" type="number" min="1" max="128" value="32" required></label></div><div class="field-grid"><label class="field">走道淨寬 mm<input id="layoutAisle" type="number" min="600" value="1600" required></label><label class="field">Rack 中心距 mm<input id="layoutPitch" type="number" min="1" value="1100" required></label></div><button class="outlineBtn">驗證並套用配置</button></form></details><details><summary>編輯 Rack 安裝位置</summary><form id="rackPlacementForm"><label class="field">Rack<select id="facilityRack"></select></label><label class="field">Row<select id="facilityRow"></select></label><label class="field">機位序號（從 0 起）<input id="facilitySlot" type="number" min="0" required></label><div class="field-grid three"><label class="field">X mm<input id="rackX" type="number" step="any" required></label><label class="field">Y mm<input id="rackY" type="number" step="any" required></label><label class="field">Z mm<input id="rackZ" type="number" step="any" required></label></div><button class="outlineBtn">驗證並儲存位置</button></form></details><p id="facilityError" class="form-error" role="alert"></p></section>
+<section id="rackInspector" class="rack-inspector" hidden aria-label="機櫃資訊">
         <header><div><span class="eyebrow" id="rackKicker">CONFIGURED RACK</span><h2 id="rackName">R01</h2></div><button id="closeInspector" class="iconBtn" aria-label="關閉機櫃資訊"><svg><use href="#i-close"/></svg></button></header>
         <div class="rack-insight"><span class="greenDot"></span><span id="rackState">已配置 · 可自由編輯</span><span class="rackHeight">48U</span></div>
         <div class="metric-row"><div><small>設備節點</small><strong id="rackNodes">22</strong></div><div><small>機櫃排</small><strong>A</strong></div><div><small>模型</small><strong>3D</strong></div></div>
@@ -56,7 +58,7 @@
       <aside class="scene-sideinfo" id="sceneSideinfo">
         <div class="north"><span>N</span><svg viewBox="0 0 32 32"><path d="M16 3 9 25l7-5 7 5Z" fill="currentColor"/><path d="M16 3v15" stroke="#687783"/></svg></div>
         <span id="scaleLabel">BUILDING SCALE</span>
-        <span class="coordinates">CONCEPTUAL<br>NOT SURVEYED</span>
+        <span class="coordinates">DRAFT<br>NOT SURVEYED</span>
       </aside>
 
       <nav id="breadcrumbs" class="breadcrumbs" aria-label="導覽路徑"></nav><div id="assetStatus" class="asset-status" role="status" hidden></div><div id="cinematicControls" class="cinematic-controls" hidden><button id="playCinematic" class="smallBtn">播放 Cinematic</button><input id="cinematicRange" type="range" min="0" max="1" step="0.001" value="0" aria-label="Cinematic 進度"><button id="stopCinematic" class="smallBtn">返回安裝狀態</button><span id="cinematicTime">0.0 s</span></div><div id="detailHeader" class="detail-header" hidden><span class="detailIndex" id="detailIndex">02</span><div><span id="detailEnglish">THE DATA HALL</span><strong id="detailTitle">每一個連接，都有它的位置。</strong></div></div>
@@ -99,7 +101,7 @@
 
       <div class="quality"><button id="qualityBtn" title="切換自動／高品質渲染"><span></span><b id="qualityLabel">AUTO QUALITY</b></button><button id="fullscreenBtn" title="全螢幕" aria-label="切換全螢幕"><svg><use href="#i-fullscreen"/></svg></button></div>
       <div id="toast" class="toast" role="status" aria-live="polite"></div>
-      <dialog id="helpDialog"><div class="dialogTop"><span class="eyebrow">QUICK START</span><button data-close="helpDialog" class="iconBtn" aria-label="關閉指南"><svg><use href="#i-close"/></svg></button></div><h2>從一座建築，到你的機櫃排。</h2><p>這是一個以配置為基礎的 3D 空間原型，不與現場設備連線。</p><div class="helpGrid"><div><b>拖曳</b><span>環繞場景</span></div><div><b>滾輪</b><span>導覽進退；自由模式縮放</span></div><div><b>右鍵</b><span>平移視角</span></div><div><b>點選機櫃</b><span>聚焦並編輯配置</span></div><div><b>Home</b><span>目前層級重置視角</span></div><div><b>Esc</b><span>關閉面板</span></div></div><div class="helpNote">總部為概念建築，非實景測繪。機房為空間視覺原型；編輯只會儲存在你的瀏覽器，不會修改任何現場設備。</div><button data-close="helpDialog" class="primary">開始探索 <svg><use href="#i-arrow"/></svg></button></dialog>
+      <dialog id="helpDialog"><div class="dialogTop"><span class="eyebrow">QUICK START</span><button data-close="helpDialog" class="iconBtn" aria-label="關閉指南"><svg><use href="#i-close"/></svg></button></div><h2>從一座建築，到你的機櫃排。</h2><p>這是一個以配置為基礎的 3D 工作台。監測資料預設為 DEMO / MOCK，不與現場設備連線。</p><div class="helpGrid"><div><b>拖曳</b><span>環繞場景</span></div><div><b>滾輪</b><span>導覽進退；自由模式縮放</span></div><div><b>右鍵</b><span>平移視角</span></div><div><b>點選機櫃</b><span>聚焦並編輯配置</span></div><div><b>Home</b><span>目前層級重置視角</span></div><div><b>Esc</b><span>關閉面板</span></div></div><div class="helpNote">總部依官方歷史照片建立 Draft 外觀，尚缺主參考照片與實景測繪。機房為空間視覺原型；編輯只會儲存在你的瀏覽器，不會修改任何現場設備。</div><button data-close="helpDialog" class="primary">開始探索 <svg><use href="#i-arrow"/></svg></button></dialog>
       <dialog id="configDialog"><div class="dialogTop"><span class="eyebrow">LOCAL CONFIGURATION</span><button data-close="configDialog" class="iconBtn" aria-label="關閉配置"><svg><use href="#i-close"/></svg></button></div><h2>你的機櫃，你的配置。</h2><p id="configSummary">機櫃、設備、Catalog 與 Profile 共用單一配置。通過驗證的變更會自動儲存在此瀏覽器。</p><div class="rackSummary" id="rackSummary"></div><div class="configActions"><button id="exportConfig" class="primary">下載 JSON <svg><use href="#i-download"/></svg></button><label class="outlineBtn fileLabel">匯入配置<input id="importConfig" type="file" accept=".json,application/json" hidden></label><button id="resetConfig" class="textDanger">恢復示範配置</button></div><p class="micro-note">支援 schema v2 與 v1 遷移。V1 沒有設備清單，不會憑空補入設備。請勿在名稱與備註填入帳密或敏感資料。</p></dialog>
     </main>
     <footer class="bottomline"><span>WISTRON / ENGINEERING ATELIER</span><span id="footerMessage">內湖總部概念模型 · 空間視覺原型</span><span class="footerRight">DESIGNED TO EXPLORE <i>↗</i></span></footer>
