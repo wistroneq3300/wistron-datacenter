@@ -1,0 +1,88 @@
+{
+  "suite": "phase5b-interior",
+  "date": "2026-11-23T13:54:07.876Z",
+  "tests": [
+    {
+      "name": "HQ primary action opens the modeled visitor lobby before the separate Hall",
+      "status": "PASS",
+      "evidence": {
+        "lobby": {
+          "depth": 1,
+          "lobby": true,
+          "hall": false,
+          "hq": false,
+          "core": false,
+          "camera": [
+            -8.998638715286209,
+            2.2224738858270325,
+            -6.562672121929198
+          ]
+        },
+        "hall": {
+          "depth": 2,
+          "lobby": false,
+          "hall": true,
+          "hq": false,
+          "core": true,
+          "camera": [
+            11.220000000000002,
+            13.319999999999999,
+            20.040000000000003
+          ]
+        }
+      }
+    },
+    {
+      "name": "Free Explore stays in the lobby and Escape restores Guided at the same depth",
+      "status": "PASS"
+    },
+    {
+      "name": "Lobby allocation plateaus across repeated Hall and HQ returns",
+      "status": "PASS",
+      "evidence": [
+        {
+          "memory": {
+            "geometries": 55,
+            "textures": 44
+          },
+          "gl": 0
+        },
+        {
+          "memory": {
+            "geometries": 55,
+            "textures": 44
+          },
+          "gl": 0
+        },
+        {
+          "memory": {
+            "geometries": 55,
+            "textures": 44
+          },
+          "gl": 0
+        }
+      ]
+    },
+    {
+      "name": "Rendered lobby produces no browser or asset errors",
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "browser": "131.0.6778.205",
+  "channel": "chrome",
+  "viewport": {
+    "width": 3440,
+    "height": 1440,
+    "dpr": 1
+  },
+  "runtime": "v24.22.1",
+  "platform": "win32",
+  "summary": {
+    "PASS": 4,
+    "FAIL": 0,
+    "SKIP": 0,
+    "PENDING": 0
+  }
+}

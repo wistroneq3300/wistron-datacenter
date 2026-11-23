@@ -6,14 +6,14 @@ import {SSAOPass} from '../../vendor/hq5/postprocessing/SSAOPass.js';
 import {OutputPass} from '../../vendor/hq5/postprocessing/OutputPass.js';
 
 const PRESETS=Object.freeze({
-  day:{hdr:'park_parking_1k.hdr',sun:[-34,52,28],sunColor:0xfff5e7,power:3.1,sky:0x81b5d7,horizon:0xd5e0df,ambient:.65,environment:.85,exposure:1.05},
+  day:{hdr:'urban_street_04_1k.hdr',sun:[-34,52,28],sunColor:0xfff9f5,power:2.65,sky:0x8bb8d8,horizon:0xd6e0e7,ambient:.72,environment:.65,exposure:1.0},
   dusk:{hdr:'modern_evening_street_1k.hdr',sun:[-48,13,9],sunColor:0xffba78,power:2.6,sky:0x687d9c,horizon:0xe5b9a1,ambient:.35,environment:.65,exposure:1.05},
-  night:{hdr:'pond_bridge_night_1k.hdr',sun:[-22,38,-8],sunColor:0x9abce4,power:.15,sky:0x102237,horizon:0x283d50,ambient:.07,environment:.12,exposure:1.1}
+  night:{hdr:'pond_bridge_night_1k.hdr',sun:[-22,38,-8],sunColor:0xa9c4e2,power:.17,sky:0x122539,horizon:0x2a3d50,ambient:.11,environment:.15,exposure:1.1}
 });
 
 export class HQLighting {
   constructor(hq){
-    this.hq=hq;this.renderer=hq.renderer;this.scene=hq.scene;this.mode='day';this.active=true;this.disposed=false;this.targets=new Map();this.sources=new Set();this.pipeline=null;
+    this.hq=hq;this.renderer=hq.renderer;this.scene=hq.scene;this.mode='day';this.active=true;this.disposed=false;this.targets=new Map();this.sources=new Set();this.pipeline=null;this.loadGeneration=0;this.quality={ao:true,samples:4,shadow:4096,environment:'hdr'};
     this.group=new THREE.Group();hq.root.add(this.group);
     this.sun=new THREE.DirectionalLight(0xffffff,3);this.sun.castShadow=true;this.sun.shadow.mapSize.set(4096,4096);Object.assign(this.sun.shadow.camera,{left:-38,right:38,top:32,bottom:-32,near:1,far:150});this.sun.shadow.normalBias=.012;this.sun.shadow.bias=-.000025;this.sun.shadow.radius=2;this.sun.target.position.set(-4,10,-12);this.group.add(this.sun,this.sun.target);
     this.hemi=new THREE.HemisphereLight(0xd9e9f4,0x727876,.6);this.group.add(this.hemi);
@@ -37,22 +37,39 @@ export class HQLighting {
     this.skyGeometry=new THREE.SphereGeometry(180,32,16);this.dome=new THREE.Mesh(this.skyGeometry,this.skyMaterial);this.dome.frustumCulled=false;this.dome.renderOrder=-100;this.group.add(this.dome);
   }
   async load(){
-    await Promise.all(Object.entries(PRESETS).map(async([mode,p])=>{const texture=await new RGBELoader().loadAsync('./assets/environment/hq5-lighting/'+p.hdr);if(this.disposed){texture.dispose();return;}texture.mapping=THREE.EquirectangularReflectionMapping;const pmrem=new THREE.PMREMGenerator(this.renderer);const target=pmrem.fromEquirectangular(texture);pmrem.dispose();texture.dispose();if(this.disposed){target.dispose();return;}this.targets.set(mode,target);if(mode===this.mode)this.set(mode);}));return true;
+    const generation=++this.loadGeneration;
+    await Promise.all(Object.entries(PRESETS).map(async([mode,p])=>{const texture=await new RGBELoader().loadAsync('./assets/environment/hq5-lighting/'+p.hdr);if(this.disposed||generation!==this.loadGeneration){texture.dispose();return;}texture.mapping=THREE.EquirectangularReflectionMapping;const pmrem=new THREE.PMREMGenerator(this.renderer);const target=pmrem.fromEquirectangular(texture);pmrem.dispose();texture.dispose();if(this.disposed||generation!==this.loadGeneration){target.dispose();return;}this.targets.get(mode)?.dispose();this.targets.set(mode,target);if(mode===this.mode)this.set(mode);}));return true;
   }
+  setQuality(profile){
+    const previous=this.quality;this.quality={...profile};
+    if(previous.ao!==profile.ao||previous.samples!==profile.samples)this.disposePipeline();
+    if(previous.shadow!==profile.shadow){this.sun.shadow.dispose();this.sun.shadow.map=null;this.sun.shadow.mapPass=null;this.sun.shadow.mapSize.set(profile.shadow,profile.shadow);this.sun.shadow.needsUpdate=true;}
+    if(profile.environment==='fallback'){this.loadGeneration++;for(const target of this.targets.values())target.dispose();this.targets.clear();this.envTarget=this.fallback;this.activate(this.active);}
+    else if(previous.environment==='fallback'){this.ready=this.load();this.ready.catch(error=>{this.lastError=error.message;});}
+  }
+  disposePipeline(){if(!this.pipeline)return;const {composer,ao,output,render}=this.pipeline;ao.dispose();ao.noiseTexture.dispose();ao.ssaoMaterial.dispose();output.dispose();render.dispose();composer.dispose();this.pipeline=null;}
   set(mode){
+    this.blend=null;
     const p=PRESETS[mode];if(!p)throw Error('Invalid HQ light preset');this.mode=mode;this.envTarget=this.targets.get(mode)||this.fallback;this.sky.set(p.horizon);this.sun.position.fromArray(p.sun);this.sun.color.set(p.sunColor);this.sun.intensity=p.power;this.hemi.intensity=p.ambient;
     this.skyMaterial.uniforms.top.value.set(p.sky);this.skyMaterial.uniforms.horizon.value.set(p.horizon);this.skyMaterial.uniforms.sunColor.value.set(p.sunColor);this.skyMaterial.uniforms.sunDirection.value.copy(this.sun.position).normalize();this.skyMaterial.uniforms.cloudStrength.value=mode==='night'?.12:.65;
     this.entry.intensity=mode==='day'?0:mode==='dusk'?65:110;this.wash.intensity=mode==='night'?280:0;
     this.hq.lamp.emissiveIntensity=mode==='day'?.15:mode==='dusk'?1.6:3;
+    this.hq.roofWordmark.emissiveIntensity=mode==='night'?.26:mode==='dusk'?.07:0;
     this.hq.glass.emissive.set(mode==='night'?0x0b242c:0x000000);this.hq.glass.emissiveIntensity=mode==='night'?.35:0;
     for(const light of this.hq.streetLamps)light.intensity=mode==='day'?0:mode==='dusk'?32:65;
     this.activate(this.active);
   }
+  transitionTo(mode,seconds=2.4){
+    const capture=()=>({sun:this.sun.intensity,hemi:this.hemi.intensity,entry:this.entry.intensity,wash:this.wash.intensity,color:this.sun.color.clone(),sky:this.sky.clone(),top:this.skyMaterial.uniforms.top.value.clone(),horizon:this.skyMaterial.uniforms.horizon.value.clone(),direction:this.sun.position.clone(),environment:this.scene.environmentIntensity});
+    const from=capture();this.set(mode);const to=capture();this.blend={from,to,elapsed:0,seconds};this.mixLighting(0);
+  }
+  mixLighting(t){const {from:a,to:b}=this.blend;this.sun.intensity=THREE.MathUtils.lerp(a.sun,b.sun,t);this.hemi.intensity=THREE.MathUtils.lerp(a.hemi,b.hemi,t);this.entry.intensity=THREE.MathUtils.lerp(a.entry,b.entry,t);this.wash.intensity=THREE.MathUtils.lerp(a.wash,b.wash,t);this.sun.color.copy(a.color).lerp(b.color,t);this.sun.position.copy(a.direction).lerp(b.direction,t);this.sky.copy(a.sky).lerp(b.sky,t);this.skyMaterial.uniforms.top.value.copy(a.top).lerp(b.top,t);this.skyMaterial.uniforms.horizon.value.copy(a.horizon).lerp(b.horizon,t);this.skyMaterial.uniforms.sunDirection.value.copy(this.sun.position).normalize();this.scene.environmentIntensity=THREE.MathUtils.lerp(a.environment,b.environment,t);this.scene.fog?.color.copy(this.sky);}
   activate(active){this.active=active;if(active){const p=PRESETS[this.mode];this.scene.environment=this.envTarget.texture;this.scene.environmentIntensity=p.environment;this.scene.background=this.sky;this.scene.fog=new THREE.Fog(p.horizon,100,200);}else{this.scene.environmentIntensity=1;}}
-  update(camera){this.dome.position.copy(camera.position);if(this.active){this.scene.environment=this.envTarget.texture;this.scene.environmentIntensity=PRESETS[this.mode].environment;}}
+  update(camera,dt=0){this.dome.position.copy(camera.position);if(this.active){this.scene.environment=this.envTarget.texture;this.scene.environmentIntensity=PRESETS[this.mode].environment;if(this.blend){this.blend.elapsed+=dt;const t=Math.min(1,this.blend.elapsed/this.blend.seconds);this.mixLighting(t*t*(3-2*t));if(t===1)this.blend=null;}}}
   render(scene,camera){
+    if(!this.quality.ao){const exposure=this.renderer.toneMappingExposure;this.renderer.toneMappingExposure=PRESETS[this.mode].exposure;try{this.renderer.render(scene,camera);}finally{this.renderer.toneMappingExposure=exposure;}return;}
     if(!this.pipeline){
-      const target=new THREE.WebGLRenderTarget(1,1,{type:THREE.HalfFloatType,samples:4});const composer=new EffectComposer(this.renderer,target);composer.setPixelRatio(1);const render=new RenderPass(scene,camera),ao=new SSAOPass(scene,camera,1,1,16),output=new OutputPass();ao.kernelRadius=.42;ao.minDistance=.00015;ao.maxDistance=.018;
+      const target=new THREE.WebGLRenderTarget(1,1,{type:THREE.HalfFloatType,samples:this.quality.samples});const composer=new EffectComposer(this.renderer,target);composer.setPixelRatio(1);const render=new RenderPass(scene,camera),ao=new SSAOPass(scene,camera,1,1,16),output=new OutputPass();ao.kernelRadius=.42;ao.minDistance=.00015;ao.maxDistance=.018;
       // Architecture AO runs at half resolution. Alpha leaf silhouettes retain
       // their real shadow maps; opaque normal override must not fill leaf cards.
       const resize=ao.setSize.bind(ao);ao.setSize=(w,h)=>resize(Math.max(1,w>>1),Math.max(1,h>>1));
@@ -66,5 +83,5 @@ export class HQLighting {
     const exposure=this.renderer.toneMappingExposure,auto=this.renderer.info.autoReset;this.renderer.toneMappingExposure=PRESETS[this.mode].exposure;this.renderer.info.autoReset=false;this.renderer.info.reset();
     try{p.composer.render();}finally{this.renderer.toneMappingExposure=exposure;this.renderer.info.autoReset=auto;}
   }
-  dispose(){if(this.disposed)return;this.disposed=true;this.group.removeFromParent();this.sun.shadow.dispose();this.skyGeometry.dispose();this.skyMaterial.dispose();this.fallback.dispose();for(const t of this.targets.values())t.dispose();this.targets.clear();if(this.pipeline){const {composer,ao,output,render}=this.pipeline;ao.dispose();ao.noiseTexture.dispose();ao.ssaoMaterial.dispose();output.dispose();render.dispose();composer.dispose();this.pipeline=null;}}
+  dispose(){if(this.disposed)return;this.disposed=true;this.loadGeneration++;this.group.removeFromParent();this.sun.shadow.dispose();this.skyGeometry.dispose();this.skyMaterial.dispose();this.fallback.dispose();for(const t of this.targets.values())t.dispose();this.targets.clear();this.disposePipeline();}
 }

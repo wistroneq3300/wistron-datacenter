@@ -1,0 +1,37 @@
+/* A quiet player over the 3D stage. It inherits the studio type and palette. */
+.experience-toolbar,.showcase-hud,.explore-hud{position:absolute;z-index:12;background:#102329ed;color:#e4efeb;border-radius:12px;box-shadow:0 10px 32px #02080e38}
+.experience-toolbar{right:32px;top:26px;display:flex;gap:4px;padding:5px}
+.experience-toolbar button,.showcase-actions button,.explore-hud button{font:inherit;font-size:12px;min-height:40px;border:0;border-radius:7px;background:transparent;color:#e4efeb;padding:8px 13px;cursor:pointer;display:inline-flex;gap:8px;align-items:center;justify-content:center}
+.experience-toolbar button:first-child{background:#c4dfc2;color:#17332b}
+.experience-toolbar svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.6}
+.experience-toolbar button:hover,.showcase-actions button:hover,.explore-hud button:hover{background:#355356;color:#f1faf6}
+.experience-toolbar button[aria-pressed=true]{background:#355356}
+.showcase-hud{left:50%;bottom:36px;transform:translateX(-50%);width:450px;max-width:calc(100% - 28px);padding:18px 20px}
+.showcase-heading{display:flex;justify-content:space-between;gap:14px;align-items:baseline}.showcase-heading strong{font-weight:500;font-size:15px}.showcase-heading span{font-size:11px;color:#c6dad4;font-variant-numeric:tabular-nums}
+.showcase-hud progress{display:block;width:100%;height:3px;margin:14px 0 8px;accent-color:#c4dfc2}.showcase-actions{display:flex;gap:4px;justify-content:space-between}
+.showcase-actions button:disabled{opacity:.45;cursor:default}
+.explore-hud{left:32px;bottom:184px;width:355px;max-width:calc(100% - 28px);padding:16px 18px}.explore-hud strong{font-size:15px;font-weight:500}.explore-hud p{font-size:12px;line-height:1.7;margin:8px 0 14px;color:#d3e3dc}.explore-hud label{display:flex;align-items:center;gap:10px;font-size:12px}.explore-hud input{min-width:40px;width:110px;accent-color:#bdddbd}.explore-hud output{font-variant-numeric:tabular-nums;white-space:nowrap}.explore-hud small{display:block;margin-top:10px;color:#c3d3cb;font-size:11px}
+.spatial-hotspots{position:absolute;inset:0;pointer-events:none;z-index:6;overflow:hidden}.spatial-hotspot{position:absolute;left:0;top:0;pointer-events:auto;min-height:40px;max-width:200px;border:1px solid #b9d2caa8;border-radius:6px;padding:8px 13px;background:#142a31e8;color:#e6f4eb;font:inherit;font-size:12px;cursor:pointer;box-shadow:0 4px 12px #07131730}.spatial-hotspot::before{content:'';display:inline-block;width:6px;height:6px;border:1px solid #c4dfc2;border-radius:50%;margin-right:8px}.spatial-hotspot:hover,.spatial-hotspot:focus-visible{background:#c4dfc2;color:#17332b}
+.quality{gap:8px}.quality label{font-size:10px;color:inherit}.quality select{background:#152d34;color:#e4efeb;border:1px solid #587279;border-radius:4px;min-height:32px;padding:4px;font:inherit;font-size:11px}.quality #qualityBtn{display:none}
+.equipment-hover{position:absolute;z-index:8;max-width:230px;pointer-events:none;background:#142a31ee;color:#e6f4eb;padding:8px 12px;border-radius:5px;font-size:12px}.equipment-hover[hidden]{display:none}
+.experience-toolbar :focus-visible,.showcase-hud :focus-visible,.explore-hud :focus-visible,.spatial-hotspot:focus-visible,.quality :focus-visible{outline:2px solid #d2edbb;outline-offset:3px}
+.showcase-hud[hidden],.explore-hud[hidden],.spatial-hotspot[hidden]{display:none!important}
+#scene.showcase-playing>:is(.hq-controls,.scene-meta,.scene-sideinfo,.detail-header,.bottom-dock,.tour-controls,.rack-inspector,.part-list,.cinematic-controls,.world-labels,.spatial-hotspots,.scene-hint,.breadcrumbs){visibility:hidden}
+#scene.free-exploring>.hq-controls{display:none}
+#scene.immersive>:not(#viewport):not(#hqFade):not(#experienceToolbar):not(#showcaseHUD):not(#toast){visibility:hidden}
+#scene.immersive .experience-toolbar{opacity:.22;transition:opacity .2s}#scene.immersive .experience-toolbar:hover,#scene.immersive .experience-toolbar:focus-within{opacity:1}
+#scene.immersive .showcase-hud{opacity:.2}#scene.immersive .showcase-hud:hover,#scene.immersive .showcase-hud:focus-within{opacity:1}
+@media(max-width:760px){
+ #scene[data-depth="2"] #labels{display:none}
+ .experience-toolbar{top:56px;right:14px}.experience-toolbar button{min-height:44px;padding:8px 10px;font-size:11px}
+ .detail-header{top:116px;max-width:calc(100% - 30px)}.detail-header strong{font-size:15px;line-height:1.35;margin-top:3px;max-width:340px}.detail-header>div>span{display:none}
+ .tour-controls .tourSkip{white-space:nowrap;flex-shrink:0}.tour-controls .journey{min-width:0}.tour-controls #journeyName{max-width:72px}
+ .hq-controls{bottom:170px;padding:8px 10px}.hq-controls .hq-play-row{margin-top:4px}.hq-controls .hq-light-row{margin-top:4px}.hq-controls button,.hq-controls select{min-height:44px}
+ .hq-controls .hq-draft{font-size:10px}.hq-controls .hq-view-row{gap:4px}
+ .showcase-hud{bottom:18px;padding:14px}.showcase-heading strong{font-size:13px}.showcase-actions button{min-height:44px;padding:8px;font-size:12px}
+ .explore-hud{left:14px;bottom:168px;padding:12px}.explore-hud p{margin:6px 0 10px}.explore-hud small{font-size:10px}
+ .quality{right:24px;bottom:180px;z-index:7}.quality label{display:none}.quality select{min-height:44px}
+ .spatial-hotspot{min-height:44px;font-size:11px;padding:7px 10px;max-width:155px}
+ .spatial-hotspot[data-entity-id="hq-entrance"]{font-size:0;width:44px;height:44px;min-width:44px;max-width:44px;border-radius:50%;padding:0}.spatial-hotspot[data-entity-id="hq-entrance"]::before{width:10px;height:10px;margin:0}
+}
+@media(prefers-reduced-motion:reduce){#scene.immersive .experience-toolbar{transition:none}}

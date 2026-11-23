@@ -1,0 +1,88 @@
+{
+  "suite": "asset-lifecycle",
+  "date": "2026-11-23T14:12:21.037Z",
+  "tests": [
+    {
+      "name": "A post-acquire shader binding failure releases its sole GLB lease and restores the chassis",
+      "status": "PASS",
+      "evidence": {
+        "before": {
+          "refs": 0,
+          "materials": 38,
+          "children": 1
+        },
+        "error": "TEST binding failure",
+        "boundMeshes": 3,
+        "refs": 0,
+        "assetReleased": true,
+        "pending": null,
+        "materials": 38,
+        "children": 1,
+        "detail": null,
+        "fallbackVisible": true
+      }
+    },
+    {
+      "name": "A failing second attachment cannot dispose another equipment shared geometry or textures",
+      "status": "PASS",
+      "evidence": {
+        "error": "TEST second attachment failure",
+        "refs": 1,
+        "sameAsset": true,
+        "keeperAttached": true,
+        "secondDetail": null,
+        "fallbackVisible": true,
+        "disposedDuringFailure": 0,
+        "retryRefs": 2,
+        "retryEntity": "editorial-compute-02",
+        "releasedRefs": 0,
+        "assetReleased": true,
+        "baseline": 38,
+        "materials": 38
+      }
+    },
+    {
+      "name": "An exception after mounting rolls back hierarchy and visibility; cancellation releases exactly one lease",
+      "status": "PASS",
+      "evidence": {
+        "error": "TEST mounted visibility failure",
+        "injected": true,
+        "children": 1,
+        "before": 1,
+        "visible": true,
+        "detail": null,
+        "refs": 1,
+        "cancellation": "AbortError",
+        "retainedRefs": 1,
+        "releasedRefs": 0,
+        "assetReleased": true
+      }
+    },
+    {
+      "name": "Normal Board navigation still loads and releases after injected failures without renderer errors",
+      "status": "PASS",
+      "evidence": {
+        "entity": "editorial-compute-01",
+        "refs": 1,
+        "releasedRefs": 0
+      }
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "browser": "131.0.6778.205",
+  "channel": "chrome",
+  "viewport": {
+    "width": 3440,
+    "height": 1440,
+    "dpr": 1
+  },
+  "runtime": "v24.22.1",
+  "platform": "win32",
+  "summary": {
+    "PASS": 4,
+    "FAIL": 0,
+    "SKIP": 0,
+    "PENDING": 0
+  }
+}

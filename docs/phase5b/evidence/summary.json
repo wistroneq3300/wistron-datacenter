@@ -1,0 +1,136 @@
+{
+  "date": "2026-11-23T14:17:08.027Z",
+  "baseCommit": "d1ad789636ee7db257b1a7366abe546c9a1f2c98",
+  "runtime": "v24.22.1",
+  "platform": "win32",
+  "suites": [
+    {
+      "name": "P5B + P5A CPU regression",
+      "file": "unit-regression.tap",
+      "summary": {
+        "PASS": 69,
+        "FAIL": 0,
+        "SKIP": 0,
+        "PENDING": 0
+      }
+    },
+    {
+      "name": "P5B hq-street",
+      "file": "phase5b-hq-street.json",
+      "date": "2026-11-23T13:53:51.353Z",
+      "summary": {
+        "PASS": 3,
+        "FAIL": 0,
+        "SKIP": 0,
+        "PENDING": 0
+      }
+    },
+    {
+      "name": "P5B interior",
+      "file": "phase5b-interior.json",
+      "date": "2026-11-23T13:54:07.876Z",
+      "summary": {
+        "PASS": 4,
+        "FAIL": 0,
+        "SKIP": 0,
+        "PENDING": 0
+      }
+    },
+    {
+      "name": "P5B experience",
+      "file": "phase5b-experience.json",
+      "date": "2026-11-23T13:54:26.387Z",
+      "summary": {
+        "PASS": 13,
+        "FAIL": 0,
+        "SKIP": 0,
+        "PENDING": 0
+      }
+    },
+    {
+      "name": "P5B hotspots",
+      "file": "phase5b-hotspots.json",
+      "date": "2026-11-23T13:56:22.158Z",
+      "summary": {
+        "PASS": 8,
+        "FAIL": 0,
+        "SKIP": 0,
+        "PENDING": 0
+      }
+    },
+    {
+      "name": "P5B visual-performance",
+      "file": "phase5b-visual-performance.json",
+      "date": "2026-11-23T13:57:24.875Z",
+      "summary": {
+        "PASS": 8,
+        "FAIL": 0,
+        "SKIP": 1,
+        "PENDING": 0
+      }
+    },
+    {
+      "name": "P5B detail-capture",
+      "file": "phase5b-detail-capture.json",
+      "date": "2026-11-23T14:00:20.116Z",
+      "summary": {
+        "PASS": 5,
+        "FAIL": 0,
+        "SKIP": 0,
+        "PENDING": 0
+      }
+    },
+    {
+      "name": "P5B movie",
+      "file": "phase5b-movie.json",
+      "date": "2026-11-23T14:00:38.920Z",
+      "summary": {
+        "PASS": 3,
+        "FAIL": 0,
+        "SKIP": 0,
+        "PENDING": 0
+      }
+    },
+    {
+      "name": "P5A browser regression",
+      "file": "regression-p5a/phase5a-hq.json",
+      "date": "2026-11-23T14:03:17.324Z",
+      "summary": {
+        "PASS": 13,
+        "FAIL": 0,
+        "SKIP": 1,
+        "PENDING": 0
+      }
+    },
+    {
+      "name": "P5A recorded cinematic regression",
+      "file": "regression-p5a/phase5a-movie.json",
+      "date": "2026-11-23T14:05:17.877Z",
+      "summary": {
+        "PASS": 3,
+        "FAIL": 0,
+        "SKIP": 0,
+        "PENDING": 0
+      }
+    },
+    {
+      "name": "P1–P4 full regression",
+      "file": "regression-p1-p4/summary.json",
+      "date": "2026-11-23T14:17:07.849Z",
+      "summary": {
+        "PASS": 165,
+        "FAIL": 0,
+        "SKIP": 2,
+        "PENDING": 1
+      }
+    }
+  ],
+  "totals": {
+    "PASS": 294,
+    "FAIL": 0,
+    "SKIP": 4,
+    "PENDING": 1
+  },
+  "sourceDigest": "16d59877a2d5dd5b69abb817d888f411fab7e5db598f74765d269162f421788c",
+  "note": "Executed final reports only. Summary mode aggregates retained evidence without running tests. Earlier failed mobile framing is preserved as phase5b-visual-performance-first-attempt.json; it was fixed and re-executed, not changed into SKIP. Physical devices, original photos and OEM data remain unavailable. Exact GPU byte allocation is not exposed. Final QA and V1.0 release belong to the user."
+}

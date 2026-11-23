@@ -1,0 +1,91 @@
+{
+  "date": "2026-11-23T14:01:38.475Z",
+  "baseline": "d1ad789636ee7db257b1a7366abe546c9a1f2c98",
+  "method": "P5A retained native rendered camera records against final P5B native renders. Tolerance 1e-9 on coordinates, exact FOV and viewport. Lighting and materials intentionally differ.",
+  "pairs": [
+    {
+      "view": "front",
+      "beforeFile": "../phase5a/evidence/hq5-day-front-3440x1440.png",
+      "afterFile": "hq-front-3440x1440.png",
+      "position": [
+        -6,
+        5.4999999999999964,
+        46
+      ],
+      "target": [
+        -4,
+        9,
+        -7.000000000000001
+      ],
+      "fov": 36,
+      "resolution": [
+        3440,
+        1440
+      ],
+      "matched": true
+    },
+    {
+      "view": "quarter",
+      "beforeFile": "../phase5a/evidence/hq5-day-quarter-3440x1440.png",
+      "afterFile": "hq-quarter-3440x1440.png",
+      "position": [
+        33,
+        10.000000000000002,
+        35.00000000000001
+      ],
+      "target": [
+        -3,
+        9,
+        -18
+      ],
+      "fov": 36,
+      "resolution": [
+        3440,
+        1440
+      ],
+      "matched": true
+    },
+    {
+      "view": "aerial",
+      "beforeFile": "../phase5a/evidence/hq5-day-aerial-3440x1440.png",
+      "afterFile": "hq-aerial-3440x1440.png",
+      "position": [
+        42,
+        37.99999999999999,
+        31.00000000000001
+      ],
+      "target": [
+        -2.9999999999999996,
+        6.999999999999999,
+        -18.999999999999996
+      ],
+      "fov": 38,
+      "resolution": [
+        3440,
+        1440
+      ],
+      "matched": true
+    },
+    {
+      "view": "entrance",
+      "beforeFile": "../phase5a/evidence/hq5-day-entrance-3440x1440.png",
+      "afterFile": "hq-entrance-3440x1440.png",
+      "position": [
+        -6,
+        1.65,
+        8
+      ],
+      "target": [
+        -8.15,
+        5,
+        -4
+      ],
+      "fov": 52,
+      "resolution": [
+        3440,
+        1440
+      ],
+      "matched": true
+    }
+  ]
+}

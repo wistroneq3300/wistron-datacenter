@@ -1,0 +1,166 @@
+TAP version 13
+# Subtest: demo uses only three equipment kinds, validated draft envelopes and stable child IDs
+ok 1 - demo uses only three equipment kinds, validated draft envelopes and stable child IDs
+  ---
+  duration_ms: 3.4353
+  type: 'test'
+  ...
+# Subtest: add/update/move/remove all three equipment types via the command validator
+ok 2 - add/update/move/remove all three equipment types via the command validator
+  ---
+  duration_ms: 9.0153
+  type: 'test'
+  ...
+# Subtest: collision rollback, including rear face and size-only edits
+ok 3 - collision rollback, including rear face and size-only edits
+  ---
+  duration_ms: 5.0626
+  type: 'test'
+  ...
+# Subtest: bottom/top capacity edges accepted, outside and mismatched RU/OU rejected
+ok 4 - bottom/top capacity edges accepted, outside and mismatched RU/OU rejected
+  ---
+  duration_ms: 6.6361
+  type: 'test'
+  ...
+# Subtest: width/depth boundary and nonfinite dimensions rejected
+ok 5 - width/depth boundary and nonfinite dimensions rejected
+  ---
+  duration_ms: 2.773
+  type: 'test'
+  ...
+# Subtest: xyz placement checks rotated volumes and exact mm coordinates
+ok 6 - xyz placement checks rotated volumes and exact mm coordinates
+  ---
+  duration_ms: 2.6781
+  type: 'test'
+  ...
+# Subtest: front/rear shallow devices can coexist only when volumes are disjoint
+ok 7 - front/rear shallow devices can coexist only when volumes are disjoint
+  ---
+  duration_ms: 2.3625
+  type: 'test'
+  ...
+# Subtest: stable entity and children survive rename/device-ID changes
+ok 8 - stable entity and children survive rename/device-ID changes
+  ---
+  duration_ms: 1.7766
+  type: 'test'
+  ...
+# Subtest: duplicate device ID, missing model and corrupted child references rejected
+ok 9 - duplicate device ID, missing model and corrupted child references rejected
+  ---
+  duration_ms: 2.7913
+  type: 'test'
+  ...
+# Subtest: export/import/export is byte-identical including model revisions and children
+ok 10 - export/import/export is byte-identical including model revisions and children
+  ---
+  duration_ms: 4.6286
+  type: 'test'
+  ...
+# Subtest: V1 migration keeps IDs/positions and does not fabricate inventory
+ok 11 - V1 migration keeps IDs/positions and does not fabricate inventory
+  ---
+  duration_ms: 0.4745
+  type: 'test'
+  ...
+# Subtest: sparse position 9 then add chooses free position 0 and round-trips
+ok 12 - sparse position 9 then add chooses free position 0 and round-trips
+  ---
+  duration_ms: 1.2439
+  type: 'test'
+  ...
+# Subtest: row capacity, rack duplicate/delete and dangling equipment cleanup
+ok 13 - row capacity, rack duplicate/delete and dangling equipment cleanup
+  ---
+  duration_ms: 4.354
+  type: 'test'
+  ...
+# Subtest: malformed/unknown/oversized import rolls back with no partial write
+ok 14 - malformed/unknown/oversized import rolls back with no partial write
+  ---
+  duration_ms: 2.7074
+  type: 'test'
+  ...
+# Subtest: storage quota failure rolls back and V1 backup persists before migration
+ok 15 - storage quota failure rolls back and V1 backup persists before migration
+  ---
+  duration_ms: 3.9698
+  type: 'test'
+  ...
+# Subtest: profile shrink revalidates installed equipment transactionally
+ok 16 - profile shrink revalidates installed equipment transactionally
+  ---
+  duration_ms: 1.8095
+  type: 'test'
+  ...
+# Subtest: pinned upstream files and assets match the reviewed byte hashes
+ok 17 - pinned upstream files and assets match the reviewed byte hashes
+  ---
+  duration_ms: 51.3633
+  type: 'test'
+  ...
+# Subtest: ported fragment shader is exactly the upstream source, without a simplified material substitute
+ok 18 - ported fragment shader is exactly the upstream source, without a simplified material substitute
+  ---
+  duration_ms: 0.5059
+  type: 'test'
+  ...
+# Subtest: eight-stage semantic path uses stable equipment and child identity
+ok 19 - eight-stage semantic path uses stable equipment and child identity
+  ---
+  duration_ms: 0.8248
+  type: 'test'
+  ...
+# Subtest: parent navigation retains descendant context for reversible return
+ok 20 - parent navigation retains descendant context for reversible return
+  ---
+  duration_ms: 0.2003
+  type: 'test'
+  ...
+# Subtest: switch and power shelf have no fabricated board/component navigation
+ok 21 - switch and power shelf have no fabricated board/component navigation
+  ---
+  duration_ms: 0.3418
+  type: 'test'
+  ...
+# Subtest: empty rack and missing board are explicit navigation boundaries
+ok 22 - empty rack and missing board are explicit navigation boundaries
+  ---
+  duration_ms: 0.3819
+  type: 'test'
+  ...
+# Subtest: body extraction sweep rejects an obstacle missed by installed-pose validation
+ok 23 - body extraction sweep rejects an obstacle missed by installed-pose validation
+  ---
+  duration_ms: 5.455
+  type: 'test'
+  ...
+# Subtest: projection subscriber failure restores persisted document and notifies rollback
+ok 24 - projection subscriber failure restores persisted document and notifies rollback
+  ---
+  duration_ms: 3.6921
+  type: 'test'
+  ...
+# Subtest: malformed child definitions and unavailable source nodes are rejected transactionally
+ok 25 - malformed child definitions and unavailable source nodes are rejected transactionally
+  ---
+  duration_ms: 3.1371
+  type: 'test'
+  ...
+# Subtest: disabled local storage and corrupt saved JSON preserve recoverable startup
+ok 26 - disabled local storage and corrupt saved JSON preserve recoverable startup
+  ---
+  duration_ms: 1.9211
+  type: 'test'
+  ...
+1..26
+# tests 26
+# suites 0
+# pass 26
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 151.0907

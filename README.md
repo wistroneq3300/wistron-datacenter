@@ -1,11 +1,14 @@
 # Wistron Data Center Digital Twin V2
 
-現有 Three.js 工作台上的 PA Cinematic Rack、資料驅動設備配置與八層導覽，現已擴充 Phase 3／4：HQ 日間 Draft 場景、多 Row 機房、唯讀 Digital Twin 與可操作 Mock 告警定位。HQ 原始照片尚未取得，精確外觀未驗收；機房配置／OEM 尺寸為 Draft，真實 PA API 整合 Pending。所有展示 telemetry 明示 DEMO／MOCK。
+Phase 5B 展示候選版加入三種 HQ 光照、可自由探索的訪客大廳，以及從總部到元件的 17 幕 Showcase。原有 PA Cinematic Rack、設備配置、八層導覽和 Mock 告警定位可繼續操作。訪客大廳、街道尺寸、機房配置及 OEM 尺寸保留 Draft，監測資料明示 DEMO／MOCK。
 
 ![PA Rack in the V2 workbench](docs/phase1-2/evidence/rack-three-quarter-3440x1440.png)
 
 ## 交付與證據
 
+- [Phase 5B 操作與交付說明](docs/phase5b/README.md)
+- [HQ 前後對照、訪客大廳、手機畫面與完整 Showcase](docs/phase5b/VISUAL-COMPARISON.html)
+- [Phase 5B 獨立評分及 Final QA](docs/phase5b/VISUAL-REVIEW.md)／[驗收清單](docs/phase5b/FINAL-QA-CHECKLIST.md)
 - [Phase 3／4 功能矩陣、修復與限制](docs/phase3-4/README.md)
 - [本輪實測、完整 Regression 與效能](docs/phase3-4/TEST-RESULTS.md)
 - [HQ 修色前後、PA 比對、機房、Mock 與操作影片](docs/phase3-4/VISUAL-COMPARISON.html)
@@ -24,7 +27,7 @@
 node server.mjs
 ~~~
 
-開啟 http://127.0.0.1:4300 。PORT 可調整連接埠；HOST 預設為 loopback。需透過 HTTP / HTTPS 與 WebGL 2 瀏覽器使用。若要由同一伺服器檢視證據畫廊，以 TEST_MODE=1 啟動，再開啟 /docs/phase3-4/VISUAL-COMPARISON.html；一般模式不公開測試與文件路徑。
+開啟 http://127.0.0.1:4300 。PORT 可調整連接埠，HOST 預設為 loopback。需透過 HTTP / HTTPS 與 WebGL 2 瀏覽器使用。若要由同一伺服器檢視證據畫廊，以 TEST_MODE=1 啟動，再開啟 /docs/phase5b/VISUAL-COMPARISON.html。一般模式不公開測試與文件路徑。
 
 ## 操作
 
@@ -32,7 +35,9 @@ node server.mjs
 |---|---|
 | 滾輪／前後按鈕／上下方向鍵 | 導覽模式逐層進入或返回 |
 | 拖曳、右鍵拖曳 | 旋轉、平移；保留導覽進度 |
-| 自由探索、Ctrl + 滾輪、雙指 | 縮放／探索；不改變語意層級 |
+| 自由探索 | WASD、Q/E、Shift 和滑鼠觀看，Esc 返回導覽 |
+| Ctrl + 滾輪／雙指 | 只縮放目前層級 |
+| Play Demo | 啟動完整 Showcase，停止時可返回開始前的視角 |
 | Breadcrumb | 返回指定父層 |
 | Rack 內點選設備 | 進入設備層；有資產時可到 Board／Component |
 | 設備清單的編輯／新增 | System、Switch、Power Shelf 配置、移位、尺寸及識別資料 |

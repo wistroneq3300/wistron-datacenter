@@ -1,0 +1,15 @@
+not ok 1 - Merged architecture has finite indexed-independent geometry and nonempty physical bounds
+  error: "Cannot read properties of undefined (reading 'uuid')"
+not ok 2 - Representative authored front and return openings expose glass before stone
+  error: "Cannot read properties of undefined (reading 'uuid')"
+not ok 3 - Ray-measured corner glazing contains four upper bands and two base bands
+  error: "Cannot read properties of undefined (reading 'uuid')"
+not ok 4 - Elevated left step returns block exterior rays before they can see the interior glazing
+  error: "Cannot read properties of undefined (reading 'uuid')"
+not ok 5 - Step-return closure preserves both roof setbacks and the upper x=-12 silhouette boundary
+  error: "Cannot read properties of undefined (reading 'uuid')"
+not ok 8 - Architecture merge releases staged buffers and registers every retained mesh for disposal
+  error: "Cannot read properties of undefined (reading 'uuid')"
+# tests 69
+# pass 63
+# fail 6

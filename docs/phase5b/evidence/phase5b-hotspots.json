@@ -1,0 +1,831 @@
+{
+  "suite": "phase5b-hotspots",
+  "date": "2026-11-23T13:56:22.158Z",
+  "tests": [
+    {
+      "name": "Visible stable-ID hotspots support an actual keyboard / click journey from HQ Entrance through Component",
+      "status": "PASS",
+      "evidence": {
+        "trace": [
+          {
+            "depth": 1,
+            "hallId": "hall-1",
+            "rowId": "row-a",
+            "rackId": null,
+            "equipmentId": null,
+            "nodeId": null,
+            "boardKey": null,
+            "componentKey": null,
+            "path": [
+              {
+                "stage": "hq",
+                "entityId": "wistron-hq"
+              },
+              {
+                "stage": "interior",
+                "entityId": "wistron-hq::interior"
+              }
+            ]
+          },
+          {
+            "depth": 2,
+            "hallId": "hall-1",
+            "rowId": "row-a",
+            "rackId": null,
+            "equipmentId": null,
+            "nodeId": null,
+            "boardKey": null,
+            "componentKey": null,
+            "path": [
+              {
+                "stage": "hq",
+                "entityId": "wistron-hq"
+              },
+              {
+                "stage": "interior",
+                "entityId": "wistron-hq::interior"
+              },
+              {
+                "stage": "hall",
+                "entityId": "hall-1"
+              }
+            ],
+            "activatedHotspot": "hall-1"
+          },
+          {
+            "depth": 3,
+            "hallId": "hall-1",
+            "rowId": "row-a",
+            "rackId": null,
+            "equipmentId": null,
+            "nodeId": null,
+            "boardKey": null,
+            "componentKey": null,
+            "path": [
+              {
+                "stage": "hq",
+                "entityId": "wistron-hq"
+              },
+              {
+                "stage": "interior",
+                "entityId": "wistron-hq::interior"
+              },
+              {
+                "stage": "hall",
+                "entityId": "hall-1"
+              },
+              {
+                "stage": "row",
+                "entityId": "row-a"
+              }
+            ],
+            "activatedHotspot": "row-a"
+          },
+          {
+            "depth": 4,
+            "hallId": "hall-1",
+            "rowId": "row-a",
+            "rackId": "rack-1",
+            "equipmentId": null,
+            "nodeId": null,
+            "boardKey": null,
+            "componentKey": null,
+            "path": [
+              {
+                "stage": "hq",
+                "entityId": "wistron-hq"
+              },
+              {
+                "stage": "interior",
+                "entityId": "wistron-hq::interior"
+              },
+              {
+                "stage": "hall",
+                "entityId": "hall-1"
+              },
+              {
+                "stage": "row",
+                "entityId": "row-a"
+              },
+              {
+                "stage": "rack",
+                "entityId": "rack-1"
+              }
+            ],
+            "activatedHotspot": "rack-1"
+          },
+          {
+            "depth": 5,
+            "hallId": "hall-1",
+            "rowId": "row-a",
+            "rackId": "rack-1",
+            "equipmentId": "editorial-compute-01",
+            "nodeId": null,
+            "boardKey": null,
+            "componentKey": null,
+            "path": [
+              {
+                "stage": "hq",
+                "entityId": "wistron-hq"
+              },
+              {
+                "stage": "interior",
+                "entityId": "wistron-hq::interior"
+              },
+              {
+                "stage": "hall",
+                "entityId": "hall-1"
+              },
+              {
+                "stage": "row",
+                "entityId": "row-a"
+              },
+              {
+                "stage": "rack",
+                "entityId": "rack-1"
+              },
+              {
+                "stage": "system",
+                "entityId": "editorial-compute-01"
+              }
+            ],
+            "activatedHotspot": "editorial-compute-01"
+          },
+          {
+            "depth": 6,
+            "hallId": "hall-1",
+            "rowId": "row-a",
+            "rackId": "rack-1",
+            "equipmentId": "editorial-compute-01",
+            "nodeId": null,
+            "boardKey": "board-0",
+            "componentKey": null,
+            "path": [
+              {
+                "stage": "hq",
+                "entityId": "wistron-hq"
+              },
+              {
+                "stage": "interior",
+                "entityId": "wistron-hq::interior"
+              },
+              {
+                "stage": "hall",
+                "entityId": "hall-1"
+              },
+              {
+                "stage": "row",
+                "entityId": "row-a"
+              },
+              {
+                "stage": "rack",
+                "entityId": "rack-1"
+              },
+              {
+                "stage": "system",
+                "entityId": "editorial-compute-01"
+              },
+              {
+                "stage": "board",
+                "entityId": "editorial-compute-01::board-0"
+              }
+            ],
+            "activatedHotspot": "editorial-compute-01::board-0"
+          },
+          {
+            "depth": 7,
+            "hallId": "hall-1",
+            "rowId": "row-a",
+            "rackId": "rack-1",
+            "equipmentId": "editorial-compute-01",
+            "nodeId": null,
+            "boardKey": "board-0",
+            "componentKey": "Board1-CPU",
+            "path": [
+              {
+                "stage": "hq",
+                "entityId": "wistron-hq"
+              },
+              {
+                "stage": "interior",
+                "entityId": "wistron-hq::interior"
+              },
+              {
+                "stage": "hall",
+                "entityId": "hall-1"
+              },
+              {
+                "stage": "row",
+                "entityId": "row-a"
+              },
+              {
+                "stage": "rack",
+                "entityId": "rack-1"
+              },
+              {
+                "stage": "system",
+                "entityId": "editorial-compute-01"
+              },
+              {
+                "stage": "board",
+                "entityId": "editorial-compute-01::board-0"
+              },
+              {
+                "stage": "component",
+                "entityId": "editorial-compute-01::Board1-CPU"
+              }
+            ],
+            "activatedHotspot": "editorial-compute-01::Board1-CPU"
+          }
+        ],
+        "activation": "Actual visible buttons; alternating click and focused Enter. No navigation state was injected for the path."
+      }
+    },
+    {
+      "name": "Visible Node hotspot focuses its real Mock identity and supplied Board, and Breadcrumb returns to System",
+      "status": "PASS",
+      "evidence": {
+        "expected": {
+          "id": "editorial-compute-01::node-0",
+          "systemId": "editorial-compute-01",
+          "boardId": "editorial-compute-01::board-0"
+        },
+        "selected": {
+          "depth": 6,
+          "hallId": "hall-1",
+          "rowId": "row-a",
+          "rackId": "rack-1",
+          "equipmentId": "editorial-compute-01",
+          "nodeId": "editorial-compute-01::node-0",
+          "boardKey": "board-0",
+          "componentKey": "Board1-CPU",
+          "path": [
+            {
+              "stage": "hq",
+              "entityId": "wistron-hq"
+            },
+            {
+              "stage": "interior",
+              "entityId": "wistron-hq::interior"
+            },
+            {
+              "stage": "hall",
+              "entityId": "hall-1"
+            },
+            {
+              "stage": "row",
+              "entityId": "row-a"
+            },
+            {
+              "stage": "rack",
+              "entityId": "rack-1"
+            },
+            {
+              "stage": "system",
+              "entityId": "editorial-compute-01"
+            },
+            {
+              "stage": "board",
+              "entityId": "editorial-compute-01::board-0"
+            }
+          ]
+        },
+        "returned": {
+          "depth": 5,
+          "hallId": "hall-1",
+          "rowId": "row-a",
+          "rackId": "rack-1",
+          "equipmentId": "editorial-compute-01",
+          "nodeId": null,
+          "boardKey": "board-0",
+          "componentKey": "Board1-CPU",
+          "path": [
+            {
+              "stage": "hq",
+              "entityId": "wistron-hq"
+            },
+            {
+              "stage": "interior",
+              "entityId": "wistron-hq::interior"
+            },
+            {
+              "stage": "hall",
+              "entityId": "hall-1"
+            },
+            {
+              "stage": "row",
+              "entityId": "row-a"
+            },
+            {
+              "stage": "rack",
+              "entityId": "rack-1"
+            },
+            {
+              "stage": "system",
+              "entityId": "editorial-compute-01"
+            }
+          ]
+        },
+        "data": "DEMO / MOCK identity; no inferred component failure"
+      }
+    },
+    {
+      "name": "Hotspot buttons retain object identity and have no child-list rebuild during actual stationary WebGL frames",
+      "status": "PASS",
+      "evidence": {
+        "before": {
+          "count": 3,
+          "frame": 2370
+        },
+        "sameNodes": true,
+        "mutations": 0,
+        "frames": 33,
+        "count": 3
+      }
+    },
+    {
+      "name": "Switching Rows at the same depth through Facility UI refreshes the stable-ID Rack hotspot",
+      "status": "PASS",
+      "evidence": [
+        {
+          "rowId": "row-a",
+          "rackHotspotId": "rack-1",
+          "depth": 3
+        },
+        {
+          "rowId": "row-2",
+          "rackHotspotId": "rack-3",
+          "depth": 3
+        }
+      ]
+    },
+    {
+      "name": "Active Showcase blocks actual canvas dragging while paused, including Skip to a new paused chapter",
+      "status": "PASS",
+      "evidence": {
+        "paused": {
+          "position": [
+            -6,
+            5.4999999999999964,
+            46
+          ],
+          "target": [
+            -4,
+            9,
+            -7.000000000000001
+          ],
+          "fov": 36
+        },
+        "skipped": {
+          "position": [
+            -6,
+            5.4999999999999964,
+            46
+          ],
+          "target": [
+            -4,
+            9,
+            -7.000000000000001
+          ],
+          "fov": 36
+        },
+        "firstPoint": {
+          "x": 1548,
+          "y": 545.65
+        },
+        "secondPoint": {
+          "x": 1548,
+          "y": 545.65
+        },
+        "actualCanvasHitVerified": true
+      }
+    },
+    {
+      "name": "Reduced Motion remains idle until explicit Play Demo, then actual HQ orbit and PA film clocks advance",
+      "status": "PASS",
+      "evidence": {
+        "preference": "reduce",
+        "automaticPlayback": false,
+        "explicitUserPlay": true,
+        "hqBefore": {
+          "progress": 0.0005533333333333303,
+          "position": [
+            33.000000563709946,
+            10.000009065551499,
+            34.999999617102674
+          ]
+        },
+        "hqAfter": {
+          "progress": 0.010560000000000007,
+          "position": [
+            33.00385950835272,
+            10.003300574220154,
+            34.99737824178475
+          ]
+        },
+        "paClockBefore": 83.50000000050385,
+        "paClockAfter": 483.8999999965836,
+        "limitation": "This test verifies actual advancing playback; it stops before the full PA timeline endpoint. Full Showcase recording is separate."
+      }
+    },
+    {
+      "name": "Desktop hotspot and input tests have no browser, WebGL or local asset errors",
+      "status": "PASS",
+      "evidence": {
+        "errors": [],
+        "requests": []
+      }
+    },
+    {
+      "name": "390×844 touch activates HQ / Hall / Row / Rack hotspots and the mobile inspector opens and closes",
+      "status": "PASS",
+      "evidence": {
+        "trace": [
+          {
+            "depth": 1,
+            "hallId": "hall-1",
+            "rowId": "row-a",
+            "rackId": null,
+            "equipmentId": null,
+            "nodeId": null,
+            "boardKey": null,
+            "componentKey": null,
+            "path": [
+              {
+                "stage": "hq",
+                "entityId": "wistron-hq"
+              },
+              {
+                "stage": "interior",
+                "entityId": "wistron-hq::interior"
+              }
+            ]
+          },
+          {
+            "depth": 2,
+            "hallId": "hall-1",
+            "rowId": "row-a",
+            "rackId": null,
+            "equipmentId": null,
+            "nodeId": null,
+            "boardKey": null,
+            "componentKey": null,
+            "path": [
+              {
+                "stage": "hq",
+                "entityId": "wistron-hq"
+              },
+              {
+                "stage": "interior",
+                "entityId": "wistron-hq::interior"
+              },
+              {
+                "stage": "hall",
+                "entityId": "hall-1"
+              }
+            ]
+          },
+          {
+            "depth": 3,
+            "hallId": "hall-1",
+            "rowId": "row-a",
+            "rackId": null,
+            "equipmentId": null,
+            "nodeId": null,
+            "boardKey": null,
+            "componentKey": null,
+            "path": [
+              {
+                "stage": "hq",
+                "entityId": "wistron-hq"
+              },
+              {
+                "stage": "interior",
+                "entityId": "wistron-hq::interior"
+              },
+              {
+                "stage": "hall",
+                "entityId": "hall-1"
+              },
+              {
+                "stage": "row",
+                "entityId": "row-a"
+              }
+            ]
+          },
+          {
+            "depth": 4,
+            "hallId": "hall-1",
+            "rowId": "row-a",
+            "rackId": "rack-1",
+            "equipmentId": null,
+            "nodeId": null,
+            "boardKey": null,
+            "componentKey": null,
+            "path": [
+              {
+                "stage": "hq",
+                "entityId": "wistron-hq"
+              },
+              {
+                "stage": "interior",
+                "entityId": "wistron-hq::interior"
+              },
+              {
+                "stage": "hall",
+                "entityId": "hall-1"
+              },
+              {
+                "stage": "row",
+                "entityId": "row-a"
+              },
+              {
+                "stage": "rack",
+                "entityId": "rack-1"
+              }
+            ]
+          }
+        ],
+        "qualityHit": {
+          "rect": {
+            "x": 260,
+            "y": 596,
+            "width": 74,
+            "height": 44,
+            "top": 596,
+            "right": 334,
+            "bottom": 640,
+            "left": 260
+          },
+          "hitId": "qualitySelect",
+          "directHit": true
+        },
+        "qualityValue": "ultra",
+        "inspectorOpened": true,
+        "inspectorClosed": true,
+        "showcasePlayedPausedStopped": true,
+        "errors": [],
+        "requests": [],
+        "viewport": {
+          "width": 390,
+          "height": 844,
+          "dpr": 2
+        },
+        "limitation": "Actual Chrome touch emulation; no physical mobile-device claim"
+      }
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "browser": "131.0.6778.205",
+  "channel": "chrome",
+  "viewport": {
+    "width": 3440,
+    "height": 1440,
+    "dpr": 1
+  },
+  "runtime": "v24.22.1",
+  "platform": "win32",
+  "gpu": {
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002786) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+  },
+  "hotspotPath": [
+    {
+      "depth": 1,
+      "hallId": "hall-1",
+      "rowId": "row-a",
+      "rackId": null,
+      "equipmentId": null,
+      "nodeId": null,
+      "boardKey": null,
+      "componentKey": null,
+      "path": [
+        {
+          "stage": "hq",
+          "entityId": "wistron-hq"
+        },
+        {
+          "stage": "interior",
+          "entityId": "wistron-hq::interior"
+        }
+      ]
+    },
+    {
+      "depth": 2,
+      "hallId": "hall-1",
+      "rowId": "row-a",
+      "rackId": null,
+      "equipmentId": null,
+      "nodeId": null,
+      "boardKey": null,
+      "componentKey": null,
+      "path": [
+        {
+          "stage": "hq",
+          "entityId": "wistron-hq"
+        },
+        {
+          "stage": "interior",
+          "entityId": "wistron-hq::interior"
+        },
+        {
+          "stage": "hall",
+          "entityId": "hall-1"
+        }
+      ],
+      "activatedHotspot": "hall-1"
+    },
+    {
+      "depth": 3,
+      "hallId": "hall-1",
+      "rowId": "row-a",
+      "rackId": null,
+      "equipmentId": null,
+      "nodeId": null,
+      "boardKey": null,
+      "componentKey": null,
+      "path": [
+        {
+          "stage": "hq",
+          "entityId": "wistron-hq"
+        },
+        {
+          "stage": "interior",
+          "entityId": "wistron-hq::interior"
+        },
+        {
+          "stage": "hall",
+          "entityId": "hall-1"
+        },
+        {
+          "stage": "row",
+          "entityId": "row-a"
+        }
+      ],
+      "activatedHotspot": "row-a"
+    },
+    {
+      "depth": 4,
+      "hallId": "hall-1",
+      "rowId": "row-a",
+      "rackId": "rack-1",
+      "equipmentId": null,
+      "nodeId": null,
+      "boardKey": null,
+      "componentKey": null,
+      "path": [
+        {
+          "stage": "hq",
+          "entityId": "wistron-hq"
+        },
+        {
+          "stage": "interior",
+          "entityId": "wistron-hq::interior"
+        },
+        {
+          "stage": "hall",
+          "entityId": "hall-1"
+        },
+        {
+          "stage": "row",
+          "entityId": "row-a"
+        },
+        {
+          "stage": "rack",
+          "entityId": "rack-1"
+        }
+      ],
+      "activatedHotspot": "rack-1"
+    },
+    {
+      "depth": 5,
+      "hallId": "hall-1",
+      "rowId": "row-a",
+      "rackId": "rack-1",
+      "equipmentId": "editorial-compute-01",
+      "nodeId": null,
+      "boardKey": null,
+      "componentKey": null,
+      "path": [
+        {
+          "stage": "hq",
+          "entityId": "wistron-hq"
+        },
+        {
+          "stage": "interior",
+          "entityId": "wistron-hq::interior"
+        },
+        {
+          "stage": "hall",
+          "entityId": "hall-1"
+        },
+        {
+          "stage": "row",
+          "entityId": "row-a"
+        },
+        {
+          "stage": "rack",
+          "entityId": "rack-1"
+        },
+        {
+          "stage": "system",
+          "entityId": "editorial-compute-01"
+        }
+      ],
+      "activatedHotspot": "editorial-compute-01"
+    },
+    {
+      "depth": 6,
+      "hallId": "hall-1",
+      "rowId": "row-a",
+      "rackId": "rack-1",
+      "equipmentId": "editorial-compute-01",
+      "nodeId": null,
+      "boardKey": "board-0",
+      "componentKey": null,
+      "path": [
+        {
+          "stage": "hq",
+          "entityId": "wistron-hq"
+        },
+        {
+          "stage": "interior",
+          "entityId": "wistron-hq::interior"
+        },
+        {
+          "stage": "hall",
+          "entityId": "hall-1"
+        },
+        {
+          "stage": "row",
+          "entityId": "row-a"
+        },
+        {
+          "stage": "rack",
+          "entityId": "rack-1"
+        },
+        {
+          "stage": "system",
+          "entityId": "editorial-compute-01"
+        },
+        {
+          "stage": "board",
+          "entityId": "editorial-compute-01::board-0"
+        }
+      ],
+      "activatedHotspot": "editorial-compute-01::board-0"
+    },
+    {
+      "depth": 7,
+      "hallId": "hall-1",
+      "rowId": "row-a",
+      "rackId": "rack-1",
+      "equipmentId": "editorial-compute-01",
+      "nodeId": null,
+      "boardKey": "board-0",
+      "componentKey": "Board1-CPU",
+      "path": [
+        {
+          "stage": "hq",
+          "entityId": "wistron-hq"
+        },
+        {
+          "stage": "interior",
+          "entityId": "wistron-hq::interior"
+        },
+        {
+          "stage": "hall",
+          "entityId": "hall-1"
+        },
+        {
+          "stage": "row",
+          "entityId": "row-a"
+        },
+        {
+          "stage": "rack",
+          "entityId": "rack-1"
+        },
+        {
+          "stage": "system",
+          "entityId": "editorial-compute-01"
+        },
+        {
+          "stage": "board",
+          "entityId": "editorial-compute-01::board-0"
+        },
+        {
+          "stage": "component",
+          "entityId": "editorial-compute-01::Board1-CPU"
+        }
+      ],
+      "activatedHotspot": "editorial-compute-01::Board1-CPU"
+    }
+  ],
+  "summary": {
+    "PASS": 8,
+    "FAIL": 0,
+    "SKIP": 0,
+    "PENDING": 0
+  }
+}

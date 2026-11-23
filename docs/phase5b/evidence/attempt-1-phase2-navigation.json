@@ -1,0 +1,322 @@
+{
+  "suite": "phase2-navigation",
+  "date": "2026-11-13T05:30:24.366Z",
+  "tests": [
+    {
+      "name": "Wheel enters all eight semantic stages and reverses to HQ",
+      "status": "PASS",
+      "evidence": [
+        [
+          {
+            "stage": "hq",
+            "entityId": "wistron-hq"
+          },
+          {
+            "stage": "interior",
+            "entityId": "wistron-hq::interior"
+          }
+        ],
+        [
+          {
+            "stage": "hq",
+            "entityId": "wistron-hq"
+          },
+          {
+            "stage": "interior",
+            "entityId": "wistron-hq::interior"
+          },
+          {
+            "stage": "hall",
+            "entityId": "hall-1"
+          }
+        ],
+        [
+          {
+            "stage": "hq",
+            "entityId": "wistron-hq"
+          },
+          {
+            "stage": "interior",
+            "entityId": "wistron-hq::interior"
+          },
+          {
+            "stage": "hall",
+            "entityId": "hall-1"
+          },
+          {
+            "stage": "row",
+            "entityId": "row-a"
+          }
+        ],
+        [
+          {
+            "stage": "hq",
+            "entityId": "wistron-hq"
+          },
+          {
+            "stage": "interior",
+            "entityId": "wistron-hq::interior"
+          },
+          {
+            "stage": "hall",
+            "entityId": "hall-1"
+          },
+          {
+            "stage": "row",
+            "entityId": "row-a"
+          },
+          {
+            "stage": "rack",
+            "entityId": "rack-1"
+          }
+        ],
+        [
+          {
+            "stage": "hq",
+            "entityId": "wistron-hq"
+          },
+          {
+            "stage": "interior",
+            "entityId": "wistron-hq::interior"
+          },
+          {
+            "stage": "hall",
+            "entityId": "hall-1"
+          },
+          {
+            "stage": "row",
+            "entityId": "row-a"
+          },
+          {
+            "stage": "rack",
+            "entityId": "rack-1"
+          },
+          {
+            "stage": "system",
+            "entityId": "editorial-compute-01"
+          }
+        ],
+        [
+          {
+            "stage": "hq",
+            "entityId": "wistron-hq"
+          },
+          {
+            "stage": "interior",
+            "entityId": "wistron-hq::interior"
+          },
+          {
+            "stage": "hall",
+            "entityId": "hall-1"
+          },
+          {
+            "stage": "row",
+            "entityId": "row-a"
+          },
+          {
+            "stage": "rack",
+            "entityId": "rack-1"
+          },
+          {
+            "stage": "system",
+            "entityId": "editorial-compute-01"
+          },
+          {
+            "stage": "board",
+            "entityId": "editorial-compute-01::board-0"
+          }
+        ],
+        [
+          {
+            "stage": "hq",
+            "entityId": "wistron-hq"
+          },
+          {
+            "stage": "interior",
+            "entityId": "wistron-hq::interior"
+          },
+          {
+            "stage": "hall",
+            "entityId": "hall-1"
+          },
+          {
+            "stage": "row",
+            "entityId": "row-a"
+          },
+          {
+            "stage": "rack",
+            "entityId": "rack-1"
+          },
+          {
+            "stage": "system",
+            "entityId": "editorial-compute-01"
+          },
+          {
+            "stage": "board",
+            "entityId": "editorial-compute-01::board-0"
+          },
+          {
+            "stage": "component",
+            "entityId": "editorial-compute-01::Board1-CPU"
+          }
+        ]
+      ]
+    },
+    {
+      "name": "Canvas click and OrbitControls preserve navigation; free wheel only zooms",
+      "status": "PASS"
+    },
+    {
+      "name": "Equipment canvas picking, child buttons and breadcrumb work",
+      "status": "PASS"
+    },
+    {
+      "name": "Missing Switch and Power Shelf internals block descent without invented nodes",
+      "status": "PASS"
+    },
+    {
+      "name": "Rapid reversal cancels transition and pending GLB navigation",
+      "status": "PASS",
+      "evidence": {
+        "instant": 0,
+        "cancelled": false,
+        "state": 3,
+        "owner": "orbit"
+      }
+    },
+    {
+      "name": "Cinematic uses original clock, is seekable/reversible and releases camera ownership",
+      "status": "PASS",
+      "evidence": [
+        {
+          "progress": 0,
+          "clock": 0,
+          "owner": "timeline",
+          "finite": true
+        },
+        {
+          "progress": 0.18,
+          "clock": 4594.730126843524,
+          "owner": "timeline",
+          "finite": true
+        },
+        {
+          "progress": 0.28,
+          "clock": 9716.08894293172,
+          "owner": "timeline",
+          "finite": true
+        },
+        {
+          "progress": 0.31,
+          "clock": 12255.50012372837,
+          "owner": "timeline",
+          "finite": true
+        },
+        {
+          "progress": 0.4,
+          "clock": 17192.273229635703,
+          "owner": "timeline",
+          "finite": true
+        },
+        {
+          "progress": 0.56,
+          "clock": 22000,
+          "owner": "timeline",
+          "finite": true
+        },
+        {
+          "progress": 0.8,
+          "clock": 30700,
+          "owner": "timeline",
+          "finite": true
+        },
+        {
+          "progress": 1,
+          "clock": 39700,
+          "owner": "timeline",
+          "finite": true
+        },
+        {
+          "progress": 0.4,
+          "clock": 17192.273229635703,
+          "owner": "timeline",
+          "finite": true
+        },
+        {
+          "progress": 0,
+          "clock": 0,
+          "owner": "timeline",
+          "finite": true
+        }
+      ]
+    },
+    {
+      "name": "Repeated System / Board / Component load and release returns geometry, textures and materials",
+      "status": "PASS",
+      "evidence": [
+        {
+          "memory": {
+            "geometries": 48,
+            "textures": 44
+          },
+          "refs": 0,
+          "materials": 0,
+          "pool": 0
+        },
+        {
+          "memory": {
+            "geometries": 48,
+            "textures": 44
+          },
+          "refs": 0,
+          "materials": 0,
+          "pool": 0
+        },
+        {
+          "memory": {
+            "geometries": 48,
+            "textures": 44
+          },
+          "refs": 0,
+          "materials": 0,
+          "pool": 0
+        },
+        {
+          "memory": {
+            "geometries": 48,
+            "textures": 44
+          },
+          "refs": 0,
+          "materials": 0,
+          "pool": 0
+        }
+      ]
+    },
+    {
+      "name": "Touch tap navigation, pinch zoom and mobile viewport",
+      "status": "FAIL",
+      "error": "locator.tap: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#closeInspector')\u001b[22m\n\u001b[2m    - locator resolved to <button class=\"iconBtn\" id=\"closeInspector\" aria-label=\"關閉機櫃資訊\">…</button>\u001b[22m\n\u001b[2m  - attempting tap action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying tap action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying tap action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    56 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying tap action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at <repo>\\tests\\v2\\navigation-browser.cjs:30:748\n    at async check (<repo>\\tests\\v2\\harness.cjs:17:53)\n    at async <repo>\\tests\\v2\\navigation-browser.cjs:30:3\n    at async browserRun (<repo>\\tests\\v2\\harness.cjs:18:5)"
+    },
+    {
+      "name": "No browser console, shader or asset errors",
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "browser": "131.0.6778.205",
+  "channel": "chrome",
+  "viewport": {
+    "width": 3440,
+    "height": 1440,
+    "dpr": 1
+  },
+  "runtime": "v24.22.1",
+  "platform": "win32",
+  "summary": {
+    "PASS": 8,
+    "FAIL": 1,
+    "SKIP": 0,
+    "PENDING": 0
+  }
+}

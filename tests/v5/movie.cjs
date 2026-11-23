@@ -1,7 +1,7 @@
 process.env.V2_EVIDENCE_DIR||='docs/phase5a/evidence';process.env.V2_TEST_PORT||='4398';
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');const {browserRun}=require('../v2/harness.cjs');
 
-browserRun('phase5a-movie',async({page,check,report,origin,output})=>{
+browserRun('phase5a-movie',async({page,check,report,origin,output,root})=>{
   const filename='hq5-cinematic-3440x1440.webm',file=path.join(output,filename);let recorded=false;
   await page.goto(origin);await page.waitForFunction(()=>window.studio);await page.evaluate(()=>studio.environment.hq.loading);await page.evaluate(()=>studio.showHQView('quarter'));
   await check('Native 3440×1440 video records five views, three light modes, a complete orbit and real entrance handoff',async()=>{
@@ -30,7 +30,7 @@ browserRun('phase5a-movie',async({page,check,report,origin,output})=>{
     report.video={path:filename,...capture,...stop,bytes:fs.statSync(file).size,segments};return report.video;
   });
   if(recorded)await check('Recorded video supports byte-range playback and decodes two different nonblank real frames',async()=>{
-    const url=origin+'/docs/phase5a/evidence/'+filename,response=await fetch(url,{headers:{Range:'bytes=0-63'}});assert.equal(response.status,206);assert.equal((await response.arrayBuffer()).byteLength,64);
+    const url=origin+'/'+path.relative(root,output).split(path.sep).join('/')+'/'+filename,response=await fetch(url,{headers:{Range:'bytes=0-63'}});assert.equal(response.status,206);assert.equal((await response.arrayBuffer()).byteLength,64);
     const decoded=await page.evaluate(async ({url,endTime})=>{
       const video=document.createElement('video');video.src=url;video.muted=true;video.preload='auto';document.body.append(video);await new Promise((resolve,reject)=>{video.onloadedmetadata=resolve;video.onerror=()=>reject(Error('Recorded WebM metadata decode failed'));});
       const seek=time=>new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('Recorded WebM seek timed out')),15000);video.addEventListener('seeked',()=>{clearTimeout(timer);resolve();},{once:true});video.currentTime=time;});

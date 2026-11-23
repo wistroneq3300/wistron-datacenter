@@ -1,0 +1,532 @@
+{
+  "baseline": "d1ad789636ee7db257b1a7366abe546c9a1f2c98",
+  "captures": [
+    {
+      "file": "hq-front-3440x1440.png",
+      "position": [
+        -6,
+        5.4999999999999964,
+        46
+      ],
+      "target": [
+        -4,
+        9,
+        -7.000000000000001
+      ],
+      "fov": 36,
+      "resolution": [
+        3440,
+        1440
+      ],
+      "quality": {
+        "mode": "ultra",
+        "level": "ultra",
+        "p95": null,
+        "profile": {
+          "pixelRatio": 2,
+          "shadow": 4096,
+          "ao": true,
+          "samples": 4,
+          "environment": "hdr",
+          "vegetation": "ultra"
+        }
+      }
+    },
+    {
+      "file": "hq-quarter-3440x1440.png",
+      "position": [
+        33,
+        10.000000000000002,
+        35.00000000000001
+      ],
+      "target": [
+        -3,
+        9,
+        -18
+      ],
+      "fov": 36,
+      "resolution": [
+        3440,
+        1440
+      ],
+      "quality": {
+        "mode": "ultra",
+        "level": "ultra",
+        "p95": null,
+        "profile": {
+          "pixelRatio": 2,
+          "shadow": 4096,
+          "ao": true,
+          "samples": 4,
+          "environment": "hdr",
+          "vegetation": "ultra"
+        }
+      }
+    },
+    {
+      "file": "hq-aerial-3440x1440.png",
+      "position": [
+        42,
+        37.99999999999999,
+        31.00000000000001
+      ],
+      "target": [
+        -2.9999999999999996,
+        6.999999999999999,
+        -18.999999999999996
+      ],
+      "fov": 38,
+      "resolution": [
+        3440,
+        1440
+      ],
+      "quality": {
+        "mode": "ultra",
+        "level": "ultra",
+        "p95": null,
+        "profile": {
+          "pixelRatio": 2,
+          "shadow": 4096,
+          "ao": true,
+          "samples": 4,
+          "environment": "hdr",
+          "vegetation": "ultra"
+        }
+      }
+    },
+    {
+      "file": "hq-entrance-3440x1440.png",
+      "position": [
+        -6,
+        1.65,
+        8
+      ],
+      "target": [
+        -8.15,
+        5,
+        -4
+      ],
+      "fov": 52,
+      "resolution": [
+        3440,
+        1440
+      ],
+      "quality": {
+        "mode": "ultra",
+        "level": "ultra",
+        "p95": null,
+        "profile": {
+          "pixelRatio": 2,
+          "shadow": 4096,
+          "ao": true,
+          "samples": 4,
+          "environment": "hdr",
+          "vegetation": "ultra"
+        }
+      }
+    },
+    {
+      "file": "hq-day-3440x1440.png",
+      "position": [
+        33,
+        10.000000000000002,
+        35.00000000000001
+      ],
+      "target": [
+        -3,
+        9,
+        -18
+      ],
+      "fov": 36,
+      "resolution": [
+        3440,
+        1440
+      ],
+      "quality": {
+        "mode": "ultra",
+        "level": "ultra",
+        "p95": null,
+        "profile": {
+          "pixelRatio": 2,
+          "shadow": 4096,
+          "ao": true,
+          "samples": 4,
+          "environment": "hdr",
+          "vegetation": "ultra"
+        }
+      }
+    },
+    {
+      "file": "hq-dusk-3440x1440.png",
+      "position": [
+        33,
+        10.000000000000002,
+        35.00000000000001
+      ],
+      "target": [
+        -3,
+        9,
+        -18
+      ],
+      "fov": 36,
+      "resolution": [
+        3440,
+        1440
+      ],
+      "quality": {
+        "mode": "ultra",
+        "level": "ultra",
+        "p95": null,
+        "profile": {
+          "pixelRatio": 2,
+          "shadow": 4096,
+          "ao": true,
+          "samples": 4,
+          "environment": "hdr",
+          "vegetation": "ultra"
+        }
+      }
+    },
+    {
+      "file": "hq-night-3440x1440.png",
+      "position": [
+        33,
+        10.000000000000002,
+        35.00000000000001
+      ],
+      "target": [
+        -3,
+        9,
+        -18
+      ],
+      "fov": 36,
+      "resolution": [
+        3440,
+        1440
+      ],
+      "quality": {
+        "mode": "ultra",
+        "level": "ultra",
+        "p95": null,
+        "profile": {
+          "pixelRatio": 2,
+          "shadow": 4096,
+          "ao": true,
+          "samples": 4,
+          "environment": "hdr",
+          "vegetation": "ultra"
+        }
+      }
+    },
+    {
+      "file": "tree-close-3440x1440.png",
+      "position": [
+        -13,
+        3.8,
+        9
+      ],
+      "target": [
+        -17,
+        4.900000000000001,
+        1.5000000000000007
+      ],
+      "fov": 42,
+      "resolution": [
+        3440,
+        1440
+      ],
+      "quality": {
+        "mode": "ultra",
+        "level": "ultra",
+        "p95": null,
+        "profile": {
+          "pixelRatio": 2,
+          "shadow": 4096,
+          "ao": true,
+          "samples": 4,
+          "environment": "hdr",
+          "vegetation": "ultra"
+        }
+      }
+    },
+    {
+      "file": "street-context-3440x1440.png",
+      "position": [
+        27,
+        2.1999999999999966,
+        17
+      ],
+      "target": [
+        -6.000000000000001,
+        3.0000000000000004,
+        -5
+      ],
+      "fov": 52,
+      "resolution": [
+        3440,
+        1440
+      ],
+      "quality": {
+        "mode": "ultra",
+        "level": "ultra",
+        "p95": null,
+        "profile": {
+          "pixelRatio": 2,
+          "shadow": 4096,
+          "ao": true,
+          "samples": 4,
+          "environment": "hdr",
+          "vegetation": "ultra"
+        }
+      }
+    },
+    {
+      "file": "hall-1-racks-3440x1440.png",
+      "position": [
+        10.200000000000003,
+        12.300000000000004,
+        18.6
+      ],
+      "target": [
+        0,
+        1.3,
+        4.2
+      ],
+      "fov": 43,
+      "resolution": [
+        3440,
+        1440
+      ],
+      "quality": {
+        "mode": "high",
+        "level": "high",
+        "p95": null,
+        "profile": {
+          "pixelRatio": 1.5,
+          "shadow": 2048,
+          "ao": true,
+          "samples": 2,
+          "environment": "hdr",
+          "vegetation": "high"
+        }
+      }
+    },
+    {
+      "file": "hall-4-racks-3440x1440.png",
+      "position": [
+        10.200000000000003,
+        12.300000000000004,
+        18.6
+      ],
+      "target": [
+        0,
+        1.3,
+        4.2
+      ],
+      "fov": 43,
+      "resolution": [
+        3440,
+        1440
+      ],
+      "quality": {
+        "mode": "high",
+        "level": "high",
+        "p95": null,
+        "profile": {
+          "pixelRatio": 1.5,
+          "shadow": 2048,
+          "ao": true,
+          "samples": 2,
+          "environment": "hdr",
+          "vegetation": "high"
+        }
+      }
+    },
+    {
+      "file": "hall-32-racks-3440x1440.png",
+      "position": [
+        11.730000000000002,
+        13.829999999999997,
+        19.860000000000003
+      ],
+      "target": [
+        0,
+        1.3,
+        3.300000000000001
+      ],
+      "fov": 43,
+      "resolution": [
+        3440,
+        1440
+      ],
+      "quality": {
+        "mode": "high",
+        "level": "high",
+        "p95": null,
+        "profile": {
+          "pixelRatio": 1.5,
+          "shadow": 2048,
+          "ao": true,
+          "samples": 2,
+          "environment": "hdr",
+          "vegetation": "high"
+        }
+      }
+    },
+    {
+      "file": "rack-row-3440x1440.png",
+      "position": [
+        3.673974266666667,
+        4.984959166666667,
+        18.00694685416667
+      ],
+      "target": [
+        -0.0020387733333335767,
+        1.3,
+        6.9789077341666665
+      ],
+      "fov": 35,
+      "resolution": [
+        3440,
+        1440
+      ],
+      "quality": {
+        "mode": "high",
+        "level": "high",
+        "p95": null,
+        "profile": {
+          "pixelRatio": 1.5,
+          "shadow": 2048,
+          "ao": true,
+          "samples": 2,
+          "environment": "hdr",
+          "vegetation": "high"
+        }
+      }
+    },
+    {
+      "file": "detailed-rack-3440x1440.png",
+      "position": [
+        -6.549999999999995,
+        1.7342183333333323,
+        12.6
+      ],
+      "target": [
+        -3.8499999999999956,
+        1.2842183333333324,
+        7
+      ],
+      "fov": 28.65,
+      "resolution": [
+        3440,
+        1440
+      ],
+      "quality": {
+        "mode": "high",
+        "level": "high",
+        "p95": null,
+        "profile": {
+          "pixelRatio": 1.5,
+          "shadow": 2048,
+          "ao": true,
+          "samples": 2,
+          "environment": "hdr",
+          "vegetation": "high"
+        }
+      }
+    },
+    {
+      "file": "system-3440x1440.png",
+      "position": [
+        -4.212067482892715,
+        2.963392670143116,
+        8.713275339185117
+      ],
+      "target": [
+        -3.8499999999999996,
+        1.9737415502363587,
+        7.892589044628294
+      ],
+      "fov": 32,
+      "resolution": [
+        3440,
+        1440
+      ],
+      "quality": {
+        "mode": "high",
+        "level": "high",
+        "p95": null,
+        "profile": {
+          "pixelRatio": 1.5,
+          "shadow": 2048,
+          "ao": true,
+          "samples": 2,
+          "environment": "hdr",
+          "vegetation": "high"
+        }
+      }
+    },
+    {
+      "file": "board-3440x1440.png",
+      "position": [
+        -4.124569234378154,
+        2.4454678656737476,
+        8.079088788920583
+      ],
+      "target": [
+        -3.9483708091795844,
+        1.9638588367976573,
+        7.679705691803824
+      ],
+      "fov": 32,
+      "resolution": [
+        3440,
+        1440
+      ],
+      "quality": {
+        "mode": "high",
+        "level": "high",
+        "p95": null,
+        "profile": {
+          "pixelRatio": 1.5,
+          "shadow": 2048,
+          "ao": true,
+          "samples": 2,
+          "environment": "hdr",
+          "vegetation": "high"
+        }
+      }
+    },
+    {
+      "file": "component-3440x1440.png",
+      "position": [
+        -3.997693352068351,
+        2.103200268870543,
+        7.860424652620822
+      ],
+      "target": [
+        -3.9483708122175925,
+        1.9683853266118039,
+        7.748626895625771
+      ],
+      "fov": 32,
+      "resolution": [
+        3440,
+        1440
+      ],
+      "quality": {
+        "mode": "high",
+        "level": "high",
+        "p95": null,
+        "profile": {
+          "pixelRatio": 1.5,
+          "shadow": 2048,
+          "ao": true,
+          "samples": 2,
+          "environment": "hdr",
+          "vegetation": "high"
+        }
+      }
+    }
+  ]
+}

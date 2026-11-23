@@ -1,0 +1,307 @@
+{
+  "suite": "phase5b-detail-capture",
+  "date": "2026-11-23T14:00:20.116Z",
+  "tests": [
+    {
+      "name": "Fresh detailed-rack actual 3440×1440 capture with current Guided HUD",
+      "status": "PASS",
+      "evidence": {
+        "depth": 4,
+        "selection": {
+          "rackId": "rack-1",
+          "equipmentId": null,
+          "boardKey": null,
+          "componentKey": null
+        },
+        "camera": {
+          "position": [
+            -6.549999999999988,
+            1.734218333333332,
+            12.599999999999998
+          ],
+          "target": [
+            -3.8499999999999885,
+            1.2842183333333324,
+            6.999999999999999
+          ],
+          "fov": 28.65
+        },
+        "quality": {
+          "mode": "high",
+          "level": "high",
+          "p95": null,
+          "profile": {
+            "pixelRatio": 1.5,
+            "shadow": 2048,
+            "ao": true,
+            "samples": 2,
+            "environment": "hdr",
+            "vegetation": "high"
+          }
+        },
+        "hotspots": [
+          {
+            "id": "editorial-compute-01",
+            "text": "System · 探索",
+            "rect": {
+              "x": 1660.5382080078125,
+              "y": 434.5748291015625,
+              "width": 126.2421875,
+              "height": 40,
+              "top": 434.5748291015625,
+              "right": 1786.7803955078125,
+              "bottom": 474.5748291015625,
+              "left": 1660.5382080078125
+            }
+          },
+          {
+            "id": "editorial-switch-1",
+            "text": "Switch · 探索",
+            "rect": {
+              "x": 1675.5960693359375,
+              "y": 317.8895568847656,
+              "width": 123.203125,
+              "height": 40,
+              "top": 317.8895568847656,
+              "right": 1798.7991943359375,
+              "bottom": 357.8895568847656,
+              "left": 1675.5960693359375
+            }
+          },
+          {
+            "id": "editorial-power-1",
+            "text": "Power Shelf · 探索",
+            "rect": {
+              "x": 1657.5107421875,
+              "y": 253.0308837890625,
+              "width": 151.8359375,
+              "height": 40,
+              "top": 253.0308837890625,
+              "right": 1809.3466796875,
+              "bottom": 293.0308837890625,
+              "left": 1657.5107421875
+            }
+          }
+        ],
+        "glError": 0
+      }
+    },
+    {
+      "name": "Fresh system actual 3440×1440 capture with current Guided HUD",
+      "status": "PASS",
+      "evidence": {
+        "depth": 5,
+        "selection": {
+          "rackId": "rack-1",
+          "equipmentId": "editorial-compute-01",
+          "boardKey": null,
+          "componentKey": null
+        },
+        "camera": {
+          "position": [
+            -4.212067482892715,
+            2.963392670143116,
+            8.713275339185117
+          ],
+          "target": [
+            -3.8499999999999996,
+            1.9737415502363587,
+            7.892589044628293
+          ],
+          "fov": 32
+        },
+        "quality": {
+          "mode": "high",
+          "level": "high",
+          "p95": null,
+          "profile": {
+            "pixelRatio": 1.5,
+            "shadow": 2048,
+            "ao": true,
+            "samples": 2,
+            "environment": "hdr",
+            "vegetation": "high"
+          }
+        },
+        "hotspots": [
+          {
+            "id": "editorial-compute-01::board-0",
+            "text": "Compute Board 1",
+            "rect": {
+              "x": 1367.382568359375,
+              "y": 551.9151611328125,
+              "width": 141.4765625,
+              "height": 40,
+              "top": 551.9151611328125,
+              "right": 1508.859130859375,
+              "bottom": 591.9151611328125,
+              "left": 1367.382568359375
+            }
+          },
+          {
+            "id": "editorial-compute-01::board-1",
+            "text": "Compute Board 2",
+            "rect": {
+              "x": 1655.7230224609375,
+              "y": 467.372802734375,
+              "width": 141.4765625,
+              "height": 40,
+              "top": 467.372802734375,
+              "right": 1797.1995849609375,
+              "bottom": 507.372802734375,
+              "left": 1655.7230224609375
+            }
+          }
+        ],
+        "glError": 0
+      }
+    },
+    {
+      "name": "Fresh board actual 3440×1440 capture with current Guided HUD",
+      "status": "PASS",
+      "evidence": {
+        "depth": 6,
+        "selection": {
+          "rackId": "rack-1",
+          "equipmentId": "editorial-compute-01",
+          "boardKey": "board-0",
+          "componentKey": null
+        },
+        "camera": {
+          "position": [
+            -4.124569234378154,
+            2.4454678656737476,
+            8.079088788920583
+          ],
+          "target": [
+            -3.9483708091795844,
+            1.9638588367976573,
+            7.679705691803824
+          ],
+          "fov": 32
+        },
+        "quality": {
+          "mode": "high",
+          "level": "high",
+          "p95": null,
+          "profile": {
+            "pixelRatio": 1.5,
+            "shadow": 2048,
+            "ao": true,
+            "samples": 2,
+            "environment": "hdr",
+            "vegetation": "high"
+          }
+        },
+        "hotspots": [
+          {
+            "id": "editorial-compute-01::Board1-CPU",
+            "text": "Board1/CPU",
+            "rect": {
+              "x": 1770.9295654296875,
+              "y": 895.0283813476562,
+              "width": 112.8203125,
+              "height": 40,
+              "top": 895.0283813476562,
+              "right": 1883.7498779296875,
+              "bottom": 935.0283813476562,
+              "left": 1770.9295654296875
+            }
+          },
+          {
+            "id": "editorial-compute-01::Board1-GPU_A",
+            "text": "Board1/GPU_A",
+            "rect": {
+              "x": 1434.9375,
+              "y": 620.7255859375,
+              "width": 127.4375,
+              "height": 40,
+              "top": 620.7255859375,
+              "right": 1562.375,
+              "bottom": 660.7255859375,
+              "left": 1434.9375
+            }
+          }
+        ],
+        "glError": 0
+      }
+    },
+    {
+      "name": "Fresh component actual 3440×1440 capture with current Guided HUD",
+      "status": "PASS",
+      "evidence": {
+        "depth": 7,
+        "selection": {
+          "rackId": "rack-1",
+          "equipmentId": "editorial-compute-01",
+          "boardKey": "board-0",
+          "componentKey": "Board1-CPU"
+        },
+        "camera": {
+          "position": [
+            -3.997693352068351,
+            2.103200268870543,
+            7.860424652620822
+          ],
+          "target": [
+            -3.9483708122175925,
+            1.9683853266118039,
+            7.748626895625771
+          ],
+          "fov": 32
+        },
+        "quality": {
+          "mode": "high",
+          "level": "high",
+          "p95": null,
+          "profile": {
+            "pixelRatio": 1.5,
+            "shadow": 2048,
+            "ao": true,
+            "samples": 2,
+            "environment": "hdr",
+            "vegetation": "high"
+          }
+        },
+        "hotspots": [
+          {
+            "id": "editorial-compute-01::Board1-CPU",
+            "text": "Board1/CPU",
+            "rect": {
+              "x": 1663.137451171875,
+              "y": 725.7402954101562,
+              "width": 112.8203125,
+              "height": 40,
+              "top": 725.7402954101562,
+              "right": 1775.957763671875,
+              "bottom": 765.7402954101562,
+              "left": 1663.137451171875
+            }
+          }
+        ],
+        "glError": 0
+      }
+    },
+    {
+      "name": "Fresh detail captures have no browser or asset errors",
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "browser": "131.0.6778.205",
+  "channel": "chrome",
+  "viewport": {
+    "width": 3440,
+    "height": 1440,
+    "dpr": 1
+  },
+  "runtime": "v24.22.1",
+  "platform": "win32",
+  "summary": {
+    "PASS": 5,
+    "FAIL": 0,
+    "SKIP": 0,
+    "PENDING": 0
+  }
+}

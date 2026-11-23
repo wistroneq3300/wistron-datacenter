@@ -1,0 +1,28 @@
+{
+  "suite": "cinematic-playback",
+  "date": "2026-11-23T14:09:27.011Z",
+  "tests": [
+    {
+      "name": "suite execution",
+      "status": "FAIL",
+      "error": "browserContext.newPage: Executable doesn't exist at <user>\\AppData\\Local\\ms-playwright\\ffmpeg-1011\\ffmpeg-win64.exe\n╔═════════════════════════════════════════════════════════════════╗\n║ Video rendering requires ffmpeg binary.                         ║\n║ Downloading it will not affect any of the system-wide settings. ║\n║ Please run the following command:                               ║\n║                                                                 ║\n║     npx playwright install ffmpeg                               ║\n║                                                                 ║\n║ <3 Playwright Team                                              ║\n╚═════════════════════════════════════════════════════════════════╝\n    at <repo>\\tests\\v2\\cinematic-browser.cjs:3:172\n    at async browserRun (<repo>\\tests\\v2\\harness.cjs:18:5)"
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "browser": "131.0.6778.205",
+  "channel": "chrome",
+  "viewport": {
+    "width": 3440,
+    "height": 1440,
+    "dpr": 1
+  },
+  "runtime": "v24.22.1",
+  "platform": "win32",
+  "summary": {
+    "PASS": 0,
+    "FAIL": 1,
+    "SKIP": 0,
+    "PENDING": 0
+  }
+}

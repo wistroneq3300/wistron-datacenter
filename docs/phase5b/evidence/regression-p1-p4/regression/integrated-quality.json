@@ -1,0 +1,337 @@
+{
+  "suite": "integrated-quality",
+  "date": "2026-11-23T14:08:14.760Z",
+  "tests": [
+    {
+      "name": "Real 3440×1440 workbench front, rear, side, three-quarter and open door images",
+      "status": "PASS",
+      "evidence": {
+        "viewport": [
+          3440,
+          1440
+        ],
+        "oneRenderer": true
+      }
+    },
+    {
+      "name": "360° native frame sweep has finite poses and no WebGL errors",
+      "status": "PASS",
+      "evidence": {
+        "angles": 73,
+        "stepDegrees": 5,
+        "glErrors": 0
+      }
+    },
+    {
+      "name": "Continuous frame-time measurements on HQ, Rack, Board and Cinematic",
+      "status": "PASS",
+      "evidence": [
+        {
+          "name": "HQ",
+          "frames": 120,
+          "medianMs": 16.69999999999709,
+          "p95Ms": 16.799999999999272,
+          "meanFps": 60.00600060006002,
+          "minMs": 16.5,
+          "maxMs": 16.80000000000291,
+          "draw": {
+            "frame": 1809,
+            "calls": 268,
+            "triangles": 5569706,
+            "points": 0,
+            "lines": 0
+          },
+          "memory": {
+            "geometries": 51,
+            "textures": 42
+          },
+          "target33ms": true
+        },
+        {
+          "name": "Rack",
+          "frames": 120,
+          "medianMs": 16.69999999999709,
+          "p95Ms": 16.799999999999272,
+          "meanFps": 59.99999999999999,
+          "minMs": 16.5,
+          "maxMs": 16.799999999999272,
+          "draw": {
+            "frame": 1998,
+            "calls": 63,
+            "triangles": 1140238,
+            "points": 0,
+            "lines": 12
+          },
+          "memory": {
+            "geometries": 69,
+            "textures": 42
+          },
+          "target33ms": true
+        },
+        {
+          "name": "Board",
+          "frames": 120,
+          "medianMs": 16.69999999999709,
+          "p95Ms": 16.799999999999272,
+          "meanFps": 60.00300015000745,
+          "minMs": 16.5,
+          "maxMs": 16.80000000000291,
+          "draw": {
+            "frame": 2298,
+            "calls": 150,
+            "triangles": 1150818,
+            "points": 0,
+            "lines": 12
+          },
+          "memory": {
+            "geometries": 194,
+            "textures": 81
+          },
+          "target33ms": true
+        },
+        {
+          "name": "Cinematic",
+          "frames": 120,
+          "medianMs": 16.700000000000728,
+          "p95Ms": 16.799999999999272,
+          "meanFps": 60.00300015000745,
+          "minMs": 16.5,
+          "maxMs": 16.80000000000291,
+          "draw": {
+            "frame": 2664,
+            "calls": 111,
+            "triangles": 189724,
+            "points": 0,
+            "lines": 0
+          },
+          "memory": {
+            "geometries": 195,
+            "textures": 81
+          },
+          "target33ms": true
+        }
+      ]
+    },
+    {
+      "name": "Board and cooling materials have real original shader, tangents and textures",
+      "status": "PASS",
+      "evidence": {
+        "primitives": 233,
+        "tangentPrimitives": 230,
+        "assetPrimitives": 230,
+        "flowPrimitives": 22,
+        "sourceOrigins": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "name": "Physical xyz/yaw projection agrees with validator body bounds",
+      "status": "PASS",
+      "evidence": {
+        "deltaMm": 0.000011145792626621187,
+        "actual": {
+          "min": [
+            -116.99921394368351,
+            380.58519757347955,
+            -129.22841585108458
+          ],
+          "max": [
+            112.53368834847821,
+            420.5851975898939,
+            119.65206530845495
+          ]
+        },
+        "expected": {
+          "center": [
+            -2.232758037093808,
+            400.58519041689124,
+            -4.788165062371011
+          ],
+          "half": [
+            80,
+            20,
+            100
+          ],
+          "axes": [
+            [
+              -0.90630778703665,
+              0.4226182617406993
+            ],
+            [
+              -0.4226182617406993,
+              -0.90630778703665
+            ]
+          ],
+          "min": [
+            -116.99920717409573,
+            380.58519041689124,
+            -129.22840470529195
+          ],
+          "max": [
+            112.53369109990813,
+            420.58519041689124,
+            119.65207458054994
+          ]
+        }
+      }
+    },
+    {
+      "name": "Camera stays outside the rack envelope and rear inspection approaches from the rear",
+      "status": "PASS",
+      "evidence": {
+        "outside": true,
+        "rear": true,
+        "minimum": 0.4765007638579725
+      }
+    },
+    {
+      "name": "Cinematic re-selection keeps detail assets attached to the selected stable entity",
+      "status": "PASS",
+      "evidence": {
+        "initial": {
+          "selected": "editorial-compute-01",
+          "detail": "editorial-compute-01",
+          "refs": 1,
+          "pending": false
+        },
+        "selected": "editorial-compute-02",
+        "detail": "editorial-compute-02",
+        "oldDetail": false,
+        "refs": 1,
+        "releasedRefs": 0
+      }
+    },
+    {
+      "name": "Native camera / shader / rendering stays error-free",
+      "status": "PASS"
+    },
+    {
+      "name": "OEM mechanical fit, certified door/rail swept volume and physical mobile GPU benchmark",
+      "status": "SKIP",
+      "reason": "No OEM CAD/specification or physical mobile device supplied. Draft body envelopes, Chrome touch emulation and desktop GPU measured separately."
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "browser": "131.0.6778.205",
+  "channel": "chrome",
+  "viewport": {
+    "width": 3440,
+    "height": 1440,
+    "dpr": 1
+  },
+  "runtime": "v24.22.1",
+  "platform": "win32",
+  "gpu": {
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002786) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "vendor": "Google Inc. (NVIDIA)",
+    "canvas": [
+      3440,
+      1339
+    ],
+    "three": 170,
+    "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+  },
+  "performance": [
+    {
+      "name": "HQ",
+      "frames": 120,
+      "medianMs": 16.69999999999709,
+      "p95Ms": 16.799999999999272,
+      "meanFps": 60.00600060006002,
+      "minMs": 16.5,
+      "maxMs": 16.80000000000291,
+      "draw": {
+        "frame": 1809,
+        "calls": 268,
+        "triangles": 5569706,
+        "points": 0,
+        "lines": 0
+      },
+      "memory": {
+        "geometries": 51,
+        "textures": 42
+      },
+      "target33ms": true
+    },
+    {
+      "name": "Rack",
+      "frames": 120,
+      "medianMs": 16.69999999999709,
+      "p95Ms": 16.799999999999272,
+      "meanFps": 59.99999999999999,
+      "minMs": 16.5,
+      "maxMs": 16.799999999999272,
+      "draw": {
+        "frame": 1998,
+        "calls": 63,
+        "triangles": 1140238,
+        "points": 0,
+        "lines": 12
+      },
+      "memory": {
+        "geometries": 69,
+        "textures": 42
+      },
+      "target33ms": true
+    },
+    {
+      "name": "Board",
+      "frames": 120,
+      "medianMs": 16.69999999999709,
+      "p95Ms": 16.799999999999272,
+      "meanFps": 60.00300015000745,
+      "minMs": 16.5,
+      "maxMs": 16.80000000000291,
+      "draw": {
+        "frame": 2298,
+        "calls": 150,
+        "triangles": 1150818,
+        "points": 0,
+        "lines": 12
+      },
+      "memory": {
+        "geometries": 194,
+        "textures": 81
+      },
+      "target33ms": true
+    },
+    {
+      "name": "Cinematic",
+      "frames": 120,
+      "medianMs": 16.700000000000728,
+      "p95Ms": 16.799999999999272,
+      "meanFps": 60.00300015000745,
+      "minMs": 16.5,
+      "maxMs": 16.80000000000291,
+      "draw": {
+        "frame": 2664,
+        "calls": 111,
+        "triangles": 189724,
+        "points": 0,
+        "lines": 0
+      },
+      "memory": {
+        "geometries": 195,
+        "textures": 81
+      },
+      "target33ms": true
+    }
+  ],
+  "summary": {
+    "PASS": 8,
+    "FAIL": 0,
+    "SKIP": 1,
+    "PENDING": 0
+  }
+}

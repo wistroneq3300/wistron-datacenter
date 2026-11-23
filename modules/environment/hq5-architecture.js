@@ -5,7 +5,19 @@ import {mergeGeometries} from '../../vendor/BufferGeometryUtils.js';
 // cited 2011 overview and 2025 entrance photograph; unseen faces remain Draft.
 export class ArchitectureBuilder {
   constructor(owner){this.o=owner;this.parts=new Map();this.stats={windowOpenings:0,curvedPanels:0};}
-  add(g,m,parent=this.o.building){const key=m.uuid+parent.uuid;if(!this.parts.has(key))this.parts.set(key,{material:m,parent,geometries:[]});this.parts.get(key).geometries.push(g.index?g.toNonIndexed():g);if(g.index)g.dispose();}
+  add(g,m,parent=this.o.building){
+    const key=m.uuid+parent.uuid;
+    if(!this.parts.has(key))this.parts.set(key,{material:m,parent,geometries:[]});
+    if(m===this.o.glass&&m.vertexColors){
+      g.computeBoundingBox();
+      const center=g.boundingBox.getCenter(new THREE.Vector3());
+      const variation=.89+.10*Math.sin(center.x*2.11+center.y*1.65+center.z*1.47);
+      const color=new Float32Array(g.attributes.position.count*3);
+      for(let i=0;i<color.length;i+=3){color[i]=variation*.98;color[i+1]=variation;color[i+2]=Math.min(1,variation*1.025);}
+      g.setAttribute('color',new THREE.BufferAttribute(color,3));
+    }
+    this.parts.get(key).geometries.push(g.index?g.toNonIndexed():g);if(g.index)g.dispose();
+  }
   prism(points,depth,m,position=[0,0,0],rotation=0,holes=[],bevel=.018){
     for(let i=0;i<holes.length;i++)for(let j=i+1;j<holes.length;j++){const [x,y,w,h]=holes[i],[a,b,c,d]=holes[j];if(x<a+c&&x+w>a&&y<b+d&&y+h>b)throw Error('Overlapping HQ facade openings');}
     const shape=new THREE.Shape(points.map(p=>new THREE.Vector2(...p)));
@@ -95,7 +107,7 @@ export class ArchitectureBuilder {
     this.rect(8,.5,6.9,o.stone,11.15,19.9,-40.95);this.rect(8.14,.09,7.04,o.trim,11.15,20.21,-41.02);
     this.rect(7.35,.02,6.25,o.roof,11.15,20.27,-40.62,0,.005);
     for(const [y,h]of[[2.05,2.9],[5.05,1.9]])this.window(14.45,y,5.4,h,-37.4,Math.PI/2);
-    this.entrance();o.sign('wistron',[10.55,19.90,-3.46],6.3,.67,'#467c77');
+    this.entrance();o.sign('wistron',[10.55,19.90,-3.46],6.7,.74,'#e4e6e3',{roofWordmark:true});
     o.building.userData.facades={front:'2011 overview + 2025 entrance; interpreted Draft',side:'partial historical reference',rear:'unverified plain envelope',roof:'unverified plain membrane',windowSchedule:'unverified',dimensionsMm:'illustrative, not surveyed'};
     this.flush();o.architectureStats=this.stats;
   }
@@ -103,8 +115,13 @@ export class ArchitectureBuilder {
     const o=this.o,x=-8.15;
     this.rect(6.1,.38,.94,o.stone,x,5.85,-4.80);
     for(const dx of [-2.7,2.7]){this.rect(.65,5.5,.95,o.stone,x+dx,2.75,-4.9);this.rect(.22,1.55,.11,o.frame,x+dx,2.9,-3.89);this.rect(.13,1.40,.045,o.lamp,x+dx,2.9,-3.77);for(let k=0;k<8;k++)this.rect(.18,.025,.035,o.frame,x+dx,2.25+k*.18,-3.70);}
-    this.window(x,2.2,4.65,3.9,-5.05);this.window(x,4.9,4.65,1.25,-5.05);
-    for(const dx of [-.65,.65])this.tube([[x+dx,1.1,-4.90],[x+dx,2.0,-4.90]],.018,o.metal);
+    // Recess the door behind the stone jambs. The actual entrance photo shows
+    // shaded stone returns, a darker soffit and a full glazed transom.
+    for(const dx of [-2.43,2.43])this.rect(.25,5.16,1.8,o.stone,x+dx,2.58,-5.88);
+    this.rect(4.88,.19,1.83,o.canopyMetal||o.metal,x,5.47,-5.9);
+    this.rect(4.83,.052,1.9,o.paving,x,.024,-5.9);
+    this.window(x,2.2,4.65,3.9,-5.81);this.window(x,4.87,4.65,1.23,-5.81);
+    for(const dx of [-.65,.65])this.tube([[x+dx,1.1,-5.67],[x+dx,2.0,-5.67]],.018,o.metal);
     o.sign('158',[x+2.7,1.82,-3.73],.36,.16,'#4c4b43');
     // Fan canopy: shaped extruded sector + rounded radial ribs, not a rectangle.
     const roof=new THREE.Shape();roof.moveTo(-2.5,-4.55);roof.lineTo(2.5,-4.55);roof.lineTo(3.35,-.3);roof.quadraticCurveTo(0,1.05,-3.35,-.3);roof.closePath();

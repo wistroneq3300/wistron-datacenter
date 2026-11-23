@@ -15,6 +15,7 @@ export const DEFAULT_TREE_ROOTS = Object.freeze([
 
 const TAU = Math.PI * 2;
 const LOD_DENSITIES = [1, .79, .52];
+const QUALITY_DENSITIES = Object.freeze({ ultra: 1, high: .92, medium: .68, low: .43 });
 const UP = new THREE.Vector3(0, 1, 0);
 const random = seed => () => ((seed = (Math.imul(1664525, seed) + 1013904223) >>> 0) / 4294967296);
 const mix = THREE.MathUtils.lerp;
@@ -156,14 +157,14 @@ export class HQVegetation {
     });
     this.root = new THREE.Group(); this.root.name = 'HQ broadleaf landscape · placement / species DRAFT';
     this.root.userData.evidence = VEGETATION_EVIDENCE; parent.add(this.root);
-    this.renderer = renderer; this.disposed = false; this.assetErrors = []; this.loadedTextures = 0;
+    this.renderer = renderer; this.disposed = false; this.assetErrors = []; this.loadedTextures = 0; this.quality = 'ultra';
     this.geometries = new Set(); this.materials = new Set(); this.textures = new Set(); this.foliage = [];
     this._cameraWorld = new THREE.Vector3(); this._treeWorld = new THREE.Vector3();
     this._uniforms = {
       hqWindTime: { value: 0 }, hqWindStrength: { value: wind },
       hqSunDirection: { value: new THREE.Vector3(-.6, 1, .6).normalize() }, hqTranslucency: { value: .42 },
     };
-    this.bark = new THREE.MeshStandardMaterial({ color: 0xbcb9af, roughness: .96, metalness: 0, vertexColors: true });
+    this.bark = new THREE.MeshStandardMaterial({ color: 0xa4a296, roughness: .96, metalness: 0, vertexColors: true });
     this.leaves = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: .72, metalness: 0,
       alphaTest: .42, side: THREE.DoubleSide, vertexColors: false, forceSinglePass: true });
     this.depth = new THREE.MeshDepthMaterial({ depthPacking: THREE.RGBADepthPacking, alphaTest: .42, side: THREE.DoubleSide });
@@ -174,8 +175,8 @@ export class HQVegetation {
       const spec = Array.isArray(value) ? { position: value } : value;
       if (!spec || !validPosition(spec.position)) throw new TypeError(`Invalid tree root ${index}`);
       const rnd = random(spec.seed ?? seed + index * 104729);
-      const height = THREE.MathUtils.clamp(spec.height ?? 6.5 + rnd() * 1.8, 3, 12);
-      const spread = THREE.MathUtils.clamp(spec.spread ?? 2.5 + rnd() * .6, 1, 4);
+      const height = THREE.MathUtils.clamp(spec.height ?? 6.3 + rnd() * 2.1, 3, 12);
+      const spread = THREE.MathUtils.clamp(spec.spread ?? 1.95 + rnd() * .70, 1, 4);
       populations.push(this._tree(branches, spec.position, height, spread, rnd, index));
     });
     const shrubMatrices = [], shrubColors = [];
@@ -232,8 +233,9 @@ export class HQVegetation {
     // yaw/roll. They do not float in random cubic volumes around a branch.
     const azimuth = Math.atan2(direction.z, direction.x) + (rnd() - .5) * .75;
     dummy.position.copy(point);
-    dummy.rotation.set(-.6 + rnd() * 1.5, -azimuth, -.22 + rnd() * .8);
-    const length = (.15 + rnd() * .085) * scale;
+    const pitch = Math.atan2(direction.y, Math.hypot(direction.x, direction.z));
+    dummy.rotation.set(-.5 + rnd() * 1.45 + pitch * .35, -azimuth, -.32 + rnd() * .95);
+    const length = (.17 + rnd() * .09) * scale;
     dummy.scale.set(length, length * (.49 + rnd() * .19), length);
     dummy.updateMatrix(); matrices.push(dummy.matrix.clone());
     const variation = .79 + rnd() * .35;
@@ -241,7 +243,7 @@ export class HQVegetation {
   }
 
   _spray(curve, matrices, colors, rnd, scale = 1, pairs = 8) {
-    const point = new THREE.Vector3(), tangent = new THREE.Vector3(), side = new THREE.Vector3(), stem = new THREE.Vector3();
+    const point = new THREE.Vector3(), tangent = new THREE.Vector3(), side = new THREE.Vector3(), stem = new THREE.Vector3(), normal = new THREE.Vector3();
     for (let i = 0; i < pairs; i++) {
       // Shorter, irregular internodes collect the same number of blades around
       // shoot ends instead of producing evenly spaced fern-like paired rows.
@@ -249,8 +251,13 @@ export class HQVegetation {
       curve.getPoint(t, point); curve.getTangent(t, tangent).normalize();
       side.crossVectors(tangent, UP).normalize();
       if (side.lengthSq() < .1) side.set(1, 0, 0);
-      for (const sign of [-1, 1]) {
-        stem.copy(side).multiplyScalar(sign * (.035 + rnd() * .065) * scale).addScaledVector(tangent, .015 + rnd() * .045);
+      normal.crossVectors(side, tangent).normalize();
+      // Alternating whorls fill the shoot in three dimensions. The previous
+      // paired flat sprays left long viewing gaps between every branch layer.
+      const leavesAtNode = i % 3 === 0 ? 3 : 2, phase = i * 2.39996 + rnd() * .4;
+      for (let leaf = 0; leaf < leavesAtNode; leaf++) {
+        const angle = phase + leaf * TAU / leavesAtNode, reach = (.045 + rnd() * .08) * scale;
+        stem.copy(side).multiplyScalar(Math.cos(angle) * reach).addScaledVector(normal, Math.sin(angle) * reach).addScaledVector(tangent, .015 + rnd() * .035);
         this._leaf(matrices, colors, point.clone().add(stem), stem, rnd, scale, t < .82);
       }
     }
@@ -269,42 +276,58 @@ export class HQVegetation {
     const phase = rnd() * TAU;
     branches.tube(worldCurve(trunk), .17 + height * .008, .025, { radial: 12, steps: 20, flare: .16, phase });
     const primaryCount = 10 + Math.floor(rnd() * 4);
+    // Each seed has a distinct crown aspect, preferred growth direction and
+    // droop. Lobes occupy a volume rather than repeating horizontal parasols.
+    const crownAspect = .73 + rnd() * .48, crownBias = rnd() * TAU;
+    const crownLift = -.035 + rnd() * .09, crownDroop = .06 + rnd() * .15;
     for (let i = 0; i < primaryCount; i++) {
-      const originT = .32 + (i / primaryCount) * .6;
+      const originT = .41 + (i / primaryCount) * .52;
       const origin = trunk.getPoint(originT);
       // Golden-angle branching plus separate crown lobes breaks radial symmetry.
       const angle = phase + i * 2.39996 + (rnd() - .5) * .75;
       const crownLayer = i / primaryCount;
-      const extension = spread * (.7 + rnd() * .35) * (1 - crownLayer * .34);
+      const lobe = .86 + Math.sin(angle * 2 + crownBias) * .12 + rnd() * .13;
+      const extension = spread * lobe * Math.sqrt(Math.max(.3, 1 - Math.pow(crownLayer * .92, 2)));
       const end = new THREE.Vector3(Math.cos(angle) * extension + lean.x,
-        height * (.66 + crownLayer * .29) + (rnd() - .5) * height * .12,
-        Math.sin(angle) * extension * (.78 + rnd() * .3) + lean.z);
+        height * (.55 + crownLayer * .41 + crownLift) + (rnd() - .5) * height * .13,
+        Math.sin(angle) * extension * crownAspect + lean.z);
       const bend = new THREE.Vector3(-Math.sin(angle) * .24, .16 + rnd() * .35, Math.cos(angle) * .24);
       const limb = curveBetween(origin, end, bend, -.08 - rnd() * .25);
-      const radius = .06 * (1 - crownLayer * .45) + .015;
-      branches.tube(worldCurve(limb), radius, .012, { radial: 8, steps: 12, phase: angle, shade: .94 + rnd() * .1 });
+      const radius = .045 * (1 - crownLayer * .5) + .009;
+      branches.tube(worldCurve(limb), radius, .006, { radial: 8, steps: 12, phase: angle, shade: .94 + rnd() * .1 });
+      // The previous primary curves ended in bare sawn-looking tips. Short
+      // divergent growth now encloses each tip; no floating crown billboards.
+      for (let tipIndex = 0; tipIndex < 3; tipIndex++) {
+        const start = limb.getPoint(.79 + tipIndex * .09);
+        const tipAngle = angle + (tipIndex - 1) * .72;
+        const tip = start.clone().add(new THREE.Vector3(Math.cos(tipAngle) * (.35 + rnd() * .27),
+          .08 + rnd() * .43, Math.sin(tipAngle) * (.35 + rnd() * .27)));
+        const twig = curveBetween(start, tip, new THREE.Vector3(0, .09, 0), -.03);
+        branches.tube(worldCurve(twig), .005, .0009, { radial: 4, steps: 4, shade: .82 });
+        this._spray(twig, matrices, colors, rnd, .96, 8);
+      }
       const secondaryCount = 4 + (i % 3 === 0 ? 1 : 0);
       for (let j = 0; j < secondaryCount; j++) {
         const t = .31 + j / secondaryCount * .65;
         const from = limb.getPoint(t), wing = (j % 2 ? -1 : 1);
         const branchAngle = angle + wing * (.45 + rnd() * .65);
-        const length = .49 + rnd() * .55;
+        const length = .42 + rnd() * .50;
         const to = from.clone().add(new THREE.Vector3(Math.cos(branchAngle) * length,
-          -.13 + rnd() * .52 - crownLayer * .06, Math.sin(branchAngle) * length));
+          -.33 + rnd() * .92 - crownLayer * crownDroop, Math.sin(branchAngle) * length));
         const secondary = curveBetween(from, to, new THREE.Vector3(0, .14, 0), -.04 - rnd() * .12);
         branches.tube(worldCurve(secondary), .018 + (1 - t) * .007, .004, { radial: 6, steps: 7, shade: .9 });
         this._spray(secondary, matrices, colors, rnd, .9, 5);
         // Several divergent terminal shoots fill lobes without a solid ball crown.
-        const shoots = 4 + (j % 2);
+        const shoots = 5 + (j % 2);
         for (let k = 0; k < shoots; k++) {
           const start = secondary.getPoint(.28 + k / shoots * .69);
           const shootAngle = branchAngle + (k % 2 ? -1 : 1) * (.45 + rnd() * 1.05);
-          const shootLength = .35 + rnd() * .33;
+          const shootLength = .32 + rnd() * .43;
           const tip = start.clone().add(new THREE.Vector3(Math.cos(shootAngle) * shootLength,
-            (rnd() - .52) * .42, Math.sin(shootAngle) * shootLength));
+            (rnd() - .46) * .86, Math.sin(shootAngle) * shootLength));
           const twig = curveBetween(start, tip, new THREE.Vector3(0, .06, 0), -.055);
           branches.tube(worldCurve(twig), .0045, .0011, { radial: 4, steps: 4, shade: .79 });
-          this._spray(twig, matrices, colors, rnd, .82 + rnd() * .31, 7 + Math.floor(rnd() * 3));
+          this._spray(twig, matrices, colors, rnd, .86 + rnd() * .28, 8 + Math.floor(rnd() * 3));
         }
       }
     }
@@ -376,6 +399,21 @@ export class HQVegetation {
     else if (validPosition(sunDirection)) this._uniforms.hqSunDirection.value.fromArray(sunDirection).normalize();
   }
 
+  setQuality(level = 'high') {
+    const quality = String(level).toLowerCase();
+    if (!Object.hasOwn(QUALITY_DENSITIES, quality)) throw new TypeError('Unknown vegetation quality profile');
+    if (this.disposed) return;
+    this.quality = quality;
+    for (const item of this.foliage) this._applyDensity(item);
+  }
+
+  _applyDensity(item) {
+    // One spatially shuffled buffer serves every distance and quality profile.
+    // Alpha-tested individual blades keep depth writes; there are no layered
+    // full-crown transparent cards or per-switch geometry/texture allocations.
+    item.mesh.count = Math.max(1, Math.floor(item.fullCount * QUALITY_DENSITIES[this.quality] * (item.shrub ? 1 : LOD_DENSITIES[item.level])));
+  }
+
   update(camera, time = 0, options) {
     if (this.disposed || !this.root.visible || !camera) return;
     this._uniforms.hqWindTime.value = Number.isFinite(time) ? time : 0;
@@ -394,7 +432,7 @@ export class HQVegetation {
       else if (level === 2 && distance < 142) level = 1;
       if (level !== item.level) {
         item.level = level;
-        item.mesh.count = Math.floor(item.fullCount * LOD_DENSITIES[level]);
+        this._applyDensity(item);
       }
     }
   }
@@ -407,6 +445,7 @@ export class HQVegetation {
       drawCalls: this.disposed ? 0 : this.foliage.length + 1,
       loadedTextures: this.loadedTextures, assetErrors: [...this.assetErrors], disposed: this.disposed,
       evidence: VEGETATION_EVIDENCE, method: 'continuous curved tapered wood + instanced cupped PBR atlas leaves',
+      quality: this.quality, density: QUALITY_DENSITIES[this.quality], alphaMode: 'opaque alpha-test depth-writing leaves',
     };
   }
 

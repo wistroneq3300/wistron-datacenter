@@ -13,8 +13,8 @@ const { ArchitectureBuilder } = await import(dataModule(architectureSource.repla
 
 function createOwner() {
   const owner = { building: new THREE.Group(), geometry: new Set(), materials: new Set(), signs: [] };
-  for (const key of ['stone', 'trim', 'frame', 'metal', 'glass', 'canopyGlass', 'interior', 'roof', 'roughStone', 'lamp']) {
-    const material = key === 'glass' ? new THREE.MeshPhysicalMaterial({ transmission: .8 }) : new THREE.MeshStandardMaterial();
+  for (const key of ['stone', 'trim', 'frame', 'metal', 'glass', 'canopyGlass', 'interior', 'roof', 'roughStone', 'lamp', 'paving']) {
+    const material = key === 'glass' ? new THREE.MeshPhysicalMaterial({ transmission: .8, vertexColors: true }) : new THREE.MeshStandardMaterial();
     material.name = key; owner[key] = material; owner.materials.add(material);
   }
   owner.own = geometry => { owner.geometry.add(geometry); return geometry; };
@@ -47,6 +47,10 @@ test('Merged architecture has finite indexed-independent geometry and nonempty p
     for (const name of ['position', 'normal', 'uv']) {
       assert.ok(mesh.geometry.attributes[name]?.count > 0, `${name} must exist`);
       assert.ok([...mesh.geometry.attributes[name].array].every(Number.isFinite), `${name} must be finite`);
+    }
+    if (mesh.material === owner.glass) {
+      assert.equal(mesh.geometry.attributes.color?.count,mesh.geometry.attributes.position.count);
+      assert.ok(mesh.geometry.attributes.color.array.every(value=>Number.isFinite(value)&&value>=0&&value<=1));
     }
     mesh.geometry.computeBoundingBox();
     assert.equal(mesh.geometry.boundingBox.isEmpty(), false);

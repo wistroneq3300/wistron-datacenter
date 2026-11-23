@@ -1,0 +1,181 @@
+{
+  "suite": "phase34-delivery",
+  "date": "2026-11-23T14:12:34.314Z",
+  "tests": [
+    {
+      "name": "P3/P4 gallery decodes actual HQ / Hall / PA comparison and monitoring evidence",
+      "status": "PASS",
+      "evidence": [
+        {
+          "path": "evidence/hq-color-before-3440x1440.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "path": "evidence/hq-quarter-3440x1440.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "path": "evidence/hq-front-3440x1440.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "path": "evidence/hq-side-3440x1440.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "path": "evidence/hq-quarter-3440x1440.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "path": "evidence/hq-entrance-3440x1440.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "path": "evidence/hall-integrated-1-rack-3440x1440.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "path": "evidence/hall-integrated-4-rack-3440x1440.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "path": "evidence/hall-integrated-32-3440x1440.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "path": "evidence/hall-32-left-3440x1440.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "path": "evidence/hall-32-right-3440x1440.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "path": "../phase0/evidence/reference-images/3440x1440-dark-08-complete-rack.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "path": "evidence/regression/rack-three-quarter-3440x1440.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "path": "../phase0/evidence/reference-images/3440x1440-dark-12-rear-inspection.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "path": "evidence/regression/rack-rear-3440x1440.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "path": "../phase0/evidence/reference-images/3440x1440-dark-13-side-inspection.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "path": "evidence/regression/rack-side-3440x1440.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "path": "../phase0/evidence/reference-images/G-bare-board-hero.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "path": "evidence/regression/rack-board-3440x1440.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "path": "../phase0/evidence/reference-images/D-solid-cooling-assembly.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "path": "evidence/regression/rack-cooling-3440x1440.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "path": "evidence/twin-rack-fail-3440x1440.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "path": "evidence/twin-node-fault-3440x1440.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "path": "evidence/twin-recovery-3440x1440.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "path": "evidence/twin-stale-3440x1440.png",
+          "width": 3440,
+          "height": 1440
+        },
+        {
+          "path": "evidence/twin-multi-rack-node-3440x1440.png",
+          "width": 3440,
+          "height": 1440
+        }
+      ]
+    },
+    {
+      "name": "Both real recordings support byte-range playback and decode nonblank moving frames",
+      "status": "PASS",
+      "evidence": [
+        {
+          "src": "evidence/regression/cinematic-playback-1720x720.webm",
+          "duration": 46.6,
+          "width": 1720,
+          "height": 720,
+          "decodedTime": 10.200569,
+          "meanLuminance": 42.81098944872556
+        },
+        {
+          "src": "evidence/hq-to-node-demo-1720x720.webm",
+          "duration": 31.76,
+          "width": 1720,
+          "height": 720,
+          "decodedTime": 10.200409,
+          "meanLuminance": 20.817576442729187
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "browser": "131.0.6778.205",
+  "channel": "chrome",
+  "viewport": {
+    "width": 3440,
+    "height": 1440,
+    "dpr": 1
+  },
+  "runtime": "v24.22.1",
+  "platform": "win32",
+  "summary": {
+    "PASS": 2,
+    "FAIL": 0,
+    "SKIP": 0,
+    "PENDING": 0
+  }
+}

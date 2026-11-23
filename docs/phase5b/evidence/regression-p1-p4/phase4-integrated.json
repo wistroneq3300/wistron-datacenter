@@ -1,0 +1,266 @@
+{
+  "suite": "phase4-integrated",
+  "date": "2026-11-23T14:10:18.253Z",
+  "tests": [
+    {
+      "name": "Initial no-data inventory stays Unknown and DEMO / MOCK is visible",
+      "status": "PASS",
+      "evidence": {
+        "mode": "mock",
+        "entities": 229,
+        "unique": 229,
+        "healthy": 0,
+        "nodes": 36,
+        "controls": false
+      }
+    },
+    {
+      "name": "Healthy → Warning → Node FAIL updates shared Rack/System/list/3D state without rebuilding",
+      "status": "PASS",
+      "evidence": {
+        "node": {
+          "id": "editorial-compute-01::node-0",
+          "name": "DEMO Node 1 · COMPUTE-01",
+          "kind": "node",
+          "parentId": "editorial-compute-01",
+          "systemId": "editorial-compute-01",
+          "rackId": "rack-1",
+          "rowId": "row-a",
+          "hallId": "hall-1",
+          "boardId": "editorial-compute-01::board-0",
+          "demo": true,
+          "health": "fail",
+          "ownHealth": "fail",
+          "hasObservation": true,
+          "lastUpdatedAt": "2026-01-01T00:00:06.000Z",
+          "freshness": "fresh",
+          "sources": [
+            {
+              "provider": "MOCK",
+              "source": "MOCK / deterministic demonstration",
+              "health": "fail",
+              "lastKnownHealth": "fail",
+              "freshness": "fresh",
+              "ageMs": 0,
+              "observedAt": "2026-01-01T00:00:06.000Z",
+              "receivedAt": "2026-01-01T00:00:06.000Z",
+              "eventId": "mock-event-83",
+              "sequence": 83,
+              "metrics": [
+                {
+                  "name": "demo.node.temperature",
+                  "value": 84,
+                  "unit": "°C",
+                  "quality": "synthetic"
+                },
+                {
+                  "name": "demo.node.utilisation",
+                  "value": 97,
+                  "unit": "%",
+                  "quality": "synthetic"
+                }
+              ],
+              "test": {
+                "id": "mock-test-editorial-compute-01::node-0",
+                "name": "DEMO synthetic health check",
+                "status": "FAIL",
+                "updatedAt": "2026-01-01T00:00:06.000Z"
+              },
+              "links": [],
+              "message": "DEMO / MOCK: Node failed synthetic test; no Component failure inference"
+            }
+          ],
+          "tests": [
+            {
+              "id": "mock-test-editorial-compute-01::node-0",
+              "name": "DEMO synthetic health check",
+              "status": "FAIL",
+              "updatedAt": "2026-01-01T00:00:06.000Z",
+              "source": "MOCK / deterministic demonstration",
+              "observedAt": "2026-01-01T00:00:06.000Z"
+            }
+          ],
+          "alerts": [
+            {
+              "entityId": "editorial-compute-01::node-0",
+              "provider": "MOCK",
+              "source": "MOCK / deterministic demonstration",
+              "health": "fail",
+              "lastKnownHealth": "fail",
+              "freshness": "fresh",
+              "ageMs": 0,
+              "observedAt": "2026-01-01T00:00:06.000Z",
+              "receivedAt": "2026-01-01T00:00:06.000Z",
+              "eventId": "mock-event-83",
+              "sequence": 83,
+              "metrics": [
+                {
+                  "name": "demo.node.temperature",
+                  "value": 84,
+                  "unit": "°C",
+                  "quality": "synthetic"
+                },
+                {
+                  "name": "demo.node.utilisation",
+                  "value": 97,
+                  "unit": "%",
+                  "quality": "synthetic"
+                }
+              ],
+              "test": {
+                "id": "mock-test-editorial-compute-01::node-0",
+                "name": "DEMO synthetic health check",
+                "status": "FAIL",
+                "updatedAt": "2026-01-01T00:00:06.000Z"
+              },
+              "links": [],
+              "message": "DEMO / MOCK: Node failed synthetic test; no Component failure inference"
+            }
+          ],
+          "derivedFrom": []
+        },
+        "system": "fail",
+        "rack": "fail",
+        "marker": "fail",
+        "sameConfig": true,
+        "sameGroup": true,
+        "sameGeometry": true,
+        "component": "unknown"
+      }
+    },
+    {
+      "name": "Alarm list navigates Hall → Rack → System → mapped Node with source/test/time details",
+      "status": "PASS",
+      "evidence": {
+        "path": [
+          {
+            "stage": "hq",
+            "entityId": "wistron-hq"
+          },
+          {
+            "stage": "interior",
+            "entityId": "wistron-hq::interior"
+          },
+          {
+            "stage": "hall",
+            "entityId": "hall-1"
+          },
+          {
+            "stage": "row",
+            "entityId": "row-a"
+          },
+          {
+            "stage": "rack",
+            "entityId": "rack-1"
+          },
+          {
+            "stage": "system",
+            "entityId": "editorial-compute-01"
+          },
+          {
+            "stage": "board",
+            "entityId": "editorial-compute-01::board-0"
+          }
+        ],
+        "node": "editorial-compute-01::node-0",
+        "markerVisible": true,
+        "assets": 1
+      }
+    },
+    {
+      "name": "Recovery history remains traceable and parent faults clear only with explicit samples",
+      "status": "PASS",
+      "evidence": {
+        "rack": "healthy",
+        "history": [
+          "healthy",
+          "fail",
+          "recovering",
+          "healthy"
+        ],
+        "component": "unknown"
+      }
+    },
+    {
+      "name": "Offline / Stale, duplicate, delayed and out-of-order events are handled in real UI",
+      "status": "PASS",
+      "evidence": {
+        "health": "healthy",
+        "rejected": [
+          "duplicate",
+          "out-of-order",
+          "out-of-order"
+        ],
+        "configurationStable": true
+      }
+    },
+    {
+      "name": "Multiple Rack / multiple Node mapping follows configuration and supports fault navigation",
+      "status": "PASS",
+      "evidence": {
+        "addedSystem": "eq-6a60ab5e-613e-45ea-baf1-84af7372bba6",
+        "twoNodes": true,
+        "faultRack": "rack-2",
+        "orphanRemoved": true
+      }
+    },
+    {
+      "name": "Trace links are available and untrusted event text stays plain text",
+      "status": "PASS",
+      "evidence": {
+        "trace": "https://example.com/demo-log",
+        "syntheticOnly": true,
+        "plainText": true
+      }
+    },
+    {
+      "name": "Reset and reconnect are real adapter lifecycle operations, no stored telemetry credentials",
+      "status": "PASS",
+      "evidence": {
+        "connection": "connected",
+        "healthy": 0,
+        "storedKeys": [
+          "wistron-studio-config-v2"
+        ],
+        "configKeys": [
+          "catalog",
+          "documentId",
+          "equipment",
+          "rackProfiles",
+          "racks",
+          "revision",
+          "rows",
+          "schemaVersion",
+          "site",
+          "units"
+        ]
+      }
+    },
+    {
+      "name": "P4 console / shader / asset checks",
+      "status": "PASS"
+    },
+    {
+      "name": "Authorized live PA Manager endpoint, credentials backend and production inventory mapping",
+      "status": "PENDING",
+      "reason": "No real API documentation or authorized connection supplied; synthetic contract transport only."
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "browser": "131.0.6778.205",
+  "channel": "chrome",
+  "viewport": {
+    "width": 3440,
+    "height": 1440,
+    "dpr": 1
+  },
+  "runtime": "v24.22.1",
+  "platform": "win32",
+  "summary": {
+    "PASS": 9,
+    "FAIL": 0,
+    "SKIP": 0,
+    "PENDING": 1
+  }
+}

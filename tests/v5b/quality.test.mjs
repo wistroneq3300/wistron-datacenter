@@ -1,0 +1,8 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {QualityGovernor} from '../../modules/scene/quality.js';
+const rig=()=>{let time=0;const changes=[],g=new QualityGovernor({now:()=>time,apply:(p,l)=>changes.push(l)});return{g,changes,frames:(count,ms,options)=>{for(let i=0;i<count;i++){time+=ms;g.update(ms,options);}}};};
+test('Auto requires sustained measured pressure and a cooldown before reducing quality',()=>{const r=rig();r.frames(400,35);assert.equal(r.g.level,'high');r.frames(100,35);assert.equal(r.g.level,'medium');const changes=r.changes.length;r.frames(150,35);assert.equal(r.changes.length,changes);});
+test('Auto upgrades only after five healthy windows; noisy intervals do not oscillate',()=>{const r=rig();r.g.set('low');r.g.set('auto');r.frames(1100,16.67);assert.equal(r.g.level,'low');r.frames(300,16.67);assert.equal(r.g.level,'medium');r.frames(600,20);assert.equal(r.g.level,'medium');});
+test('Hidden, loading and invalid timing do not downgrade; explicit mode never changes automatically',()=>{const r=rig();r.frames(1000,40,{visible:false});r.frames(1000,40,{busy:true});r.g.update(NaN);assert.equal(r.g.level,'high');r.g.set('ultra');r.frames(1000,45);assert.equal(r.g.level,'ultra');assert.throws(()=>r.g.set('fictional'));});
+test('Sustained visible frames above 250 ms still downgrade through hysteresis instead of being discarded',()=>{const r=rig();r.frames(90,400);assert.equal(r.g.level,'high');assert.equal(r.g.snapshot().p95,250);r.frames(10,400);assert.equal(r.g.level,'medium');r.frames(100,400);assert.equal(r.g.level,'low');assert.deepEqual(r.changes,['high','medium','low']);});

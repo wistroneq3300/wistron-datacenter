@@ -7,7 +7,7 @@
   <meta name="description" content="Wistron Data Center Studio — 由內湖總部進入大型機房，探索一整排可配置機櫃的 3D 數位工程工作台。">
   <title>Wistron · Data Center Studio</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect rx='16' width='64' height='64' fill='%230e2027'/%3E%3Cpath d='M14 17l6 29 8-18 8 18 7-29h7l-10 34-11-18-10 18-8-34z' fill='%234ad8bd'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="v2.css"><link rel="stylesheet" href="v3.css"><link rel="stylesheet" href="v5.css">
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="v2.css"><link rel="stylesheet" href="v3.css"><link rel="stylesheet" href="v5.css"><link rel="stylesheet" href="v5b.css">
   <script type="importmap">{"imports":{"three":"./vendor/three.module.js","three/addons/":"./vendor/"}}</script>
 </head>
 <body>
@@ -32,11 +32,28 @@
       <div class="scene-vignette"></div>
       <div class="corner corner-tl"></div><div class="corner corner-br"></div>
       <div id="labels" class="world-labels" aria-label="可選取機櫃"></div>
+      <div id="hotspots" class="spatial-hotspots" aria-label="空間探索熱點"></div>
+      <div class="experience-toolbar" id="experienceToolbar" aria-label="探索模式">
+        <button id="playDemo"><svg><use href="#i-play"/></svg>Play Demo</button>
+        <button id="exploreToggle" aria-pressed="false">自由探索</button>
+        <button id="inspectorToggle" aria-expanded="false" hidden>設備資訊</button>
+        <button id="immersiveToggle" aria-pressed="false" aria-label="隱藏介面／顯示介面"><svg><use href="#i-fullscreen"/></svg></button>
+      </div>
+      <section id="showcaseHUD" class="showcase-hud" aria-label="Cinematic Showcase" hidden>
+        <div class="showcase-heading"><strong id="showcaseChapter">Wistron Showcase</strong><span id="showcaseState" role="status">準備播放</span></div>
+        <progress id="showcaseProgress" value="0" max="1" aria-label="Showcase 播放進度"></progress>
+        <div class="showcase-actions"><button id="showcasePause">暫停</button><button id="showcaseSkip">下一幕</button><button id="showcaseReplay">重播</button><button id="showcaseStop">停止並返回</button></div>
+      </section>
+      <section id="exploreHUD" class="explore-hud" aria-label="自由探索控制" hidden>
+        <strong>自由探索</strong><p id="exploreHint">WASD 移動 · Shift 加速 · 拖曳觀看 · 點畫面鎖定滑鼠</p>
+        <label for="exploreSpeed">移動速度 <input id="exploreSpeed" type="range" min="0.5" max="12" step="0.5" value="3"><output id="exploreSpeedValue">3 m/s</output></label>
+        <div><button id="explorePause">暫停</button><button id="exploreReset">安全位置</button><button id="exploreExit">返回導覽</button></div><small>保守場景邊界 · 非完整物理模擬 · Esc 離開</small>
+      </section>
       <section id="sceneMeta" class="scene-meta">
         <div class="eyebrow"><span class="tinyCross">+</span> SPATIAL WORKSPACE <span class="edition">/ 01</span></div>
         <h1 id="sceneTitle">Wistron Neihu<br><span>從總部到晶片。</span></h1>
         <p id="sceneDescription">建築光影展示與可配置 AI 機房。<br>歷史照片參考 · 未測繪 Draft 模型。</p>
-        <div id="sceneActions" class="sceneActions"><button id="startTour" class="primary">進入資料中心 <svg><use href="#i-arrow"/></svg></button><button id="hallDirect" class="quiet">前往機櫃排 <span>R01 — R08</span></button></div>
+        <div id="sceneActions" class="sceneActions"><button id="startTour" class="primary">進入訪客大廳 <svg><use href="#i-arrow"/></svg></button><button id="hallDirect" class="quiet">直接前往機櫃排 <span>R01 — R08</span></button></div>
       </section>
 
       <section id="hqControls" class="hq-controls" aria-label="總部鏡頭與光線" hidden>
@@ -85,7 +102,7 @@
       <nav class="bottom-dock" aria-label="空間與檢視模式">
         <div class="viewGroup">
           <button class="dock-btn" data-view="hq" title="01 · 總部外觀"><svg><use href="#i-building"/></svg><span>總部</span><small>01</small></button>
-          <button class="dock-btn" data-view="cutaway" title="02 · 建築剖面"><svg><use href="#i-building-section"/></svg><span>剖面</span><small>02</small></button>
+          <button class="dock-btn" data-view="cutaway" title="02 · 訪客大廳"><svg><use href="#i-building-section"/></svg><span>大廳</span><small>02</small></button>
           <button class="dock-btn active" data-view="hall" title="03 · 機房總覽"><svg><use href="#i-grid"/></svg><span>機房</span><small>03</small></button>
           <button class="dock-btn" data-view="row" title="04 · 機櫃排檢視"><svg><use href="#i-rack"/></svg><span>整櫃</span><small>04</small></button>
         </div>
@@ -107,7 +124,7 @@
         <div class="flowFooter"><span class="greenDot"></span> CONCEPTUAL FLOW · NOT CFD</div>
       </div>
 
-      <div class="quality"><button id="qualityBtn" title="切換自動／高品質渲染"><span></span><b id="qualityLabel">AUTO QUALITY</b></button><button id="fullscreenBtn" title="全螢幕" aria-label="切換全螢幕"><svg><use href="#i-fullscreen"/></svg></button></div>
+      <div class="quality"><label for="qualitySelect" id="qualityLabel">畫質 · Auto</label><select id="qualitySelect" aria-label="渲染畫質"><option value="auto">Auto</option><option value="ultra">Ultra</option><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option></select><button id="qualityBtn" title="自動量測／High 切換" aria-label="切換自動畫質"><span></span></button><button id="fullscreenBtn" title="全螢幕" aria-label="切換全螢幕"><svg><use href="#i-fullscreen"/></svg></button></div>
       <div id="toast" class="toast" role="status" aria-live="polite"></div>
       <dialog id="helpDialog"><div class="dialogTop"><span class="eyebrow">QUICK START</span><button data-close="helpDialog" class="iconBtn" aria-label="關閉指南"><svg><use href="#i-close"/></svg></button></div><h2>從一座建築，到你的機櫃排。</h2><p>這是一個以配置為基礎的 3D 工作台。監測資料預設為 DEMO / MOCK，不與現場設備連線。</p><div class="helpGrid"><div><b>拖曳</b><span>環繞場景</span></div><div><b>滾輪</b><span>導覽進退；自由模式縮放</span></div><div><b>右鍵</b><span>平移視角</span></div><div><b>點選機櫃</b><span>聚焦並編輯配置</span></div><div><b>Home</b><span>目前層級重置視角</span></div><div><b>Esc</b><span>關閉面板</span></div></div><div class="helpNote">總部依官方歷史照片建立 Draft 外觀，尚缺主參考照片與實景測繪。機房為空間視覺原型；編輯只會儲存在你的瀏覽器，不會修改任何現場設備。</div><button data-close="helpDialog" class="primary">開始探索 <svg><use href="#i-arrow"/></svg></button></dialog>
       <dialog id="configDialog"><div class="dialogTop"><span class="eyebrow">LOCAL CONFIGURATION</span><button data-close="configDialog" class="iconBtn" aria-label="關閉配置"><svg><use href="#i-close"/></svg></button></div><h2>你的機櫃，你的配置。</h2><p id="configSummary">機櫃、設備、Catalog 與 Profile 共用單一配置。通過驗證的變更會自動儲存在此瀏覽器。</p><div class="rackSummary" id="rackSummary"></div><div class="configActions"><button id="exportConfig" class="primary">下載 JSON <svg><use href="#i-download"/></svg></button><label class="outlineBtn fileLabel">匯入配置<input id="importConfig" type="file" accept=".json,application/json" hidden></label><button id="resetConfig" class="textDanger">恢復示範配置</button></div><p class="micro-note">支援 schema v2 與 v1 遷移。V1 沒有設備清單，不會憑空補入設備。請勿在名稱與備註填入帳密或敏感資料。</p></dialog>
@@ -115,6 +132,7 @@
     <footer class="bottomline"><span>WISTRON / ENGINEERING ATELIER</span><span id="footerMessage">內湖總部概念模型 · 空間視覺原型</span><span class="footerRight">DESIGNED TO EXPLORE <i>↗</i></span></footer>
   </div>
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><defs>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 4 12 8-12 8z"/></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
     <symbol id="i-back" viewBox="0 0 24 24"><path d="M20 12H5m6-6-6 6 6 6"/></symbol>
     <symbol id="i-settings" viewBox="0 0 24 24"><path d="M4 7h16M7 3v8m10 2v8M4 17h16M3 5v4m18 6v4M3 13v8m18-18v8M11 3v4m2-4v4m-2 10v4m2-4v4"/><circle cx="7" cy="9" r="2"/><circle cx="17" cy="15" r="2"/></symbol>

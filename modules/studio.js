@@ -14,13 +14,14 @@ import {DigitalTwinService} from './twin/service.js';
 import {SceneStateSynchronizer} from './scene/twin-synchronizer.js';
 import {TwinPanel} from './ui/twin-panel.js';
 import {HQJourney} from './environment/hq5-journey.js';
+import {createExperience} from './experience.js';
 
 const $=id=>document.getElementById(id),v=a=>new THREE.Vector3(...a);
 const labels=['Wistron HQ','Building Interior','Data Center Hall','Rack Row','Rack','System','Tray / Board','Component'];
-const titles=['緯創總部 · 歷史照片參考 / Draft','建築內部 · 概念剖面','Data Center Hall','Rack Row','Rack configuration','System inspection','Tray / Board','Component'];
+const titles=['緯創總部 · 歷史照片參考 / Draft','訪客大廳 · 示意空間 / Draft','Data Center Hall','Rack Row','Rack configuration','System inspection','Tray / Board','Component'];
 export async function startStudio({scene,camera,renderer,controls,groups,reducedMotion,environment}){
   const {building,upperShell,city,cityFar,campus,shell,environmentRacks,core}=groups;
-  let twinService,twinSync,twinPanel,monitoringTimer,adapter,hqJourney;
+  let twinService,twinSync,twinPanel,monitoringTimer,adapter,hqJourney,experience;
   let toastTimer,raf,last=performance.now(),disposed=false;
   const toast=message=>{$('toast').textContent=message;$('toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('show'),6000);};
   const studio=new PAStudio(renderer,scene),projection=new RackProjection(studio,core),library=new L10Library(studio),director=new CameraDirector(camera,controls,{reducedMotion});
@@ -38,28 +39,30 @@ export async function startStudio({scene,camera,renderer,controls,groups,reduced
   const selectedItem=()=>projection.item(state.equipmentId);
   const previousCamera=camera.position.clone();
   const hqCameraBounds=new THREE.Box3(v([-24.1,0,-41.1]),v([15.25,20.4,-3.35]));
-  director.constrain=()=>{const rig=selectedRig();if(state.depth===0){camera.position.y=Math.max(.35,camera.position.y);keepCameraOutside(camera,controls.target,hqCameraBounds,previousCamera);camera.lookAt(controls.target);}else if(state.depth>=4&&rig?.frame.visible){rig.group.updateWorldMatrix(true,true);const bounds=new THREE.Box3().setFromObject(rig.frame).expandByScalar(.025);keepCameraOutside(camera,controls.target,bounds,previousCamera);}previousCamera.copy(camera.position);};
+  director.constrain=()=>{if(director.owner==='free-explore')return;const rig=selectedRig();if(state.depth===0){camera.position.y=Math.max(.35,camera.position.y);keepCameraOutside(camera,controls.target,hqCameraBounds,previousCamera);camera.lookAt(controls.target);}else if(state.depth===1){const {bounds,obstacles}=environment.interior;bounds.clampPoint(camera.position,camera.position);bounds.clampPoint(controls.target,controls.target);for(const obstacle of obstacles)keepCameraOutside(camera,controls.target,obstacle,previousCamera);camera.lookAt(controls.target);}else if(state.depth>=4&&rig?.frame.visible){rig.group.updateWorldMatrix(true,true);const bounds=new THREE.Box3().setFromObject(rig.frame).expandByScalar(.025);keepCameraOutside(camera,controls.target,bounds,previousCamera);}previousCamera.copy(camera.position);};
   function clearDetails(){assetAbort?.abort();assetAbort=null;activeDetail?.dispose();activeDetail=null;for(const rig of projection.rigs.values())rig.extracted=null;}
   function applyVisibility(){
     const focus=state.depth>=4;
-    environment.setDepth(state.depth);core.visible=state.depth>=1;projection.isolate(focus?state.rackId:null,state.depth===3?{rowId:state.rowId}:state.depth===2?{hallId:state.hallId}:{});
+    environment.setDepth(state.depth);core.visible=state.depth>=2;projection.isolate(focus?state.rackId:null,state.depth===3?{rowId:state.rowId}:state.depth===2?{hallId:state.hallId}:{});
     // HQ lighting owns its background/fog, including the selected dusk/night
     // profile when returning from an interior. Interior/Rack styling stays local.
     if(state.depth!==0){scene.background=new THREE.Color(focus?0x091116:0x152630);scene.fog=focus?null:new THREE.Fog(0x152630,65,160);}
     $('scene').classList.toggle('daylight',state.depth===0);
+    $('scene').dataset.depth=String(state.depth);
     $('hqControls').hidden=state.depth!==0;
     controls.minDistance=state.depth===7?.035:state.depth>=5?.2:focus?.8:2;controls.maxDistance=focus?25:155;controls.maxPolarAngle=state.depth===0?Math.PI*.68:Math.PI*.485;camera.near=focus?.002:.05;camera.updateProjectionMatrix();
     $('scene').classList.toggle('is-inspecting',focus);$('sceneMeta').hidden=state.depth!==0;$('sceneSideinfo').hidden=focus;$('detailHeader').hidden=state.depth===0;
     $('detailIndex').textContent=String(state.depth+1).padStart(2,'0');$('detailEnglish').textContent=labels[state.depth];$('detailTitle').textContent=focus?(selectedItem()?.item.instance.name||selectedRig()?.rack.name||titles[state.depth]):titles[state.depth];
     $('scaleLabel').textContent=labels[state.depth].toUpperCase();$('footerMessage').textContent=focus?'PA Cinematic geometry · Draft hardware dimensions':'HQ 歷史照片參考 · Hall 虛擬配置 · Draft / 未測繪';
     document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',['hq','cutaway','hall','row'].indexOf(b.dataset.view)===state.depth));
-    if(focus)editor.show(state.rackId);else editor.hide();
+    if(focus&&!matchMedia('(max-width:760px)').matches)editor.show(state.rackId);else editor.hide();
+    $('inspectorToggle').hidden=!focus;$('inspectorToggle').setAttribute('aria-expanded',String(!$('rackInspector').hidden));
     renderJourney();renderParts();renderLabels();setFlow(flowMode);if(twinSync&&twinService)twinSync.sync(twinService.snapshot());
   }
   function renderJourney(){
     $('tourControls').hidden=false;$('journeyStep').textContent=`${String(state.depth+1).padStart(2,'0')} / 08`;$('journeyRange').value=state.depth;$('journeyName').textContent=labels[state.depth];
-    $('tourPrev').disabled=state.depth===0;$('tourNext').disabled=state.depth>=7;$('exitTour').textContent=state.mode==='journey'?'自由':'導覽';$('exitTour').title=state.mode==='journey'?'自由探索：滾輪縮放，保留目前層級':'繼續導覽：滾輪逐層進退';
-    $('sceneHint').textContent=state.mode==='journey'?'拖曳旋轉 · 滾輪逐層進退 · Ctrl + 滾輪縮放':'自由探索 · 拖曳旋轉 · 滾輪／雙指縮放 · 導覽進度保留';
+    $('tourPrev').disabled=state.depth===0;$('tourNext').disabled=state.depth>=7;$('exitTour').textContent=state.mode==='journey'?'縮放':'導覽';$('exitTour').title=state.mode==='journey'?'鏡頭縮放：滾輪縮放，保留目前層級':'繼續導覽：滾輪逐層進退';
+    $('sceneHint').textContent=state.mode==='journey'?'拖曳旋轉 · 滾輪逐層進退 · Ctrl + 滾輪縮放':'鏡頭縮放 · 拖曳旋轉 · 滾輪／雙指縮放 · 導覽進度保留';
     const crumbs=$('breadcrumbs');crumbs.replaceChildren();for(let i=0;i<=state.depth;i++){if(i){const sep=document.createElement('span');sep.textContent='›';crumbs.append(sep);}const b=document.createElement('button');b.textContent=i===4?selectedRig()?.rack.name||labels[i]:labels[i];b.dataset.depth=i;if(i===state.depth)b.setAttribute('aria-current','step');b.onclick=()=>go(i);crumbs.append(b);}
   }
   function renderParts(){
@@ -71,7 +74,12 @@ export async function startStudio({scene,camera,renderer,controls,groups,reduced
   function pose(depth){
     const fixed=[{position:[38,27,48],target:[0,8,-7],fov:43},{position:[24,19,30],target:[0,1,-5],fov:43},{position:[19,17,27],target:[0,1,-4],fov:43},{position:[9,5.2,22],target:[0,1.25,7],fov:35}];
     if(depth===0)return {fov:43,...environment.hq.pose()};
-    if(depth<4){const bounds=environment.hall.bounds(depth===3?state.rowId:state.hallId);if(!bounds.isEmpty()){const center=bounds.getCenter(new THREE.Vector3()),size=bounds.getSize(new THREE.Vector3()),span=Math.max(size.x,size.z);if(depth===1)return{position:[center.x,1.85,bounds.max.z+2.5],target:[center.x,1.4,center.z],fov:52};const offset=depth===3?[span*.45,3.7,Math.max(8,span*1.35)]:[span*.85,span*.85,span*1.2];return{position:center.clone().add(v(offset)).toArray(),target:[center.x,1.3,center.z],fov:depth===3?35:43};}return fixed[depth];}const rig=selectedRig();if(depth===4){const target=rig.group.position.toArray();return{position:rig.group.position.clone().add(v([-2.7,.45,5.6])).toArray(),target,fov:28.65};}
+    if(depth===1)return environment.interior.pose(camera.aspect<1);
+    if(depth<4){const bounds=environment.hall.bounds(depth===3?state.rowId:state.hallId);if(!bounds.isEmpty()){const center=bounds.getCenter(new THREE.Vector3()),size=bounds.getSize(new THREE.Vector3()),span=Math.max(size.x,size.z);const offset=v(depth===3?[span*.45,3.7,Math.max(8,span*1.35)]:[span*.85,span*.85,span*1.2]);
+      // Portrait overviews must retain the ends of the row, including the
+      // selected rack's spatial entry point. Desktop cinematic poses stay fixed.
+      const portrait=camera.aspect<1;if(portrait)offset.multiplyScalar(Math.max(1,.95/camera.aspect));
+      return{position:center.clone().add(offset).toArray(),target:[center.x,1.3,center.z],fov:portrait?(depth===3?48:52):(depth===3?35:43)};}return fixed[depth];}const rig=selectedRig();if(depth===4){const target=rig.group.position.toArray();return{position:rig.group.position.clone().add(v([-2.7,.45,5.6])).toArray(),target,fov:28.65};}
     const item=selectedItem().item,model=item.model,definition=model.childDefinitions?.find(d=>d.key===(depth===7?state.componentKey:state.boardKey));
     let bounds=activeDetail?(depth>=6?activeDetail.bounds(depth===7?'packages':'board',definition?.sourceComponent,definition?.boardIndex):activeDetail.bounds()):new THREE.Box3().setFromObject(item.group);
     if(bounds.isEmpty())throw new NavigationUnavailable('此部件的幾何資產缺失，無法聚焦。',depth-1);
@@ -83,9 +91,11 @@ export async function startStudio({scene,camera,renderer,controls,groups,reduced
     const offset=v([-.3,.82,.68]).normalize().multiplyScalar(distance).applyAxisAngle(v([0,1,0]),yaw);
     return{position:center.clone().add(offset).toArray(),target:center.toArray(),fov:32};
   }
-  async function go(depth,selection={},{hqHandoff=false}={}){
+  async function go(depth,selection={},{hqHandoff=false,showcaseHandoff=false,operation=null}={}){
+    if(operation&&!operation.isCurrent())return false;
+    if(!showcaseHandoff&&!hqHandoff)experience?.cancel();
     if(!hqHandoff)hqJourney?.cancel();
-    const token=++navToken;if(!selection.nodeId)state.nodeId=null;stopFilm();director.cancel();assetAbort?.abort();state.pending=false;$('toast').classList.remove('show');
+    const token=++navToken,previousDepth=state.depth;const fade=$('hqFade');if(!hqHandoff)fade.style.opacity='0';if(!selection.nodeId)state.nodeId=null;stopFilm();director.cancel();assetAbort?.abort();state.pending=false;$('toast').classList.remove('show');
     let next;try{next=resolveJourney(store.document,state,depth,selection);}catch(e){if(e instanceof NavigationUnavailable){$('assetStatus').hidden=false;$('assetStatus').textContent=e.message;toast(e.message);return false;}throw e;}
     if(next.depth>=5){const hit=projection.item(next.equipmentId),clear=extractionClearance(store.document,next.equipmentId,7.4*hit.rig.unit*.802*1000);if(!clear.valid){toast('抽出路徑會碰撞其他設備；請調整安裝位置。');return false;}}
     if(next.depth<5||next.equipmentId!==state.equipmentId||activeDetail&&activeDetail.entityId!==next.equipmentId)clearDetails();Object.assign(state,next);$('assetStatus').hidden=true;applyVisibility();
@@ -94,9 +104,23 @@ export async function startStudio({scene,camera,renderer,controls,groups,reduced
       if(hit.item.model.internalAsset){if(!activeDetail&&!(await ensureDetail(hit,token)))return false;if(token!==navToken)return false;activeDetail.setMode(state.depth>=6?'board':'system');}
       else{$('assetStatus').hidden=false;$('assetStatus').textContent='此型號尚無 Tray / Board 與 Component 資產。可配置外形與安裝位置；未虛構內部零件。';}
     }
-    if(token!==navToken)return false;
+    if(token!==navToken||operation&&!operation.isCurrent())return false;
+    if(operation){try{await operation.waitUntilResumed();}catch{return false;}if(token!==navToken||!operation.isCurrent())return false;}
     if(twinPanel){const id=state.nodeId||state.path?.at(-1)?.entityId;if(id)twinPanel.select(id);}
-    const p=pose(state.depth),completed=await director.move(p.position,p.target,{fov:p.fov,duration:state.depth>=5?1000:850});return completed&&token===navToken;
+    const p=operation?.chapterId==='interior-lobby'&&state.depth===1?environment.interior.pose(camera.aspect<1,true):pose(state.depth);
+    const lobbyHandoff=state.depth!==previousDepth&&(state.depth===1||previousDepth===1);
+    if(lobbyHandoff){
+      // Scene coordinates belong to separate sets. Start on the destination
+      // side of the threshold so the camera never travels through a wall.
+      const start=state.depth===1?environment.interior.world([-.45,1.65,-.65]):v(p.position).lerp(v(p.target),.055);
+      camera.position.copy(start);controls.target.fromArray(p.target);camera.fov=p.fov;camera.updateProjectionMatrix();camera.lookAt(controls.target);
+      previousCamera.copy(camera.position);
+      if(!hqHandoff&&!reducedMotion)fade.style.opacity='1';
+    }
+    const reveal=lobbyHandoff&&!hqHandoff&&!reducedMotion;
+    const completed=await director.move(p.position,p.target,{fov:p.fov,duration:state.depth>=5?1000:850,onProgress:reveal?progress=>{fade.style.opacity=String(1-progress);}:undefined});
+    if(token===navToken&&reveal)fade.style.opacity='0';
+    return completed&&token===navToken;
   }
   function rackAngle(yaw){const rig=selectedRig();if(!rig)return;stopFilm();const target=rig.group.position.clone();director.move(target.clone().add(v([Math.sin(yaw)*5.9,.45,Math.cos(yaw)*5.9])).toArray(),target.toArray(),{fov:28.65});}
   function renderHQPlayback(snapshot){
@@ -123,7 +147,8 @@ export async function startStudio({scene,camera,renderer,controls,groups,reduced
   function stopFilm(){
     if(!film.active&&!film.spin)return;film.active=false;film.playing=false;film.spin=false;film.intro=null;projection.rigs.forEach(r=>r.setCinematic(null));activeDetail?.setMode(state.depth>=6?'board':'system');director.cancel();$('cinematicControls').hidden=true;$('rackSpin').classList.remove('active');
   }
-  async function beginFilm(){
+  async function beginFilm({operation=null,playExplicit=false}={}){
+    if(operation&&!operation.isCurrent())return false;
     if(state.depth<4&&!(await go(4)))return;
     const selected=selectedItem(),candidate=selected?.item.model.internalAsset?selected.item:[...selectedRig().items.values()].find(i=>i.model.internalAsset);
     // L10 binding requires the real PA RackRig. Overview handles retain stable
@@ -132,7 +157,8 @@ export async function startStudio({scene,camera,renderer,controls,groups,reduced
     if(hit.item){if(state.equipmentId!==hit.item.instance.id||activeDetail&&activeDetail.entityId!==hit.item.instance.id)clearDetails();Object.assign(state,resolveJourney(store.document,state,state.depth,{equipmentId:hit.item.instance.id}));if(!activeDetail&&!(await ensureDetail(hit,navToken)))return;hit.rig.filmPrimary=hit.item.instance.id;applyVisibility();}
     else toast('此機櫃沒有 L10 內部資產；播放設備入櫃段落。');
     const clearance=cinematicClearance(selectedRig());film.clearance=clearance;if(!clearance.valid){toast('此配置的 Cinematic 路徑會碰撞設備；請改用個別設備檢視。');return;}
-    film.intro=reducedMotion?null:{position:camera.position.clone(),target:controls.target.clone(),fov:camera.fov,started:performance.now()};seekFilm(0);film.playing=!reducedMotion;$('playCinematic').textContent=film.playing?'暫停 Cinematic':'播放 Cinematic';
+    if(operation){try{await operation.waitUntilResumed();}catch{return false;}if(!operation.isCurrent())return false;}
+    film.intro=reducedMotion?null:{position:camera.position.clone(),target:controls.target.clone(),fov:camera.fov,started:performance.now()};seekFilm(0);film.playing=playExplicit||!reducedMotion;$('playCinematic').textContent=film.playing?'暫停 Cinematic':'播放 Cinematic';
   }
   function seekFilm(progress){
     const rig=selectedRig();if(!rig)return;film.active=true;film.spin=false;film.progress=progress;film.clock=window.PAL10Timeline.timeAt(progress,'coolingV2');if(director.owner!=='timeline')director.timeline();$('cinematicControls').hidden=false;$('cinematicRange').value=progress;
@@ -194,7 +220,7 @@ export async function startStudio({scene,camera,renderer,controls,groups,reduced
       const g=new THREE.TubeGeometry(new THREE.CatmullRomCurve3(points),32,.018,6,false),m=new THREE.MeshBasicMaterial({color});const o=new THREE.Mesh(g,m);o.userData.flow=mode;scene.add(o);flowObjects.push(o);
     }}setFlow(flowMode);
   }
-  function setFlow(mode){flowMode=mode;for(const o of flowObjects)o.visible=state.depth<4&&mode===o.userData.flow;document.querySelectorAll('[data-flow]').forEach(b=>b.classList.toggle('active',b.dataset.flow===mode));}
+  function setFlow(mode){flowMode=mode;for(const o of flowObjects)o.visible=state.depth>=2&&state.depth<4&&mode===o.userData.flow;document.querySelectorAll('[data-flow]').forEach(b=>b.classList.toggle('active',b.dataset.flow===mode));}
   const labelNodes=new Map();
   function renderLabels(){
     for(const [id,b] of labelNodes)if(!projection.rigs.has(id)){b.remove();labelNodes.delete(id);}
@@ -203,7 +229,7 @@ export async function startStudio({scene,camera,renderer,controls,groups,reduced
   function updateLabels(){const w=$('scene').clientWidth,h=$('scene').clientHeight;for(const [id,b] of labelNodes){if(b.hidden)continue;const rig=projection.rigs.get(id);const pos=rig.group.position.clone();pos.y+=rig.height/2+.1;pos.project(camera);b.style.left=`${(pos.x*.5+.5)*w}px`;b.style.top=`${(-pos.y*.5+.5)*h}px`;b.style.visibility=pos.z>1||Math.abs(pos.x)>1||Math.abs(pos.y)>1?'hidden':'visible';}}
   function summary(){const doc=store.document;$('configSummary').textContent=`${doc.racks.length} 個機櫃 · ${doc.equipment.length} 台設備 · revision ${doc.revision} · 本機自動儲存`;$('rackSummary').replaceChildren(...doc.racks.map(r=>{const b=document.createElement('span');b.textContent=`${r.name} · ${doc.equipment.filter(e=>e.rackId===r.id).length}`;return b;}));}
   store.subscribe((doc)=>{
-    hqJourney?.cancel();
+    experience?.cancel();hqJourney?.cancel();
     navToken++;clearDetails();state.pending=false;stopFilm();projection.sync(doc);environment.hall.sync(doc);facilityEditor.render();
     if(!projection.rigs.has(state.rackId)){state.rackId=null;state.equipmentId=null;if(state.depth>=4)state.depth=3;}
     if(state.equipmentId&&!projection.item(state.equipmentId)){state.equipmentId=null;if(state.depth>=5)state.depth=4;}
@@ -214,7 +240,7 @@ export async function startStudio({scene,camera,renderer,controls,groups,reduced
   // UI commands use the same configuration store as JSON import and migration.
   document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>go(['hq','cutaway','hall','row'].indexOf(b.dataset.view)));
   $('startTour').onclick=()=>{state.mode='journey';go(1);};$('hallDirect').onclick=()=>go(3);$('tourPrev').onclick=()=>go(state.depth-1);$('tourNext').onclick=()=>go(state.depth+1);$('journeyRange').oninput=e=>go(+e.target.value);
-  $('exitTour').onclick=()=>{hqJourney.cancel();state.mode=state.mode==='journey'?'explore':'journey';renderJourney();};$('resetBtn').onclick=()=>go(state.depth);$('closeInspector').onclick=()=>editor.hide();
+  $('exitTour').onclick=()=>{hqJourney.cancel();state.mode=state.mode==='journey'?'explore':'journey';renderJourney();};$('resetBtn').onclick=()=>go(state.depth);$('closeInspector').onclick=()=>editor.hide();$('inspectorToggle').onclick=()=>{if($('rackInspector').hidden)editor.show(state.rackId);else editor.hide();$('inspectorToggle').setAttribute('aria-expanded',String(!$('rackInspector').hidden));};
   $('hqCamera').onchange=e=>showHQView(e.target.value);$('hqOrbit').onclick=()=>playHQ('orbit');$('hqFly').onclick=()=>playHQ('fly-in');$('hqPause').onclick=()=>hqJourney.pause();$('hqStop').onclick=()=>hqJourney.cancel();
   document.querySelectorAll('#hqControls button[data-hq-light]').forEach(button=>button.onclick=async()=>{try{await environment.hq.setLighting(button.dataset.hqLight);document.querySelectorAll('#hqControls button[data-hq-light]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));$('scene').dataset.hqLighting=button.dataset.hqLight;}catch(error){toast('總部光線切換失敗：'+error.message);}});
   $('openRack').onclick=()=>{const rig=selectedRig();if(rig){rig.toggleDoor();$('openRack').classList.toggle('active',!!rig.doorTarget);}};
@@ -228,25 +254,27 @@ export async function startStudio({scene,camera,renderer,controls,groups,reduced
   $('importConfig').onchange=async e=>{const file=e.target.files[0];try{if(file){if(file.size>4*1024*1024)throw Error('配置檔超過 4 MB');store.import(await file.text());toast('配置已驗證、匯入並儲存');}}catch(error){toast(error.message);}finally{e.target.value='';}};
   $('resetConfig').onclick=()=>{try{store.reset();go(3);toast('已恢復 Draft 示範配置');}catch(e){toast(e.message);}};
   $('networkBtn').onclick=()=>{$('flowPanel').hidden=!$('flowPanel').hidden;$('networkBtn').setAttribute('aria-expanded',String(!$('flowPanel').hidden));};$('closeFlow').onclick=()=>{$('flowPanel').hidden=true;$('networkBtn').setAttribute('aria-expanded','false');};document.querySelectorAll('[data-flow]').forEach(b=>b.onclick=()=>setFlow(b.dataset.flow));
-  let high=false;$('qualityBtn').onclick=()=>{high=!high;renderer.setPixelRatio(high?Math.min(devicePixelRatio,2):Math.min(devicePixelRatio,1.65));$('qualityLabel').textContent=high?'HIGH QUALITY':'AUTO QUALITY';resize();};$('fullscreenBtn').onclick=()=>{if(document.fullscreenElement)document.exitFullscreen();else $('scene').requestFullscreen().catch(()=>toast('此瀏覽器無法進入全螢幕'));};
+  $('fullscreenBtn').onclick=()=>{if(document.fullscreenElement)document.exitFullscreen();else $('scene').requestFullscreen().catch(()=>toast('此瀏覽器無法進入全螢幕'));};
   const raycaster=new THREE.Raycaster();let down=null;
-  const pointerDown=e=>{hqJourney.cancel();if(e.button===0)down={x:e.clientX,y:e.clientY};if(director.owner!=='orbit'){stopFilm();director.cancel();}};
-  const pointerUp=e=>{if(!down||Math.hypot(e.clientX-down.x,e.clientY-down.y)>6){down=null;return;}down=null;const rect=renderer.domElement.getBoundingClientRect();raycaster.setFromCamera(new THREE.Vector2((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1),camera);
+  const pointerDown=e=>{if(experience?.showcase.active){e.preventDefault();e.stopImmediatePropagation();return;}if(experience?.freeExplore.active)return;hqJourney.cancel();if(e.button===0)down={x:e.clientX,y:e.clientY};if(director.owner!=='orbit'){stopFilm();director.cancel();}};
+  const pointerUp=e=>{if(experience?.freeExplore.active||experience?.showcase.active){down=null;return;}if(!down||Math.hypot(e.clientX-down.x,e.clientY-down.y)>6){down=null;return;}down=null;const rect=renderer.domElement.getBoundingClientRect();raycaster.setFromCamera(new THREE.Vector2((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1),camera);
+    if(state.depth<2)return;
     const hits=[...raycaster.intersectObject(core,true),...(state.depth<4?raycaster.intersectObject(environment.hall.root,true):[])].filter(h=>{let o=h.object;while(o){if(!o.visible)return false;o=o.parent;}return true;});const hit=hits.find(h=>h.object.userData.entityId&&h.object.userData.kind!=='door'||h.object.userData.kind==='rack-lod');if(!hit)return;const meta=projection.resolveHit(hit)||hit.object.userData;if(meta.kind==='twin-status'){focusEntity(meta.entityId);return;}if(meta.kind==='hall'){go(2,{hallId:meta.hallId,rackId:null,rowId:null});return;}if(meta.kind==='row'){go(3,{hallId:meta.hallId,rowId:meta.rowId,rackId:null});return;}if(state.depth<4&&meta.rackId)go(4,{rackId:meta.rackId});else if(meta.childId){const item=selectedItem()?.item,definition=item?.model.childDefinitions.find(d=>item.instance.children.find(c=>c.id===meta.childId)?.definitionKey===d.key);if(definition)go(definition.kind==='component'?7:6,{boardKey:item.model.childDefinitions.find(d=>d.kind==='board'&&d.boardIndex===definition.boardIndex)?.key,componentKey:definition.kind==='component'?definition.key:null});}else if(meta.entityId!==state.rackId)inspect(meta.entityId);
   };
   renderer.domElement.addEventListener('pointerdown',pointerDown,{capture:true});renderer.domElement.addEventListener('pointerup',pointerUp);
-  let lastWheel=0,wheelSum=0;const wheel=e=>{hqJourney.cancel();if(state.mode!=='journey'||e.ctrlKey){if(director.owner!=='orbit'){stopFilm();director.cancel();}return;}e.preventDefault();e.stopImmediatePropagation();const now=performance.now();if(now-lastWheel<600)return;wheelSum+=e.deltaY*(e.deltaMode===1?16:1);if(Math.abs(wheelSum)>=60){const direction=Math.sign(wheelSum);wheelSum=0;lastWheel=now;go(state.depth+direction);}};
+  let lastWheel=0,wheelSum=0;const wheel=e=>{if(experience?.showcase.active){e.preventDefault();e.stopImmediatePropagation();return;}if(experience?.freeExplore.active)return;hqJourney.cancel();if(state.mode!=='journey'||e.ctrlKey){if(director.owner!=='orbit'){stopFilm();director.cancel();}return;}e.preventDefault();e.stopImmediatePropagation();const now=performance.now();if(now-lastWheel<600)return;wheelSum+=e.deltaY*(e.deltaMode===1?16:1);if(Math.abs(wheelSum)>=60){const direction=Math.sign(wheelSum);wheelSum=0;lastWheel=now;go(state.depth+direction);}};
   renderer.domElement.addEventListener('wheel',wheel,{capture:true,passive:false});
   // Rack labels are part of the spatial canvas; hovering one must not swallow journey input.
   $('labels').addEventListener('wheel',wheel,{capture:true,passive:false});
-  const key=e=>{if(/INPUT|SELECT|TEXTAREA/.test(e.target.tagName)||document.querySelector('dialog[open]'))return;if(e.key==='Home'){e.preventDefault();go(state.depth);}if(e.key==='Escape'){hqJourney.cancel();editor.close();$('flowPanel').hidden=true;stopFilm();}if(e.key==='ArrowDown'){e.preventDefault();go(state.depth+1);}if(e.key==='ArrowUp'){e.preventDefault();go(state.depth-1);}};document.addEventListener('keydown',key);
-  function resize(){const rect=$('scene').getBoundingClientRect();camera.aspect=rect.width/rect.height;camera.updateProjectionMatrix();renderer.setSize(rect.width,rect.height,false);environment.resize?.(rect.width,rect.height,renderer.getPixelRatio());}
+  const key=e=>{if(e.target.closest?.('input,select,textarea,[contenteditable="true"]')||document.querySelector('dialog[open]'))return;if(experience?.freeExplore.active)return;if(experience?.showcase.active){if(e.key==='Escape')experience.showcase.stop();return;}if(e.key==='Home'){e.preventDefault();go(state.depth);}if(e.key==='Escape'){hqJourney.cancel();editor.close();$('flowPanel').hidden=true;stopFilm();}if(e.key==='ArrowDown'){e.preventDefault();go(state.depth+1);}if(e.key==='ArrowUp'){e.preventDefault();go(state.depth-1);}};document.addEventListener('keydown',key);
+  function resize(){const rect=$('scene').getBoundingClientRect();camera.aspect=rect.width/rect.height;environment.hq.viewportAspect=camera.aspect;camera.updateProjectionMatrix();renderer.setSize(rect.width,rect.height,false);environment.resize?.(rect.width,rect.height,renderer.getPixelRatio());}
   const resizeObserver=new ResizeObserver(resize);resizeObserver.observe($('scene'));resize();
   renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();metrics.contextLosses++;toast('GPU context 已中斷；配置已保留，請重新整理恢復。');});
-  function animate(now){if(disposed)return;const dt=Math.min(.05,(now-last)/1000);if(metrics.frames.length<2000)metrics.frames.push(now-last);last=now;projection.update(dt);director.update(now);hqJourney.update(dt);environment.hq.update(camera);filmFrame(dt);twinSync?.update();updateLabels();studio.shadow();if(environment.render)environment.render(scene,camera);else renderer.render(scene,camera);raf=requestAnimationFrame(animate);}
+  experience=createExperience({scene,camera,controls,director,renderer,state,store,environment,projection,hqJourney,film,go,beginFilm,stopFilm,focusEntity,resize,toast,getDetail:()=>activeDetail,getTwin:()=>twinService,cancelMotion:()=>{navToken++;assetAbort?.abort();state.pending=false;}});
+  function animate(now){if(disposed)return;const ms=now-last,dt=Math.min(.05,ms/1000);if(metrics.frames.length<2000)metrics.frames.push(ms);last=now;projection.update(dt);director.update(now);if(!experience.motionPaused)hqJourney.update(dt);environment.hq.update(camera,experience.motionPaused?0:dt);if(!experience.motionPaused)filmFrame(dt);experience.update(dt,ms);twinSync?.update();updateLabels();studio.shadow();if(environment.render)environment.render(scene,camera);else renderer.render(scene,camera);raf=requestAnimationFrame(animate);}
   buildFlows();summary();applyVisibility();await setupMonitoring();raf=requestAnimationFrame(animate);await go(0);$('loading').classList.add('done');if(store.notice)toast(store.notice);
-  const api={store,projection,environment,facilityEditor,studio,library,scene,camera,renderer,controls,director,state,film,metrics,editor,go,inspect,extract,selectEquipment,seekFilm,beginFilm,stopFilm,rackAngle,hqJourney,showHQView,playHQ,twin:twinService,adapter,twinPanel,twinSync,focusEntity,
+  const api={store,projection,environment,facilityEditor,studio,library,scene,camera,renderer,controls,director,state,film,metrics,editor,go,inspect,extract,selectEquipment,seekFilm,beginFilm,stopFilm,rackAngle,hqJourney,showHQView,playHQ,twin:twinService,adapter,twinPanel,twinSync,focusEntity,experience,freeExplore:experience.freeExplore,showcase:experience.showcase,quality:experience.quality,
     snapshot(){return{state:structuredClone(state),owner:director.owner,revision:store.document.revision,rigs:[...projection.rigs.values()].map(r=>({id:r.rack.id,visible:r.group.visible,equipment:[...r.equipmentIds]})),memory:{...renderer.info.memory},pool:projection.pool.size,materials:studio.materials.size,assets:library.refs};},
-    dispose(){disposed=true;cancelAnimationFrame(raf);clearInterval(monitoringTimer);hqJourney.dispose();twinPanel?.dispose();twinSync?.dispose();twinService?.dispose();adapter?.dispose();clearTimeout(toastTimer);director.cancel();clearDetails();resizeObserver.disconnect();renderer.domElement.removeEventListener('pointerdown',pointerDown,true);renderer.domElement.removeEventListener('pointerup',pointerUp);renderer.domElement.removeEventListener('wheel',wheel,true);$('labels').removeEventListener('wheel',wheel,true);document.removeEventListener('keydown',key);projection.dispose();environment.dispose();studio.dispose();for(const o of flowObjects){o.geometry.dispose();o.material.dispose();}controls.dispose();renderer.dispose();}
+    dispose(){disposed=true;cancelAnimationFrame(raf);clearInterval(monitoringTimer);experience.dispose();hqJourney.dispose();twinPanel?.dispose();twinSync?.dispose();twinService?.dispose();adapter?.dispose();clearTimeout(toastTimer);director.cancel();clearDetails();resizeObserver.disconnect();renderer.domElement.removeEventListener('pointerdown',pointerDown,true);renderer.domElement.removeEventListener('pointerup',pointerUp);renderer.domElement.removeEventListener('wheel',wheel,true);$('labels').removeEventListener('wheel',wheel,true);document.removeEventListener('keydown',key);projection.dispose();environment.dispose();studio.dispose();for(const o of flowObjects){o.geometry.dispose();o.material.dispose();}controls.dispose();renderer.dispose();}
   };window.studio=api;return api;
 }

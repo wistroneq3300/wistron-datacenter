@@ -1,0 +1,424 @@
+TAP version 13
+# Subtest: Merged architecture has finite indexed-independent geometry and nonempty physical bounds
+ok 1 - Merged architecture has finite indexed-independent geometry and nonempty physical bounds
+  ---
+  duration_ms: 191.6916
+  type: 'test'
+  ...
+# Subtest: Representative authored front and return openings expose glass before stone
+ok 2 - Representative authored front and return openings expose glass before stone
+  ---
+  duration_ms: 81.515
+  type: 'test'
+  ...
+# Subtest: Ray-measured corner glazing contains four upper bands and two base bands
+ok 3 - Ray-measured corner glazing contains four upper bands and two base bands
+  ---
+  duration_ms: 259.4462
+  type: 'test'
+  ...
+# Subtest: Elevated left step returns block exterior rays before they can see the interior glazing
+ok 4 - Elevated left step returns block exterior rays before they can see the interior glazing
+  ---
+  duration_ms: 117.2715
+  type: 'test'
+  ...
+# Subtest: Step-return closure preserves both roof setbacks and the upper x=-12 silhouette boundary
+ok 5 - Step-return closure preserves both roof setbacks and the upper x=-12 silhouette boundary
+  ---
+  duration_ms: 61.9687
+  type: 'test'
+  ...
+# Subtest: Overlapping facade holes fail before triangulation and preserve existing staged geometry
+ok 6 - Overlapping facade holes fail before triangulation and preserve existing staged geometry
+  ---
+  duration_ms: 0.8129
+  type: 'test'
+  ...
+# Subtest: Multiple disjoint window voids survive triangulation while surrounding stone stays closed
+ok 7 - Multiple disjoint window voids survive triangulation while surrounding stone stays closed
+  ---
+  duration_ms: 0.8967
+  type: 'test'
+  ...
+# Subtest: Architecture merge releases staged buffers and registers every retained mesh for disposal
+ok 8 - Architecture merge releases staged buffers and registers every retained mesh for disposal
+  ---
+  duration_ms: 46.4404
+  type: 'test'
+  ...
+# Subtest: HQ presets preserve the authored pose and reject unknown controls
+ok 9 - HQ presets preserve the authored pose and reject unknown controls
+  ---
+  duration_ms: 2.2259
+  type: 'test'
+  ...
+# Subtest: HQ orbit performs one finite exterior revolution and releases camera ownership
+ok 10 - HQ orbit performs one finite exterior revolution and releases camera ownership
+  ---
+  duration_ms: 7.2611
+  type: 'test'
+  ...
+# Subtest: Pause freezes HQ motion and cancel keeps the current camera pose
+ok 11 - Pause freezes HQ motion and cancel keeps the current camera pose
+  ---
+  duration_ms: 1.0506
+  type: 'test'
+  ...
+# Subtest: A later CameraDirector owner cannot be cancelled or overwritten by HQ update
+ok 12 - A later CameraDirector owner cannot be cancelled or overwritten by HQ update
+  ---
+  duration_ms: 0.2948
+  type: 'test'
+  ...
+# Subtest: Cancelling an unfinished HQ camera introduction prevents late timeline activation
+ok 13 - Cancelling an unfinished HQ camera introduction prevents late timeline activation
+  ---
+  duration_ms: 4.6389
+  type: 'test'
+  ...
+# Subtest: Fly-in covers the doorway before entering Interior and reveals only after handoff
+ok 14 - Fly-in covers the doorway before entering Interior and reveals only after handoff
+  ---
+  duration_ms: 1.4346
+  type: 'test'
+  ...
+# Subtest: Cancellation during an awaited Interior handoff cannot reapply a late fade
+ok 15 - Cancellation during an awaited Interior handoff cannot reapply a late fade
+  ---
+  duration_ms: 0.6055
+  type: 'test'
+  ...
+# Subtest: Cancellation while returning to HQ prevents a late preset or cinematic from starting
+ok 16 - Cancellation while returning to HQ prevents a late preset or cinematic from starting
+  ---
+  duration_ms: 0.7107
+  type: 'test'
+  ...
+# Subtest: A stale HQ return cannot overwrite a newer camera preset
+ok 17 - A stale HQ return cannot overwrite a newer camera preset
+  ---
+  duration_ms: 0.5498
+  type: 'test'
+  ...
+# Subtest: Disposal during an asynchronous HQ return never starts a new camera transition
+ok 18 - Disposal during an asynchronous HQ return never starts a new camera transition
+  ---
+  duration_ms: 0.5833
+  type: 'test'
+  ...
+# Subtest: Reduced Motion uses static presets and semantic entry without camera playback
+ok 19 - Reduced Motion uses static presets and semantic entry without camera playback
+  ---
+  duration_ms: 0.2829
+  type: 'test'
+  ...
+# Subtest: Landscape construction produces finite curved geometry and individual leaf coverage
+ok 20 - Landscape construction produces finite curved geometry and individual leaf coverage
+  ---
+  duration_ms: 392.3142
+  type: 'test'
+  ...
+# Subtest: Seeds reproduce geometry; distinct roots produce distinct curved trees
+ok 21 - Seeds reproduce geometry; distinct roots produce distinct curved trees
+  ---
+  duration_ms: 147.0124
+  type: 'test'
+  ...
+# Subtest: Distance LOD and lighting changes reuse resources, preserve every tree and apply hysteresis
+ok 22 - Distance LOD and lighting changes reuse resources, preserve every tree and apply hysteresis
+  ---
+  duration_ms: 61.9451
+  type: 'test'
+  ...
+# Subtest: Dispose releases each owned geometry, material, texture and instance exactly once
+ok 23 - Dispose releases each owned geometry, material, texture and instance exactly once
+  ---
+  duration_ms: 39.6446
+  type: 'test'
+  ...
+# Subtest: Cancelled asynchronous loading disposes late textures and never reattaches foliage
+ok 24 - Cancelled asynchronous loading disposes late textures and never reattaches foliage
+  ---
+  duration_ms: 31.5439
+  type: 'test'
+  ...
+# Subtest: Malformed planting data is rejected before any scene resource is attached
+ok 25 - Malformed planting data is rejected before any scene resource is attached
+  ---
+  duration_ms: 0.5065
+  type: 'test'
+  ...
+# Subtest: Every shipped vegetation surface matches its original CC0 asset checksum
+ok 26 - Every shipped vegetation surface matches its original CC0 asset checksum
+  ---
+  duration_ms: 5.7833
+  type: 'test'
+  ...
+# Subtest: P5B crowns preserve a bounded individual-blade budget, distinct shapes and depth writing
+ok 27 - P5B crowns preserve a bounded individual-blade budget, distinct shapes and depth writing
+  ---
+  duration_ms: 352.5649
+  type: 'test'
+  ...
+# Subtest: Quality profiles reduce the same shuffled leaf buffers with no allocations and no lost trees
+ok 28 - Quality profiles reduce the same shuffled leaf buffers with no allocations and no lost trees
+  ---
+  duration_ms: 279.4404
+  type: 'test'
+  ...
+# Subtest: Site detail is finite, merged, below the HQ roofline and explicitly Draft
+ok 29 - Site detail is finite, merged, below the HQ roofline and explicitly Draft
+  ---
+  duration_ms: 36.1084
+  type: 'test'
+  ...
+# Subtest: Site quality switches preserve borrowed PBR and dispose owned resources once
+ok 30 - Site quality switches preserve borrowed PBR and dispose owned resources once
+  ---
+  duration_ms: 16.4588
+  type: 'test'
+  ...
+# Subtest: Site rejects malformed owners before attaching resources
+ok 31 - Site rejects malformed owners before attaching resources
+  ---
+  duration_ms: 0.4057
+  type: 'test'
+  ...
+# Subtest: expanded rack sweep cannot tunnel through a thin obstacle at a large displacement
+ok 32 - expanded rack sweep cannot tunnel through a thin obstacle at a large displacement
+  ---
+  duration_ms: 1.9512
+  type: 'test'
+  ...
+# Subtest: diagonal contact slides along a wall without entering its expanded clearance
+ok 33 - diagonal contact slides along a wall without entering its expanded clearance
+  ---
+  duration_ms: 0.3771
+  type: 'test'
+  ...
+# Subtest: floor, ceiling and world boundary continuously clamp and slide
+ok 34 - floor, ceiling and world boundary continuously clamp and slide
+  ---
+  duration_ms: 0.3297
+  type: 'test'
+  ...
+# Subtest: unsafe and outside spawn / reset positions are validated, including fully blocked rooms
+ok 35 - unsafe and outside spawn / reset positions are validated, including fully blocked rooms
+  ---
+  duration_ms: 2.9544
+  type: 'test'
+  ...
+# Subtest: envelope creation leaves input boxes unchanged and invalid movement never corrupts a safe pose
+ok 36 - envelope creation leaves input boxes unchanged and invalid movement never corrupts a safe pose
+  ---
+  duration_ms: 1.2172
+  type: 'test'
+  ...
+# Subtest: entry cancels a pending camera move and owns exactly one disabled OrbitControls lease
+ok 37 - entry cancels a pending camera move and owns exactly one disabled OrbitControls lease
+  ---
+  duration_ms: 2.7536
+  type: 'test'
+  ...
+# Subtest: CameraDirector pause freezes transitions and resume compensates elapsed wall time
+ok 38 - CameraDirector pause freezes transitions and resume compensates elapsed wall time
+  ---
+  duration_ms: 0.4865
+  type: 'test'
+  ...
+# Subtest: claim and cancel clear a paused camera owner rather than preserving a stale paused state
+ok 39 - claim and cancel clear a paused camera owner rather than preserving a stale paused state
+  ---
+  duration_ms: 0.2156
+  type: 'test'
+  ...
+# Subtest: WASD movement, sprint, speed clamp, pause and resume operate through the world envelope
+ok 40 - WASD movement, sprint, speed clamp, pause and resume operate through the world envelope
+  ---
+  duration_ms: 0.7222
+  type: 'test'
+  ...
+# Subtest: input fields, contenteditable, modifiers and open dialogs do not intercept or continue WASD
+ok 41 - input fields, contenteditable, modifiers and open dialogs do not intercept or continue WASD
+  ---
+  duration_ms: 0.6755
+  type: 'test'
+  ...
+# Subtest: exit and Escape release their lease at the current pose without returning to the entry view
+ok 42 - exit and Escape release their lease at the current pose without returning to the entry view
+  ---
+  duration_ms: 0.3977
+  type: 'test'
+  ...
+# Subtest: returning from first-person upward look keeps the current pose inside OrbitControls limits
+ok 43 - returning from first-person upward look keeps the current pose inside OrbitControls limits
+  ---
+  duration_ms: 0.9785
+  type: 'test'
+  ...
+# Subtest: a superseding camera owner cannot be cancelled by stale free input or an update
+ok 44 - a superseding camera owner cannot be cancelled by stale free input or an update
+  ---
+  duration_ms: 0.4369
+  type: 'test'
+  ...
+# Subtest: Pointer Lock is requested only by explicit canvas activation and unavailable lock permits drag look
+ok 45 - Pointer Lock is requested only by explicit canvas activation and unavailable lock permits drag look
+  ---
+  duration_ms: 1.0764
+  type: 'test'
+  ...
+# Subtest: Pointer Lock loss exits, while explicit pause and late lock acquisition cannot steal a lease
+ok 46 - Pointer Lock loss exits, while explicit pause and late lock acquisition cannot steal a lease
+  ---
+  duration_ms: 0.8142
+  type: 'test'
+  ...
+# Subtest: touch OrbitControls fallback is constrained by the same swept envelope
+ok 47 - touch OrbitControls fallback is constrained by the same swept envelope
+  ---
+  duration_ms: 0.4696
+  type: 'test'
+  ...
+# Subtest: reset validates safePosition and preserves view orientation; blur clears movement and pauses
+ok 48 - reset validates safePosition and preserves view orientation; blur clears movement and pauses
+  ---
+  duration_ms: 0.4957
+  type: 'test'
+  ...
+# Subtest: disposing repeatedly removes every input listener and disallows reentry
+ok 49 - disposing repeatedly removes every input listener and disallows reentry
+  ---
+  duration_ms: 0.303
+  type: 'test'
+  ...
+# Subtest: Auto requires sustained measured pressure and a cooldown before reducing quality
+ok 50 - Auto requires sustained measured pressure and a cooldown before reducing quality
+  ---
+  duration_ms: 3.1148
+  type: 'test'
+  ...
+# Subtest: Auto upgrades only after five healthy windows; noisy intervals do not oscillate
+ok 51 - Auto upgrades only after five healthy windows; noisy intervals do not oscillate
+  ---
+  duration_ms: 0.9247
+  type: 'test'
+  ...
+# Subtest: Hidden, loading and invalid timing do not downgrade; explicit mode never changes automatically
+ok 52 - Hidden, loading and invalid timing do not downgrade; explicit mode never changes automatically
+  ---
+  duration_ms: 0.4409
+  type: 'test'
+  ...
+# Subtest: Sustained visible frames above 250 ms still downgrade through hysteresis instead of being discarded
+ok 53 - Sustained visible frames above 250 ms still downgrade through hysteresis instead of being discarded
+  ---
+  duration_ms: 1.3968
+  type: 'test'
+  ...
+# Subtest: The Showcase has a finite semantic route and preserves the original PA timeline duration
+ok 54 - The Showcase has a finite semantic route and preserves the original PA timeline duration
+  ---
+  duration_ms: 3.4181
+  type: 'test'
+  ...
+# Subtest: Play captures a return point once and passes stable selected identity through every equipment stage
+ok 55 - Play captures a return point once and passes stable selected identity through every equipment stage
+  ---
+  duration_ms: 3.6724
+  type: 'test'
+  ...
+# Subtest: Timed chapters advance through the existing RAF update and pause without consuming elapsed time
+ok 56 - Timed chapters advance through the existing RAF update and pause without consuming elapsed time
+  ---
+  duration_ms: 0.5536
+  type: 'test'
+  ...
+# Subtest: Pause while loading gates all later effects until resume
+ok 57 - Pause while loading gates all later effects until resume
+  ---
+  duration_ms: 3.0128
+  type: 'test'
+  ...
+# Subtest: Stop cancels an outstanding load before restoring and no stale completion starts a view
+ok 58 - Stop cancels an outstanding load before restoring and no stale completion starts a view
+  ---
+  duration_ms: 1.4651
+  type: 'test'
+  ...
+# Subtest: Stop releases a pause gate even if the original loader resolves after cancellation
+ok 59 - Stop releases a pause gate even if the original loader resolves after cancellation
+  ---
+  duration_ms: 1.354
+  type: 'test'
+  ...
+# Subtest: Skip invalidates an old loading chapter and preserves the paused state of the new chapter
+ok 60 - Skip invalidates an old loading chapter and preserves the paused state of the new chapter
+  ---
+  duration_ms: 0.7636
+  type: 'test'
+  ...
+# Subtest: HQ chapters wait for actual HQ playback; PA chapter waits for the actual 39.7 second endpoint
+ok 61 - HQ chapters wait for actual HQ playback; PA chapter waits for the actual 39.7 second endpoint
+  ---
+  duration_ms: 1.3031
+  type: 'test'
+  ...
+# Subtest: A complete run finishes in Hall, retains its return point, and Stop restores the exact captured state
+ok 62 - A complete run finishes in Hall, retains its return point, and Stop restores the exact captured state
+  ---
+  duration_ms: 1.0363
+  type: 'test'
+  ...
+# Subtest: Replay restores before starting and cannot be overwritten by a previous cancelled loader
+ok 63 - Replay restores before starting and cannot be overwritten by a previous cancelled loader
+  ---
+  duration_ms: 1.6023
+  type: 'test'
+  ...
+# Subtest: Missing catalog assets are explicitly skipped and never fabricate a Board or Component
+ok 64 - Missing catalog assets are explicitly skipped and never fabricate a Board or Component
+  ---
+  duration_ms: 0.9906
+  type: 'test'
+  ...
+# Subtest: An explicitly unavailable asset can recover to the next chapter without reporting a successful load
+ok 65 - An explicitly unavailable asset can recover to the next chapter without reporting a successful load
+  ---
+  duration_ms: 0.5825
+  type: 'test'
+  ...
+# Subtest: An actual load error restores the original state and remains a visible error
+ok 66 - An actual load error restores the original state and remains a visible error
+  ---
+  duration_ms: 0.3761
+  type: 'test'
+  ...
+# Subtest: A stale error restoration cannot overwrite a newer Stop request
+ok 67 - A stale error restoration cannot overwrite a newer Stop request
+  ---
+  duration_ms: 0.895
+  type: 'test'
+  ...
+# Subtest: Unexpected PA cancellation is an error, never a successful cinematic or skipped test
+ok 68 - Unexpected PA cancellation is an error, never a successful cinematic or skipped test
+  ---
+  duration_ms: 0.8049
+  type: 'test'
+  ...
+# Subtest: Disposal during asynchronous loading synchronously releases ownership and prevents continuation
+ok 69 - Disposal during asynchronous loading synchronously releases ownership and prevents continuation
+  ---
+  duration_ms: 0.4735
+  type: 'test'
+  ...
+1..69
+# tests 69
+# suites 0
+# pass 69
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 893.0054

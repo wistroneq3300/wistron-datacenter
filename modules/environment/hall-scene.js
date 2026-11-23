@@ -19,8 +19,8 @@ export class HallEnvironment {
     old?.dispose();this.setDepth(this.depth);return true;
   }
   setDepth(depth){
-    this.depth=depth;this.root.visible=depth>=1&&depth<=3;
-    if(this.resources){this.resources.ceiling.visible=depth===1;this.resources.overhead.visible=depth<=3;}
+    this.depth=depth;this.root.visible=depth>=2&&depth<=3;
+    if(this.resources){this.resources.ceiling.visible=false;this.resources.overhead.visible=depth<=3;}
   }
   bounds(entityId){
     const specific=this.hallBounds.get(entityId)||this.rowBounds.get(entityId);if(specific)return specific.clone();

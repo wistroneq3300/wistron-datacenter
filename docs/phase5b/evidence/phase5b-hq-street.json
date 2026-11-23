@@ -1,0 +1,141 @@
+{
+  "suite": "phase5b-hq-street",
+  "date": "2026-11-23T13:53:51.353Z",
+  "tests": [
+    {
+      "name": "Rendered asphalt follows the frontage, separate access drive and offset road mouths",
+      "status": "PASS",
+      "evidence": {
+        "frontage": true,
+        "access": true,
+        "eastLane": true,
+        "greenSeparation": true,
+        "noFourWay": true,
+        "offsetSouthMouth": true,
+        "noAccessAcrossStreet": true,
+        "lobbyStaysDistinct": true,
+        "evidence": {
+          "status": "draft",
+          "provenance": "Observed public map topology, photo-referenced entry paving, authored geometry and CC0 surfaces",
+          "reference": "https://www.openstreetmap.org/way/244450531",
+          "verified": [
+            "Xingshan Road fronts the HQ",
+            "a separate access drive is on the east side",
+            "offset T junctions",
+            "2024 orthophoto shows crossings, red curb, intermittent center paint and tree-lined roadside"
+          ],
+          "unverified": [
+            "current paint, exact widths and stripe counts",
+            "all neighboring massing",
+            "street furniture positions",
+            "planting survey"
+          ],
+          "representation": "Interpreted road layout at the HQ display scale"
+        }
+      }
+    },
+    {
+      "name": "Daylight 45°, entrance, same-camera street and both junctions are captured from WebGL",
+      "status": "PASS",
+      "evidence": [
+        {
+          "filename": "hq-quarter-3440x1440.png",
+          "position": [
+            33,
+            10.000000000000002,
+            35.00000000000001
+          ],
+          "target": [
+            -3,
+            9,
+            -18
+          ],
+          "fov": 36,
+          "viewport": [
+            3440,
+            1440
+          ],
+          "gl": 0
+        },
+        {
+          "filename": "hq-entrance-3440x1440.png",
+          "position": [
+            -6,
+            1.65,
+            8
+          ],
+          "target": [
+            -8.15,
+            5,
+            -4
+          ],
+          "fov": 52,
+          "viewport": [
+            3440,
+            1440
+          ],
+          "gl": 0
+        },
+        {
+          "filename": "street-context-3440x1440.png",
+          "position": [
+            27,
+            2.1999999999999966,
+            17
+          ],
+          "target": [
+            -6.000000000000001,
+            3.0000000000000004,
+            -5
+          ],
+          "fov": 52,
+          "viewport": [
+            3440,
+            1440
+          ],
+          "gl": 0
+        },
+        {
+          "filename": "street-junctions-3440x1440.png",
+          "position": [
+            0.9999999999999982,
+            66,
+            28.999999999999986
+          ],
+          "target": [
+            -3,
+            0,
+            -1
+          ],
+          "fov": 44,
+          "viewport": [
+            3440,
+            1440
+          ],
+          "gl": 0
+        }
+      ]
+    },
+    {
+      "name": "No browser, shader or asset errors",
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "browser": "131.0.6778.205",
+  "channel": "chrome",
+  "viewport": {
+    "width": 3440,
+    "height": 1440,
+    "dpr": 1
+  },
+  "runtime": "v24.22.1",
+  "platform": "win32",
+  "summary": {
+    "PASS": 3,
+    "FAIL": 0,
+    "SKIP": 0,
+    "PENDING": 0
+  }
+}

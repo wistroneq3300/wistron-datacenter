@@ -1,0 +1,322 @@
+{
+  "suite": "phase3-integrated",
+  "date": "2026-11-23T14:09:42.028Z",
+  "tests": [
+    {
+      "name": "HQ day views render with visible Draft evidence and licensed PBR maps",
+      "status": "PASS",
+      "evidence": {
+        "evidence": {
+          "status": "draft",
+          "reference": "Wistron 2011/2012 official overviews; UDN 2025 entrance photograph",
+          "referenceUrl": "https://udn.com/news/story/7240/8775190",
+          "observed": [
+            "grey stone recessed window bands",
+            "blue-green corner curtain wall",
+            "stepped silhouette",
+            "central convex glass bay",
+            "radial entrance canopy",
+            "granite entrance sign"
+          ],
+          "pending": [
+            "user original photo unavailable",
+            "survey dimensions",
+            "complete window schedule",
+            "current rear and roof",
+            "exact landscaping"
+          ]
+        },
+        "vegetation": {
+          "trees": 19,
+          "shrubs": 2,
+          "branches": 6787,
+          "leaves": 134919,
+          "renderedLeaves": 124117,
+          "geometries": 2,
+          "materials": 3,
+          "textures": 7,
+          "drawCalls": 21,
+          "loadedTextures": 7,
+          "assetErrors": [],
+          "disposed": false,
+          "evidence": {
+            "status": "draft",
+            "species": "unverified broadleaf",
+            "placement": "illustrative",
+            "materials": [
+              "Poly Haven / Japanese Camphor Bark",
+              "Poly Haven / Tree Small 02 leaf atlas"
+            ],
+            "provenance": "assets/environment/hq5-vegetation/provenance.json"
+          },
+          "method": "continuous curved tapered wood + instanced cupped PBR atlas leaves",
+          "quality": "high",
+          "density": 0.92,
+          "alphaMode": "opaque alpha-test depth-writing leaves"
+        },
+        "stoneMaps": true,
+        "roadMaps": true,
+        "lod": {
+          "racks": 8,
+          "detailed": 0,
+          "visible": 8,
+          "pool": 0,
+          "batches": 4,
+          "instances": 288,
+          "visibleRacks": 8,
+          "rows": 1
+        }
+      }
+    },
+    {
+      "name": "Actual multi Row layout UI builds 32 racks and preserves inventory IDs",
+      "status": "PASS",
+      "evidence": {
+        "rows": 4,
+        "racks": 32,
+        "equipment": 37,
+        "lod": {
+          "racks": 32,
+          "detailed": 0,
+          "visible": 32,
+          "pool": 0,
+          "batches": 16,
+          "instances": 1152,
+          "visibleRacks": 32,
+          "rows": 4
+        },
+        "hall": {
+          "halls": 1,
+          "rows": 4,
+          "drawBatches": 45,
+          "instances": 951,
+          "geometries": 1,
+          "materials": 16,
+          "textures": 1,
+          "visible": true,
+          "draft": true
+        }
+      }
+    },
+    {
+      "name": "Hall / Row hierarchy, instanced canvas picking and high detail handoff operate",
+      "status": "PASS",
+      "evidence": {
+        "row": "row-2",
+        "coarsePick": true,
+        "detailOnlyOnSelection": true
+      }
+    },
+    {
+      "name": "1 / 4 / 32 rack main-workbench frame and resource measurements",
+      "status": "PASS",
+      "evidence": [
+        {
+          "count": 1,
+          "p95Ms": 16.799999999999272,
+          "meanFps": 60.00600060006003,
+          "frames": 120,
+          "draw": {
+            "frame": 2686,
+            "calls": 30,
+            "triangles": 5244,
+            "points": 0,
+            "lines": 0
+          },
+          "memory": {
+            "geometries": 52,
+            "textures": 37
+          },
+          "lod": {
+            "racks": 1,
+            "detailed": 0,
+            "visible": 1,
+            "pool": 0,
+            "batches": 4,
+            "instances": 36,
+            "visibleRacks": 1,
+            "rows": 1
+          },
+          "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002786) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        {
+          "count": 4,
+          "p95Ms": 16.799999999999272,
+          "meanFps": 60.00600060006003,
+          "frames": 120,
+          "draw": {
+            "frame": 2931,
+            "calls": 33,
+            "triangles": 8016,
+            "points": 0,
+            "lines": 0
+          },
+          "memory": {
+            "geometries": 52,
+            "textures": 37
+          },
+          "lod": {
+            "racks": 4,
+            "detailed": 0,
+            "visible": 4,
+            "pool": 0,
+            "batches": 4,
+            "instances": 144,
+            "visibleRacks": 4,
+            "rows": 1
+          },
+          "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002786) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        {
+          "count": 32,
+          "p95Ms": 16.799999999995634,
+          "meanFps": 60.00300015000746,
+          "frames": 120,
+          "draw": {
+            "frame": 3176,
+            "calls": 91,
+            "triangles": 30336,
+            "points": 0,
+            "lines": 0
+          },
+          "memory": {
+            "geometries": 52,
+            "textures": 37
+          },
+          "lod": {
+            "racks": 32,
+            "detailed": 0,
+            "visible": 32,
+            "pool": 0,
+            "batches": 16,
+            "instances": 1152,
+            "visibleRacks": 32,
+            "rows": 4
+          },
+          "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002786) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        }
+      ]
+    },
+    {
+      "name": "Rack spatial collision rollback and facility JSON round trip share ConfigStore validation",
+      "status": "PASS",
+      "evidence": {
+        "rejected": true,
+        "rollback": true,
+        "roundTrip": true
+      }
+    },
+    {
+      "name": "P3 assets, shaders and console have no errors",
+      "status": "PASS"
+    },
+    {
+      "name": "Current HQ exact window schedule, measured geometry and user-photo match",
+      "status": "SKIP",
+      "reason": "User supplied photo and survey are unavailable; 2011 official image supports historical features only."
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "browser": "131.0.6778.205",
+  "channel": "chrome",
+  "viewport": {
+    "width": 3440,
+    "height": 1440,
+    "dpr": 1
+  },
+  "runtime": "v24.22.1",
+  "platform": "win32",
+  "performance": [
+    {
+      "count": 1,
+      "p95Ms": 16.799999999999272,
+      "meanFps": 60.00600060006003,
+      "frames": 120,
+      "draw": {
+        "frame": 2686,
+        "calls": 30,
+        "triangles": 5244,
+        "points": 0,
+        "lines": 0
+      },
+      "memory": {
+        "geometries": 52,
+        "textures": 37
+      },
+      "lod": {
+        "racks": 1,
+        "detailed": 0,
+        "visible": 1,
+        "pool": 0,
+        "batches": 4,
+        "instances": 36,
+        "visibleRacks": 1,
+        "rows": 1
+      },
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002786) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    {
+      "count": 4,
+      "p95Ms": 16.799999999999272,
+      "meanFps": 60.00600060006003,
+      "frames": 120,
+      "draw": {
+        "frame": 2931,
+        "calls": 33,
+        "triangles": 8016,
+        "points": 0,
+        "lines": 0
+      },
+      "memory": {
+        "geometries": 52,
+        "textures": 37
+      },
+      "lod": {
+        "racks": 4,
+        "detailed": 0,
+        "visible": 4,
+        "pool": 0,
+        "batches": 4,
+        "instances": 144,
+        "visibleRacks": 4,
+        "rows": 1
+      },
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002786) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    {
+      "count": 32,
+      "p95Ms": 16.799999999995634,
+      "meanFps": 60.00300015000746,
+      "frames": 120,
+      "draw": {
+        "frame": 3176,
+        "calls": 91,
+        "triangles": 30336,
+        "points": 0,
+        "lines": 0
+      },
+      "memory": {
+        "geometries": 52,
+        "textures": 37
+      },
+      "lod": {
+        "racks": 32,
+        "detailed": 0,
+        "visible": 32,
+        "pool": 0,
+        "batches": 16,
+        "instances": 1152,
+        "visibleRacks": 32,
+        "rows": 4
+      },
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002786) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    }
+  ],
+  "summary": {
+    "PASS": 6,
+    "FAIL": 0,
+    "SKIP": 1,
+    "PENDING": 0
+  }
+}

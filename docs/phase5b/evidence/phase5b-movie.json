@@ -1,0 +1,372 @@
+{
+  "suite": "phase5b-movie",
+  "date": "2026-11-23T14:00:38.920Z",
+  "tests": [
+    {
+      "name": "Complete Showcase records actual WebGL frames through all 17 chapters with the full 39.7 second PA film",
+      "status": "PASS",
+      "evidence": {
+        "file": "showcase-full-3440x1440.webm",
+        "mime": "video/webm;codecs=vp8",
+        "width": 3440,
+        "height": 1440,
+        "sourceCanvas": [
+          3440,
+          1339
+        ],
+        "requestedFps": 30,
+        "bitrate": 4200000,
+        "method": "Native MediaRecorder of letterboxed actual WebGL canvas. Existing environment render observed once per studio frame; real doorway fade and Draft caption composited. No generated footage or synthetic frame interpolation.",
+        "wallMs": 145952.29999998212,
+        "frames": 8474,
+        "error": null,
+        "chapters": [
+          {
+            "chapter": "hq-front",
+            "label": "HQ · Front",
+            "timeMs": 109.09999999403954,
+            "depth": 0
+          },
+          {
+            "chapter": "hq-low",
+            "label": "HQ · Low angle",
+            "timeMs": 5299.699999988079,
+            "depth": 0
+          },
+          {
+            "chapter": "hq-quarter",
+            "label": "HQ · 45°",
+            "timeMs": 9832,
+            "depth": 0
+          },
+          {
+            "chapter": "hq-orbit",
+            "label": "HQ · Orbit",
+            "timeMs": 13415.59999999404,
+            "depth": 0
+          },
+          {
+            "chapter": "hq-dusk",
+            "label": "HQ · Dusk",
+            "timeMs": 44548.69999998808,
+            "depth": 0
+          },
+          {
+            "chapter": "hq-entrance",
+            "label": "HQ · Entrance",
+            "timeMs": 47370.19999998808,
+            "depth": 0
+          },
+          {
+            "chapter": "hq-fly-in",
+            "label": "HQ · Enter",
+            "timeMs": 51280.5,
+            "depth": 0
+          },
+          {
+            "chapter": "interior-lobby",
+            "label": "Building Interior · Draft",
+            "timeMs": 64778,
+            "depth": 1
+          },
+          {
+            "chapter": "hall-arrival",
+            "label": "Data Center Hall",
+            "timeMs": 70161,
+            "depth": 1
+          },
+          {
+            "chapter": "row-approach",
+            "label": "Rack Row",
+            "timeMs": 74044.09999999404,
+            "depth": 2
+          },
+          {
+            "chapter": "rack-arrival",
+            "label": "Rack · Detail",
+            "timeMs": 77927.29999998212,
+            "depth": 3
+          },
+          {
+            "chapter": "pa-cinematic",
+            "label": "PA · Cinematic / 39.7 s",
+            "timeMs": 83027.5,
+            "depth": 4
+          },
+          {
+            "chapter": "system-focus",
+            "label": "System",
+            "timeMs": 124429.59999999404,
+            "depth": 4
+          },
+          {
+            "chapter": "board-focus",
+            "label": "Tray / Board",
+            "timeMs": 128660.5,
+            "depth": 5
+          },
+          {
+            "chapter": "component-focus",
+            "label": "Component",
+            "timeMs": 132895.29999998212,
+            "depth": 6
+          },
+          {
+            "chapter": "rack-return",
+            "label": "Rack · Return",
+            "timeMs": 137541.89999997616,
+            "depth": 7
+          },
+          {
+            "chapter": "hall-finale",
+            "label": "Hall · Finale",
+            "timeMs": 141041.09999999404,
+            "depth": 4
+          }
+        ],
+        "showcase": {
+          "status": "completed",
+          "phase": "complete",
+          "active": false,
+          "paused": false,
+          "runId": 1,
+          "index": 16,
+          "chapterId": "hall-finale",
+          "label": "Hall · Finale",
+          "chapterCount": 17,
+          "chapterProgress": 1,
+          "progress": 1,
+          "elapsedMs": 2816.5999999999767,
+          "selection": {
+            "rackId": "rack-1",
+            "equipmentId": "editorial-compute-01",
+            "boardKey": "board-0",
+            "componentKey": "Board1-CPU",
+            "hasInternalAsset": true
+          },
+          "skipped": [],
+          "error": null,
+          "canRestore": true
+        },
+        "depth": 2,
+        "fps": 58.0715635737749,
+        "p95Ms": 22.099999994039536,
+        "memory": {
+          "geometries": 55,
+          "textures": 49
+        },
+        "gl": 0,
+        "bytes": 67503512
+      }
+    },
+    {
+      "name": "Recorded WebM decodes actual HQ, Lobby, Rack, Component and final Hall frames at native output resolution",
+      "status": "PASS",
+      "evidence": {
+        "width": 3440,
+        "height": 1440,
+        "frames": [
+          {
+            "id": "hq-front",
+            "time": 2.1090999999940396,
+            "luminance": 125.39109603789836
+          },
+          {
+            "id": "interior-lobby",
+            "time": 66.778,
+            "luminance": 183.1047924741602
+          },
+          {
+            "id": "pa-cinematic",
+            "time": 105.0275,
+            "luminance": 45.03022044573643
+          },
+          {
+            "id": "component-focus",
+            "time": 134.89529999998211,
+            "luminance": 59.95864287252369
+          },
+          {
+            "id": "hall-finale",
+            "time": 143.04109999999403,
+            "luminance": 59.32351555770887
+          }
+        ]
+      }
+    },
+    {
+      "name": "Complete recorded run has no browser, shader or asset loading errors",
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "browser": "131.0.6778.205",
+  "channel": "chrome",
+  "viewport": {
+    "width": 3440,
+    "height": 1440,
+    "dpr": 1
+  },
+  "runtime": "v24.22.1",
+  "platform": "win32",
+  "video": {
+    "file": "showcase-full-3440x1440.webm",
+    "mime": "video/webm;codecs=vp8",
+    "width": 3440,
+    "height": 1440,
+    "sourceCanvas": [
+      3440,
+      1339
+    ],
+    "requestedFps": 30,
+    "bitrate": 4200000,
+    "method": "Native MediaRecorder of letterboxed actual WebGL canvas. Existing environment render observed once per studio frame; real doorway fade and Draft caption composited. No generated footage or synthetic frame interpolation.",
+    "wallMs": 145952.29999998212,
+    "frames": 8474,
+    "error": null,
+    "chapters": [
+      {
+        "chapter": "hq-front",
+        "label": "HQ · Front",
+        "timeMs": 109.09999999403954,
+        "depth": 0
+      },
+      {
+        "chapter": "hq-low",
+        "label": "HQ · Low angle",
+        "timeMs": 5299.699999988079,
+        "depth": 0
+      },
+      {
+        "chapter": "hq-quarter",
+        "label": "HQ · 45°",
+        "timeMs": 9832,
+        "depth": 0
+      },
+      {
+        "chapter": "hq-orbit",
+        "label": "HQ · Orbit",
+        "timeMs": 13415.59999999404,
+        "depth": 0
+      },
+      {
+        "chapter": "hq-dusk",
+        "label": "HQ · Dusk",
+        "timeMs": 44548.69999998808,
+        "depth": 0
+      },
+      {
+        "chapter": "hq-entrance",
+        "label": "HQ · Entrance",
+        "timeMs": 47370.19999998808,
+        "depth": 0
+      },
+      {
+        "chapter": "hq-fly-in",
+        "label": "HQ · Enter",
+        "timeMs": 51280.5,
+        "depth": 0
+      },
+      {
+        "chapter": "interior-lobby",
+        "label": "Building Interior · Draft",
+        "timeMs": 64778,
+        "depth": 1
+      },
+      {
+        "chapter": "hall-arrival",
+        "label": "Data Center Hall",
+        "timeMs": 70161,
+        "depth": 1
+      },
+      {
+        "chapter": "row-approach",
+        "label": "Rack Row",
+        "timeMs": 74044.09999999404,
+        "depth": 2
+      },
+      {
+        "chapter": "rack-arrival",
+        "label": "Rack · Detail",
+        "timeMs": 77927.29999998212,
+        "depth": 3
+      },
+      {
+        "chapter": "pa-cinematic",
+        "label": "PA · Cinematic / 39.7 s",
+        "timeMs": 83027.5,
+        "depth": 4
+      },
+      {
+        "chapter": "system-focus",
+        "label": "System",
+        "timeMs": 124429.59999999404,
+        "depth": 4
+      },
+      {
+        "chapter": "board-focus",
+        "label": "Tray / Board",
+        "timeMs": 128660.5,
+        "depth": 5
+      },
+      {
+        "chapter": "component-focus",
+        "label": "Component",
+        "timeMs": 132895.29999998212,
+        "depth": 6
+      },
+      {
+        "chapter": "rack-return",
+        "label": "Rack · Return",
+        "timeMs": 137541.89999997616,
+        "depth": 7
+      },
+      {
+        "chapter": "hall-finale",
+        "label": "Hall · Finale",
+        "timeMs": 141041.09999999404,
+        "depth": 4
+      }
+    ],
+    "showcase": {
+      "status": "completed",
+      "phase": "complete",
+      "active": false,
+      "paused": false,
+      "runId": 1,
+      "index": 16,
+      "chapterId": "hall-finale",
+      "label": "Hall · Finale",
+      "chapterCount": 17,
+      "chapterProgress": 1,
+      "progress": 1,
+      "elapsedMs": 2816.5999999999767,
+      "selection": {
+        "rackId": "rack-1",
+        "equipmentId": "editorial-compute-01",
+        "boardKey": "board-0",
+        "componentKey": "Board1-CPU",
+        "hasInternalAsset": true
+      },
+      "skipped": [],
+      "error": null,
+      "canRestore": true
+    },
+    "depth": 2,
+    "fps": 58.0715635737749,
+    "p95Ms": 22.099999994039536,
+    "memory": {
+      "geometries": 55,
+      "textures": 49
+    },
+    "gl": 0,
+    "bytes": 67503512
+  },
+  "summary": {
+    "PASS": 3,
+    "FAIL": 0,
+    "SKIP": 0,
+    "PENDING": 0
+  }
+}

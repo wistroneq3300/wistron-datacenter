@@ -4,6 +4,7 @@ import { RoomEnvironment } from './vendor/RoomEnvironment.js';
 import { startStudio } from './modules/studio.js';
 import {HQEnvironment} from './modules/environment/hq-scene.js';
 import {HallEnvironment} from './modules/environment/hall-scene.js';
+import {InteriorEnvironment} from './modules/environment/interior-scene.js';
 
 const $ = id => document.getElementById(id);
 const clamp = (v,a=0,b=1)=>Math.max(a,Math.min(b,v));
@@ -33,7 +34,7 @@ const ambientLights=new THREE.Group();scene.add(ambientLights);
 ambientLights.add(new THREE.HemisphereLight(0xb0cad4,0x14232b,1.1));
 const sun=new THREE.DirectionalLight(0xe4edf0,2.15);sun.position.set(20,35,19);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);Object.assign(sun.shadow.camera,{left:-32,right:32,top:30,bottom:-35,near:1,far:100});sun.shadow.bias=-.00025;sun.shadow.normalBias=.045;ambientLights.add(sun);
 const fillLight=new THREE.DirectionalLight(0x74bbd7,1.1);fillLight.position.set(-27,16,-10);ambientLights.add(fillLight);
-const hq=new HQEnvironment(scene,renderer),hall=new HallEnvironment(scene),core=new THREE.Group();scene.add(core);
-const environment={hq,hall,ambientLights,roomTarget,render(scene,camera){if(hq.root.visible)hq.lighting.render(scene,camera);else renderer.render(scene,camera);},setDepth(depth){hq.setDepth(depth);hall.setDepth(depth);ambientLights.visible=depth!==0;scene.environment=depth===0?hq.envTarget.texture:roomTarget.texture;},dispose(){hq.dispose();hall.dispose();roomTarget.dispose();ambientLights.traverse(o=>o.shadow?.dispose());ambientLights.removeFromParent();}};
+const hq=new HQEnvironment(scene,renderer),hall=new HallEnvironment(scene),interior=new InteriorEnvironment(scene),core=new THREE.Group();scene.add(core);
+const environment={hq,hall,interior,ambientLights,roomTarget,render(scene,camera){if(hq.root.visible)hq.lighting.render(scene,camera);else renderer.render(scene,camera);},setDepth(depth){hq.setDepth(depth);interior.setDepth(depth);hall.setDepth(depth);ambientLights.visible=depth>=2;scene.environment=depth===0?hq.envTarget.texture:roomTarget.texture;},dispose(){hq.dispose();interior.dispose();hall.dispose();roomTarget.dispose();ambientLights.traverse(o=>o.shadow?.dispose());ambientLights.removeFromParent();}};
 const placeholder=()=>new THREE.Group();
 startStudio({scene,camera,renderer,controls,reducedMotion,environment,groups:{building:hq.building,upperShell:null,city:hq.city,cityFar:placeholder(),campus:hall.root,shell:placeholder(),environmentRacks:placeholder(),core}}).catch(error=>{console.error(error);$('loading').querySelector('p').textContent='工作台載入失敗：'+error.message;$('loading').querySelector('small').textContent='請重新整理重試；既有配置會保留。';});
